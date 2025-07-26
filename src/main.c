@@ -6,13 +6,11 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/26 12:29:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/26 18:17:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-#define DOT_CUB	".cub"
 
 int	main(int ac, char *av[])
 {

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/26 16:25:35 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/26 18:14:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ uint64_t	ft_strlen(char str[])
 	return (i);
 }
 
-bool		ft_strendcmp(char str[], char end[])
+bool	ft_strendcmp(char str[], char end[])
 {
 	const uint64_t	str_len = ft_strlen(str);	
 	const uint64_t	str_end = ft_strlen(end);	
@@ -38,4 +38,31 @@ bool		ft_strendcmp(char str[], char end[])
 		++i;
 	}
 	return (true);
+}
+
+
+void	*ft_bzero(void *vptr, uint64_t size)
+{
+	char	*ptr;
+
+	ptr = vptr;
+	while ((uint64_t)ptr & 0b111 && size)
+	{
+		*ptr = 0;
+		++ptr;
+		--size;
+	}
+	while (size & ~0b111)
+	{
+		*(uint64_t *)ptr = 0;
+		ptr += 8;
+		size -= 8;
+	}
+	while (size)
+	{
+		*ptr = 0;
+		++ptr;
+		--size;
+	}
+	return (vptr);
 }

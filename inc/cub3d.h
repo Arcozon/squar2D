@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/25 16:25:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/26 18:20:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,46 @@
 # include "types.h"
 # include "errors.h"
 # include "utils.h"
+
+# define DOT_CUB	".cub"
+# define BUFF_SIZE	1024
+
+struct s_pars
+{
+	int			fd_map;
+
+	char		*no_texture;
+	char		*ea_texture;
+	char		*su_texture;
+	char		*we_texture;
+
+	uint32_t	color_ceiling;
+	uint32_t	color_floor;
+
+	char		**map;
+
+	uint32_t	error;
+	char		err_context[BUFF_SIZE];
+};
+
+struct s_mlx
+{
+	char	title[BUFF_SIZE];
+
+	void	*mlx_ptr;
+	void	*winptr;
+	void	*img;
+
+	uint32_t	err;
+	
+};
+
+
+struct s_cub
+{
+	t_pars	*pars;
+
+	uint32_t	error;
+};
 
 #endif
