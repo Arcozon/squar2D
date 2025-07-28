@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/26 18:22:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/28 10:58:39 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 		return (pars->error == NOT_DOT_CUB);
 	pars->fd_map = open(av[2], O_RDONLY);
 	if (pars->fd_map < 0)
+	{
+		// pars->err_context
 		return (pars->error = CANT_OPN);
+	}
 	return (NO_ERR);
 }
 
 uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 {
-	
+	if (check_easy_errors(&cub->pars, ac, av))	
 }
