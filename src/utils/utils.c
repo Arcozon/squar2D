@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 12:44:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/28 15:03:26 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ void		*ft_memcpy(void *dst, void *src, uint64_t size)
 	}
 	lu_dst = dst;
 	lu_src = src;
-	src += size &~ptr_mask;
-	dst += size &~ptr_mask;
+	src += size & ~ptr_mask;
+	dst += size & ~ptr_mask;
 	i = size >> 3;
 	while (i--)
 		lu_dst[i] = lu_src[i];
@@ -97,4 +97,26 @@ void		*ft_memcpy(void *dst, void *src, uint64_t size)
 	while (size--)
 		*(uint8_t *)(dst++) = *(uint8_t *)(src++);
 	return (dst - size);
+}
+
+void	ft_strlcpy(char *dst, char *src, uint64_t dst_size)
+{
+	uint64_t	f_size;
+
+	if (!dst_size)
+		return ;
+	f_size = ft_strlen(src);
+	if (f_size >= dst_size)
+		f_size = dst_size - 1;
+	ft_memcpy(dst, src, f_size);
+	dst[f_size] = 0;
+}
+
+// Return false if not the same
+bool	ft_memcpm(void *s1, void *s2, uint64_t n)
+{
+	while (n--)
+		if (((char *)s1)[n] != ((char *)s2)[n])
+			return (false);
+	return (true);
 }
