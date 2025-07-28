@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 15:26:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/28 16:13:25 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,17 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+# include "mlx.h"
+
 # include "types.h"
 # include "errors.h"
 # include "utils.h"
 
 # define DOT_CUB	".cub"
-# define BUFF_SIZE	1024
+# define BUFF_SIZE	2048
+
+# define W_HIGHT	800
+# define W_LENGHT	1200
 
 struct s_mlx
 {
@@ -34,7 +39,7 @@ struct s_mlx
 	void	*winptr;
 	void	*img;
 
-	uint32_t	err;
+	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };
 
@@ -61,7 +66,9 @@ struct s_cub
 {
 	t_pars		pars;
 
+	char		*pname;
 	uint32_t	error;
+	char		err_context[BUFF_SIZE];
 };
 
 #endif

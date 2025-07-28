@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/26 18:22:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/28 16:35:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 enum
 {
 	NO_ERR,
-	E_PARS,
 	E_MLC,
 	E_READ,
 	E_MLX,
@@ -26,16 +25,16 @@ enum
 
 enum
 {
-	MISSING_FILE = 1,
+	ERR_ARGS = 1,
 	NOT_DOT_CUB,
-	CANT_OPN,
+	CANT_OPN_MAP,
 	WRONG_FORMAT,
 	MISSING_COLOR,
-	WRONG_FORMAT_COLOR,
 	REDEFINED_COLOR,
-	MISSING_IMAGE,
-	REDEFINED_IMAGE,
-	CANT_OPEN_IMAGE,
+	WRONG_FORMAT_COLOR,
+	MISSING_TEXTURE,
+	REDEFINED_TEXTURE,
+	CANT_OPEN_TEXTURE,
 	TOO_MANY_PLAYER,
 	UNCLOSED_MAP,
 	UNKNOWN_CHAR

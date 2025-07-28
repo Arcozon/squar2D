@@ -6,13 +6,15 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 15:03:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/28 16:10:25 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 #include "debug.h"
-uint64_t	ft_strlen(char str[])
+
+__attribute__ ((const, pure, nonnull))
+uint64_t	ft_strlen(const char str[])
 {
 	const char		*start = str;
 	uint64_t		*aligned_ptr;
@@ -29,7 +31,8 @@ uint64_t	ft_strlen(char str[])
 	return (str - start);
 }
 
-bool	ft_strendcmp(char str[], char end[])
+__attribute__ ((const, pure, nonnull))
+bool	ft_strendcmp(const char str[], const char end[])
 {
 	const uint64_t	str_len = ft_strlen(str);	
 	const uint64_t	str_end = ft_strlen(end);	
