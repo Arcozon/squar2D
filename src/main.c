@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 13:03:02 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 14:27:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	main(int ac, char *av[])
 {
-	__attribute__((cleanup(free_cub))) t_cub	cub;
+	__attribute__((cleanup(free_cub))) t_cub cub;
 	if (!init_cub(&cub, ac, av))
 	{
-		DEBUG("Succes")
+		DEBUG("Succes");
 	}
 	return (perror_cub(cub));
 }

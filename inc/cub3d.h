@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 12:34:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 14:30:36 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@
 
 struct s_mlx
 {
-	char	title[BUFF_SIZE];
+	char		title[BUFF_SIZE];
 
-	void	*mlx_ptr;
-	void	*winptr;
-	void	*img;
+	void		*mlx_ptr;
+	void		*winptr;
+	void		*img;
 
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];

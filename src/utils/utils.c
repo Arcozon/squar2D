@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 16:10:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 14:28:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ uint64_t	ft_strlen(const char str[])
 		++str;
 	aligned_ptr = (uint64_t *)str;
 	while ((*aligned_ptr - STRLEN_LOW_MASK)
-			& ~(*aligned_ptr) & STRLEN_HIGH_MASK == 0)
+		& ~(*aligned_ptr) & STRLEN_HIGH_MASK == 0)
 		++aligned_ptr;
 	str = (char *)aligned_ptr;
 	while (*str)
@@ -49,7 +49,6 @@ bool	ft_strendcmp(const char str[], const char end[])
 	}
 	return (true);
 }
-
 
 void	*ft_bzero(void *vptr, uint64_t size)
 {
@@ -77,7 +76,7 @@ void	*ft_bzero(void *vptr, uint64_t size)
 	return (vptr);
 }
 
-void		*ft_memcpy(void *dst, void *src, uint64_t size)
+void	*ft_memcpy(void *dst, void *src, uint64_t size)
 {
 	const uintptr_t	ptr_mask = sizeof(uint64_t) - 1;
 	uint64_t		*lu_dst;
