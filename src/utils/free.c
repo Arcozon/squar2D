@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 13:03:02 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/07/29 12:33:26 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int ac, char *av[])
+void	free_cub(t_cub *cub)
 {
-	__attribute__((cleanup(free_cub))) t_cub	cub;
-	if (!init_cub(&cub, ac, av))
-	{
-		DEBUG("Succes")
-	}
-	return (perror_cub(cub));
+	(void)cub;
+	// free
 }

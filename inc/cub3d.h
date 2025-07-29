@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 16:13:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 12:34:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,7 @@ struct s_cub
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };
+
+uint32_t	init_cub(t_cub *cub, int ac, char *av[]);
 
 #endif

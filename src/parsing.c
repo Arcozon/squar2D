@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 16:46:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 13:03:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 {
 	if (ac != 2)
 	{
-		ft_strlcpy(pars->err_context, av[0], sizeof(pars->err_context))
+		ft_strlcpy(pars->err_context, av[0], sizeof(pars->err_context));
 		return (pars->error == ERR_ARGS);
 	}
 	ft_strlcpy(pars->err_context, av[2], sizeof(pars->err_context));
@@ -32,13 +32,14 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
 {
 	uint64_t	start;
-	uint64_t	len;
 
 	ft_strlcpy(title, pname, BUFF_SIZE);
 	start = ft_strlen(title);
 	if (start < BUFF_SIZE - 1)
 	{
 		ft_strlcpy(title + start, ": ", BUFF_SIZE - start);
+		if (title[0] >= 'a' && title[0] <= 'z')
+			title[0] -= 'A' - 'a'; 
 		start = ft_strlen(title);
 		if (start < BUFF_SIZE - 1)
 		{
@@ -59,6 +60,7 @@ uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
 	mlx->winptr = mlx_new_window(mlx->mlx_ptr, W_LENGHT, W_LENGHT, mlx->title);
 	if (!mlx->mlx_ptr)
 		return (mlx->error = E_WIN);
+	return (NO_ERR);
 }
 
 char	*get_pname(char av0[])

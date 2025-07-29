@@ -6,12 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/28 16:35:01 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 12:26:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ERRORS_H
 # define ERRORS_H
+
+# include "types.h"
 
 enum
 {
@@ -28,7 +30,7 @@ enum
 	ERR_ARGS = 1,
 	NOT_DOT_CUB,
 	CANT_OPN_MAP,
-	WRONG_FORMAT,
+	WRONG_KEY,
 	MISSING_COLOR,
 	REDEFINED_COLOR,
 	WRONG_FORMAT_COLOR,
@@ -39,5 +41,7 @@ enum
 	UNCLOSED_MAP,
 	UNKNOWN_CHAR
 };
+
+uint32_t	perror_cub(t_cub cub);
 
 #endif

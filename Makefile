@@ -1,10 +1,10 @@
 NAME =  cub3d
 
-S_SRC_UTILS =  utils.c  
+S_SRC_UTILS =  utils.c  errors.c free.c
 D_SRC_UTILS =  utils/
 SRC_UTILS =  $(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-SRC =  $(SRC_UTILS)  main.c
+SRC =  $(SRC_UTILS)  main.c  parsing.c
 D_SRC = src/
 
 D_INC = inc/  
