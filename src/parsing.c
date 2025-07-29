@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 13:03:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 13:08:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 	if (ac != 2)
 	{
 		ft_strlcpy(pars->err_context, av[0], sizeof(pars->err_context));
-		return (pars->error == ERR_ARGS);
+		return (pars->error = ERR_ARGS);
 	}
-	ft_strlcpy(pars->err_context, av[2], sizeof(pars->err_context));
-	if (!ft_strendcmp(av[2], DOT_CUB))
-		return (pars->error == NOT_DOT_CUB);
+	ft_strlcpy(pars->err_context, av[1], sizeof(pars->err_context));
+	if (!ft_strendcmp(av[1], DOT_CUB))
+		return (pars->error = NOT_DOT_CUB);
 	pars->fd_map = open(av[2], O_RDONLY);
 	if (pars->fd_map < 0)
 		return (pars->error = CANT_OPN_MAP);
@@ -68,7 +68,7 @@ char	*get_pname(char av0[])
 	uint64_t	slash_av0;
 
 	slash_av0 = ft_strlen(av0);
-	while (slash_av0-- && av0[slash_av0] != '\'')
+	while (slash_av0-- && av0[slash_av0] != '/')
 		;
 	return (av0 + slash_av0 + 1);
 }

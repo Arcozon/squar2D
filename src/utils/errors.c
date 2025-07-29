@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 16:23:35 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 12:32:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/29 13:08:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static const char	*g_pars_errors_begin[] = {"None\n",
-	"Wrong arguments\n\tUsage: ./", "Wrong file extension: ",
+	"Wrong arguments\n\tUsage: ", "Wrong file extension: ",
 	"Can't open map: ", "Wrong key: ", "Missing color: ",
 	"Color is redefined: ", "Wrong format color:", "Missing texture: ",
 	"Texture is redefined: ", "Can't open texture: ", "Too many players\n",
