@@ -23,7 +23,8 @@ IFLAGS = -I$(D_INC) -I$(D_MLX)
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 RM =  rm -rf
 
-all:	$(NAME)
+all:	cp_mlx
+	@$(MAKE) $(NAME)
 
 $(NAME):	$(OBJ)
 	$(MK_MLX)
@@ -33,15 +34,17 @@ $(OBJ): $(D_BUILD)%.o:	$(D_SRC)%.c
 	@mkdir -p $(@D)
 	$(CC) $(FLAGS) $(IFLAGS) -c $< -o $@ 
 
-cp_mlx: $(TAR_MLX)
+cp_mlx:
+	@test -d $(D_MLX) || $(MAKE) $(TAR_MLX)
 
 $(TAR_MLX):
-	curl --output $@ $(LINK_MLX)
-	tar -xf $@
-	$(RM) $@
+	@curl --output $@ $(LINK_MLX)
+	@tar -xf $@
+	@$(RM) $@
+	@echo
 
 clean:
-	$(MK_MLX) clean || true
+	@$(MK_MLX) clean || true
 	$(RM) $(D_BUILD)
 
 fclean: clean
