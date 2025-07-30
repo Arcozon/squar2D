@@ -5,86 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 14:53:03 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/07/30 18:26:17 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
+int	ft_strspacecmp(char *str, char *pat)
 {
-	if (ac != 2)
-	{
-		ft_strlcpy(pars->err_context, av[0], sizeof(pars->err_context));
-		return (pars->error = ERR_ARGS);
-	}
-	ft_strlcpy(pars->err_context, av[1], sizeof(pars->err_context));
-	if (!ft_strendcmp(av[1], DOT_CUB))
-		return (pars->error = NOT_DOT_CUB);
-	pars->rd.fd = open(av[1], O_RDONLY);
-	if (pars->rd.fd< 0)
-		return (pars->error = CANT_OPN_MAP);
-	pars->err_context[0] = '\0';
-	return (NO_ERR);
+	uint32_t	i;
+
+	i = 0;
+	while (pat[i] && str[i] == pat[i])
+		++i;
+	return (!pat[i] && str[i] == ' ');
 }
 
-void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
+inline int	is_color(char *line)
 {
-	uint64_t	start;
+	return (ft_strspacecmp(line, "C") || ft_strspacecmp(line, "F"));
+}
 
-	ft_strlcpy(title, pname, BUFF_SIZE);
-	start = ft_strlen(title);
-	if (start < BUFF_SIZE - 1)
+inline int	is_texture(char *line)
+{
+	return (ft_strspacecmp(line, "NO") || ft_strspacecmp(line, "SO")
+		|| ft_strspacecmp(line, "EA")  || ft_strspacecmp(line, "WE"));
+}
+
+inline int is_map(char *line)
+{
+	uint32_t	i;
+
+	i = 0;
+	while (line[i])
 	{
-		ft_strlcpy(title + start, ": ", BUFF_SIZE - start);
-		if (title[0] >= 'a' && title[0] <= 'z')
-			title[0] -= 'A' - 'a'; 
-		start = ft_strlen(title);
-		if (start < BUFF_SIZE - 1)
+		if (line[i] != ' ' && line[i] != '0' && line[i] != '1' && line[i] != 'W'
+			&& line[i] != 'E' && line[i] != 'N' && line[i] != 'S')
+			return (0);
+		++i;
+	}
+	return (1);
+}
+
+uint32_t	pars_data(t_pars *pars)
+{
+	char	*line;
+
+	while (!(pars->rd.flags & R_DONE) && !pars->error)
+	{
+		line = gnl(&pars->rd);
+		if (!line || !line[0])
+			continue ;
+		if (is_color(line) != -1 && pars_color(pars, line))
+			return (pars->error);
+		else if (is_texture(line) != -1 && pars_color(pars, line))
+			return (pars->error);
+		else if (is_map(line))
+			break ;
+		else
 		{
-			ft_strlcpy(title + start, map_name, BUFF_SIZE - start);
-			if (ft_strendcmp(title, DOT_CUB))
-				title[ft_strlen(title) - ft_strlen(DOT_CUB)] = '\0';
+			ft_strnlcpy(pars->err_context, line,
+				sizeof(pars->err_context), char_chr(line, ' '));
+			return (pars->error = WRONG_KEY);
 		}
 	}
-	DEBUG("%s", title)
 }
 
-uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
+uint32_t	parsing(t_pars *pars)
 {
-	mlx->mlx_ptr = mlx_init();
-	if (!mlx->mlx_ptr)
-		return (mlx->error = E_MLX);
-	set_title(mlx->title, pname, map_name);
-	mlx->winptr = mlx_new_window(mlx->mlx_ptr, W_LENGHT, W_LENGHT, mlx->title);
-	if (!mlx->mlx_ptr)
-		return (mlx->error = E_WIN);
-	return (NO_ERR);
-}
-
-char	*get_pname(char av0[])
-{
-	uint64_t	slash_av0;
-
-	slash_av0 = ft_strlen(av0);
-	while (slash_av0-- && av0[slash_av0] != '/')
-		;
-	return (av0 + slash_av0 + 1);
-}
-
-uint32_t	init_cub(t_cub *cub, int ac, char *av[])
-{
-	static char	default_pname[] = "Cub3d";
 	
-	ft_bzero(cub, sizeof(*cub));
-	cub->pars.rd.fd = -1;
-	if (!av[0])
-		av[0] = default_pname;
-	cub->pname = get_pname(av[0]);
-	if (check_easy_errors(&cub->pars, ac, av))
-		return (cub->pars.error);
-	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1]))
-		return (cub->pars.pmlx.error);
-	return (NO_ERR);
 }

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 17:51:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:00:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main(int ac, char *av[])
 		DEBUG("Succes");
 	}
 	return (perror_cub(cub));
+
 	(void)ac, (void)av;
 }

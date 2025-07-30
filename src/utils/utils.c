@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 17:44:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:24:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,21 @@ void	ft_strlcpy(char *dst, char *src, uint64_t dst_size)
 	dst[f_size] = 0;
 }
 
+void	ft_strnlcpy(char *dst, char *src, uint64_t dst_size, uint64_t src_size)
+{
+	uint64_t	f_size;
+
+	if (!dst_size)
+		return ;
+	f_size = ft_strlen(src);
+	if (f_size > src_size)
+		f_size = src_size;
+	if (f_size >= dst_size)
+		f_size = dst_size - 1;
+	ft_memcpy(dst, src, f_size);
+	dst[f_size] = 0;
+}
+
 // Return false if not the same
 bool	ft_memcpm(void *s1, void *s2, uint64_t n)
 {
@@ -123,4 +138,14 @@ bool	ft_memcpm(void *s1, void *s2, uint64_t n)
 		if (((char *)s1)[n] != ((char *)s2)[n])
 			return (false);
 	return (true);
+}
+
+uint64_t	char_chr(const char str[], const char find)
+{
+	uint64_t	i;
+
+	i = 0;
+	while (str[i] && str[i] != find)
+		++i;
+	return (i);
 }

@@ -4,7 +4,7 @@ S_SRC_UTILS =  utils.c  errors.c free.c
 D_SRC_UTILS =  utils/
 SRC_UTILS =  $(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-SRC =  $(SRC_UTILS)  main.c  parsing.c  read.c
+SRC =  $(SRC_UTILS)  main.c  parsing.c  init.c  read.c
 D_SRC = src/
 
 D_INC = inc/  
