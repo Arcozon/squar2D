@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:09:09 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/26 12:25:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 16:45:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,10 @@
 
 # define BASENAME(string)		(char *)(strrchr(string, '/') ? strrchr(string, '/') + 1 : (char *)string)
 
-# define DEBUG_PROMPT		B_BLUE "%.s" GREY "[" GREEN "%d" GREY "]" RESET ":"
+# define DEBUG_PROMPT		B_BLUE "%s" GREY "[" GREEN "%d" GREY "]" RESET ":"
 # define DEBUG_PROMPT_ARGS	BASENAME(__FILE__), __LINE__ 
 
-# define WAIT_PROMPT		B_MAJENTA "WAIT" B_LYELLOW "[" RESET BLUE "%.s" GREY "(" GREEN "%d" GREY ")"  B_LYELLOW "]" RESET " "
+# define WAIT_PROMPT		B_MAJENTA "WAIT" B_LYELLOW "[" RESET BLUE "%s" GREY "(" GREEN "%d" GREY ")"  B_LYELLOW "]" RESET " "
 # define WAIT_PROMPT_ARGS	BASENAME(__FILE__), __LINE__
 
 # define DEBUG_ON

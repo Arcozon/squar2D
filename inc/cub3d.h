@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 14:30:36 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 16:59:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,22 @@
 # define W_HIGHT	800
 # define W_LENGHT	1200
 
+# define R_DONE			0b1
+# define R_LDONE		0b10
+# define R_CUT_S_SPC	0b100
+# define R_CUT_E_SPC	0b1000
+
+struct s_read
+{
+	int			fd;
+	int 		br;
+	char		content[BUFF_SIZE];
+	
+	char		*line;
+	uint8_t		flags;
+	uint32_t	error;
+};
+
 struct s_mlx
 {
 	char		title[BUFF_SIZE];
@@ -45,7 +61,7 @@ struct s_mlx
 
 struct s_pars
 {
-	int			fd_map;
+	t_read		rd;
 
 	char		*no_texture;
 	char		*ea_texture;
@@ -70,6 +86,8 @@ struct s_cub
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };
+
+char	*gnl(t_read *rd);
 
 uint32_t	init_cub(t_cub *cub, int ac, char *av[]);
 

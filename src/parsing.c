@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 13:09:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 14:53:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 	ft_strlcpy(pars->err_context, av[1], sizeof(pars->err_context));
 	if (!ft_strendcmp(av[1], DOT_CUB))
 		return (pars->error = NOT_DOT_CUB);
-	pars->fd_map = open(av[1], O_RDONLY);
-	if (pars->fd_map < 0)
+	pars->rd.fd = open(av[1], O_RDONLY);
+	if (pars->rd.fd< 0)
 		return (pars->error = CANT_OPN_MAP);
 	pars->err_context[0] = '\0';
 	return (NO_ERR);
@@ -78,6 +78,7 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 	static char	default_pname[] = "Cub3d";
 	
 	ft_bzero(cub, sizeof(*cub));
+	cub->pars.rd.fd = -1;
 	if (!av[0])
 		av[0] = default_pname;
 	cub->pname = get_pname(av[0]);

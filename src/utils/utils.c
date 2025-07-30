@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/29 14:28:35 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 17:44:23 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ void	*ft_memcpy(void *dst, void *src, uint64_t size)
 	uint64_t		*lu_src;
 	uint32_t		i;
 
+	if (!src)
+		return (src);
 	while (size && ((uintptr_t)src & ptr_mask))
 	{
 		--size;

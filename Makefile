@@ -1,10 +1,10 @@
-NAME =  cub3d
+NAME = cub3d
 
 S_SRC_UTILS =  utils.c  errors.c free.c
 D_SRC_UTILS =  utils/
 SRC_UTILS =  $(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-SRC =  $(SRC_UTILS)  main.c  parsing.c
+SRC =  $(SRC_UTILS)  main.c  parsing.c  read.c
 D_SRC = src/
 
 D_INC = inc/  
@@ -41,7 +41,6 @@ $(TAR_MLX):
 	@curl --output $@ $(LINK_MLX)
 	@tar -xf $@
 	@$(RM) $@
-	@echo
 
 clean:
 	@$(MK_MLX) clean || true
