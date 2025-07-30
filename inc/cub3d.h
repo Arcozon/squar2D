@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 16:59:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 18:41:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ struct s_pars
 
 	uint32_t	color_ceiling;
 	uint32_t	color_floor;
+	uint8_t		ceiling_defined;
+	uint8_t		floor_defined;
 
 	char		**map;
 	t_mlx		pmlx;
