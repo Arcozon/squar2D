@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 14:10:48 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 17:42:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/30 17:47:59 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,18 @@
 // 	uint64_t	size;
 	
 // }
+
+void	gnl_memmove(char *dst, char *src, uint64_t size)
+{
+	uint64_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		dst[i] = src[i];
+		++i;
+	}
+}
 
 char	*gnl_join(t_read *rd)
 {
@@ -64,7 +76,7 @@ char	*gnl_join(t_read *rd)
 	// ft_memcpy(rd->content, rd->content + new_size, rd->br -= new_size);
 	// DEBUG("%.*s", rd->br, rd->content);
 	// DEBUG("[%c|%c] %lu", rd->content[0], rd->content[new_size], rd->br - new_size)
-	ft_strlcpy(rd->content, rd->content + new_size, (rd->br -= new_size));
+	gnl_memmove(rd->content, rd->content + new_size, (rd->br -= new_size));
 	// WAIT
 	// DEBUG("%.*s", rd->br, rd->content);
 	
