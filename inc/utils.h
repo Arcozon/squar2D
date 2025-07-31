@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 18:23:55 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/31 14:54:26 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@
 uint64_t	ft_strlen(const char str[])__attribute__ ((const, pure, nonnull));
 bool		ft_strendcmp(const char str[],
 				const char end[])__attribute__ ((const, pure, nonnull));
+void		ft_strlcpy(char *dst, char *src, uint64_t dst_size);
+void		ft_strnlcpy(char *dst, char *src, uint64_t dst_size, uint64_t src_size);
+uint64_t	char_chr(const char str[], const char find);
+char		*ft_strchr(char str[], const char to_find);
 
 void		*ft_bzero(void *vptr, uint64_t size);
 void		*ft_memcpy(void *dst, void *src, uint64_t size);
-void		ft_strlcpy(char *dst, char *src, uint64_t dst_size);
-void		ft_strnlcpy(char *dst, char *src, uint64_t dst_size, uint64_t src_size);
 bool		ft_memcpm(void *s1, void *s2, uint64_t n);
-uint64_t	char_chr(const char str[], const char find);
 
 #endif

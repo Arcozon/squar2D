@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 18:41:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/31 14:55:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define R_LDONE		0b10
 # define R_CUT_S_SPC	0b100
 # define R_CUT_E_SPC	0b1000
+
+# define MAP_CHARS		"01 NSWE"
 
 struct s_read
 {

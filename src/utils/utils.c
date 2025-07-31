@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 18:24:34 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/07/31 14:54:13 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,4 +148,16 @@ uint64_t	char_chr(const char str[], const char find)
 	while (str[i] && str[i] != find)
 		++i;
 	return (i);
+}
+
+char	*ft_strchr(char str[], const char to_find)
+{
+	uint64_t	i;
+
+	i = 0;
+	while (str[i] && str[i] != to_find)
+		++i;
+	if (str[i] == to_find)
+		return (str + i);
+	return (0);
 }
