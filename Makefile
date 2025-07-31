@@ -52,7 +52,7 @@ fclean: clean
 re: fclean
 	make all
 
-DEPS = $(addprefix $(D_BUILD), $(SRC:.c=.d))
+DEPS = DEPS = $(OBJ:.o=.d)
 -include $(DEPS)
 
 .PHONY: re fclean clean all cp_mlx
