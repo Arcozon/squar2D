@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/30 17:59:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 15:39:53 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
 	{
 		ft_strlcpy(title + start, ": ", BUFF_SIZE - start);
 		if (title[0] >= 'a' && title[0] <= 'z')
-			title[0] -= 'A' - 'a'; 
+			title[0] -= 'a' - 'A'; 
 		start = ft_strlen(title);
 		if (start < BUFF_SIZE - 1)
 		{
@@ -48,7 +48,6 @@ void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
 				title[ft_strlen(title) - ft_strlen(DOT_CUB)] = '\0';
 		}
 	}
-	DEBUG("%s", title)
 }
 
 uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
@@ -57,9 +56,12 @@ uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
 	if (!mlx->mlx_ptr)
 		return (mlx->error = E_MLX);
 	set_title(mlx->title, pname, map_name);
-	mlx->winptr = mlx_new_window(mlx->mlx_ptr, W_LENGHT, W_LENGHT, mlx->title);
-	if (!mlx->mlx_ptr)
+	mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, W_WIDTH, W_HEIGHT, mlx->title);
+	if (!mlx->win_ptr)
 		return (mlx->error = E_WIN);
+	mlx->win_img = mlx_new_image(mlx->mlx_ptr, W_WIDTH, W_HEIGHT);
+	if (!mlx->win_img)
+		return (E_IMG);
 	return (NO_ERR);
 }
 
@@ -86,5 +88,7 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 		return (cub->pars.error);
 	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1]))
 		return (cub->pars.pmlx.error);
+	if (parsing(&cub->pars))
+		return (cub->pars.error);
 	return (NO_ERR);
 }

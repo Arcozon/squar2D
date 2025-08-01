@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/07/31 16:19:57 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 15:04:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,10 +130,10 @@ uint32_t	pars_data(t_pars *pars)
 		line = gnl(&pars->rd);
 		if (!line || !line[0])
 			continue ;
-		if (is_color(line) != -1 && pars_color(pars, line))
-			return (pars->error);
-		else if (is_texture(line) != -1 && pars_texture(pars, line))
-			return (pars->error);
+		if (is_color(line))
+			pars_color(pars, line);
+		else if (is_texture(line))
+			pars_texture(pars, line);
 		else if (is_map(line))
 			break ;
 		else
@@ -143,6 +143,8 @@ uint32_t	pars_data(t_pars *pars)
 			return (pars->error = WRONG_KEY);
 		}
 	}
+	DEBUG("C:%.6X", pars->color_ceiling)
+	DEBUG("F:%.6X", pars->color_floor)
 	return (pars->error);
 }
 
