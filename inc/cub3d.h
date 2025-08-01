@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 15:39:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:39:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 # define R_CUT_E_SPC	0b1000
 
 # define MAP_CHARS		"01 NSWE"
+# define NB_TEXTURE		4
 
 struct s_read
 {
@@ -61,14 +62,21 @@ struct s_mlx
 	char		err_context[BUFF_SIZE];
 };
 
+struct s_xpm_img
+{
+	void	*imgptr;
+	int		width;
+	int		height;
+};
+
 struct s_pars
 {
 	t_read		rd;
 
-	char		*no_texture;
-	char		*ea_texture;
-	char		*su_texture;
-	char		*we_texture;
+	t_xpm_img	no_texture;
+	t_xpm_img	ea_texture;
+	t_xpm_img	so_texture;
+	t_xpm_img	we_texture;
 
 	uint32_t	color_ceiling;
 	uint32_t	color_floor;

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 15:03:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:43:43 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,15 +76,15 @@ void	*ft_bzero(void *vptr, uint64_t size)
 	return (vptr);
 }
 
-void	*ft_memcpy(void *dst, void *src, uint64_t size)
+void	*ft_memcpy(void *dst, const void *src, uint64_t size)
 {
 	const uintptr_t	ptr_mask = sizeof(uint64_t) - 1;
+	const uint64_t	*lu_src;
 	uint64_t		*lu_dst;
-	uint64_t		*lu_src;
 	uint32_t		i;
 
 	if (!src)
-		return (src);
+		return (0);
 	while (size && ((uintptr_t)src & ptr_mask))
 	{
 		--size;
@@ -103,7 +103,7 @@ void	*ft_memcpy(void *dst, void *src, uint64_t size)
 	return (dst - size);
 }
 
-void	ft_strlcpy(char *dst, char *src, uint64_t dst_size)
+void	ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 {
 	uint64_t	f_size;
 
@@ -116,7 +116,7 @@ void	ft_strlcpy(char *dst, char *src, uint64_t dst_size)
 	dst[f_size] = 0;
 }
 
-void	ft_strnlcpy(char *dst, char *src, uint64_t dst_size, uint64_t src_size)
+void	ft_strnlcpy(char *dst, const char *src, uint64_t dst_size, uint64_t src_size)
 {
 	uint64_t	f_size;
 

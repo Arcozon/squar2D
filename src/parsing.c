@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 15:04:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 17:44:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_str_space_cmp(char *str, char *pat)
+int	ft_str_space_cmp(const char *str, const char *pat)
 {
 	uint32_t	i;
 
@@ -73,11 +73,17 @@ uint32_t	get_col(char **line, uint32_t *color)
 	return (NO_ERR);
 }
 
+void	skip_key_space(char **line)
+{
+	while (*line && **line != ' ')
+		++*line;
+	while (**line == ' ')
+		++*line;
+}
+
 uint32_t	read_color(char *line, t_pars *pars, uint32_t *col)
 {
-	++line;
-	while (*line == ' ')
-		++line;
+	skip_key_space(&line);
 	ft_strlcpy(pars->err_context, line, sizeof(pars->err_context));
 	if (get_col(&line, col) || *line != ',')
 		return (pars->error = WRONG_FORMAT_COLOR);
@@ -117,8 +123,31 @@ uint32_t	pars_color(t_pars *pars, char *line)
 
 uint32_t	pars_texture(t_pars *pars, char *line)
 {
+	const char	*key[NB_TEXTURE] = {"NO", "EA", "SO", "WE"};
+	t_xpm_img	**textures;
+	uint64_t	i;
+
+	textures = (t_xpm_img *[]){&pars->no_texture, &pars->ea_texture,
+		&pars->so_texture, &pars->we_texture};
+	i = 0;
+	while (i < NB_TEXTURE)
+	{
+		if (ft_str_space_cmp(line, key[i]))
+		{
+			if (textures[i]->imgptr)
+				return (ft_strlcpy(pars->err_context, key[i],
+					sizeof(pars->err_context)), pars->error = REDEFINED_TEXTURE);
+			skip_key_space(&line);
+			textures[i]->imgptr = mlx_xpm_file_to_image(pars->pmlx.mlx_ptr, line,
+				&textures[i]->width, &textures[i]->height);
+			if (!textures[i]->imgptr)
+				return (ft_strlcpy(pars->err_context, line,
+					sizeof(pars->err_context)), pars->error = CANT_OPEN_TEXTURE);					
+			return (NO_ERR);
+		}
+		++i;
+	}
 	return (NO_ERR);
-	(void)pars, (void)line;
 }
 
 uint32_t	pars_data(t_pars *pars)
