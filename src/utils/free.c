@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 15:40:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/01 16:48:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,19 @@ void	free_mlx(t_mlx *mlx)
 	}
 }
 
+void	free_pars(t_pars *pars)
+{
+	free_mlx(&pars->pmlx);
+	free(pars->rd.line);
+	pars->rd.line = 0;
+	if (pars->rd.fd >= 0)
+	{
+		close (pars->rd.fd);
+		pars->rd.fd = -1;
+	}
+}
+
 void	free_cub(t_cub *cub)
 {
-	free_mlx(&cub->pars.pmlx);
-	(void)cub;
+	free_pars(&cub->pars);
 }
