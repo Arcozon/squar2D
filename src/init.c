@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 15:39:53 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:42:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,9 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1]))
 		return (cub->pars.pmlx.error);
 	if (parsing(&cub->pars))
+	{
+		cub->error = cub->pars.rd.error;
 		return (cub->pars.error);
+	}
 	return (NO_ERR);
 }

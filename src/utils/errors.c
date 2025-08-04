@@ -6,28 +6,28 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 16:23:35 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 12:59:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:43:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 static const char	*g_pars_errors_begin[] = {"None\n",
-	"Wrong arguments\n\tUsage: ", "Wrong file extension: ",
-	"Can't open map: ", "Wrong key: ", "Missing color: ",
-	"Color is redefined: ", "Wrong format color: ", "Missing texture: ",
-	"Texture is redefined: ", "Can't open texture: ", "Too many players\n",
+	"Wrong arguments\n\tUsage: ", "Wrong file extension: `",
+	"Can't open map: `", "Wrong key: '", "Missing color: ",
+	"Color is redefined: `", "Wrong format color: `", "Missing texture: ",
+	"Texture is redefined: ", "Can't open texture: `", "Too many players\n",
 	"Map is not closed\n", "Unknown char in map: "};
 
 static const char	*g_pars_errors_end[] = {0, " <FILE"DOT_CUB">\n",
-	" must end with "DOT_CUB"\n", "\n", "\n", "\n", "\n", "\n", "\n", "\n",
-	"\n", 0, 0, "\n"};
+	"' must end with "DOT_CUB"\n", "'\n", "'\n", "\n", "'\n", "'\n", "\n", "'\n",
+	"'\n", 0, 0, "\n"};
 
 static const char	*g_cub_errors_begin[] = {"None\n", "Malloc error\n",
-	"Read error: ", "Mlx init error\n", "Window init error\n",
+	"Read error\n", "Mlx init error\n", "Window init error\n",
 	"Image creation error\n"};
 
-static const char	*g_cub_errors_end[] = {0, 0, "\n", 0, 0, 0};
+static const char	*g_cub_errors_end[] = {0, 0, 0, 0, 0, 0};
 
 uint32_t	perror_pars(uint32_t err, char context[])
 {

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 13:21:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:41:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int is_map(char *line)
 			++count;
 		++i;
 	}
-	DEBUG("[%u / %u]", count, i * 4 / 5)
+	// DEBUG("[%u / %u]", count, i * 4 / 5)
 	return (count > i * 3 / 4);
 }
 
@@ -175,6 +175,13 @@ uint32_t	is_data_full(t_pars *pars)
 	return (pars->error = MISSING_TEXTURE);
 }
 
+static inline void	skip_spaces(char *line[])
+{
+	if (*line)
+		while (*line[0] == ' ')
+			++*line;
+}
+
 uint32_t	pars_data(t_pars *pars)
 {
 	char	*line;
@@ -182,6 +189,7 @@ uint32_t	pars_data(t_pars *pars)
 	while (!(pars->rd.flags & R_DONE) && !pars->error)
 	{
 		line = gnl(&pars->rd);
+		skip_spaces(&line);
 		if (!line || !line[0])
 			continue ;
 		if (is_color(line))
@@ -197,14 +205,15 @@ uint32_t	pars_data(t_pars *pars)
 			return (pars->error = WRONG_KEY);
 		}
 	}
-	if (!pars->error)
+	if (!pars->error && !pars->rd.error)
 		return (is_data_full(pars));
-	return (pars->error);
+	return (pars->error || pars->rd.error);
 }
 
 uint32_t	parsing(t_pars *pars)
 {
+	pars->rd.flags = R_CUT_E_SPC;
 	if (pars_data(pars))
-	 	return (pars->error);
-	return (pars->error);
+	 	return (pars->error || pars->rd.error);
+	return (pars->error || pars->rd.error);
 }
