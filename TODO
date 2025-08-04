@@ -1,5 +1,3 @@
-check if all  texture and colors are defines after data is read
-check is in map as a %, not a true false
 read map
 Agree on a data structure for the map
 check if the map is closed

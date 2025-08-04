@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 13:18:00 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:21:49 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ int is_map(char *line)
 	count = 0;
 	while (line[i])
 	{
-		if (!ft_strchr(MAP_CHARS, line[i]))
+		if (ft_strchr(MAP_CHARS, line[i]))
 			++count;
 		++i;
 	}
-	return (count > i * 4 / 5);
+	DEBUG("[%u / %u]", count, i * 4 / 5)
+	return (count > i * 3 / 4);
 }
 
 uint32_t	get_col(char **line, uint32_t *color)
