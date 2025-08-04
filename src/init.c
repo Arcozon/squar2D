@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 13:42:34 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:03:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 	if (!ft_strendcmp(av[1], DOT_CUB))
 		return (pars->error = NOT_DOT_CUB);
 	pars->rd.fd = open(av[1], O_RDONLY);
-	if (pars->rd.fd< 0)
+	if (pars->rd.fd < 0)
 		return (pars->error = CANT_OPN_MAP);
 	pars->err_context[0] = '\0';
 	return (NO_ERR);
@@ -39,7 +39,7 @@ void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
 	{
 		ft_strlcpy(title + start, ": ", BUFF_SIZE - start);
 		if (title[0] >= 'a' && title[0] <= 'z')
-			title[0] -= 'a' - 'A'; 
+			title[0] -= 'a' - 'A';
 		start = ft_strlen(title);
 		if (start < BUFF_SIZE - 1)
 		{
@@ -78,7 +78,7 @@ char	*get_pname(char av0[])
 uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 {
 	static char	default_pname[] = "Cub3d";
-	
+
 	ft_bzero(cub, sizeof(*cub));
 	cub->pars.rd.fd = -1;
 	if (!av[0])

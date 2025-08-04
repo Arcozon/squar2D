@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 13:41:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:08:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,15 @@ int	is_color(char *line)
 int	is_texture(char *line)
 {
 	return (ft_str_space_cmp(line, "NO") || ft_str_space_cmp(line, "SO")
-		|| ft_str_space_cmp(line, "EA")  || ft_str_space_cmp(line, "WE"));
+		|| ft_str_space_cmp(line, "EA") || ft_str_space_cmp(line, "WE"));
 }
 
-int ft_isdigit(char c)
+int	ft_isdigit(char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int is_map(char *line)
+int	is_map(char *line)
 {
 	uint32_t	i;
 	uint32_t	count;
@@ -51,7 +51,6 @@ int is_map(char *line)
 			++count;
 		++i;
 	}
-	// DEBUG("[%u / %u]", count, i * 4 / 5)
 	return (count > i * 3 / 4);
 }
 
@@ -138,14 +137,14 @@ uint32_t	pars_texture(t_pars *pars, char *line)
 		if (ft_str_space_cmp(line, key[i]))
 		{
 			if (textures[i]->imgptr)
-				return (ft_strlcpy(pars->err_context, key[i],
-					sizeof(pars->err_context)), pars->error = REDEFINED_TEXTURE);
+				return (ft_strlcpy(pars->err_context, key[i], BUFF_SIZE),
+					pars->error = REDEFINED_TEXTURE);
 			skip_key_space(&line);
-			textures[i]->imgptr = mlx_xpm_file_to_image(pars->pmlx.mlx_ptr, line,
-				&textures[i]->width, &textures[i]->height);
+			textures[i]->imgptr = mlx_xpm_file_to_image(pars->pmlx.mlx_ptr,
+					line, &textures[i]->width, &textures[i]->height);
 			if (!textures[i]->imgptr)
-				return (ft_strlcpy(pars->err_context, line,
-					sizeof(pars->err_context)), pars->error = CANT_OPEN_TEXTURE);					
+				return (ft_strlcpy(pars->err_context, line, BUFF_SIZE),
+					pars->error = CANT_OPEN_TEXTURE);
 			return (NO_ERR);
 		}
 		++i;
@@ -158,18 +157,18 @@ uint32_t	is_data_full(t_pars *pars)
 	if (!pars->ceiling_defined || !pars->floor_defined)
 	{
 		ft_strlcpy(pars->err_context, "Ceiling", sizeof(pars->err_context));
-			if (!pars->floor_defined)
+		if (!pars->floor_defined)
 			ft_strlcpy(pars->err_context, "Floor", sizeof(pars->err_context));
 		return (pars->error = MISSING_COLOR);
 	}
 	if (!pars->ea_texture.imgptr)
-		ft_strlcpy(pars->err_context, "East",sizeof(pars->err_context));
+		ft_strlcpy(pars->err_context, "East", sizeof(pars->err_context));
 	else if (!pars->we_texture.imgptr)
 		ft_strlcpy(pars->err_context, "West", sizeof(pars->err_context));
 	else if (!pars->no_texture.imgptr)
-		ft_strlcpy(pars->err_context, "North",sizeof(pars->err_context));
+		ft_strlcpy(pars->err_context, "North", sizeof(pars->err_context));
 	else if (!pars->so_texture.imgptr)
-		ft_strlcpy(pars->err_context, "South",sizeof(pars->err_context));
+		ft_strlcpy(pars->err_context, "South", sizeof(pars->err_context));
 	else
 		return (NO_ERR);
 	return (pars->error = MISSING_TEXTURE);
@@ -214,6 +213,6 @@ uint32_t	parsing(t_pars *pars)
 {
 	pars->rd.flags = R_CUT_E_SPC;
 	if (pars_data(pars))
-	 	return (pars->error || pars->rd.error);
+		return (pars->error || pars->rd.error);
 	return (pars->error || pars->rd.error);
 }

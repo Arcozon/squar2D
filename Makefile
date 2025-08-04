@@ -46,6 +46,7 @@ clean:
 	@$(MK_MLX) clean || true
 	$(RM) $(D_BUILD)
 
+# La mlx est telechargee et detar automatiquement, le fclean rm -rf la mlx ducoup (Si pour ton pc c est dur enleve le $(D_MLX de la ligne en dessous))
 fclean: clean
 	$(RM) $(NAME) $(D_MLX)
 
