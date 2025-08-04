@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 17:39:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:31:08 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,9 @@
 # include "errors.h"
 # include "utils.h"
 
+# include "parsing.h"
+
 # define DOT_CUB	".cub"
-# define BUFF_SIZE	2048
 
 # define W_WIDTH	1200
 # define W_HEIGHT	800
@@ -38,17 +39,6 @@
 
 # define MAP_CHARS		"01 NSWE"
 # define NB_TEXTURE		4
-
-struct s_read
-{
-	int			fd;
-	int 		br;
-	char		content[BUFF_SIZE];
-	
-	char		*line;
-	uint8_t		flags;
-	uint32_t	error;
-};
 
 struct s_mlx
 {
@@ -99,9 +89,6 @@ struct s_cub
 	char		err_context[BUFF_SIZE];
 };
 
-char	*gnl(t_read *rd);
-
 uint32_t	init_cub(t_cub *cub, int ac, char *av[]);
-uint32_t	parsing(t_pars *pars);
 
 #endif

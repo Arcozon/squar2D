@@ -4,7 +4,7 @@ S_SRC_UTILS =  utils.c  errors.c free.c
 D_SRC_UTILS =  utils/
 SRC_UTILS =  $(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC_INIT =  init.c  parsing.c  read.c
+S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  parsing.c  parsing_utils.c  read.c
 D_SRC_INIT =  init/
 SRC_INIT =  $(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
@@ -50,7 +50,7 @@ clean:
 	@$(MK_MLX) clean || true
 	$(RM) $(D_BUILD)
 
-# La mlx est telechargee et detar automatiquement, le fclean rm -rf la mlx ducoup (Si pour ton pc c est dur enleve le $(D_MLX de la ligne en dessous))
+# La mlx est telechargee et untar automatiquement, le fclean rm -rf la mlx ducoup (Si pour ton pc c est dur enleve le $(D_MLX de la ligne en dessous))
 fclean: clean
 	$(RM) $(NAME) $(D_MLX)
 

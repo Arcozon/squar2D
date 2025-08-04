@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:08:53 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 14:24:14 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdint.h>
 # include <stdbool.h>
+
+# define BUFF_SIZE	2048
 
 typedef struct s_img		t_img;
 typedef struct s_xpm_img	t_xpm_img;
