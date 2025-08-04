@@ -47,7 +47,7 @@ clean:
 	$(RM) $(D_BUILD)
 
 fclean: clean
-	$(RM) $(NAME)
+	$(RM) $(NAME) $(D_MLX)
 
 re: fclean
 	make all
