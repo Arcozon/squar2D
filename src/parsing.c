@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/01 17:44:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/04 13:18:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,15 +41,17 @@ int ft_isdigit(char c)
 int is_map(char *line)
 {
 	uint32_t	i;
+	uint32_t	count;
 
 	i = 0;
+	count = 0;
 	while (line[i])
 	{
 		if (!ft_strchr(MAP_CHARS, line[i]))
-			return (0);
+			++count;
 		++i;
 	}
-	return (1);
+	return (count > i * 4 / 5);
 }
 
 uint32_t	get_col(char **line, uint32_t *color)
@@ -150,6 +152,28 @@ uint32_t	pars_texture(t_pars *pars, char *line)
 	return (NO_ERR);
 }
 
+uint32_t	is_data_full(t_pars *pars)
+{
+	if (!pars->ceiling_defined || !pars->floor_defined)
+	{
+		ft_strlcpy(pars->err_context, "Ceiling", sizeof(pars->err_context));
+			if (!pars->floor_defined)
+			ft_strlcpy(pars->err_context, "Floor", sizeof(pars->err_context));
+		return (pars->error = MISSING_COLOR);
+	}
+	if (!pars->ea_texture.imgptr)
+		ft_strlcpy(pars->err_context, "East",sizeof(pars->err_context));
+	else if (!pars->we_texture.imgptr)
+		ft_strlcpy(pars->err_context, "West", sizeof(pars->err_context));
+	else if (!pars->no_texture.imgptr)
+		ft_strlcpy(pars->err_context, "North",sizeof(pars->err_context));
+	else if (!pars->so_texture.imgptr)
+		ft_strlcpy(pars->err_context, "South",sizeof(pars->err_context));
+	else
+		return (NO_ERR);
+	return (pars->error = MISSING_TEXTURE);
+}
+
 uint32_t	pars_data(t_pars *pars)
 {
 	char	*line;
@@ -172,8 +196,8 @@ uint32_t	pars_data(t_pars *pars)
 			return (pars->error = WRONG_KEY);
 		}
 	}
-	DEBUG("C:%.6X", pars->color_ceiling)
-	DEBUG("F:%.6X", pars->color_floor)
+	if (!pars->error)
+		return (is_data_full(pars));
 	return (pars->error);
 }
 
