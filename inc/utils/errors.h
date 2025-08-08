@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 14:00:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:17:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ enum
 	REDEFINED_TEXTURE,
 	CANT_OPEN_TEXTURE,
 	MISSING_MAP,
+	MISSING_PLAYER,
 	TOO_MANY_PLAYER,
 	UNCLOSED_MAP,
 	UNKNOWN_CHAR

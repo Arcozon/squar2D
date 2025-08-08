@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 19:46:05 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:27:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,29 @@ static uint32_t	map_forbiden_char(const char line[], t_pars *pars)
 	return (NO_ERR);
 }
 
+uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
+{
+	uint64_t	i;
+	uint64_t	max_size;
+
+	max_size = 0;
+	i = 0;
+	while (i < v_map->size)
+	{
+		if (v_map->u_ptr.vect_ptr[i].size < max_size)
+			max_size = v_map->u_ptr.vect_ptr[i].size;
+		++i;
+	}
+	i = 0;
+	while (i < v_map->size)
+	{
+		if (realloc_vector_minsize(&v_map->u_ptr.vect_ptr[i], max_size))
+			return (pars->syscall_error = E_MLC);
+		++i;
+	}
+	return (pars->error || pars->syscall_error);
+}
+
 uint32_t	read_map(t_pars *pars)
 {
 	t_vector	v_line;
@@ -49,7 +72,37 @@ uint32_t	read_map(t_pars *pars)
 		if (pars->rd.error)
 			pars->syscall_error = pars->rd.error;
 	}
+	if (normalise_map(pars, &pars->vec_map))
+		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
+}
+
+uint32_t	count_players(t_pars *pars, t_vector *v_map)
+{
+	t_vector	*v_line;
+	uint64_t	count;
+	uint64_t	i;
+	uint64_t	j;
+
+	count = 0;
+	i = 0;
+	while (i < v_map->size)
+	{
+		j = -1;
+		v_line = &v_map->u_ptr.vect_ptr[i];
+		while (++j < v_line->size)
+			if (ft_strchr(PLAYER_CHARS, v_line->u_ptr.char_ptr[j]))
+				++count;
+		++i;
+	}
+	if (count == 0)
+		return (pars->error = MISSING_PLAYER);
+	else if (count > 1)
+	{
+		ft_lutoacpy(count, pars->err_context, sizeof(pars->err_context));
+		return (pars->error = TOO_MANY_PLAYER);
+	}
+	return (NO_ERR);
 }
 
 uint32_t	pars_map(t_pars *pars)
@@ -58,6 +111,8 @@ uint32_t	pars_map(t_pars *pars)
 	if (pars->rd.flags & R_DONE)
 		return (pars->error = MISSING_MAP);
 	if (read_map(pars))
+		return (pars->error || pars->syscall_error);
+	if (count_players(pars, &pars->vec_map))
 		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
 }

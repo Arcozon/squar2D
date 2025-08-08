@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 16:50:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:14:37 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define R_CUT_S_SPC	0b100
 # define R_CUT_E_SPC	0b1000
 
+# define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
 # define NB_TEXTURE		4
 

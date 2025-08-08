@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 17:43:43 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:29:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,4 +171,22 @@ void	*ft_calloc(const uint64_t	size)
 	if (!new)
 		return (NULL);
 	return (ft_bzero(new, size));
+}
+
+void	ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
+{
+	uint64_t	i;
+	uint64_t	pow;
+
+	pow = 10;
+	i = 0;
+	while (nb / pow) // who tf is gonna overflow that
+		pow *= 10;
+	while (pow / 10 && i < size - 1)
+	{
+		pow /= 10;
+		str[i] = nb / pow % 10 + '0';
+		++i;
+	}
+	str[i] = '\0';
 }

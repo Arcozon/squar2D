@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 15:29:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:26:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ bool		ft_strendcmp(const char str[],
 void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size);
 void		ft_strnlcpy(char *dst, const char *src,
 				uint64_t dst_size, uint64_t src_size);
+void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size);
 uint64_t	index_strchr(const char str[], const char find);
 char		*ft_strchr(const char str[], const char to_find);
 
