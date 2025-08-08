@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:59:50 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 21:01:30 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 	while (++i < v_map->size)
 		if (realloc_vector_minsize(&v_map->u_ptr.vect_ptr[i], max_size))
 			return (pars->syscall_error = E_MLC);
-	pars->dim[X] = max_size; 
+	pars->dim[X] = max_size;
 	pars->dim[Y] = v_map->size;
 	DEBUG("%lu %lu", pars->dim[X], pars->dim[Y])
 	pars->map = malloc(sizeof(char *) * pars->dim[Y]);
