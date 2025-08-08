@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:33:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:59:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,26 +29,50 @@ static uint32_t	map_forbiden_char(const char line[], t_pars *pars)
 	return (NO_ERR);
 }
 
+void	change_null_into_0(char **map, const uint64_t yl, const uint64_t xl)
+{
+	uint64_t	i;
+	uint64_t	j;
+
+	i = 0;
+	while (i < yl)
+	{
+		j = 0;
+		while (j < xl)
+		{
+			if (map[i][j] == 0 || map[i][j] == '0')
+				map[i][j] = ' ';
+			++j;
+		}
+		++i;
+	}
+}
+
 uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 {
 	uint64_t	i;
 	uint64_t	max_size;
 
 	max_size = 0;
-	i = 0;
-	while (i < v_map->size)
-	{
-		if (v_map->u_ptr.vect_ptr[i].size < max_size)
+	DEBUG("%lu", v_map->size)
+	i = -1;
+	while (++i < v_map->size)
+		if (v_map->u_ptr.vect_ptr[i].size > max_size)
 			max_size = v_map->u_ptr.vect_ptr[i].size;
-		++i;
-	}
-	i = 0;
-	while (i < v_map->size)
-	{
+	i = -1;
+	while (++i < v_map->size)
 		if (realloc_vector_minsize(&v_map->u_ptr.vect_ptr[i], max_size))
 			return (pars->syscall_error = E_MLC);
-		++i;
-	}
+	pars->dim[X] = max_size; 
+	pars->dim[Y] = v_map->size;
+	DEBUG("%lu %lu", pars->dim[X], pars->dim[Y])
+	pars->map = malloc(sizeof(char *) * pars->dim[Y]);
+	if (!pars->map)
+		return (pars->syscall_error = E_MLC);
+	i = -1;
+	while (++i < pars->dim[Y])
+		pars->map[i] = v_map->u_ptr.vect_ptr[i].u_ptr.char_ptr;
+	change_null_into_0(pars->map, pars->dim[Y], pars->dim[X]);
 	return (pars->error || pars->syscall_error);
 }
 

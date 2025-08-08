@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:14:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:55:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,7 @@
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
 //	 x being the place in the line / lenght
-
-enum	{X=1,Y=1
+enum	{X,Y
 };
 
 struct s_mlx
@@ -83,6 +82,7 @@ struct s_pars
 	uint8_t		floor_defined;
 
 	t_vector	vec_map;
+	uint64_t	dim[2];
 	char		**map;
 
 	t_mlx		pmlx;

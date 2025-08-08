@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 19:44:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:58:36 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,9 @@ int	key_press_hook(int key, t_cub *cub)
 		mlx_loop_end(cub->pars.pmlx.mlx_ptr);
 	else if (key == XK_space)
 	{
-		t_vector vmap = cub->pars.vec_map;
-		for (uint64_t i = 0; i < vmap.size; ++i)
+		for (uint64_t i = 0; i < cub->pars.dim[Y]; ++i)
 		{
-			printf("%.*s\n", (int)vmap.u_ptr.vect_ptr[i].size,  vmap.u_ptr.vect_ptr[i].u_ptr.char_ptr);
+			printf("%.*s\n", (int)cub->pars.dim[X], cub->pars.map[i]);
 		}
 	}
 	return (0);
