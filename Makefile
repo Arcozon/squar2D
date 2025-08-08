@@ -11,8 +11,6 @@ SRC_INIT =  $(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 SRC =  $(SRC_UTILS)  $(SRC_INIT)  main.c  s_vector.c
 D_SRC = src/
 
-D_INC = inc/  
-
 D_BUILD = .build/
 OBJ =  $(addprefix $(D_BUILD), $(SRC:.c=.o))
 
@@ -21,10 +19,13 @@ TAR_MLX = $(D_MLX).tgz
 MK_MLX = $(MAKE) --silent -C$(D_MLX) 2>/dev/null
 D_MLX = minilibx-linux
 
+D_INCS = inc/ inc/utils/ $(D_MLX)  
+
 CC =  cc
 FLAGS = -Wall -Wextra -Werror -MMD -g
-IFLAGS = -I$(D_INC) -I$(D_MLX)
+IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
+
 RM =  rm -rf
 
 all:	cp_mlx

@@ -6,12 +6,11 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 12:27:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 13:55:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
-#include "debug.h"
 
 __attribute__ ((const, pure, nonnull))
 uint64_t	ft_strlen(const char str[])
@@ -66,7 +65,7 @@ void	*ft_bzero(void *ptr, uint64_t size)
 	ptr_8 += i;
 	size_long = size >> 3;
 	size &= ptr_mask;
-	ptr_64 = ptr_8;
+	ptr_64 = (uint64_t *)ptr_8;
 	ptr_8 += sizeof(*ptr_64) * size_long;
 	i = 0;
 	while (i < size_long)
