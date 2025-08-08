@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:27:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 20:33:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ uint32_t	read_map(t_pars *pars)
 			return (pars->error = UNKNOWN_CHAR);
 		if (str_to_vector(&v_line, pars->rd.line))
 			return (pars->syscall_error = E_MLC);
-		
 		if (add_elems_vector(&pars->vec_map, &v_line, 1))
 			return (pars->syscall_error = E_MLC);
 		gnl(&pars->rd);
@@ -107,7 +106,6 @@ uint32_t	count_players(t_pars *pars, t_vector *v_map)
 
 uint32_t	pars_map(t_pars *pars)
 {
-
 	if (pars->rd.flags & R_DONE)
 		return (pars->error = MISSING_MAP);
 	if (read_map(pars))
