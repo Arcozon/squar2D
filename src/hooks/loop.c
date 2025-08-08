@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   loop.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 14:44:54 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/08/08 16:51:12 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	parsing(t_pars *pars)
+int	cub_loop(t_cub *cub)
 {
-	pars->rd.flags = R_CUT_E_SPC;
-	if (pars_data(pars))
-		return (pars->error || pars->syscall_error);
-	if (pars_map(pars))
-		return (pars->error || pars->syscall_error);
-	return (pars->error || pars->syscall_error);
+	(void)cub;
+	return (0);
 }

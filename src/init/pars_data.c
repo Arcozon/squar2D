@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:18:41 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 12:28:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 14:43:25 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ uint32_t	pars_data(t_pars *pars)
 			return (pars->error = WRONG_KEY);
 		}
 	}
-	if (!pars->error && !pars->rd.error)
+	pars->syscall_error = pars->rd.error;
+	if (!pars->error && !pars->syscall_error)
 		return (is_data_full(pars));
-	return (pars->error || pars->rd.error);
+	return (pars->error || pars->syscall_error);
 }

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:03:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 17:04:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
 	}
 }
 
-uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
+uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[], t_cub *cub)
 {
 	mlx->mlx_ptr = mlx_init();
 	if (!mlx->mlx_ptr)
@@ -62,6 +62,7 @@ uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[])
 	mlx->win_img = mlx_new_image(mlx->mlx_ptr, W_WIDTH, W_HEIGHT);
 	if (!mlx->win_img)
 		return (E_IMG);
+	setup_hooks(mlx, cub);
 	return (NO_ERR);
 }
 
@@ -86,12 +87,12 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 	cub->pname = get_pname(av[0]);
 	if (check_easy_errors(&cub->pars, ac, av))
 		return (cub->pars.error);
-	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1]))
+	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1], cub))
 		return (cub->pars.pmlx.error);
 	if (parsing(&cub->pars))
 	{
-		cub->error = cub->pars.rd.error;
-		return (cub->pars.error);
+		cub->error = cub->pars.syscall_error;
+		return (cub->pars.error || cub->error);
 	}
-	return (NO_ERR);
+	return (cub->error);
 }

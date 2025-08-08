@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   hooks.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 14:44:54 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/08/08 16:49:15 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/08/08 16:52:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef HOOKS_H
+# define HOOKS_H
 
-uint32_t	parsing(t_pars *pars)
-{
-	pars->rd.flags = R_CUT_E_SPC;
-	if (pars_data(pars))
-		return (pars->error || pars->syscall_error);
-	if (pars_map(pars))
-		return (pars->error || pars->syscall_error);
-	return (pars->error || pars->syscall_error);
-}
+# include <X11/keysym.h>
+# include <X11/X.h>
+
+# include "types.h"
+
+int		key_press_hook(int key, t_cub *cub);
+int		key_release_hook(int key, t_cub *cub);
+int		cub_loop(t_cub *cub);
+
+void	setup_hooks(t_mlx *mlx, t_cub *cub);
+
+#endif

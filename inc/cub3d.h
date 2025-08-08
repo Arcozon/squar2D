@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:31:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 16:50:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # include "utils.h"
 
 # include "parsing.h"
+# include "hooks.h"
 
 # define DOT_CUB	".cub"
 
@@ -39,6 +40,13 @@
 
 # define MAP_CHARS		"01 NSWE"
 # define NB_TEXTURE		4
+
+// For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
+// 	y being the line number / height
+//	 x being the place in the line / lenght
+
+enum	{X=1,Y=1
+};
 
 struct s_mlx
 {
@@ -73,9 +81,12 @@ struct s_pars
 	uint8_t		ceiling_defined;
 	uint8_t		floor_defined;
 
+	t_vector	vec_map;
 	char		**map;
+
 	t_mlx		pmlx;
 
+	uint32_t	syscall_error;
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };

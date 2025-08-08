@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 13:55:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 17:43:43 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	*ft_bzero(void *ptr, uint64_t size)
 	while (i < size_long)
 		ptr_64[i++] = 0;
 	i = 0;
-	while (i < size )
+	while (i < size)
 		ptr_8[i++] = 0;
 	return (ptr);
 }
@@ -116,7 +116,8 @@ void	ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 	dst[f_size] = 0;
 }
 
-void	ft_strnlcpy(char *dst, const char *src, uint64_t dst_size, uint64_t src_size)
+void	ft_strnlcpy(char *dst, const char *src,
+			uint64_t dst_size, uint64_t src_size)
 {
 	uint64_t	f_size;
 
@@ -150,7 +151,7 @@ uint64_t	index_strchr(const char str[], const char find)
 	return (i);
 }
 
-char	*ft_strchr(char str[], const char to_find)
+char	*ft_strchr(const char str[], const char to_find)
 {
 	uint64_t	i;
 
@@ -158,11 +159,11 @@ char	*ft_strchr(char str[], const char to_find)
 	while (str[i] && str[i] != to_find)
 		++i;
 	if (str[i] == to_find)
-		return (str + i);
+		return ((char *)str + i);
 	return (0);
 }
 
-void	*ft_calloc(uint64_t	size)
+void	*ft_calloc(const uint64_t	size)
 {
 	void	*new;
 

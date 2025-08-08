@@ -1,24 +1,28 @@
 NAME = cub3d
 
-S_SRC_UTILS =  utils.c  errors.c free.c
+S_SRC_UTILS =  utils.c  errors.c free.c s_vector.c
 D_SRC_UTILS =  utils/
 SRC_UTILS =  $(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  parsing.c  parsing_utils.c  read.c
+S_SRC_HOOKS =  key_hook.c  loop.c  setup_hook.c
+D_SRC_HOOKS =  hooks/
+SRC_HOOKS =  $(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
+
+S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  pars_map.c  parsing.c  parsing_utils.c  read.c
 D_SRC_INIT =  init/
 SRC_INIT =  $(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
-SRC =  $(SRC_UTILS)  $(SRC_INIT)  main.c  s_vector.c
+SRC =  $(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  main.c
 D_SRC = src/
 
 D_BUILD = .build/
 OBJ =  $(addprefix $(D_BUILD), $(SRC:.c=.o))
 
+S_MAKE = $(MAKE) --no-print-directory
 LINK_MLX = https://cdn.intra.42.fr/document/document/34997/minilibx-linux.tgz
 TAR_MLX = $(D_MLX).tgz
-MK_MLX = $(MAKE) --silent -C$(D_MLX) 2>/dev/null
+MK_MLX = $(S_MAKE) --silent -C$(D_MLX) 2>/dev/null
 D_MLX = minilibx-linux
-
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
@@ -29,7 +33,7 @@ LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 RM =  rm -rf
 
 all:	cp_mlx
-	@$(MAKE) $(NAME)
+	@$(S_MAKE) $(NAME)
 
 $(NAME):	$(OBJ)
 	$(MK_MLX)
