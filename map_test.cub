@@ -2,9 +2,18 @@ NO .textures/north.xpm
 WE .textures/west.xpm
 
 C 255,128,10
-  
+
+
+
+
+
+
 SO .textures/south.xpm
+
+
+
 EA .textures/east.xpm
+
 F 100,80,255
 
 1111111111111111111111111

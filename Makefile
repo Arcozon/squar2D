@@ -8,7 +8,7 @@ S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  parsing.c  parsing_utils.c
 D_SRC_INIT =  init/
 SRC_INIT =  $(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
-SRC =  $(SRC_UTILS)  $(SRC_INIT)  main.c
+SRC =  $(SRC_UTILS)  $(SRC_INIT)  main.c  s_vector.c
 D_SRC = src/
 
 D_INC = inc/  

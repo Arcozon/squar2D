@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:30:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 12:24:51 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,24 @@ struct s_read
 	uint8_t		flags;
 	uint32_t	error;
 };
+
+# define VECTOR_BASE_SIZE 16
+
+struct s_vector
+{
+	uint8_t		sizeof_type;
+	union
+	{
+		void		*void_ptr;
+		char		*char_ptr;
+		char		**cchar_ptr;
+		t_vector	*vect_ptr;
+	}	u_ptr;
+
+	uint64_t	size;
+	uint64_t	capacity;
+};
+
 
 char		*gnl(t_read *rd);
 void		skip_spaces(char *line[]);

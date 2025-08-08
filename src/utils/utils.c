@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:16:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 12:27:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,31 @@ bool	ft_strendcmp(const char str[], const char end[])
 	return (true);
 }
 
-void	*ft_bzero(void *vptr, uint64_t size)
+void	*ft_bzero(void *ptr, uint64_t size)
 {
-	char	*ptr;
+	const uintptr_t	ptr_mask = sizeof(uint64_t) - 1;
+	uint8_t			*ptr_8;
+	uint64_t		*ptr_64;
+	uint64_t		size_long;
+	uint64_t		i;
 
-	ptr = vptr;
-	while ((uint64_t)ptr & 0b111 && size)
-	{
-		*ptr = 0;
-		++ptr;
-		--size;
-	}
-	while (size & ~0b111)
-	{
-		*(uint64_t *)ptr = 0;
-		ptr += 8;
-		size -= 8;
-	}
-	while (size)
-	{
-		*ptr = 0;
-		++ptr;
-		--size;
-	}
-	return (vptr);
+	ptr_8 = ptr;
+	i = 0;
+	while ((uint64_t)ptr_8 & ptr_mask && i < size)
+		ptr_8[i++] = 0;
+	size -= i;
+	ptr_8 += i;
+	size_long = size >> 3;
+	size &= ptr_mask;
+	ptr_64 = ptr_8;
+	ptr_8 += sizeof(*ptr_64) * size_long;
+	i = 0;
+	while (i < size_long)
+		ptr_64[i++] = 0;
+	i = 0;
+	while (i < size )
+		ptr_8[i++] = 0;
+	return (ptr);
 }
 
 void	*ft_memcpy(void *dst, const void *src, uint64_t size)
@@ -140,7 +141,7 @@ bool	ft_memcpm(void *s1, void *s2, uint64_t n)
 	return (true);
 }
 
-uint64_t	char_chr(const char str[], const char find)
+uint64_t	index_strchr(const char str[], const char find)
 {
 	uint64_t	i;
 
@@ -160,4 +161,14 @@ char	*ft_strchr(char str[], const char to_find)
 	if (str[i] == to_find)
 		return (str + i);
 	return (0);
+}
+
+void	*ft_calloc(uint64_t	size)
+{
+	void	*new;
+
+	new = malloc(size);
+	if (!new)
+		return (NULL);
+	return (ft_bzero(new, size));
 }

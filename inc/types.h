@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:24:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 12:20:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_img		t_img;
 typedef struct s_xpm_img	t_xpm_img;
 typedef struct s_mlx		t_mlx;
 
+typedef struct s_vector		t_vector;
 typedef struct s_read		t_read;
 
 typedef struct s_pars		t_pars;

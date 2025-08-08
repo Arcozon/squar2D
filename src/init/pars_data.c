@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:18:41 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:18:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/08 12:28:37 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ uint32_t	pars_data(t_pars *pars)
 		else
 		{
 			ft_strnlcpy(pars->err_context, line,
-				sizeof(pars->err_context), char_chr(line, ' '));
+				sizeof(pars->err_context), index_strchr(line, ' '));
 			return (pars->error = WRONG_KEY);
 		}
 	}
