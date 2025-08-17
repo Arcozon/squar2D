@@ -18,10 +18,10 @@ D_SRC = src/
 D_BUILD = .build/
 OBJ =  $(addprefix $(D_BUILD), $(SRC:.c=.o))
 
-S_MAKE = $(MAKE) --no-print-directory
+MAKE += --no-print-directory
 LINK_MLX = https://cdn.intra.42.fr/document/document/34997/minilibx-linux.tgz
 TAR_MLX = $(D_MLX).tgz
-MK_MLX = $(S_MAKE) --silent -C$(D_MLX) 2>/dev/null
+MK_MLX = $(MAKE) --silent -C$(D_MLX) 2>/dev/null
 D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
@@ -33,7 +33,7 @@ LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 RM =  rm -rf
 
 all:	cp_mlx
-	@$(S_MAKE) $(NAME)
+	@$(MAKE) $(NAME)
 
 $(NAME):	$(OBJ)
 	$(MK_MLX)
