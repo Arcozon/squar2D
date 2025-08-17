@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:53:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:55:41 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,3 @@ uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2])
 	set_angle_player(&pars->view_angle, map, pars->player);
 	return (NO_ERR);
 }
-
