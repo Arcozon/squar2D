@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 21:01:30 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:06:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,21 +100,19 @@ uint32_t	read_map(t_pars *pars)
 	return (pars->error || pars->syscall_error);
 }
 
-uint32_t	count_players(t_pars *pars, t_vector *v_map)
+uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2])
 {
-	t_vector	*v_line;
 	uint64_t	count;
 	uint64_t	i;
 	uint64_t	j;
 
 	count = 0;
 	i = 0;
-	while (i < v_map->size)
+	while (i < dim[Y])
 	{
 		j = -1;
-		v_line = &v_map->u_ptr.vect_ptr[i];
-		while (++j < v_line->size)
-			if (ft_strchr(PLAYER_CHARS, v_line->u_ptr.char_ptr[j]))
+		while (++j < dim[X])
+			if (ft_strchr(PLAYER_CHARS, map[i][j]))
 				++count;
 		++i;
 	}
@@ -134,7 +132,7 @@ uint32_t	pars_map(t_pars *pars)
 		return (pars->error = MISSING_MAP);
 	if (read_map(pars))
 		return (pars->error || pars->syscall_error);
-	if (count_players(pars, &pars->vec_map))
+	if (count_players(pars, pars->map, pars->dim))
 		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
 }
