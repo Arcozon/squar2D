@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:06:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:18:05 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 	uint64_t	max_size;
 
 	max_size = 0;
-	DEBUG("%lu", v_map->size)
 	i = -1;
 	while (++i < v_map->size)
 		if (v_map->u_ptr.vect_ptr[i].size > max_size)
@@ -65,7 +64,6 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 			return (pars->syscall_error = E_MLC);
 	pars->dim[X] = max_size;
 	pars->dim[Y] = v_map->size;
-	DEBUG("%lu %lu", pars->dim[X], pars->dim[Y])
 	pars->map = malloc(sizeof(char *) * pars->dim[Y]);
 	if (!pars->map)
 		return (pars->syscall_error = E_MLC);
@@ -133,6 +131,8 @@ uint32_t	pars_map(t_pars *pars)
 	if (read_map(pars))
 		return (pars->error || pars->syscall_error);
 	if (count_players(pars, pars->map, pars->dim))
+		return (pars->error || pars->syscall_error);
+	if (flood_fill(pars, pars->map, pars->dim))
 		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
 }

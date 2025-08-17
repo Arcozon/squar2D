@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:55:57 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:36:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <math.h>
 
 # include "mlx.h"
 
@@ -40,6 +41,7 @@
 
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
+# define WALL_CHAR		'1'
 # define NB_TEXTURE		4
 
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
@@ -83,6 +85,8 @@ struct s_pars
 
 	t_vector	vec_map;
 	uint64_t	dim[2];
+	uint64_t	player[2];
+	float		view_angle;
 	char		**map;
 
 	t_mlx		pmlx;

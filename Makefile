@@ -8,7 +8,7 @@ S_SRC_HOOKS =  key_hook.c  loop.c  setup_hook.c
 D_SRC_HOOKS =  hooks/
 SRC_HOOKS =  $(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
-S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  pars_map.c  parsing.c  parsing_utils.c  read.c
+S_SRC_INIT =  init.c  pars_data.c  pars_data_color.c  pars_map.c  parsing.c  parsing_utils.c  read.c  flood_fill.c
 D_SRC_INIT =  init/
 SRC_INIT =  $(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
