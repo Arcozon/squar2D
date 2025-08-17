@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:18:05 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:54:41 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static uint32_t	map_forbiden_char(const char line[], t_pars *pars)
 	{
 		if (!ft_strchr(MAP_CHARS, line[i]))
 		{
-			ft_strnlcpy(pars->err_context, line + i, sizeof(pars->err_context), 1);
+			ft_strnlcpy(pars->err_context, line + i,
+				sizeof(pars->err_context), 1);
 			return (pars->error = UNKNOWN_CHAR);
 		}
 		++i;
@@ -29,7 +30,7 @@ static uint32_t	map_forbiden_char(const char line[], t_pars *pars)
 	return (NO_ERR);
 }
 
-void	change_null_into_0(char **map, const uint64_t yl, const uint64_t xl)
+void	change_null_into_space(char **map, const uint64_t yl, const uint64_t xl)
 {
 	uint64_t	i;
 	uint64_t	j;
@@ -70,7 +71,7 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 	i = -1;
 	while (++i < pars->dim[Y])
 		pars->map[i] = v_map->u_ptr.vect_ptr[i].u_ptr.char_ptr;
-	change_null_into_0(pars->map, pars->dim[Y], pars->dim[X]);
+	change_null_into_space(pars->map, pars->dim[Y], pars->dim[X]);
 	return (pars->error || pars->syscall_error);
 }
 
@@ -80,7 +81,8 @@ uint32_t	read_map(t_pars *pars)
 
 	if (new_vector(&pars->vec_map, sizeof(t_vector)))
 		return (pars->syscall_error = E_MLC);
-	while ((pars->rd.flags & R_DONE) == 0 && !pars->syscall_error && !pars->error)
+	while ((pars->rd.flags & R_DONE) == 0
+		&& !pars->syscall_error && !pars->error)
 	{
 		v_line.u_ptr.vect_ptr = NULL;
 		if (map_forbiden_char(pars->rd.line, pars))
@@ -98,32 +100,6 @@ uint32_t	read_map(t_pars *pars)
 	return (pars->error || pars->syscall_error);
 }
 
-uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2])
-{
-	uint64_t	count;
-	uint64_t	i;
-	uint64_t	j;
-
-	count = 0;
-	i = 0;
-	while (i < dim[Y])
-	{
-		j = -1;
-		while (++j < dim[X])
-			if (ft_strchr(PLAYER_CHARS, map[i][j]))
-				++count;
-		++i;
-	}
-	if (count == 0)
-		return (pars->error = MISSING_PLAYER);
-	else if (count > 1)
-	{
-		ft_lutoacpy(count, pars->err_context, sizeof(pars->err_context));
-		return (pars->error = TOO_MANY_PLAYER);
-	}
-	return (NO_ERR);
-}
-
 uint32_t	pars_map(t_pars *pars)
 {
 	if (pars->rd.flags & R_DONE)
@@ -136,3 +112,4 @@ uint32_t	pars_map(t_pars *pars)
 		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
 }
+

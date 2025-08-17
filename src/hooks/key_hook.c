@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:46:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/17 16:49:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	key_press_hook(int key, t_cub *cub)
 	(void)key, (void)cub;
 }
 
-int		key_release_hook(int key, t_cub *cub)
+int	key_release_hook(int key, t_cub *cub)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(cub->pars.pmlx.mlx_ptr);
