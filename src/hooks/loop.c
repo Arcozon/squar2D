@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 16:51:12 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:10:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cub_loop(t_cub *cub)
+int	cub_loop(t_game *game)
 {
-	(void)cub;
 	return (0);
+	(void)game;
 }

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:05:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:33:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ uint64_t	ft_strlen(const char str[])
 		& ~(*aligned_ptr) & STRLEN_HIGH_MASK == 0)
 		++aligned_ptr;
 	str = (char *)aligned_ptr;
+	while (*str)
+		++str;
+	return (str - start);
+}
+
+__attribute__ ((const, pure, nonnull))
+uint64_t	heap_strlen(const char str[])
+{
+	const char		*start = str;
+
 	while (*str)
 		++str;
 	return (str - start);
@@ -109,23 +119,26 @@ void	ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 
 	if (!dst_size)
 		return ;
-	f_size = ft_strlen(src);
+	f_size = heap_strlen(src);
 	if (f_size >= dst_size)
 		f_size = dst_size - 1;
 	ft_memcpy(dst, src, f_size);
 	dst[f_size] = 0;
 }
 
-void	ft_strnlcpy(char *dst, const char *src,
-			uint64_t dst_size, uint64_t src_size)
+void	ft_strnlcpy(char *dst, const char *src, 
+	uint64_t dst_size, uint64_t src_size)
 {
 	uint64_t	f_size;
 
+	f_size = src_size;
 	if (!dst_size)
 		return ;
-	f_size = ft_strlen(src);
-	if (f_size > src_size)
-		f_size = src_size;
+	// f_size = ft_strlen(src);
+	// if (f_size > src_size)
+	// 	f_size = src_size;
+	// if (f_size >= dst_size)
+	// 	f_size = dst_size - 1;
 	if (f_size >= dst_size)
 		f_size = dst_size - 1;
 	ft_memcpy(dst, src, f_size);

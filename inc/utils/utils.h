@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:26:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:31:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define STRLEN_HIGH_MASK	0x80808080
 
 uint64_t	ft_strlen(const char str[])__attribute__ ((const, pure, nonnull));
+uint64_t	heap_strlen(const char str[])__attribute__ ((const, pure, nonnull));
 bool		ft_strendcmp(const char str[],
 				const char end[])__attribute__ ((const, pure, nonnull));
 void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size);
