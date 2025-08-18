@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 17:04:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:02:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,6 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 		cub->error = cub->pars.syscall_error;
 		return (cub->pars.error || cub->error);
 	}
+	fill_game(&cub->pars, &cub->game);
 	return (cub->error);
 }

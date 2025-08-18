@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:36:54 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:29:14 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,8 @@ struct s_mlx
 
 struct s_xpm_img
 {
-	void	*imgptr;
+	void	*p_img;
+	t_clr	*p_data;
 	int		width;
 	int		height;
 };
@@ -78,8 +79,8 @@ struct s_pars
 	t_xpm_img	so_texture;
 	t_xpm_img	we_texture;
 
-	uint32_t	color_ceiling;
-	uint32_t	color_floor;
+	t_clr		color_ceiling;
+	t_clr		color_floor;
 	uint8_t		ceiling_defined;
 	uint8_t		floor_defined;
 
@@ -96,9 +97,38 @@ struct s_pars
 	char		err_context[BUFF_SIZE];
 };
 
+struct s_render
+{
+	void	*pmlx;
+	void	*pwin;
+	t_img	pimg;
+
+	t_img	n_txtr;
+	t_img	e_txtr;
+	t_img	s_txtr;
+	t_img	w_txtr;
+
+	t_clr	f_clr;
+	t_clr	c_clr;
+};
+
+
+struct s_game
+{
+	float	p_coo[2];
+	float	p_angle;
+
+	char	**map;
+	float	dim[2];
+
+	t_render	render;
+};
+
 struct s_cub
 {
 	t_pars		pars;
+
+	t_game		game;
 
 	char		*pname;
 	uint32_t	error;

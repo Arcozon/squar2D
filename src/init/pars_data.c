@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:18:41 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 14:43:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 14:23:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ uint32_t	pars_texture(t_pars *pars, char *line)
 	{
 		if (ft_str_space_cmp(line, key[i]))
 		{
-			if (textures[i]->imgptr)
+			if (textures[i]->p_img)
 				return (ft_strlcpy(pars->err_context, key[i], BUFF_SIZE),
 					pars->error = REDEFINED_TEXTURE);
 			skip_key_space(&line);
-			textures[i]->imgptr = mlx_xpm_file_to_image(pars->pmlx.mlx_ptr,
+			textures[i]->p_img = mlx_xpm_file_to_image(pars->pmlx.mlx_ptr,
 					line, &textures[i]->width, &textures[i]->height);
-			if (!textures[i]->imgptr)
+			if (!textures[i]->p_img)
 				return (ft_strlcpy(pars->err_context, line, BUFF_SIZE),
 					pars->error = CANT_OPEN_TEXTURE);
 			return (NO_ERR);
@@ -50,13 +50,13 @@ uint32_t	is_data_full(t_pars *pars)
 			ft_strlcpy(pars->err_context, "Floor", sizeof(pars->err_context));
 		return (pars->error = MISSING_COLOR);
 	}
-	if (!pars->ea_texture.imgptr)
+	if (!pars->ea_texture.p_img)
 		ft_strlcpy(pars->err_context, "East", sizeof(pars->err_context));
-	else if (!pars->we_texture.imgptr)
+	else if (!pars->we_texture.p_img)
 		ft_strlcpy(pars->err_context, "West", sizeof(pars->err_context));
-	else if (!pars->no_texture.imgptr)
+	else if (!pars->no_texture.p_img)
 		ft_strlcpy(pars->err_context, "North", sizeof(pars->err_context));
-	else if (!pars->so_texture.imgptr)
+	else if (!pars->so_texture.p_img)
 		ft_strlcpy(pars->err_context, "South", sizeof(pars->err_context));
 	else
 		return (NO_ERR);

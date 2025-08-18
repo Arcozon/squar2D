@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:55:41 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:04:44 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	find_player(char **map, uint64_t dim[2], uint64_t pcoord[2])
 			{
 				pcoord[Y] = i;
 				pcoord[X] = j;
-				DEBUG("[%lu|%lu]", j, i)
 				return ;
 			}
 			++j;

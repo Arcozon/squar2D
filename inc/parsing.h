@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:54:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/18 15:02:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ uint32_t	flood_fill(t_pars *pars, char **map, uint64_t dim[2]);
 uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2]);
 uint32_t	pars_map(t_pars *pars);
 
+void		fill_game(t_pars *pars, t_game *game);
 uint32_t	parsing(t_pars *pars);
 
 #endif
