@@ -1,10 +1,10 @@
 Agree on a data structure for the map
 
--- key hooks
--- fill screen with base color
--- calc range
--- print textures
+-- HOOKS
+	- key hooks
+	- add doors in 1 by 1 hole, check for close doors
+	- calc colision
 
--- calc colision
-
--- add doors in 1 by 1 hole, check for close doors
+-- RENDER
+	- calc range
+	- print textures
