@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:45:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 17:22:51 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 18:09:43 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,46 +23,36 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
 	pxl_pos = 0;
 	i_first_pxl = (screen.height - line_h) / 2;
 	first_pxl = screen.p_data + x_screen + i_first_pxl * screen.width;
-	// DEBUG("LINE_HEIGHT: %d", line_h)
-	// DEBUG("sdfgsdfg: %d", x_screen + i_first_pxl * screen.width)
-	// DEBUG("FIRST_PXL: %d | P_DATA: %p | P_FPXL: %p", i_first_pxl, screen.p_data, first_pxl)
-	// WAIT
 	i_first_pxl = 0;
-	// DEBUG("line_w = %d", txtr_x)
 	while (pxl_pos < line_h)
 	{
-		// DEBUG("TXTR_P: %d", (int)(x_txtr + txtr.width * pxl_pos / (float)line_h))
-		// DEBUG("%d: %x", (int)(txtr_x + txtr.width * pxl_pos / (float)line_h), txtr.p_data[(int)(txtr_x + txtr.width * pxl_pos / (float)line_h)]);
-		// DEBUG("%f: %d", pxl_pos / (float)line_h, txtr.height * (int)(txtr.width * pxl_pos / (float)line_h));
 		first_pxl[i_first_pxl] = txtr.p_data[txtr_x + txtr.height * (int)(txtr.width * pxl_pos / (float)line_h)];
 		i_first_pxl += screen.width;
 		++pxl_pos;
 	}
-	// WAIT
 }
 
-// void	draw_p_wall(t_img txtr, t_render *render)
-void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int	y_end)
+
+void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end)
 {
-	// const int	x_start = 100;
-	// const int	x_end = 300;
-	// const int	y_start = 300;
-	// const int	y_end = 200;
-	
-	int	i_x = 0;
+	// const float	step = (p_end - p_start) * txtr.width / (float)(x_end - x_start);
+	const float	step_p_x = txtr.width * (p_end - p_start) / (x_end - x_start);
+	const float step_i_y = (y_end - y_start) / (float)(x_end - x_start);
+	float	i_p_x;
+	int	i;
+	float i_y;
 
-	// DEBUG("%d:%d", txtr.height, txtr.width)
-	// DEBUG("%d:%d", render->img.height, render->img.width)
-	// WAIT
-	while (i_x < x_end - x_start)
+	i_y = y_start;
+	i = 0;
+	DEBUG("S: %f| E: %f = %f", p_start, p_end, p_start)
+	i_p_x = txtr.width * p_start;
+	DEBUG("%f %f", i_p_x, step_p_x)
+	while (i < x_end - x_start)
 	{
-		// DEBUG("X: %d",x_start + i_x)
-		// DEBUG("Y: %d - %d [%d]", y_start, y_end, (int)(y_start + i_x * (y_end - y_start) / (float)(x_end - x_start + 1)))
-		// WAIT
-		draw_p_line(y_start + i_x * (y_end - y_start) / (float)(x_end - x_start + 1), txtr, render->img, x_start + i_x, i_x * txtr.width / (float)( x_end - x_start));
-		++i_x;
+		// DEBUG("%d %f", (int)i_p_x, i_p_x)
+		draw_p_line((int)i_y, txtr, render->img, x_start + i, (int)i_p_x);
+		i_y += step_i_y;
+		i_p_x += step_p_x;
+		++i;
 	}
-	// WAIT
-	// exit(1);
-
 }
