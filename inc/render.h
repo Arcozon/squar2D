@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:35:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 15:08:02 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "types.h"
 
-void	draw_frame(t_game *game);
 void	set_floor_ceiling(t_render *render);
+void	draw_p_wall(t_img txtr, t_render *render);
 
+void	draw_frame(t_game *game);
 
 #endif

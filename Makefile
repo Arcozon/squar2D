@@ -4,7 +4,7 @@ S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
-S_SRC_RENDER =	set_floor_ceiling.c  draw_frame.c
+S_SRC_RENDER =	set_floor_ceiling.c  draw_frame.c  draw_projected_wall.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))	
 

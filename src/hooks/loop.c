@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:38:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 16:16:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int	cub_loop(t_game *game)
 {
-	draw_frame(game);
+	// draw_frame(game);
 	return (0);
+	(void)game;
 }
