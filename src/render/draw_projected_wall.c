@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:45:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 18:09:43 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 18:11:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
 
 void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end)
 {
-	// const float	step = (p_end - p_start) * txtr.width / (float)(x_end - x_start);
 	const float	step_p_x = txtr.width * (p_end - p_start) / (x_end - x_start);
 	const float step_i_y = (y_end - y_start) / (float)(x_end - x_start);
 	float	i_p_x;
@@ -44,12 +43,9 @@ void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_sta
 
 	i_y = y_start;
 	i = 0;
-	DEBUG("S: %f| E: %f = %f", p_start, p_end, p_start)
 	i_p_x = txtr.width * p_start;
-	DEBUG("%f %f", i_p_x, step_p_x)
 	while (i < x_end - x_start)
 	{
-		// DEBUG("%d %f", (int)i_p_x, i_p_x)
 		draw_p_line((int)i_y, txtr, render->img, x_start + i, (int)i_p_x);
 		i_y += step_i_y;
 		i_p_x += step_p_x;

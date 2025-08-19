@@ -7,4 +7,5 @@ Agree on a data structure for the map
 
 -- RENDER
 	- calc range
-	- print textures
+	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)
+	- antialiasing
