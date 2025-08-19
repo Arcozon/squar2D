@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:45:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 16:35:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 17:22:51 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
 	// DEBUG("FIRST_PXL: %d | P_DATA: %p | P_FPXL: %p", i_first_pxl, screen.p_data, first_pxl)
 	// WAIT
 	i_first_pxl = 0;
-	DEBUG("line_w = %d", txtr_x)
+	// DEBUG("line_w = %d", txtr_x)
 	while (pxl_pos < line_h)
 	{
 		// DEBUG("TXTR_P: %d", (int)(x_txtr + txtr.width * pxl_pos / (float)line_h))
 		// DEBUG("%d: %x", (int)(txtr_x + txtr.width * pxl_pos / (float)line_h), txtr.p_data[(int)(txtr_x + txtr.width * pxl_pos / (float)line_h)]);
-		DEBUG("%f: %d", pxl_pos / (float)line_h, txtr.height * (int)(txtr.width * pxl_pos / (float)line_h));
+		// DEBUG("%f: %d", pxl_pos / (float)line_h, txtr.height * (int)(txtr.width * pxl_pos / (float)line_h));
 		first_pxl[i_first_pxl] = txtr.p_data[txtr_x + txtr.height * (int)(txtr.width * pxl_pos / (float)line_h)];
 		i_first_pxl += screen.width;
 		++pxl_pos;
@@ -41,17 +41,18 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
 	// WAIT
 }
 
-void	draw_p_wall(t_img txtr, t_render *render)
+// void	draw_p_wall(t_img txtr, t_render *render)
+void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int	y_end)
 {
-	const int	x_start = 100;
-	const int	x_end = 300;
-	const int	y_start = 300;
-	const int	y_end = 200;
+	// const int	x_start = 100;
+	// const int	x_end = 300;
+	// const int	y_start = 300;
+	// const int	y_end = 200;
 	
 	int	i_x = 0;
 
-	DEBUG("%d:%d", txtr.height, txtr.width)
-	DEBUG("%d:%d", render->img.height, render->img.width)
+	// DEBUG("%d:%d", txtr.height, txtr.width)
+	// DEBUG("%d:%d", render->img.height, render->img.width)
 	// WAIT
 	while (i_x < x_end - x_start)
 	{
