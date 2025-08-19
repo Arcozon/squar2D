@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 14:29:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:37:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 
 # include "parsing.h"
 # include "hooks.h"
+# include "render.h"
 
 # define DOT_CUB	".cub"
 
@@ -101,7 +102,7 @@ struct s_render
 {
 	void	*pmlx;
 	void	*pwin;
-	t_img	pimg;
+	t_img	img;
 
 	t_img	n_txtr;
 	t_img	e_txtr;

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:04:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/19 14:38:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	fill_render(t_pars *pars, t_render *render)
 	render->c_clr = pars->color_ceiling;
 	render->pmlx = pars->pmlx.mlx_ptr;
 	render->pwin = pars->pmlx.win_ptr;
-	render->pimg.p_img = pars->pmlx.win_img;
-	get_data_img(&render->pimg, 1, W_HEIGHT);
+	render->img.p_img = pars->pmlx.win_img;
+	get_data_img(&render->img, 1, W_HEIGHT);
 	render->n_txtr = get_data_img(&pars->no_texture, 0, 0);
 	render->e_txtr = get_data_img(&pars->ea_texture, 0, 0);
 	render->s_txtr = get_data_img(&pars->so_texture, 0, 0);

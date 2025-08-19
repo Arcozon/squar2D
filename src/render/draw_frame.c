@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   draw_frame.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:38:03 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/08/19 14:34:08 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/08/19 14:37:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	cub_loop(t_game *game)
+void	draw_frame(t_game *game)
 {
-	draw_frame(game);
-	return (0);
+	set_floor_ceiling(&game->render);
+	mlx_put_image_to_window(game->render.pmlx, game->render.pwin,
+		game->render.img.p_img, 0, 0);
 }

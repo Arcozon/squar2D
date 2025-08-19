@@ -1,19 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:38:03 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/08/19 14:35:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#ifndef RENDER_H
+# define RENDER_H
 
-int	cub_loop(t_game *game)
-{
-	draw_frame(game);
-	return (0);
-}
+# include "types.h"
+
+void	draw_frame(t_game *game);
+void	set_floor_ceiling(t_render *render);
+
+
+#endif
