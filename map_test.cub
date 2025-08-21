@@ -2,7 +2,7 @@ NO .textures/north.xpm
 WE .textures/west.xpm
 
 
-C 0,255,0
+C 128,196,255
 
 SO .textures/south.xpm
 

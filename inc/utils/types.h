@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 16:05:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 16:16:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ typedef union u_clr			t_clr;
 union __attribute__((packed, may_alias)) u_clr{
 	uint32_t				rgb;
 	struct __attribute__((packed)) {
-		uint8_t	r;
-		uint8_t	g;
 		uint8_t	b;
+		uint8_t	g;
+		uint8_t	r;
 		uint8_t	unused;
 	}	s_mask;
 };

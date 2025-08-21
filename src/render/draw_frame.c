@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 18:05:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 18:19:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ void	draw_frame(t_game *game)
 	draw_p_wall(game->render.e_txtr, &game->render, 700, 850, 20, 80, 0.f, 1.f);
 	draw_p_wall(game->render.s_txtr, &game->render, 850, 1200, 80, 600, 0.f, 1.f);
 	draw_p_wall(game->render.n_txtr, &game->render, 500, 700, 180, 200, 0.2f, 0.8f);
-	mlx_put_image_to_window(game->render.pmlx, game->render.pwin, game->render.img.p_img, 0, 0);
+	antialiasing(&game->render);
+	mlx_put_image_to_window(game->render.pmlx, game->render.pwin, game->render.img_paa.p_img, 0, 0);
+	// mlx_put_image_to_window(game->render.pmlx, game->render.pwin, game->render.img.p_img, 0, 0);
 }

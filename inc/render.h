@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 14:57:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 16:27:48 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ enum {R, G, B};
 void	set_floor_ceiling(t_render *render);
 void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end);
 
+void	antialiasing(t_render *render);
 void	draw_frame(t_game *game);
 
 #endif
