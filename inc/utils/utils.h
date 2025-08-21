@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:31:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 15:32:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define UTILS_H
 
 # include <stdlib.h>
+
 
 # include "types.h"
 
@@ -34,6 +35,8 @@ char		*ft_strchr(const char str[], const char to_find);
 void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);
 void		*ft_memcpy(void *dst, const void *src, uint64_t size);
+void		*ft_memset(void *ptr, uint64_t size, const uint64_t set);
+void		*ft_clrset(t_clr img_data[], const t_clr color, const uint64_t size);
 bool		ft_memcpm(void *s1, void *s2, uint64_t n);
 
 #endif

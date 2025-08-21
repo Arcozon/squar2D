@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_color.c                                       :+:      :+:    :+:   */
+/*   pars_data_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:17:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:18:05 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 16:05:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	get_col(char **line, uint32_t *color)
+uint32_t	get_col(char **line, t_clr *color)
 {
 	uint32_t	nb;
 	uint32_t	i;
@@ -29,11 +29,11 @@ uint32_t	get_col(char **line, uint32_t *color)
 	*line += i;
 	if (i == 0)
 		return (WRONG_FORMAT_COLOR);
-	*color = (*color << __CHAR_BIT__) + nb;
+	color->rgb = (color->rgb << __CHAR_BIT__) + nb;
 	return (NO_ERR);
 }
 
-uint32_t	read_color(char *line, t_pars *pars, uint32_t *col)
+uint32_t	read_color(char *line, t_pars *pars, t_clr *col)
 {
 	skip_key_space(&line);
 	ft_strlcpy(pars->err_context, line, sizeof(pars->err_context));

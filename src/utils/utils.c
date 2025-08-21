@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 14:50:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 15:09:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-__attribute__ ((const, pure, nonnull))
+__attribute__ ((pure, nonnull, hot))
 uint64_t	ft_strlen(const char str[])
 {
 	const char		*start = str;
@@ -30,7 +30,7 @@ uint64_t	ft_strlen(const char str[])
 	return (str - start);
 }
 
-__attribute__ ((const, pure, nonnull))
+__attribute__ ((pure, nonnull, hot))
 uint64_t	heap_strlen(const char str[])
 {
 	const char		*start = str;
@@ -40,7 +40,7 @@ uint64_t	heap_strlen(const char str[])
 	return (str - start);
 }
 
-__attribute__ ((const, pure, nonnull))
+__attribute__ ((pure, nonnull))
 bool	ft_strendcmp(const char str[], const char end[])
 {
 	const uint64_t	str_len = ft_strlen(str);	
@@ -86,7 +86,21 @@ void	*ft_bzero(void *ptr, uint64_t size)
 	return (ptr);
 }
 
-void	*ft_memset(void *ptr, uint64_t size, const uint8_t set)
+__attribute__((nonnull(1), hot))
+void	*ft_clrset(t_clr img_data[], const t_clr color, const uint64_t size)
+{
+	uint64_t	i;
+
+	i = 0;
+	while (i < size)
+	{
+		img_data[i] = color;
+		++i;
+	}
+	return (img_data);
+}
+
+void	*ft_memset(void *ptr, uint64_t size, const uint64_t set)
 {
 	const uint64_t	set_64 = set | set << 8 | set << 16 | set << 24 | set << 32
 		| set << 40 | set << 48 | set << 56;
@@ -112,7 +126,7 @@ void	*ft_memset(void *ptr, uint64_t size, const uint8_t set)
 		--size;
 		*(uint8_t *)ptr++ = set;
 	}
-	return (cpy_ptr);
+	return ((void *)cpy_ptr);
 }
 
 void	*ft_memcpy(void *dst, const void *src, uint64_t size)

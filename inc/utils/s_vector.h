@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 13:58:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 21:01:09 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 16:03:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 struct s_vector
 {
 	uint32_t		sizeof_type;
-	union
+	union	__attribute__((transparent_union, may_alias))
 	{
 		void		*void_ptr;
 		char		*char_ptr;
