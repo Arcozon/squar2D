@@ -2,13 +2,18 @@ Agree on a data structure for the map
 
 -- INIT
 	- realloc map, cutting useless parts
+	- add doors in 1 by 1 hole, check for close doors
 
 -- HOOKS
 	- key hooks
-	- add doors in 1 by 1 hole, check for close doors
 	- calc colision
+
+-- SETTINGS:
+	- fov
+	- mouse sensibility
+	- antialiasing
+	- movements ?
 
 -- RENDER
 	- calc range
 	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)
-	- antialiasing

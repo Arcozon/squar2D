@@ -6,26 +6,28 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 12:35:10 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 17:04:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/21 18:29:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-#define BASE_COEF	1
+#define BASE_COEF	10
 
 __attribute__((always_inline))
 static inline void	add_clr(const int condition, const t_clr *clr,
-	uint64_t sum[3], uint64_t *coef)
+	uint64_t sum[3], uint64_t *pcoef, uint64_t coef)
 {
 	if (condition)
 	{
-		sum[R] += clr->s_mask.r;
-		sum[G] += clr->s_mask.g;
-		sum[B] += clr->s_mask.b;
-		++*coef;
+		sum[R] += clr->s_mask.r * coef;
+		sum[G] += clr->s_mask.g * coef;
+		sum[B] += clr->s_mask.b * coef;
+		*pcoef += coef;
 	}
 }
+
+# define RANGE_ANTIALIASING 3
 
 __attribute__((always_inline))
 static inline t_clr	get_avr(const int x, const int y, const t_img img)
@@ -39,12 +41,20 @@ static inline t_clr	get_avr(const int x, const int y, const t_img img)
 	sum[G] = base_pxl->s_mask.g * BASE_COEF;
 	sum[B] = base_pxl->s_mask.b * BASE_COEF;
 	coef = BASE_COEF;
-	add_clr(x > 0, &base_pxl[-1], sum, &coef);
-	add_clr(x + 1 < i_width, &base_pxl[1], sum, &coef);
-	add_clr(y > 0, &base_pxl[-i_width], sum, &coef);
-	add_clr(y + 1 < img.height, &base_pxl[i_width], sum, &coef);
-	if (!x)
-		coef++;
+	for (int dx = -RANGE_ANTIALIASING; dx <= RANGE_ANTIALIASING; ++dx)
+	{
+		for (int dy = -RANGE_ANTIALIASING; dy <= RANGE_ANTIALIASING; ++dy)
+			add_clr(x + dx >= 0 && x + dx < i_width
+				&& y + dy >= 0 && y + dy < W_HEIGHT,
+				&base_pxl[dx + dy * i_width], sum, &coef, 2 * RANGE_ANTIALIASING - abs(dx) - abs(dy));
+
+	}
+	// add_clr(x > 0, &base_pxl[-1], sum, &coef);
+	// add_clr(x + 1 < i_width, &base_pxl[1], sum, &coef);
+	// add_clr(y > 0, &base_pxl[-i_width], sum, &coef);
+	// add_clr(y + 1 < img.height, &base_pxl[i_width], sum, &coef);
+	// if (!x)
+	// 	coef++;
 	sum[R] /= coef;
 	sum[G] /= coef;
 	sum[B] /= coef;
