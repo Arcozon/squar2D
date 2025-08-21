@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.h                                           :+:      :+:    :+:   */
+/*   antialiasing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 12:37:21 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/08/21 12:35:10 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/08/21 12:39:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RENDER_H
-# define RENDER_H
+#include "cub3d.h"
 
-# include "types.h"
+t_clr	get_avr(int pcoo[2], const t_img img)
+{
+	const t_clr	*base_pxl = img.p_data[pcoo[X] + pcoo[Y] * img.width];
+	uint64_t	sum[3];
+	uint64_t	coef[3];
 
-enum {R, G, B};
+	sum[R] = 
+}
 
-void	set_floor_ceiling(t_render *render);
-// void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int	y_end);
-void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end);
+void	antialiasing(t_render *render)
+{
 
-void	draw_frame(t_game *game);
-
-#endif
+}

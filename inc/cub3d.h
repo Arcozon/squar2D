@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 14:37:27 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/20 16:09:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ struct s_mlx
 	void		*mlx_ptr;
 	void		*win_ptr;
 	void		*win_img;
+	void		*win_img_paa;
 
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
@@ -103,6 +104,7 @@ struct s_render
 	void	*pmlx;
 	void	*pwin;
 	t_img	img;
+	t_img	img_paa;	//post anti aliasing
 
 	t_img	n_txtr;
 	t_img	e_txtr;

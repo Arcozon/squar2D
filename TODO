@@ -1,5 +1,8 @@
 Agree on a data structure for the map
 
+-- INIT
+	- realloc map, cutting useless parts
+
 -- HOOKS
 	- key hooks
 	- add doors in 1 by 1 hole, check for close doors
