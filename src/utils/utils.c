@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:37:54 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 18:03:48 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,11 +177,6 @@ void	ft_strnlcpy(char *dst, const char *src,
 	f_size = src_size;
 	if (!dst_size)
 		return ;
-	// f_size = ft_strlen(src);
-	// if (f_size > src_size)
-	// 	f_size = src_size;
-	// if (f_size >= dst_size)
-	// 	f_size = dst_size - 1;
 	if (f_size >= dst_size)
 		f_size = dst_size - 1;
 	ft_memcpy(dst, src, f_size);

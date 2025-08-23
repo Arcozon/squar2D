@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:41:02 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 18:20:17 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,10 @@ struct s_game
 
 	char		**map;
 	float		dim[2];
+
+	float		fov;
+
+	uint64_t	f_keys;
 
 	t_render	render;
 };

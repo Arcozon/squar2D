@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:32:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:45:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 18:16:17 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static inline uint64_t	loop_around_plx(const int coo_plx[2], const t_clr *plx,
 		i[X] = x_i_save;
 		while (i[X] <= x_end)
 		{
-			coef[1] = 2 * range - ft_abs(i[X]) - ft_abs(i[X]) + 1;
+			coef[1] = 2 * range - ft_abs(i[X]) - ft_abs(i[Y]) + 1;
 			sum[R] += plx[i[X] + i[Y] * W_WIDTH].s_mask.r * coef[1];
 			sum[G] += plx[i[X] + i[Y] * W_WIDTH].s_mask.g * coef[1];
 			sum[B] += plx[i[X] + i[Y] * W_WIDTH].s_mask.b * coef[1];
