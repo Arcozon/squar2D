@@ -6,17 +6,18 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:45:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/19 18:11:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 17:43:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
+void	draw_p_line(int line_h, t_img txtr, t_img screen,
+	int x_screen, int txtr_x)
 {
 	t_clr	*first_pxl;
 	int		i_first_pxl;
-	int 	pxl_pos;
+	int		pxl_pos;
 
 	if (line_h > screen.height)
 		line_h = screen.height;
@@ -26,20 +27,21 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen, int x_screen, int txtr_x)
 	i_first_pxl = 0;
 	while (pxl_pos < line_h)
 	{
-		first_pxl[i_first_pxl] = txtr.p_data[txtr_x + txtr.height * (int)(txtr.width * pxl_pos / (float)line_h)];
+		first_pxl[i_first_pxl] = txtr.p_data[txtr_x + txtr.height
+			* (int)(txtr.width * pxl_pos / (float)line_h)];
 		i_first_pxl += screen.width;
 		++pxl_pos;
 	}
 }
 
-
 void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end)
 {
-	const float	step_p_x = txtr.width * (p_end - p_start) / (x_end - x_start);
-	const float step_i_y = (y_end - y_start) / (float)(x_end - x_start);
-	float	i_p_x;
-	int	i;
-	float i_y;
+	const float	step_p_x = txtr.width
+		* (p_end - p_start) / (x_end - x_start);
+	const float	step_i_y = (y_end - y_start) / (float)(x_end - x_start);
+	float		i_p_x;
+	int			i;
+	float		i_y;
 
 	i_y = y_start;
 	i = 0;

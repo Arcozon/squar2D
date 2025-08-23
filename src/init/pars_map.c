@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:31:07 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 17:38:20 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,3 @@ uint32_t	pars_map(t_pars *pars)
 		return (pars->error || pars->syscall_error);
 	return (pars->error || pars->syscall_error);
 }
-

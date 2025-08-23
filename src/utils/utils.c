@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 15:09:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 17:37:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,7 +169,7 @@ void	ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 	dst[f_size] = 0;
 }
 
-void	ft_strnlcpy(char *dst, const char *src, 
+void	ft_strnlcpy(char *dst, const char *src,
 	uint64_t dst_size, uint64_t src_size)
 {
 	uint64_t	f_size;

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/20 16:09:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/23 17:41:02 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ struct s_render
 	void	*pmlx;
 	void	*pwin;
 	t_img	img;
-	t_img	img_paa;	//post anti aliasing
+	t_img	img_paa;
 
 	t_img	n_txtr;
 	t_img	e_txtr;
@@ -115,14 +115,13 @@ struct s_render
 	t_clr	c_clr;
 };
 
-
 struct s_game
 {
-	float	p_coo[2];
-	float	p_angle;
+	float		p_coo[2];
+	float		p_angle;
 
-	char	**map;
-	float	dim[2];
+	char		**map;
+	float		dim[2];
 
 	t_render	render;
 };
