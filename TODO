@@ -6,13 +6,13 @@ Agree on a data structure for the map
 
 -- HOOKS
 	- key hooks
-	- calc colision
+	- calc colision during movements
 
 -- SETTINGS:
 	- fov
 	- mouse sensibility
 	- antialiasing
-	- movements ?
+	- movements key bind?
 
 -- RENDER
 	- calc range
