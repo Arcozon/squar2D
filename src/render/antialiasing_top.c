@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:28:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 18:16:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/24 11:22:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// returns X, bounded to [min, max[ (max excluded)
+// returns X, bounded to ([min, max[) (max excluded)
 __attribute__((always_inline, pure, const))
 static inline int	ft_bound(const int x, const int min, const int max)
 {
@@ -74,8 +74,8 @@ static inline t_clr	get_avr(const int coo[2],
 	sum[R] /= coef;
 	sum[G] /= coef;
 	sum[B] /= coef;
-	return ((t_clr){.rgb = (sum[R] << 2 * __CHAR_BIT__
-			| sum[G] << __CHAR_BIT__ | sum[B])});
+	return ((t_clr){.s_mask.r = sum[R], .s_mask.g =sum[G],
+		.s_mask.b = sum[B], .s_mask.unused = 0});
 }
 
 void	antialiasing_top(const t_clr pre_aa[],
