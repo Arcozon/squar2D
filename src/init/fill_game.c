@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:37:30 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 19:51:44 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	fill_render(t_pars *pars, t_render *render)
 
 void	fill_game(t_pars *pars, t_game *game)
 {
-	game->map = pars->map;
+	game->map = pars->resized_map;
 	game->dim[X] = pars->dim[X];
 	game->dim[Y] = pars->dim[Y];
 	game->p_coo[Y] = pars->player[Y];

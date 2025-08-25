@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:05:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 19:51:14 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
 # define WALL_CHAR		'1'
+# define MTY_CHAR		' '
 
 struct s_mlx
 {
@@ -48,6 +49,8 @@ struct s_xpm_img
 	int		height;
 };
 
+enum {MINR_MAP, MAXR_MAP};
+
 struct s_pars
 {
 	t_read		rd;
@@ -62,11 +65,13 @@ struct s_pars
 	uint8_t		ceiling_defined;
 	uint8_t		floor_defined;
 
-	t_vector	vec_map;
-	uint64_t	dim[2];
 	uint64_t	player[2];
 	float		view_angle;
+	t_vector	vec_map;
 	char		**map;
+	uint64_t	dim[2];
+	int64_t		range_map[2][2];
+	char		**resized_map;
 
 	t_mlx		pmlx;
 
