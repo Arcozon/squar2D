@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:18:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:34:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 # include "hooks.h"
 # include "render.h"
 
-# define VANGLE_DELTA 0.05f
+# define VANGLE_DELTA 0.005f
 
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
@@ -80,5 +80,7 @@ struct s_cub
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };
+
+void	move_player(t_game *game);
 
 #endif

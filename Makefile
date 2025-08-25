@@ -18,7 +18,7 @@ S_SRC_UTILS =	utils.c  errors.c free.c s_vector.c
 D_SRC_UTILS =	utils/
 SRC_UTILS   =	$(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c
+S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c  move_player.c
 D_SRC =	src/
 
 D_BUILD = .build/

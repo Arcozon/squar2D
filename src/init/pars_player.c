@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:04:44 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:35:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	set_angle_player(float *angle, char **map, const uint64_t player[2])
 	const char	pc = map[player[Y]][player[X]];
 
 	if (pc == 'N')
-		*angle = 0.f;
-	else if (pc == 'W')
-		*angle = -M_PI_2;
-	else if (pc == 'S')
-		*angle = M_PI;
-	else
 		*angle = M_PI_2;
+	else if (pc == 'W')
+		*angle = 0.f;
+	else if (pc == 'S')
+		*angle = -M_PI_2;
+	else
+		*angle = M_PI;
 }
 
 uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2])
