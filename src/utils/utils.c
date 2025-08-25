@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 19:20:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 20:12:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ char	*ft_strchr(const char str[], const char to_find)
 
 char	*ft_strrchr(const char str[], const char to_find)
 {
-	const char	*end_str = &str[heap_strlen(str)];  
+	const char	*end_str = &str[heap_strlen(str)];
 	uint64_t	i;
 
 	i = 0;
