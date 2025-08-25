@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:49:15 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 18:20:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:03:48 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 # include "types.h"
 
-# define	HOOK_M_W	0b1
-# define	HOOK_M_A	0b10
-# define	HOOK_M_S	0b100
-# define	HOOK_M_D	0b1000
-# define	HOOK_M_LARR	0b10000
-# define	HOOK_M_RARR	0b100000
+# define HOOK_M_W		0b1
+# define HOOK_M_A		0b10
+# define HOOK_M_S		0b100
+# define HOOK_M_D		0b1000
+# define HOOK_M_LARR	0b10000
+# define HOOK_M_RARR	0b100000
 
 int		key_press_hook(int key, t_game *game);
 int		key_release_hook(int key, t_game *game);

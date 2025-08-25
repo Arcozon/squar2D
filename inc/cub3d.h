@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 18:20:17 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:04:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,73 +30,10 @@
 # include "hooks.h"
 # include "render.h"
 
-# define DOT_CUB	".cub"
-
-# define W_WIDTH	1200
-# define W_HEIGHT	800
-
-# define R_DONE			0b1
-# define R_LDONE		0b10
-# define R_CUT_S_SPC	0b100
-# define R_CUT_E_SPC	0b1000
-
-# define PLAYER_CHARS	"NSWE"
-# define MAP_CHARS		"01 NSWE"
-# define WALL_CHAR		'1'
-# define NB_TEXTURE		4
-
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
 //	 x being the place in the line / lenght
 enum	{X,Y
-};
-
-struct s_mlx
-{
-	char		title[BUFF_SIZE];
-
-	void		*mlx_ptr;
-	void		*win_ptr;
-	void		*win_img;
-	void		*win_img_paa;
-
-	uint32_t	error;
-	char		err_context[BUFF_SIZE];
-};
-
-struct s_xpm_img
-{
-	void	*p_img;
-	t_clr	*p_data;
-	int		width;
-	int		height;
-};
-
-struct s_pars
-{
-	t_read		rd;
-
-	t_xpm_img	no_texture;
-	t_xpm_img	ea_texture;
-	t_xpm_img	so_texture;
-	t_xpm_img	we_texture;
-
-	t_clr		color_ceiling;
-	t_clr		color_floor;
-	uint8_t		ceiling_defined;
-	uint8_t		floor_defined;
-
-	t_vector	vec_map;
-	uint64_t	dim[2];
-	uint64_t	player[2];
-	float		view_angle;
-	char		**map;
-
-	t_mlx		pmlx;
-
-	uint32_t	syscall_error;
-	uint32_t	error;
-	char		err_context[BUFF_SIZE];
 };
 
 struct s_render

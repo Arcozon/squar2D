@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/24 11:15:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 15:48:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "types.h"
 
 # define BASE_COEF			5
-# define RANGE_ANTIALIASING	2
+# define RANGE_ANTIALIASING	3
 
 enum {R, G, B
 };

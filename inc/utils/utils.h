@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:38:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:03:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,23 @@ void		*ft_memcpy(void *dst, const void *src, uint64_t size);
 void		*ft_memset(void *ptr, uint64_t size, const uint64_t set);
 void		*ft_clrset(t_clr img_data[], const t_clr color, const uint64_t size);
 bool		ft_memcpm(void *s1, void *s2, uint64_t n);
+
+# define R_DONE			0b1
+# define R_LDONE		0b10
+# define R_CUT_S_SPC	0b100
+# define R_CUT_E_SPC	0b1000
+
+struct s_read
+{
+	int			fd;
+	int			br;
+	char		content[BUFF_SIZE];
+
+	char		*line;
+	uint8_t		flags;
+	uint32_t	error;
+};
+
+char		*gnl(t_read *rd);
 
 #endif

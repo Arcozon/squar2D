@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/18 15:02:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:04:49 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,65 @@
 # include "types.h"
 # include "s_vector.h"
 
-struct s_read
-{
-	int			fd;
-	int			br;
-	char		content[BUFF_SIZE];
+# define DOT_CUB	".cub"
 
-	char		*line;
-	uint8_t		flags;
+# define W_WIDTH	1200
+# define W_HEIGHT	800
+
+# define NB_TEXTURE		4
+
+# define PLAYER_CHARS	"NSWE"
+# define MAP_CHARS		"01 NSWE"
+# define WALL_CHAR		'1'
+
+struct s_mlx
+{
+	char		title[BUFF_SIZE];
+
+	void		*mlx_ptr;
+	void		*win_ptr;
+	void		*win_img;
+	void		*win_img_paa;
+
 	uint32_t	error;
+	char		err_context[BUFF_SIZE];
 };
 
-char		*gnl(t_read *rd);
+struct s_xpm_img
+{
+	void	*p_img;
+	t_clr	*p_data;
+	int		width;
+	int		height;
+};
+
+struct s_pars
+{
+	t_read		rd;
+
+	t_xpm_img	no_texture;
+	t_xpm_img	ea_texture;
+	t_xpm_img	so_texture;
+	t_xpm_img	we_texture;
+
+	t_clr		color_ceiling;
+	t_clr		color_floor;
+	uint8_t		ceiling_defined;
+	uint8_t		floor_defined;
+
+	t_vector	vec_map;
+	uint64_t	dim[2];
+	uint64_t	player[2];
+	float		view_angle;
+	char		**map;
+
+	t_mlx		pmlx;
+
+	uint32_t	syscall_error;
+	uint32_t	error;
+	char		err_context[BUFF_SIZE];
+};
+
 void		skip_spaces(char *line[]);
 void		skip_key_space(char **line);
 int			ft_str_space_cmp(const char *str, const char *pat);
