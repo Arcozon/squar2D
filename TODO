@@ -5,7 +5,12 @@ Agree on a data structure for the map
 	- add doors in 1 by 1 hole, check for close doors
 
 -- HOOKS
-	- movements, and vision
+
+-- GAME
+	- Fixed tick rate ?
+
+-- PLAYER
+	- calc speed
 	- calc colision during movements
 
 -- SETTINGS:
