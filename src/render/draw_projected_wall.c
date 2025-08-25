@@ -6,13 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:45:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:43:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:29:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	draw_p_line(int line_h, t_img txtr, t_img screen,
+__attribute__((always_inline))
+static inline void	draw_p_line(int line_h, t_img txtr, t_img screen,
 	int x_screen, int txtr_x)
 {
 	t_clr	*first_pxl;
@@ -34,6 +35,7 @@ void	draw_p_line(int line_h, t_img txtr, t_img screen,
 	}
 }
 
+__attribute__((flatten))
 void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end)
 {
 	const float	step_p_x = txtr.width

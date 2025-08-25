@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:04:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:05:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,5 +93,7 @@ uint32_t	pars_map(t_pars *pars);
 
 void		fill_game(t_pars *pars, t_game *game);
 uint32_t	parsing(t_pars *pars);
+
+uint32_t	init_cub(t_cub *cub, int ac, char *av[]);
 
 #endif

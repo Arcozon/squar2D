@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:32:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 18:16:17 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 16:27:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ static inline t_clr	get_avr(const int coo[2],
 			| sum[G] << __CHAR_BIT__ | sum[B])});
 }
 
+__attribute__((flatten))
 void	antialiasing_bot(const t_clr pre_aa[],
 	t_clr post_aa[], const t_clr f_clr)
 {
