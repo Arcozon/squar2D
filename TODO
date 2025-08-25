@@ -1,7 +1,6 @@
 Agree on a data structure for the map
 
 -- INIT
-	- realloc map, cutting useless parts
 	- add doors in 1 by 1 hole, check for close doors
 
 -- HOOKS
@@ -18,7 +17,7 @@ Agree on a data structure for the map
 -- SETTINGS:
 	- fov
 	- mouse sensibility
-	- antialiasing
+	- antialiasing ?
 	- movements key bind?
 
 -- RENDER
