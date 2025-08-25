@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 19:51:19 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 19:58:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ void	free_2d_vector(t_vector *vector)
 	free_vector(vector);
 }
 
-void	free_strstr(char **strstr)
+void	free_strstr(char **strstr, const uint32_t size)
 {
 	uint32_t	i;
 
 	i = 0;
 	if (strstr)
 	{
-		while (strstr[i])
+		while (i < size)
 		{
 			free(strstr[i]);
 			++i;
@@ -81,7 +81,7 @@ void	free_pars(t_pars *pars)
 		close (pars->rd.fd);
 		pars->rd.fd = -1;
 	}
-	free_strstr(pars->resized_map);
+	free_strstr(pars->resized_map, pars->dim[Y]);
 	free(pars->map);
 	free_2d_vector(&pars->vec_map);
 	free_mlx(&pars->pmlx);

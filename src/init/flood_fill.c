@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:09:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 19:54:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 20:06:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,16 @@ void	get_map_range(char *map[], const uint64_t dim[2], int64_t range[2][2])
 		}
 		else
 		{
+			DEBUG("%ld-%s", ft_strrchr(map[iy], VISITED_CHAR) - map[iy] + 1, ft_strrchr(map[iy], VISITED_CHAR))
 			if (ft_strchr(map[iy], VISITED_CHAR) - map[iy] < range[X][MINR_MAP])
 				range[X][MINR_MAP] = ft_strchr(map[iy], VISITED_CHAR) - map[iy];
-			if (ft_strrchr(map[iy], VISITED_CHAR) - map[iy] > range[X][MAXR_MAP])
+			if (ft_strrchr(map[iy], VISITED_CHAR) - map[iy] > range[X][MAXR_MAP] - 1)
 				range[X][MAXR_MAP] = ft_strrchr(map[iy], VISITED_CHAR) - map[iy] + 1;
 			++range[Y][MAXR_MAP];
 		}	
 		++iy;
 	}
+	range[Y][MAXR_MAP] += range[Y][MINR_MAP] - 1;
 	DEBUG("%ld|%ld -- %ld|%ld", range[X][MINR_MAP], range[X][MAXR_MAP], range[Y][MINR_MAP], range[Y][MAXR_MAP])
 }
 
@@ -98,13 +100,13 @@ char	*ft_dupmapline(const char *old_line, const uint64_t start, const uint64_t l
 
 uint64_t	make_new_map(t_pars *pars, char *old_map[], int64_t	range[2][2])
 {
-	const uint64_t	ndim[2] = {(range[X][MAXR_MAP] - range[X][MINR_MAP] + 3),
+	const uint64_t	ndim[2] = {(range[X][MAXR_MAP] - range[X][MINR_MAP] + 2),
 		(range[Y][MAXR_MAP] - range[Y][MINR_MAP] + 3)};
 	uint64_t		iy;
 	char			**new_map;
 	
 	DEBUG("%lu|%lu", ndim[X], ndim[Y])
-	new_map = ft_calloc(sizeof(*new_map) * ndim[X]);
+	new_map = ft_calloc(sizeof(*new_map) * ndim[Y]);
 	if (!new_map)
 		return (pars->syscall_error = E_MLC);
 	iy = 0;
