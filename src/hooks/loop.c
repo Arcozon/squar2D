@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:36:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 17:00:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	debug_key_pressed(t_game *game)
 	static const char	key_c[] = "WASDLR";
 
 	move_player(game);
-	printf("[%.3f|%.3f] (%.3f)\n", game->p_coo[X], game->p_coo[Y], game->p_angle);
+	// printf("[%.3f|%.3f] (%.3f)\n", game->p_coo[X], game->p_coo[Y], game->p_angle);
 	if (last_press != game->f_keys)
 	{
 		last_press = game->f_keys;

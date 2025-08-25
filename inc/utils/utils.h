@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:03:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/25 19:15:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void		ft_strnlcpy(char *dst, const char *src,
 void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size);
 uint64_t	index_strchr(const char str[], const char find);
 char		*ft_strchr(const char str[], const char to_find);
+char		*ft_strrchr(const char str[], const char to_find);
 
 void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);

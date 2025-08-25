@@ -8,10 +8,12 @@ Agree on a data structure for the map
 
 -- GAME
 	- Fixed tick rate ?
+	-- Minimap ?
 
 -- PLAYER
 	- calc speed
 	- calc colision during movements
+
 
 -- SETTINGS:
 	- fov
