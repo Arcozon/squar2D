@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 18:59:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:00:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ static void	only_minimap(char **map, const float dim[2],
 	mmap_oob_or_wall((int []){MMAP_WIDHT / 2, MMAP_HEIGHT / 2}, start, map, dim);
 	fill_rectangle(img_map, (int []){0, 0}, (int []){MMAP_WIDHT, MMAP_HEIGHT}, (t_clr){.rgb = MMAP_CLR_WALL});
 	i[Y] = 0;
-	while (i[Y] < MMAP_WIDHT)
+	while (i[Y] < MMAP_HEIGHT)
 	{
 		i[X] = 0;
-		while (i[X] < MMAP_HEIGHT)
+		while (i[X] < MMAP_WIDHT)
 		{
 			if (!mmap_oob_or_wall(i, start, map, dim))
 				img_map.p_data[i[X] + i[Y] * img_map.width].rgb = MMAP_CLR_MTY;
