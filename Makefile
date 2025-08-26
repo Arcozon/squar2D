@@ -38,16 +38,23 @@ LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 
 RM =  rm -rf
 
+RANDOM_CLR = echo -n '[3;38;5;'$(shell shuf -i 0-255 -n 1)m
+RESET_CLR = echo -n '[0m'
+
 all:	cp_mlx
 	@$(MAKE) $(NAME)
 
 $(NAME):	$(OBJ)
 	$(MK_MLX)
+	@$(RANDOM_CLR)
 	$(CC) -o$@ $^ $(LFLAGS)
+	@$(RESET_CLR)
 
 $(OBJ): $(D_BUILD)%.o:	$(D_SRC)%.c
 	@mkdir -p $(@D)
+	@$(RANDOM_CLR)
 	$(CC) $(FLAGS) $(IFLAGS) -c $< -o $@ 
+	@$(RESET_CLR)
 
 cp_mlx:
 	@test -d $(D_MLX) || $(MAKE) $(TAR_MLX)

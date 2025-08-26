@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 19:51:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 11:35:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@
 
 # define W_WIDTH	1200
 # define W_HEIGHT	800
+
+# define MMAP_WIDHT		300
+# define MMAP_HEIGHT	200
+# define MMAP_XSTART	200
+# define MMAP_YSTART	200
 
 # define NB_TEXTURE		4
 
@@ -36,6 +41,7 @@ struct s_mlx
 	void		*win_ptr;
 	void		*win_img;
 	void		*win_img_paa;
+	void		*img_mmap;
 
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
