@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 18:37:27 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 18:59:22 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,15 @@ static void	fill_rectangle(t_img img_map, int start[2], int len[2], const t_clr 
 
 static int	mmap_oob_or_wall(int ppx_coo[2], const float start[2], char **map, const float dim[2])
 {
-	const float	ppx_coo_map[2] = {start[X] + ppx_coo[X] * (MMAP_SQUARE_SIZE / (float)MMAP_WIDHT),
-		start[Y] + ppx_coo[Y] * (MMAP_SQUARE_SIZE / (float)MMAP_HEIGHT)};
+	const float	ppx_coo_map[2] = {start[X] + ppx_coo[X] / (float)MMAP_SQUARE_SIZE,
+		start[Y] + ppx_coo[Y] / (float)MMAP_SQUARE_SIZE};
+
 
 	if (ppx_coo_map[X] < 0 || ppx_coo_map[Y] < 0
 		|| ppx_coo_map[X] + 1 > dim[X] || ppx_coo_map[Y] + 1 > dim[Y])
 		return (1);
-	if (map[(int)ppx_coo_map[X]][(int)ppx_coo_map[Y]] == WALL_CHAR)
+	// DEBUG("PPX_COO_MAP: %d|%d (%f|%f)", (int)ppx_coo_map[X], (int)ppx_coo_map[Y], ppx_coo_map[X], ppx_coo_map[Y])
+	if (map[(int)ppx_coo_map[Y]][(int)ppx_coo_map[X]] == WALL_CHAR)
 		return (1);
 	return (0);
 }
@@ -50,14 +52,14 @@ static int	mmap_oob_or_wall(int ppx_coo[2], const float start[2], char **map, co
 static void	only_minimap(char **map, const float dim[2],
 	t_img img_map, const float p_coo[2])
 {
-	const float	start[2] = {(p_coo[X] - MMAP_WIDHT / (float)MMAP_SQUARE_SIZE) / 2,
-		(p_coo[Y] - MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE) / 2};
+	const float	start[2] = {p_coo[X] - MMAP_WIDHT / (float)MMAP_SQUARE_SIZE / 2,
+		p_coo[Y] - MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE / 2};
 	int			i[2];
 
-	DEBUG("N_SQUARE: %f | %f", MMAP_WIDHT / (float)MMAP_SQUARE_SIZE, MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE)
-	DEBUG("START: %f | %f", start[X], start[Y])
-	DEBUG("P_COO: %f | %f", p_coo[X], p_coo[Y])
-
+	// DEBUG("N_SQUARE: %f | %f", MMAP_WIDHT / (float)MMAP_SQUARE_SIZE, MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE)
+	// DEBUG("START: %f | %f", start[X], start[Y])
+	// DEBUG("P_COO: %f | %f", p_coo[X], p_coo[Y])
+	mmap_oob_or_wall((int []){MMAP_WIDHT / 2, MMAP_HEIGHT / 2}, start, map, dim);
 	fill_rectangle(img_map, (int []){0, 0}, (int []){MMAP_WIDHT, MMAP_HEIGHT}, (t_clr){.rgb = MMAP_CLR_WALL});
 	i[Y] = 0;
 	while (i[Y] < MMAP_WIDHT)
@@ -66,7 +68,7 @@ static void	only_minimap(char **map, const float dim[2],
 		while (i[X] < MMAP_HEIGHT)
 		{
 			if (!mmap_oob_or_wall(i, start, map, dim))
-				img_map.p_data[i[X] + i[Y] * img_map.width].rgb = MMAP_CLR_WALL;
+				img_map.p_data[i[X] + i[Y] * img_map.width].rgb = MMAP_CLR_MTY;
 			++i[X];
 		}
 		++i[Y];
