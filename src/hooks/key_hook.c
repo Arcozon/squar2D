@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 18:54:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:49:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	key_press_hook(int key, t_game *game)
 	else if (key == XK_h)
 		print_map(game);
 	else if (key == XK_space)
-		draw_frame(game);
+		draw_frame(game, &game->render);
 	else
 		handle_press(key, &game->f_keys);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:32:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:27:57 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:25:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static inline uint64_t	loop_around_plx(const int coo_plx[2], const t_clr *plx,
 	int			coef[2];
 	int			i[2];
 
-	coef[0] = BASE_COEF;
+	coef[0] = BASE_COEF_AA;
 	i[Y] = ft_bound(-range, -coo_plx[Y], W_HEIGHT - coo_plx[Y]);
 	while (i[Y] <= y_end)
 	{
@@ -67,9 +67,9 @@ static inline t_clr	get_avr(const int coo[2],
 	uint64_t	sum[3];
 	uint64_t	coef;
 
-	sum[R] = pre_plx->s_mask.r * BASE_COEF;
-	sum[G] = pre_plx->s_mask.g * BASE_COEF;
-	sum[B] = pre_plx->s_mask.b * BASE_COEF;
+	sum[R] = pre_plx->s_mask.r * BASE_COEF_AA;
+	sum[G] = pre_plx->s_mask.g * BASE_COEF_AA;
+	sum[B] = pre_plx->s_mask.b * BASE_COEF_AA;
 	coef = loop_around_plx(coo, pre_plx, sum, range);
 	sum[R] /= coef;
 	sum[G] /= coef;
