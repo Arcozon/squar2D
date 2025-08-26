@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/20 16:10:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:18:05 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[], t_cub *cub)
 		return (mlx->error = E_WIN);
 	mlx->win_img = mlx_new_image(mlx->mlx_ptr, W_WIDTH, W_HEIGHT);
 	mlx->win_img_paa = mlx_new_image(mlx->mlx_ptr, W_WIDTH, W_HEIGHT);
-	if (!mlx->win_img || !mlx->win_img_paa)
+	mlx->img_mmap = mlx_new_image(mlx->mlx_ptr, MMAP_WIDHT, MMAP_HEIGHT);
+	if (!mlx->win_img || !mlx->win_img_paa || !mlx->img_mmap)
 		return (E_IMG);
 	setup_hooks(mlx, cub);
 	return (NO_ERR);

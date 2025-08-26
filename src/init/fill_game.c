@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 20:11:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 14:20:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ void	fill_render(t_pars *pars, t_render *render)
 	render->pwin = pars->pmlx.win_ptr;
 	render->img.p_img = pars->pmlx.win_img;
 	render->img_paa.p_img = pars->pmlx.win_img_paa;
+	render->img_mmap.p_img = pars->pmlx.img_mmap;
 	get_data_img(&render->img, 1, W_HEIGHT);
 	get_data_img(&render->img_paa, 1, W_HEIGHT);
+	get_data_img(&render->img_mmap, 1, MMAP_HEIGHT);
 	render->n_txtr = get_data_img(&pars->no_texture, 0, 0);
 	render->e_txtr = get_data_img(&pars->ea_texture, 0, 0);
 	render->s_txtr = get_data_img(&pars->so_texture, 0, 0);
