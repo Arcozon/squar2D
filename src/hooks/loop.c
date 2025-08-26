@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 20:13:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:21:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	debug_key_pressed(t_game *game)
 	static uint64_t		last_press;
 	static const char	key_c[] = "WASDLR";
 
-	move_player(game);
 	// DEBUG("[%.3f|%.3f] (%.3f)\n", game->p_coo[X], game->p_coo[Y], game->p_angle);
 	if (last_press != game->f_keys)
 	{
@@ -36,7 +35,12 @@ void	debug_key_pressed(t_game *game)
 
 int	cub_loop(t_game *game)
 {
-	debug_key_pressed(game);	
+	t_render *render = &game->render;
+
+	debug_key_pressed(game);
+	move_player(game);
+	render_minimap(game, render);
+	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
 	// draw_frame(game);
 	return (0);
 	(void)game;

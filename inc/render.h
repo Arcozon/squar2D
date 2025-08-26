@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 18:53:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:31:36 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 # define BASE_COEF_AA		5
 # define RANGE_ANTIALIASING	3
 
-# define MMAP_XSTART		10
-# define MMAP_YSTART		10
-# define MMAP_SQUARE_SIZE	18
-# define MMAP_P_RADIUS		6
+# define MMAP_XSTART		0
+# define MMAP_YSTART		0
+# define MMAP_SQUARE_SIZE	90
+# define MMAP_P_RADIUS		17
 # define MMAP_CLR_WALL		0xafafaf
 # define MMAP_CLR_MTY		0x20af30
 # define MMAP_CLR_PLAYR		0xff3a51

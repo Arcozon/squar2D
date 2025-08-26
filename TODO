@@ -7,7 +7,11 @@ Agree on a data structure for the map
 
 -- GAME
 	- Fixed tick rate ?
-	-- Minimap ?
+
+-- Minimap
+	- NEED TO MAKE IT FAST !! < FIND RANGE TO LOOP, PRINT SQUARE
+	- add vision
+	- Why is it changing the rest of the screen ? -- IDK
 
 -- PLAYER
 	- calc speed

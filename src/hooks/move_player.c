@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:42:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:25:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,23 +24,23 @@ static inline void	get_new_coo(t_game *game, float new_coo[2])
 {
 	if (game->f_keys & HOOK_M_W && !(game->f_keys & HOOK_M_S))
 	{
-		new_coo[X] -= sin(game->p_angle) * game->p_speed;
-		new_coo[Y] -= cos(game->p_angle) * game->p_speed;
+		new_coo[X] += cos(game->p_angle) * game->p_speed;
+		new_coo[Y] -= sin(game->p_angle) * game->p_speed;
 	}
-	else if (game->f_keys & HOOK_M_S)
+	else if (game->f_keys & HOOK_M_S && !(game->f_keys & HOOK_M_W))
 	{
-		new_coo[X] += sin(game->p_angle) * game->p_speed;
-		new_coo[Y] += cos(game->p_angle) * game->p_speed;
+		new_coo[X] -= cos(game->p_angle) * game->p_speed;
+		new_coo[Y] += sin(game->p_angle) * game->p_speed;
 	}
 	if (game->f_keys & HOOK_M_A && !(game->f_keys & HOOK_M_D))
 	{
-		new_coo[X] += sin(game->p_angle + M_PI_2) * game->p_speed;
-		new_coo[Y] += cos(game->p_angle + M_PI_2) * game->p_speed;
+		new_coo[X] += cos(game->p_angle + M_PI_2) * game->p_speed;
+		new_coo[Y] -= sin(game->p_angle + M_PI_2) * game->p_speed;
 	}
-	else if (game->f_keys & HOOK_M_D)
+	else if (game->f_keys & HOOK_M_D && !(game->f_keys & HOOK_M_A))
 	{
-		new_coo[X] -= sin(game->p_angle + M_PI_2) * game->p_speed;
-		new_coo[Y] -= cos(game->p_angle + M_PI_2) * game->p_speed;
+		new_coo[X] -= cos(game->p_angle + M_PI_2) * game->p_speed;
+		new_coo[Y] += sin(game->p_angle + M_PI_2) * game->p_speed;
 	}
 }
 

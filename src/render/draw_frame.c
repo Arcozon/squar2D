@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:49:53 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:20:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	draw_frame(t_game *game, t_render *render)
 	set_floor_ceiling(render);
 	test_draw_shape(render);
 	antialiasing(render);
-	render_minimap(game, render);
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_paa.p_img, 0, 0);
+	render_minimap(game, render);
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
 }

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:16:51 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/26 19:18:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@
 # include "hooks.h"
 # include "render.h"
 
-# define VANGLE_DELTA 0.005f
+# define VANGLE_DELTA		0.0002f
+# define PLAYER_BASE_SPEED	0.0003f
 
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
