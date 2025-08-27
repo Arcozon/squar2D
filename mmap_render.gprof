@@ -1,0 +1,507 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls   s/call   s/call  name    
+100.00      7.00     7.00    10000     0.00     0.00  render2_minimap
+  0.00      7.00     0.00      503     0.00     0.00  ft_strchr
+  0.00      7.00     0.00       91     0.00     0.00  ft_memcpy
+  0.00      7.00     0.00       37     0.00     0.00  ft_str_space_cmp
+  0.00      7.00     0.00       30     0.00     0.00  ft_bzero
+  0.00      7.00     0.00       29     0.00     0.00  ft_calloc
+  0.00      7.00     0.00       22     0.00     0.00  ft_isdigit
+  0.00      7.00     0.00       21     0.00     0.00  gnl
+  0.00      7.00     0.00       20     0.00     0.00  calc_newsize
+  0.00      7.00     0.00       20     0.00     0.00  gnl_join
+  0.00      7.00     0.00       20     0.00     0.00  gnl_memmove
+  0.00      7.00     0.00       18     0.00     0.00  add_elems_vector
+  0.00      7.00     0.00       18     0.00     0.00  ft_strlen
+  0.00      7.00     0.00       14     0.00     0.00  heap_strlen
+  0.00      7.00     0.00       12     0.00     0.00  skip_spaces
+  0.00      7.00     0.00       10     0.00     0.00  new_vector
+  0.00      7.00     0.00        9     0.00     0.00  ft_dupmapline
+  0.00      7.00     0.00        9     0.00     0.00  map_forbiden_char
+  0.00      7.00     0.00        9     0.00     0.00  realloc_vector
+  0.00      7.00     0.00        9     0.00     0.00  realloc_vector_minsize
+  0.00      7.00     0.00        9     0.00     0.00  str_to_vector
+  0.00      7.00     0.00        8     0.00     0.00  ft_strrchr
+  0.00      7.00     0.00        7     0.00     0.00  get_data_img
+  0.00      7.00     0.00        7     0.00     0.00  is_color
+  0.00      7.00     0.00        6     0.00     0.00  ft_strlcpy
+  0.00      7.00     0.00        6     0.00     0.00  get_col
+  0.00      7.00     0.00        6     0.00     0.00  skip_key_space
+  0.00      7.00     0.00        5     0.00     0.00  is_texture
+  0.00      7.00     0.00        4     0.00     0.00  pars_texture
+  0.00      7.00     0.00        2     0.00     0.00  ft_strendcmp
+  0.00      7.00     0.00        2     0.00     0.00  pars_color
+  0.00      7.00     0.00        2     0.00     0.00  read_color
+  0.00      7.00     0.00        1     0.00     0.00  change_null_into_space
+  0.00      7.00     0.00        1     0.00     0.00  check_easy_errors
+  0.00      7.00     0.00        1     0.00     0.00  count_players
+  0.00      7.00     0.00        1     0.00     0.00  cub_init_mlx
+  0.00      7.00     0.00        1     0.00     7.00  cub_loop
+  0.00      7.00     0.00        1     0.00     0.00  debug_key_pressed
+  0.00      7.00     0.00        1     0.00     0.00  fill_game
+  0.00      7.00     0.00        1     0.00     0.00  fill_render
+  0.00      7.00     0.00        1     0.00     0.00  find_player
+  0.00      7.00     0.00        1     0.00     0.00  flood_fill
+  0.00      7.00     0.00        1     0.00     0.00  get_map_range
+  0.00      7.00     0.00        1     0.00     0.00  get_pname
+  0.00      7.00     0.00        1     0.00     0.00  init_cub
+  0.00      7.00     0.00        1     0.00     0.00  is_data_full
+  0.00      7.00     0.00        1     0.00     0.00  is_map
+  0.00      7.00     0.00        1     0.00     0.00  make_new_map
+  0.00      7.00     0.00        1     0.00     0.00  move_player
+  0.00      7.00     0.00        1     0.00     0.00  normalise_map
+  0.00      7.00     0.00        1     0.00     0.00  pars_data
+  0.00      7.00     0.00        1     0.00     0.00  pars_map
+  0.00      7.00     0.00        1     0.00     0.00  parsing
+  0.00      7.00     0.00        1     0.00     0.00  read_map
+  0.00      7.00     0.00        1     0.00     0.00  recursive_shi
+  0.00      7.00     0.00        1     0.00     7.00  render_minimap
+  0.00      7.00     0.00        1     0.00     0.00  set_angle_player
+  0.00      7.00     0.00        1     0.00     0.00  set_title
+  0.00      7.00     0.00        1     0.00     0.00  setup_hooks
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 4 byte(s) for 0.14% of 7.00 seconds
+
+index % time    self  children    called     name
+                7.00    0.00   10000/10000       render_minimap [3]
+[1]    100.0    7.00    0.00   10000         render2_minimap [1]
+-----------------------------------------------
+                0.00    7.00       1/1           mlx_loop [4]
+[2]    100.0    0.00    7.00       1         cub_loop [2]
+                0.00    7.00       1/1           render_minimap [3]
+                0.00    0.00       1/1           debug_key_pressed [40]
+                0.00    0.00       1/1           move_player [51]
+-----------------------------------------------
+                0.00    7.00       1/1           cub_loop [2]
+[3]    100.0    0.00    7.00       1         render_minimap [3]
+                7.00    0.00   10000/10000       render2_minimap [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]    100.0    0.00    7.00                 mlx_loop [4]
+                0.00    7.00       1/1           cub_loop [2]
+-----------------------------------------------
+                0.00    0.00      17/503         get_map_range [45]
+                0.00    0.00      26/503         is_map [49]
+                0.00    0.00      28/503         find_player [43]
+                0.00    0.00     198/503         map_forbiden_char [21]
+                0.00    0.00     234/503         count_players [38]
+[5]      0.0    0.00    0.00     503         ft_strchr [5]
+-----------------------------------------------
+                0.00    0.00       6/91          ft_strlcpy [28]
+                0.00    0.00       9/91          realloc_vector [22]
+                0.00    0.00       9/91          realloc_vector_minsize [23]
+                0.00    0.00       9/91          ft_dupmapline [20]
+                0.00    0.00      18/91          add_elems_vector [15]
+                0.00    0.00      40/91          gnl_join [13]
+[6]      0.0    0.00    0.00      91         ft_memcpy [6]
+-----------------------------------------------
+                0.00    0.00      10/37          pars_texture [32]
+                0.00    0.00      13/37          is_color [27]
+                0.00    0.00      14/37          is_texture [31]
+[7]      0.0    0.00    0.00      37         ft_str_space_cmp [7]
+-----------------------------------------------
+                0.00    0.00       1/30          init_cub [47]
+                0.00    0.00      29/30          ft_calloc [9]
+[8]      0.0    0.00    0.00      30         ft_bzero [8]
+-----------------------------------------------
+                0.00    0.00       1/29          make_new_map [50]
+                0.00    0.00       9/29          realloc_vector [22]
+                0.00    0.00       9/29          realloc_vector_minsize [23]
+                0.00    0.00      10/29          new_vector [19]
+[9]      0.0    0.00    0.00      29         ft_calloc [9]
+                0.00    0.00      29/30          ft_bzero [8]
+-----------------------------------------------
+                0.00    0.00      22/22          get_col [29]
+[10]     0.0    0.00    0.00      22         ft_isdigit [10]
+-----------------------------------------------
+                0.00    0.00       9/21          read_map [56]
+                0.00    0.00      12/21          pars_data [53]
+[11]     0.0    0.00    0.00      21         gnl [11]
+                0.00    0.00      20/20          gnl_join [13]
+-----------------------------------------------
+                0.00    0.00      20/20          gnl_join [13]
+[12]     0.0    0.00    0.00      20         calc_newsize [12]
+-----------------------------------------------
+                0.00    0.00      20/20          gnl [11]
+[13]     0.0    0.00    0.00      20         gnl_join [13]
+                0.00    0.00      40/91          ft_memcpy [6]
+                0.00    0.00      20/20          calc_newsize [12]
+                0.00    0.00      20/20          gnl_memmove [14]
+-----------------------------------------------
+                0.00    0.00      20/20          gnl_join [13]
+[14]     0.0    0.00    0.00      20         gnl_memmove [14]
+-----------------------------------------------
+                0.00    0.00       9/18          str_to_vector [24]
+                0.00    0.00       9/18          read_map [56]
+[15]     0.0    0.00    0.00      18         add_elems_vector [15]
+                0.00    0.00      18/91          ft_memcpy [6]
+                0.00    0.00       9/9           realloc_vector [22]
+-----------------------------------------------
+                0.00    0.00       1/18          get_pname [46]
+                0.00    0.00       4/18          ft_strendcmp [33]
+                0.00    0.00       4/18          set_title [59]
+                0.00    0.00       9/18          str_to_vector [24]
+[16]     0.0    0.00    0.00      18         ft_strlen [16]
+-----------------------------------------------
+                0.00    0.00       6/14          ft_strlcpy [28]
+                0.00    0.00       8/14          ft_strrchr [25]
+[17]     0.0    0.00    0.00      14         heap_strlen [17]
+-----------------------------------------------
+                0.00    0.00      12/12          pars_data [53]
+[18]     0.0    0.00    0.00      12         skip_spaces [18]
+-----------------------------------------------
+                0.00    0.00       1/10          read_map [56]
+                0.00    0.00       9/10          str_to_vector [24]
+[19]     0.0    0.00    0.00      10         new_vector [19]
+                0.00    0.00      10/29          ft_calloc [9]
+-----------------------------------------------
+                0.00    0.00       9/9           make_new_map [50]
+[20]     0.0    0.00    0.00       9         ft_dupmapline [20]
+                0.00    0.00       9/91          ft_memcpy [6]
+-----------------------------------------------
+                0.00    0.00       9/9           read_map [56]
+[21]     0.0    0.00    0.00       9         map_forbiden_char [21]
+                0.00    0.00     198/503         ft_strchr [5]
+-----------------------------------------------
+                0.00    0.00       9/9           add_elems_vector [15]
+[22]     0.0    0.00    0.00       9         realloc_vector [22]
+                0.00    0.00       9/29          ft_calloc [9]
+                0.00    0.00       9/91          ft_memcpy [6]
+-----------------------------------------------
+                0.00    0.00       9/9           normalise_map [52]
+[23]     0.0    0.00    0.00       9         realloc_vector_minsize [23]
+                0.00    0.00       9/29          ft_calloc [9]
+                0.00    0.00       9/91          ft_memcpy [6]
+-----------------------------------------------
+                0.00    0.00       9/9           read_map [56]
+[24]     0.0    0.00    0.00       9         str_to_vector [24]
+                0.00    0.00       9/10          new_vector [19]
+                0.00    0.00       9/18          ft_strlen [16]
+                0.00    0.00       9/18          add_elems_vector [15]
+-----------------------------------------------
+                0.00    0.00       8/8           get_map_range [45]
+[25]     0.0    0.00    0.00       8         ft_strrchr [25]
+                0.00    0.00       8/14          heap_strlen [17]
+-----------------------------------------------
+                0.00    0.00       7/7           fill_render [42]
+[26]     0.0    0.00    0.00       7         get_data_img [26]
+-----------------------------------------------
+                0.00    0.00       7/7           pars_data [53]
+[27]     0.0    0.00    0.00       7         is_color [27]
+                0.00    0.00      13/37          ft_str_space_cmp [7]
+-----------------------------------------------
+                0.00    0.00       1/6           check_easy_errors [37]
+                0.00    0.00       2/6           read_color [35]
+                0.00    0.00       3/6           set_title [59]
+[28]     0.0    0.00    0.00       6         ft_strlcpy [28]
+                0.00    0.00       6/14          heap_strlen [17]
+                0.00    0.00       6/91          ft_memcpy [6]
+-----------------------------------------------
+                0.00    0.00       6/6           read_color [35]
+[29]     0.0    0.00    0.00       6         get_col [29]
+                0.00    0.00      22/22          ft_isdigit [10]
+-----------------------------------------------
+                0.00    0.00       2/6           read_color [35]
+                0.00    0.00       4/6           pars_texture [32]
+[30]     0.0    0.00    0.00       6         skip_key_space [30]
+-----------------------------------------------
+                0.00    0.00       5/5           pars_data [53]
+[31]     0.0    0.00    0.00       5         is_texture [31]
+                0.00    0.00      14/37          ft_str_space_cmp [7]
+-----------------------------------------------
+                0.00    0.00       4/4           pars_data [53]
+[32]     0.0    0.00    0.00       4         pars_texture [32]
+                0.00    0.00      10/37          ft_str_space_cmp [7]
+                0.00    0.00       4/6           skip_key_space [30]
+-----------------------------------------------
+                0.00    0.00       1/2           check_easy_errors [37]
+                0.00    0.00       1/2           set_title [59]
+[33]     0.0    0.00    0.00       2         ft_strendcmp [33]
+                0.00    0.00       4/18          ft_strlen [16]
+-----------------------------------------------
+                0.00    0.00       2/2           pars_data [53]
+[34]     0.0    0.00    0.00       2         pars_color [34]
+                0.00    0.00       2/2           read_color [35]
+-----------------------------------------------
+                0.00    0.00       2/2           pars_color [34]
+[35]     0.0    0.00    0.00       2         read_color [35]
+                0.00    0.00       6/6           get_col [29]
+                0.00    0.00       2/6           skip_key_space [30]
+                0.00    0.00       2/6           ft_strlcpy [28]
+-----------------------------------------------
+                0.00    0.00       1/1           normalise_map [52]
+[36]     0.0    0.00    0.00       1         change_null_into_space [36]
+-----------------------------------------------
+                0.00    0.00       1/1           init_cub [47]
+[37]     0.0    0.00    0.00       1         check_easy_errors [37]
+                0.00    0.00       1/6           ft_strlcpy [28]
+                0.00    0.00       1/2           ft_strendcmp [33]
+-----------------------------------------------
+                0.00    0.00       1/1           pars_map [54]
+[38]     0.0    0.00    0.00       1         count_players [38]
+                0.00    0.00     234/503         ft_strchr [5]
+                0.00    0.00       1/1           find_player [43]
+                0.00    0.00       1/1           set_angle_player [58]
+-----------------------------------------------
+                0.00    0.00       1/1           init_cub [47]
+[39]     0.0    0.00    0.00       1         cub_init_mlx [39]
+                0.00    0.00       1/1           set_title [59]
+                0.00    0.00       1/1           setup_hooks [60]
+-----------------------------------------------
+                0.00    0.00       1/1           cub_loop [2]
+[40]     0.0    0.00    0.00       1         debug_key_pressed [40]
+-----------------------------------------------
+                0.00    0.00       1/1           init_cub [47]
+[41]     0.0    0.00    0.00       1         fill_game [41]
+                0.00    0.00       1/1           fill_render [42]
+-----------------------------------------------
+                0.00    0.00       1/1           fill_game [41]
+[42]     0.0    0.00    0.00       1         fill_render [42]
+                0.00    0.00       7/7           get_data_img [26]
+-----------------------------------------------
+                0.00    0.00       1/1           count_players [38]
+[43]     0.0    0.00    0.00       1         find_player [43]
+                0.00    0.00      28/503         ft_strchr [5]
+-----------------------------------------------
+                0.00    0.00       1/1           pars_map [54]
+[44]     0.0    0.00    0.00       1         flood_fill [44]
+                0.00    0.00       1/1           recursive_shi [57]
+                0.00    0.00       1/1           get_map_range [45]
+                0.00    0.00       1/1           make_new_map [50]
+-----------------------------------------------
+                0.00    0.00       1/1           flood_fill [44]
+[45]     0.0    0.00    0.00       1         get_map_range [45]
+                0.00    0.00      17/503         ft_strchr [5]
+                0.00    0.00       8/8           ft_strrchr [25]
+-----------------------------------------------
+                0.00    0.00       1/1           init_cub [47]
+[46]     0.0    0.00    0.00       1         get_pname [46]
+                0.00    0.00       1/18          ft_strlen [16]
+-----------------------------------------------
+                0.00    0.00       1/1           main [88]
+[47]     0.0    0.00    0.00       1         init_cub [47]
+                0.00    0.00       1/30          ft_bzero [8]
+                0.00    0.00       1/1           get_pname [46]
+                0.00    0.00       1/1           check_easy_errors [37]
+                0.00    0.00       1/1           cub_init_mlx [39]
+                0.00    0.00       1/1           parsing [55]
+                0.00    0.00       1/1           fill_game [41]
+-----------------------------------------------
+                0.00    0.00       1/1           pars_data [53]
+[48]     0.0    0.00    0.00       1         is_data_full [48]
+-----------------------------------------------
+                0.00    0.00       1/1           pars_data [53]
+[49]     0.0    0.00    0.00       1         is_map [49]
+                0.00    0.00      26/503         ft_strchr [5]
+-----------------------------------------------
+                0.00    0.00       1/1           flood_fill [44]
+[50]     0.0    0.00    0.00       1         make_new_map [50]
+                0.00    0.00       9/9           ft_dupmapline [20]
+                0.00    0.00       1/29          ft_calloc [9]
+-----------------------------------------------
+                0.00    0.00       1/1           cub_loop [2]
+[51]     0.0    0.00    0.00       1         move_player [51]
+-----------------------------------------------
+                0.00    0.00       1/1           read_map [56]
+[52]     0.0    0.00    0.00       1         normalise_map [52]
+                0.00    0.00       9/9           realloc_vector_minsize [23]
+                0.00    0.00       1/1           change_null_into_space [36]
+-----------------------------------------------
+                0.00    0.00       1/1           parsing [55]
+[53]     0.0    0.00    0.00       1         pars_data [53]
+                0.00    0.00      12/12          skip_spaces [18]
+                0.00    0.00      12/21          gnl [11]
+                0.00    0.00       7/7           is_color [27]
+                0.00    0.00       5/5           is_texture [31]
+                0.00    0.00       4/4           pars_texture [32]
+                0.00    0.00       2/2           pars_color [34]
+                0.00    0.00       1/1           is_map [49]
+                0.00    0.00       1/1           is_data_full [48]
+-----------------------------------------------
+                0.00    0.00       1/1           parsing [55]
+[54]     0.0    0.00    0.00       1         pars_map [54]
+                0.00    0.00       1/1           read_map [56]
+                0.00    0.00       1/1           count_players [38]
+                0.00    0.00       1/1           flood_fill [44]
+-----------------------------------------------
+                0.00    0.00       1/1           init_cub [47]
+[55]     0.0    0.00    0.00       1         parsing [55]
+                0.00    0.00       1/1           pars_data [53]
+                0.00    0.00       1/1           pars_map [54]
+-----------------------------------------------
+                0.00    0.00       1/1           pars_map [54]
+[56]     0.0    0.00    0.00       1         read_map [56]
+                0.00    0.00       9/9           map_forbiden_char [21]
+                0.00    0.00       9/9           str_to_vector [24]
+                0.00    0.00       9/18          add_elems_vector [15]
+                0.00    0.00       9/21          gnl [11]
+                0.00    0.00       1/10          new_vector [19]
+                0.00    0.00       1/1           normalise_map [52]
+-----------------------------------------------
+                                 364             recursive_shi [57]
+                0.00    0.00       1/1           flood_fill [44]
+[57]     0.0    0.00    0.00       1+364     recursive_shi [57]
+                                 364             recursive_shi [57]
+-----------------------------------------------
+                0.00    0.00       1/1           count_players [38]
+[58]     0.0    0.00    0.00       1         set_angle_player [58]
+-----------------------------------------------
+                0.00    0.00       1/1           cub_init_mlx [39]
+[59]     0.0    0.00    0.00       1         set_title [59]
+                0.00    0.00       4/18          ft_strlen [16]
+                0.00    0.00       3/6           ft_strlcpy [28]
+                0.00    0.00       1/2           ft_strendcmp [33]
+-----------------------------------------------
+                0.00    0.00       1/1           cub_init_mlx [39]
+[60]     0.0    0.00    0.00       1         setup_hooks [60]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2022 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [15] add_elems_vector       [28] ft_strlcpy             [52] normalise_map
+  [12] calc_newsize (read.c)  [16] ft_strlen              [34] pars_color
+  [36] change_null_into_space [25] ft_strrchr             [53] pars_data
+  [37] check_easy_errors      [29] get_col                [54] pars_map
+  [38] count_players          [26] get_data_img           [32] pars_texture
+  [39] cub_init_mlx           [45] get_map_range          [55] parsing
+   [2] cub_loop               [46] get_pname              [35] read_color
+  [40] debug_key_pressed      [11] gnl                    [56] read_map
+  [41] fill_game              [13] gnl_join               [22] realloc_vector
+  [42] fill_render            [14] gnl_memmove            [23] realloc_vector_minsize
+  [43] find_player            [17] heap_strlen            [57] recursive_shi
+  [44] flood_fill             [47] init_cub                [1] render2_minimap
+   [8] ft_bzero               [27] is_color                [3] render_minimap
+   [9] ft_calloc              [48] is_data_full           [58] set_angle_player
+  [20] ft_dupmapline          [49] is_map                 [59] set_title
+  [10] ft_isdigit             [31] is_texture             [60] setup_hooks
+   [6] ft_memcpy              [50] make_new_map           [30] skip_key_space
+   [7] ft_str_space_cmp       [21] map_forbiden_char (pars_map.c) [18] skip_spaces
+   [5] ft_strchr              [51] move_player            [24] str_to_vector
+  [33] ft_strendcmp           [19] new_vector

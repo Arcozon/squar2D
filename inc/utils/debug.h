@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:09:09 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:10:28 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/27 17:15:59 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ static inline double	debug_clock(void) {
 
 #  define TIMER_START\
 	{\
+		if (g_debug_time)\
+		{\
+			TIMER_END\
+		}\
 		g_debug_time = debug_clock();\
 		strncpy(g_debug_start_file, BASENAME(__FILE__), (sizeof(g_debug_start_file) - 1));\
 		g_debug_start_file[(sizeof(g_debug_start_file) - 1)] = 0;\
@@ -96,7 +100,7 @@ static inline double	debug_clock(void) {
 								DEBUG_TIMER_FILEARGS(__FILE__, __LINE__),\
 								((debug_clock() - g_debug_time))
 
-#  define TIMER_END\
+# define TIMER_STEP\
 	{\
 		if (g_debug_time == 0)\
 		{\
@@ -105,8 +109,12 @@ static inline double	debug_clock(void) {
 		else\
 		{\
 			fprintf(stderr, DEBUG_END_TIMER_FORMAT, DEBUG_END_TIMER_ARGS);\
-			g_debug_time = 0;\
 		}\
+	};
+# define TIMER_END\
+	{\
+		TIMER_STEP\
+		g_debug_time = 0;\
 	};
 
 # else

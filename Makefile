@@ -32,7 +32,7 @@ D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
-FLAGS = -Wall -Wextra -Werror -MMD -g
+FLAGS = -Wall -Wextra -Werror -MMD -g -pg 
 IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 
@@ -47,13 +47,13 @@ all:	cp_mlx
 $(NAME):	$(OBJ)
 	$(MK_MLX)
 	@$(RANDOM_CLR)
-	$(CC) -o$@ $^ $(LFLAGS)
+	$(CC) -pg -o$@ $^ $(LFLAGS)
 	@$(RESET_CLR)
 
 $(OBJ): $(D_BUILD)%.o:	$(D_SRC)%.c
 	@mkdir -p $(@D)
 	@$(RANDOM_CLR)
-	$(CC) $(FLAGS) $(IFLAGS) -c $< -o $@ 
+	$(CC) $(FLAGS) $(IFLAGS) -c $< -o $@
 	@$(RESET_CLR)
 
 cp_mlx:
