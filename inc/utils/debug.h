@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:09:09 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:07:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/27 17:10:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ static inline double	debug_clock(void) {
 	{\
 		if (g_debug_time == 0)\
 		{\
-			fprintf(stderr, B_RED "Timer never started (%s[%d]\n", __FILE__, __LINE__);\
+			fprintf(stderr, B_RED "Timer never started (%s[%d]\n", BASENAME(__FILE__), __LINE__);\
 		}\
 		else\
 		{\
