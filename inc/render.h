@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 13:46:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:37:43 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ enum {R, G, B
 void	set_floor_ceiling(t_render *render);
 void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end);
 
+void	render_mmap_environement(char *map[], const float dim[2], const float p_coo[2], t_img mmap);
 void	render_minimap(t_game *game, t_render *render);
-void	render2_minimap(char *map[], const float dim[2], const float p_coo[2], t_img mmap);
 
 void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[], const t_clr c_clr);
 void	antialiasing_bot(const t_clr pre_aa[], t_clr post_aa[], const t_clr f_clr);

@@ -5,7 +5,7 @@ D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
 S_SRC_RENDER =	set_floor_ceiling.c  draw_frame.c  draw_projected_wall.c  antialiasing.c
-S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  minimap.c  new_minimap.c
+S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  minimap.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))	
 
@@ -32,7 +32,7 @@ D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
-FLAGS = -Wall -Wextra -Werror -MMD -g -pg 
+FLAGS = -Wall -Wextra -Werror -MMD -g
 IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 
@@ -47,7 +47,7 @@ all:	cp_mlx
 $(NAME):	$(OBJ)
 	$(MK_MLX)
 	@$(RANDOM_CLR)
-	$(CC) -pg -o$@ $^ $(LFLAGS)
+	$(CC) -o$@ $^ $(LFLAGS)
 	@$(RESET_CLR)
 
 $(OBJ): $(D_BUILD)%.o:	$(D_SRC)%.c

@@ -6,76 +6,83 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:36:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:38:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// static void	fill_rectangle(t_img img_map, int start[2], int len[2], const t_clr color)
-// {
-// 	t_clr	*pxl_start;
-// 	int		iy;
+__attribute__((always_inline, nonnull(1), hot))
+static inline void	*ft_fclrset(uint32_t *restrict img_data, const uint32_t color, const uint64_t size)
+{
+	uint64_t	i;
 
-// 	if (start[X] >= img_map.width)
-// 		start[X] = img_map.width - 1;
-// 	if (start[Y] >= img_map.height)
-// 		start[Y] = img_map.height - 1;
-// 	if (start[X] + len[X] > img_map.width)
-// 		len[X] = img_map.width - start[X];
-// 	if (start[Y] + len[Y] > img_map.height)
-// 		len[Y] = img_map.height - start[Y];
-// 	pxl_start = &img_map.p_data[start[X] + img_map.width * start[Y]];
-// 	iy = 0;
-// 	while (iy < len[Y])
-// 	{
-// 		ft_clrset(&pxl_start[iy * img_map.width], color, len[X]);
-// 		++iy;
-// 	}
-// }
+	i = 0;
+	while (i < size)
+	{
+		img_data[i] = color;
+		++i;
+	}
+	return (img_data);
+}
 
-// static int	mmap_oob_or_wall(int ppx_coo[2], const float start[2], char **map, const float dim[2])
-// {
-// 	const float	ppx_coo_map[2] = {start[X] + ppx_coo[X] / (float)MMAP_SQUARE_SIZE,
-// 		start[Y] + ppx_coo[Y] / (float)MMAP_SQUARE_SIZE};
+// static inline void	mmap_fill_square(t_img img, int coo_x, int coo_y,  t_clr clr)
+__attribute__((always_inline))
+static inline void	mmap_fill_square(t_img img, int coo_x, int coo_y, uint32_t clr)
+{
+	int size[2];
+	int	iy;
 
+	if (coo_x >= img.width || coo_y >= img.height
+		|| coo_x <= -MMAP_SQUARE_SIZE || coo_y <= -MMAP_SQUARE_SIZE)
+		return ;
+	size[X] = MMAP_SQUARE_SIZE;
+	size[Y] = MMAP_SQUARE_SIZE;
+	if (coo_x < 0)
+	{
+		size[X] += coo_x;
+		coo_x = 0;
+	}
+	if (coo_y < 0)
+	{
+		size[Y] += coo_y;
+		coo_y = 0;
+	}
+	if (size[X] + coo_x > img.width)
+		size[X] = img.width - coo_x;
+	if (size[Y] + coo_y > img.height)
+		size[Y] = img.height - coo_y;
+	iy = -1;
+	while (++iy < size[Y])
+		ft_fclrset((uint32_t *)&img.p_data[(coo_y + iy) * img.width + coo_x], clr, size[X]);
+}
 
-// 	if (ppx_coo_map[X] < 0 || ppx_coo_map[Y] < 0
-// 		|| ppx_coo_map[X] + 1 > dim[X] || ppx_coo_map[Y] + 1 > dim[Y])
-// 		return (1);
-// 	// DEBUG("PPX_COO_MAP: %d|%d (%f|%f)", (int)ppx_coo_map[X], (int)ppx_coo_map[Y], ppx_coo_map[X], ppx_coo_map[Y])
-// 	if (map[(int)ppx_coo_map[Y]][(int)ppx_coo_map[X]] == WALL_CHAR)
-// 		return (1);
-// 	return (0);
-// }
+void	render_mmap_environement(char *map[], const float dim[2], const float p_coo[2], t_img mmap)
+{
+	const int	start_sqr_coo[2] = {MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE * p_coo[X],
+		MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
+	int	sqr_coo[2];
+	int	ix;
+	int	iy;
 
-// static void	only_minimap(char **map, const float dim[2],
-// 	t_img img_map, const float p_coo[2])
-// {
-// 	const float	start[2] = {p_coo[X] - MMAP_WIDHT / (float)MMAP_SQUARE_SIZE / 2,
-// 		p_coo[Y] - MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE / 2};
-// 	int			i[2];
-
-// 	// DEBUG("N_SQUARE: %f | %f", MMAP_WIDHT / (float)MMAP_SQUARE_SIZE, MMAP_HEIGHT / (float)MMAP_SQUARE_SIZE)
-// 	// DEBUG("START: %f | %f", start[X], start[Y])
-// 	// DEBUG("P_COO: %f | %f", p_coo[X], p_coo[Y])
-// 	mmap_oob_or_wall((int []){MMAP_WIDHT / 2, MMAP_HEIGHT / 2}, start, map, dim);
-// 	fill_rectangle(img_map, (int []){0, 0}, (int []){MMAP_WIDHT, MMAP_HEIGHT}, (t_clr){.rgb = MMAP_CLR_WALL});
-// 	i[Y] = 0;
-// 	while (i[Y] < MMAP_HEIGHT)
-// 	{
-// 		i[X] = 0;
-// 		while (i[X] < MMAP_WIDHT)
-// 		{
-// 			if (!mmap_oob_or_wall(i, start, map, dim))
-// 				img_map.p_data[i[X] + i[Y] * img_map.width].rgb = MMAP_CLR_MTY;
-// 			++i[X];
-// 		}
-// 		++i[Y];
-// 	}
-
-// 	(void)map, (void)dim;
-// }
+	ft_fclrset((uint32_t *)mmap.p_data, MMAP_CLR_WALL, mmap.height * mmap.width);
+	iy = -1;
+	while (++iy < dim[Y])
+	{
+		ix =  0;
+		sqr_coo[Y] = start_sqr_coo[Y] + iy * MMAP_SQUARE_SIZE;
+		if (sqr_coo[Y] <= -MMAP_SQUARE_SIZE || sqr_coo[Y] >= mmap.height)
+			continue ;
+		while (++ix < dim[X])
+		{
+			sqr_coo[X] = start_sqr_coo[X] + ix * MMAP_SQUARE_SIZE;
+			if (sqr_coo[X] <= -MMAP_SQUARE_SIZE || sqr_coo[X] >= mmap.width)
+				continue ;
+			else if (map[iy][ix] == MTY_CHAR)
+				mmap_fill_square(mmap, sqr_coo[X], sqr_coo[Y], MMAP_CLR_MTY);			
+		}
+	}
+}
 
 static void	mmap_player(t_img img_map, const float p_angle, const float fov)
 {
@@ -97,18 +104,11 @@ static void	mmap_player(t_img img_map, const float p_angle, const float fov)
 		}	
 		++iy;
 	}
-	(void)p_angle, (void) fov;
+	(void)p_angle, (void)fov;
 }
 
 void	render_minimap(t_game *game, t_render *render)
 {
-	// TIMER_START
-	// for (int i = 0; i<1000; ++i)
-	// 	only_minimap(game->map, game->dim, render->img_mmap, game->p_coo);
-	TIMER_START
-	for (int i = 0; i<10000; ++i)
-		render2_minimap(game->map, game->dim, game->p_coo, render->img_mmap);
-	TIMER_END
-	exit(1);
+	render_mmap_environement(game->map, game->dim, game->p_coo, render->img_mmap);
 	mmap_player(render->img_mmap, game->p_angle, game->fov);
 }
