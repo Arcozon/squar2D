@@ -9,13 +9,13 @@ Agree on a data structure for the map
 	- Fixed tick rate ?
 
 -- Minimap
-	- NEED TO MAKE IT FAST !! < FIND RANGE TO LOOP, PRINT SQUARE
 	- add vision
 	- Why is it changing the rest of the screen ? -- IDK
 
 -- PLAYER
 	- calc speed
-	- calc colision during movements
+	- calc colision during movements -> Need to check corners not sides, also mby do it with ray tracing and not boring add ?
+
 
 
 -- SETTINGS:
