@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 13:45:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:43:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 # define W_WIDTH	1200
 # define W_HEIGHT	800
-
 
 # define MMAP_WIDHT		W_WIDTH
 # define MMAP_HEIGHT	W_HEIGHT
@@ -57,7 +56,8 @@ struct s_xpm_img
 	int		height;
 };
 
-enum {MINR_MAP, MAXR_MAP};
+enum {MINR_MAP, MAXR_MAP
+};
 
 struct s_pars
 {

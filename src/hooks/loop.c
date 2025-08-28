@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:11:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/28 11:57:02 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,16 @@ int	cub_loop(t_game *game)
 {
 	t_render *render = &game->render;
 
+	// TIMER_START
 	debug_key_pressed(game);
+	// TIMER_START
 	move_player(game);
+	// TIMER_START
 	render_minimap(game, render);
+	// TIMER_STEP
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
+	// TIMER_END
+	// WAIT
 	// draw_frame(game);
 	return (0);
 	(void)game;
