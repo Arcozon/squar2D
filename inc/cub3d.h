@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 19:18:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/28 18:12:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@
 # include "hooks.h"
 # include "render.h"
 
-# define VANGLE_DELTA		0.0002f
-# define PLAYER_BASE_SPEED	0.0003f
+# define VANGLE_DELTA		0.0015f
+# define PLAYER_BASE_SPEED	0.001f
+
+# define HALF_P_SIZE		0.2f
 
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
@@ -59,6 +61,7 @@ struct s_render
 struct s_game
 {
 	float		p_coo[2];
+	float		p_delta[2];
 	float		p_angle;
 	float		p_speed;
 
