@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/28 18:10:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/08/31 14:06:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,7 @@ void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[], const t_clr c_clr);
 void	antialiasing_bot(const t_clr pre_aa[], t_clr post_aa[], const t_clr f_clr);
 void	antialiasing(t_render *render);
 void	draw_frame(t_game *game, t_render *render);
+
+void	check_colisions(t_game *game);
 
 #endif

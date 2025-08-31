@@ -14,11 +14,11 @@ S_SRC_INIT+=	parsing.c  parsing_utils.c  read.c  flood_fill.c  fill_game.c
 D_SRC_INIT =	init/
 SRC_INIT   =	$(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
-S_SRC_UTILS =	utils.c  errors.c free.c s_vector.c
+S_SRC_UTILS =	utils.c  errors.c  free.c  s_vector.c
 D_SRC_UTILS =	utils/
 SRC_UTILS   =	$(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c
+S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c  colision.c
 D_SRC =	src/
 
 D_BUILD = .build/
