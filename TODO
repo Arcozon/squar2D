@@ -25,5 +25,5 @@ Agree on a data structure for the map
 	- movements key bind?
 
 -- RENDER
-	- calc range
+	- calc range: -- Check the right coo on map
 	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)
