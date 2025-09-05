@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/24 11:14:17 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:38:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,16 @@ typedef struct s_pars		t_pars;
 typedef struct s_cub		t_cub;
 typedef struct s_game		t_game;
 typedef struct s_render		t_render;
+
+typedef struct	s_col		t_col;
+
+enum	e_hit
+{
+	no_hit = 0,
+	hor_hit,
+	ver_hit,
+	corner_hit
+};
 
 void	free_cub(t_cub *cub);
 

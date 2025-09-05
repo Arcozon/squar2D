@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/28 11:50:28 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:38:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	render_mmap_environement(char *map[], const float dim[2],
 
 static void	mmap_player(t_img img_map, const float p_angle, const float fov)
 {
-	const int	center[] = {MMAP_WIDHT / 2, MMAP_HEIGHT / 2};
+	static const int	center[] = {MMAP_WIDHT / 2, MMAP_HEIGHT / 2};
 	int			ix;
 	int			iy;
 
@@ -115,5 +115,8 @@ void	render_minimap(t_game *game, t_render *render)
 {
 	render_mmap_environement(game->map, game->dim,
 		game->p_coo, render->img_mmap);
+	
+	check_colisions(game);
+	
 	mmap_player(render->img_mmap, game->p_angle, game->fov);
 }

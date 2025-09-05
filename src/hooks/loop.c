@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/03 16:09:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:37:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	cub_loop(t_game *game)
 	move_player(game);
 	render_minimap(game, render);
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
-	check_colisions(game);
+	// check_colisions(game);
 	return (0);
 }

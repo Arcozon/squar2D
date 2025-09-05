@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/28 18:12:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:08:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # include "parsing.h"
 # include "hooks.h"
 # include "render.h"
+# include "raycasting.h"
 
 # define VANGLE_DELTA		0.0015f
 # define PLAYER_BASE_SPEED	0.001f
