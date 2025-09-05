@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/05 15:46:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:49:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	fill_game(t_pars *pars, t_game *game)
 	game->p_angle = pars->view_angle;
 	game->p_speed = PLAYER_BASE_SPEED;
 	// game->fov = 2 * M_PI / 3;
-	game->fov = 2 * M_PI;
+	game->fov = BASE_FOV;
 	game->f_keys = 0;
 	fill_render(pars, &game->render);
 }

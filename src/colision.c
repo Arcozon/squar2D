@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/05 15:53:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 17:05:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ enum e_hit	__check_col(const t_col *col, char **map)
 			return (ver_hit);
 		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X] + col->dir[X]] == WALL_CHAR)
 			return (corner_hit);
+		// DEBUG("asdfasf")
 	}
 	return (no_hit);
 }
@@ -90,9 +91,14 @@ static inline void	get_next_step(t_col *col)
 	col->next_step[X] = (col->i_coo[X] + col->add_thing[X]) - col->f_coo[X];
 	col->next_step[Y] = (col->i_coo[Y] + col->add_thing[Y]) - col->f_coo[Y];
 	if (col->next_step[Y] == 0.f)
+	{
 		col->next_step[Y] = -1;
+		// DEBUG("%f", col->next_step[Y] / - col->sin_t)
+		// DEBUG("CHECK Yazsdfdsf [%d|%d]", (int)col->f_coo[X], (int)col->f_coo[Y] + col->for_check[Y])
+		// WAIT
+	}
 	if (col->next_step[X] == 0.f)
-		col->next_step[X] = 1;
+		col->next_step[X] = -1;
 	if (!col->is_cos_null)
 		col->distance_next_step[X] = col->next_step[X] / col->cos_t;
 	else
@@ -110,14 +116,17 @@ void	check_one_colision(t_col *col, char **map)
 		get_next_step(col);
 		if (fabsf(col->distance_next_step[X]) <= fabsf(col->distance_next_step[Y]))
 		{
-			col->f_coo[X] = col->i_coo[X] + col->add_thing[X];
+			// col->f_coo[X] = col->i_coo[X] + col->add_thing[X];
+			col->f_coo[X] += col->next_step[X];
 			col->f_coo[Y] -= col->distance_next_step[X] * col->sin_t;
 		}
 		else
 		{
 			col->f_coo[X] += col->distance_next_step[Y] * col->cos_t;
-			col->f_coo[Y] = col->i_coo[Y] + col->add_thing[Y];
+			// col->f_coo[Y] = col->i_coo[Y] + col->add_thing[Y];
+			col->f_coo[Y] += col->next_step[Y];
 		}
+		// DEBUG("Here: [%f|%f]", col->f_coo[X], col->f_coo[Y])
 		col->hit = __check_col(col, map);
 	}
 	// DEBUG("finalHit: [%f|%f]", col->f_coo[X], col->f_coo[Y])
@@ -143,50 +152,27 @@ void	check_one_colision(t_col *col, char **map)
 
 void	check_colisions(t_game *game)
 {
-	t_col	col;
-	int		i;
-	col.teta_step = game->fov / W_WIDTH;
-
-	// game->p_coo[X] = 2.f;
-	// game->p_coo[Y] = 2.f;
-	col.teta = game->p_angle - game->fov / 2;
-
-	// col.teta =  3 * M_PI / 4;
-	// init_one_colision(&col, game);
-	// check_one_colision(&col, game->map);
-	// render_mmap_one_ray(game, col);
-	// DEBUG("DISTANCE: %f", fabs((col.f_coo[X] - game->p_coo[X]) / col.sin_t))
-	// write(2, "\n", 1);
-
-	// col.teta =  M_PI / 4;
-	// init_one_colision(&col, game);
-	// check_one_colision(&col, game->map);
-	// render_mmap_one_ray(game, col);
-	// DEBUG("DISTANCE: %f", fabs((col.f_coo[X] - game->p_coo[X]) / col.sin_t))
-	// write(2, "\n", 1);
-
-	// col.teta =  - M_PI / 4;
-	// init_one_colision(&col, game);
-	// check_one_colision(&col, game->map);
-	// render_mmap_one_ray(game, col);
-	// DEBUG("DISTANCE: %f", fabs((col.f_coo[X] - game->p_coo[X]) / col.sin_t))
-	// write(2, "\n", 1);
-
-	// col.teta =  - 3 * M_PI / 4;
-	// init_one_colision(&col, game);
-	// check_one_colision(&col, game->map);
-	// render_mmap_one_ray(game, col);
-	// DEBUG("DISTANCE: %f", fabs((col.f_coo[X] - game->p_coo[X]) / col.sin_t))
+	static const int	n_ray = W_WIDTH;
+	t_col		col;
+	int			i;
 	
-	// exit(0);
-	i = 0;
-	// while (i < W_WIDTH)
-	while (i < 5)
+	// TIMER_START
+	// for(int a = 0; a < 10000; a++)
 	{
-		init_one_colision(&col, game);
-		check_one_colision(&col, game->map);
-		render_mmap_one_ray(game, col);
-		col.teta += col.teta_step;
-		++i;
+		col.teta_step = game->fov / n_ray;
+		col.teta = game->p_angle - game->fov / 2;
+
+		i = 0;
+		while (i < n_ray)
+		{
+			// DEBUG("teta: %f", col.teta);
+			init_one_colision(&col, game);
+			check_one_colision(&col, game->map);
+			render_mmap_one_ray(game, col);
+			col.teta += col.teta_step;
+			++i;
+		}
 	}
+	// TIMER_END
+	// WAIT
 }

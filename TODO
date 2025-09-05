@@ -9,14 +9,14 @@ Agree on a data structure for the map
 	- Fixed tick rate ?
 
 -- Minimap
-	- add vision
-	- Why is it changing the rest of the screen ? -- IDK
+	- vision: oob coo need to be properlu reajusted
 
 -- PLAYER
 	- calc speed
+
+-- COLISION
 	- calc colision during movements -> Need to check corners not sides, also mby do it with ray tracing and not boring add ?
-
-
+	- DAMN ITS FUCKED, FIX IT
 
 -- SETTINGS:
 	- fov
@@ -25,5 +25,4 @@ Agree on a data structure for the map
 	- movements key bind?
 
 -- RENDER
-	- calc range: -- Check the right coo on map
 	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)

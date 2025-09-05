@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:05:53 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/05 15:36:12 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 16:51:08 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,26 @@ void	render_mmap_one_ray(t_game *game, t_col col)
 
 	end_ray[X] = map_pcoo[X] + (col.f_coo[X] - game->p_coo[X]) * MMAP_SQUARE_SIZE;
 	end_ray[Y] = map_pcoo[Y] + (col.f_coo[Y] - game->p_coo[Y]) * MMAP_SQUARE_SIZE;
-	if (end_ray[X] < 0)
-		end_ray[X] = 0;
-	else if (end_ray[X] >= MMAP_WIDHT)
-		end_ray[X] = MMAP_WIDHT - 1;
-	if (end_ray[Y] < 0)
-		end_ray[Y] = 0;
-	else if (end_ray[Y] >= MMAP_HEIGHT)
-		end_ray[Y] = MMAP_HEIGHT - 1;
+	if (end_ray[X] < 0 || end_ray[X] >= MMAP_WIDHT)
+	{
+		if (end_ray[X] < 0)
+			end_ray[X] = 0;
+		else
+			end_ray[X] = MMAP_WIDHT - 1;
+		end_ray[Y] = (col.f_coo[Y] - game->p_coo[Y]) * MMAP_SQUARE_SIZE;
+		end_ray[Y] *= (end_ray[X] - map_pcoo[X])/ ((col.f_coo[X] - game->p_coo[X]) * MMAP_SQUARE_SIZE);
+		end_ray[Y] += map_pcoo[Y];
+	}
+	if (end_ray[Y] < 0 || end_ray[Y] >= MMAP_HEIGHT)
+	{
+		 if (end_ray[Y] < 0)
+			end_ray[Y] = 0;
+		else
+			end_ray[Y] = MMAP_HEIGHT - 1;
+		end_ray[X] = (col.f_coo[X] - game->p_coo[X]) * MMAP_SQUARE_SIZE;
+		end_ray[X] *= (end_ray[Y] - map_pcoo[Y])/ ((col.f_coo[Y] - game->p_coo[Y]) * MMAP_SQUARE_SIZE);
+		end_ray[X] += map_pcoo[X];
+	}
 	render_line(end_ray, map_pcoo, game->render.img_mmap);
 }
 
