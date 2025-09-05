@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/03 18:56:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/05 12:17:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,19 +53,19 @@ void	init_one_colision(t_col *col, t_game *game)
 
 	col->dir[X] = -1;
 	col->add_thing[X] = 0;
-	col->for_check[Y] = 0;
+	col->for_check[X] = -1;
 	if (col->cos_t >= 0)
 	{
 		col->add_thing[X] = 1;
-		col->for_check[Y] = 1;
+		col->for_check[X] = 0;
 		col->dir[X] = 1;	
 	}
 	col->dir[Y] = 1;
 	col->add_thing[Y] = 1;
-	col->for_check[X] = 0;
+	col->for_check[Y] = 0;
 	if (col->sin_t >= 0)
 	{
-		col->for_check[X] = 1;
+		col->for_check[Y] = -1;
 		col->add_thing[Y] = 0;
 		col->dir[Y] = -1;
 	}
@@ -93,12 +93,11 @@ void	check_one_colision(t_col *col, char **map)
 		col->next_step[X] = (col->i_coo[X] + col->add_thing[X]) - col->f_coo[X];
 		col->next_step[Y] = (col->i_coo[Y] + col->add_thing[Y]) - col->f_coo[Y];
 		if (col->next_step[Y] == 0.f)
-			col->next_step[Y] = 1;
+			col->next_step[Y] = -1;
 		if (col->next_step[X] == 0.f)
 			col->next_step[X] = col->dir[X];
-		DEBUG("-- X: %f %d %d  : %f", col->f_coo[X], col->i_coo[X], col->add_thing[X], col->next_step[X])
-		DEBUG("-- Y: %f %d %d  : %f", col->f_coo[Y], col->i_coo[Y], col->add_thing[Y], col->next_step[Y])
-		// DEBUG("nextStepX: %f", col->next_step[X])
+		// DEBUG("-- X: %f %d %d  : %f", col->f_coo[X], col->i_coo[X], col->add_thing[X], col->next_step[X])
+		// DEBUG("-- Y: %f %d %d  : %f", col->f_coo[Y], col->i_coo[Y], col->add_thing[Y], col->next_step[Y])
 		if (!col->is_cos_null)
 			col->distance_next_step[X] = col->next_step[X] / col->cos_t;
 		else
@@ -107,18 +106,18 @@ void	check_one_colision(t_col *col, char **map)
 			col->distance_next_step[Y] = col->next_step[Y] / - col->sin_t;
 		else
 			col->distance_next_step[Y] = INFINITY;
-		DEBUG("DistanceNext: [%f|%f]", col->distance_next_step[X], col->distance_next_step[Y])
-		// DEBUG("InC: [%d|%d]", col->i_coo[X] + col->add_thing[X], col->i_coo[Y] + col->add_thing[Y])
-		if (fabsf(col->distance_next_step[X]) <= fabsf(col->distance_next_step[Y]))
+		// DEBUG("DistanceNext: [%f|%f]", col->distance_next_step[X], col->distance_next_step[Y])
+		DEBUG("StepNext: [%f|%f]", col->next_step[X], col->next_step[Y])
+		if (fabsf(col->distance_next_step[X]) < fabsf(col->distance_next_step[Y]))
 		{
 			DEBUG(" ------------- smallest Xstep");
 			col->f_coo[X] += col->next_step[X];
 			col->f_coo[Y] -= col->distance_next_step[X] * col->sin_t;
 			DEBUG("CHECK X [%d|%d]", (int)col->f_coo[X] + col->for_check[X], (int)col->f_coo[Y])
-			if (map[col->dir[Y] + col->i_coo[Y]][(int)col->f_coo[X]] == WALL_CHAR)
+			if (map[(int)col->f_coo[Y]][(int)col->f_coo[X] + col->for_check[X]] == WALL_CHAR)
 				col->hit = 1;
 		}
-		else
+		else if (fabsf(col->distance_next_step[X]) > fabsf(col->distance_next_step[Y]))
 		{
 			DEBUG(" ----------- smallest Ystep");
 			col->f_coo[Y] += col->next_step[Y];
@@ -127,7 +126,15 @@ void	check_one_colision(t_col *col, char **map)
 			// col->f_coo[X] -= col->distance_next_step[Y] * col->cos_t;
 			DEBUG("CHECK Y [%d|%d]", (int)col->f_coo[X], (int)col->f_coo[Y] + col->for_check[Y])
 
-			if (map[(int)col->f_coo[Y]][col->dir[X] + col->i_coo[X]] == WALL_CHAR)
+			if (map[(int)col->f_coo[Y] + col->for_check[Y]][(int)col->f_coo[X]] == WALL_CHAR)
+				col->hit = 1;
+		}
+		else
+		{
+			col->f_coo[Y] += col->next_step[Y];
+			col->f_coo[X] += col->next_step[X];
+			DEBUG("CHECK BOTH [%d|%d]", (int)col->f_coo[X] + col->for_check[X], (int)col->f_coo[Y] + col->for_check[Y])
+			if (map[(int)col->f_coo[Y] + col->for_check[Y]][(int)col->f_coo[X] + col->for_check[X]] == WALL_CHAR)
 				col->hit = 1;
 		}
 		DEBUG("NewC: [%f|%f]", col->f_coo[X], col->f_coo[Y])
@@ -143,8 +150,8 @@ void	check_colisions(t_game *game)
 	// int		i;
 	col.teta_step = game->fov / W_WIDTH;
 
-	game->p_coo[X] = 2.f;
-	game->p_coo[Y] = 2.f;
+	// game->p_coo[X] = 2.f;
+	// game->p_coo[Y] = 2.f;
 	col.teta = game->p_angle + game->fov / 2;
 	col.teta = M_PI / 4 - 0.0001f;
 	col.teta = 0.f;
@@ -156,6 +163,7 @@ void	check_colisions(t_game *game)
 
 	col.teta = game->p_angle - game->fov / 2;
 	col.teta = 7 * M_PI / 8;
+	col.teta =  -1 * M_PI / 4;
 	init_one_colision(&col, game);
 	check_one_colision(&col, game->map);
 
