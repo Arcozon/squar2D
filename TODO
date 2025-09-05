@@ -8,11 +8,11 @@ Agree on a data structure for the map
 -- GAME
 	- Fixed tick rate ?
 
--- Minimap
-	- vision: oob coo need to be properlu reajusted
-
 -- PLAYER
 	- calc speed
+
+-- MINIMAP
+	- rotate around player ? (have player always looking in the same dir)
 
 -- COLISION
 	- calc colision during movements -> Need to check corners not sides, also mby do it with ray tracing and not boring add ?
