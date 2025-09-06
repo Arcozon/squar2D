@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 12:18:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/17 16:54:30 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 17:01:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ uint32_t	realloc_vector(t_vector *vector)
 	if (!new_ptr)
 		return (E_MLC);
 	if (vector->u_ptr.void_ptr)
-		ft_memcpy(new_ptr, vector->u_ptr.void_ptr, vector->size);
+		ft_memcpy(new_ptr, vector->u_ptr.void_ptr, vector->size * vector->sizeof_type);
 	free(vector->u_ptr.void_ptr);
 	vector->u_ptr.void_ptr = new_ptr;
 	vector->capacity *= 2;
@@ -54,7 +54,7 @@ uint32_t	new_vector_minsize(t_vector *vector,
 		return (E_MLC);
 	return (NO_ERR);
 }
-
+#include "debug.h"
 uint32_t	realloc_vector_minsize(t_vector *vector, const uint64_t min_size)
 {
 	uint64_t	new_capacity;
@@ -90,7 +90,9 @@ uint32_t	add_elems_vector(t_vector *vector,
 
 uint32_t	str_to_vector(t_vector *vector, const char *str)
 {
-	if (new_vector(vector, sizeof(*str)))
+	const uint64_t	len_str = ft_strlen(str);
+
+	if (new_vector_minsize(vector, sizeof(*str), len_str))
 		return (E_MLC);
-	return (add_elems_vector(vector, str, ft_strlen(str)));
+	return (add_elems_vector(vector, str, len_str));
 }

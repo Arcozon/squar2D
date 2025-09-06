@@ -22,10 +22,15 @@ Agree on a data structure for the map (sad char *[])
 
 -- MINIMAP
 	- rotate around player ? (have player always looking in the same dir)
+	- squre player ?
+	- plane view ?
+	- dont mlx put img to win twice
+	- add dirrection arrow
 
 -- COLISION
 	- calc colision during movements -> Need to check corners not sides, also mby do it with ray tracing and not boring add ?
 	- DAMN ITS FUCKED, FIX IT
+	- IT MAKES YOU CRASSH OOPS
 
 -- SETTINGS:
 	- fov
@@ -36,3 +41,30 @@ Agree on a data structure for the map (sad char *[])
 
 -- RENDER
 	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)
+
+
+==109623== Invalid read of size 4
+==109623==    at 0x409D0C: _draw_col_wall (draw_wall_col.c:48)
+==109623==    by 0x409D0C: draw_col_wall (draw_wall_col.c:60)
+==109623==    by 0x40AC5A: call_draw_col_wall (colision.c:146)
+==109623==    by 0x40AC5A: check_colisions (colision.c:168)
+==109623==    by 0x409692: render_minimap (minimap.c:119)
+==109623==    by 0x408375: draw_frame (draw_frame.c:30)
+==109623==    by 0x406CDE: cub_loop (loop.c:40)
+==109623==    by 0x40B23C: mlx_loop (in /home/gaeudes/Code/cub3d/squar2D/cub3d)
+==109623==    by 0x40A08F: main (main.c:24)
+==109623==  Address 0x485b080 is not stack'd, malloc'd or (recently) free'd
+==109623== 
+==109623== 
+==109623== Process terminating with default action of signal 11 (SIGSEGV)
+==109623==  Access not within mapped region at address 0x485B080
+==109623==    at 0x409D0C: _draw_col_wall (draw_wall_col.c:48)
+==109623==    by 0x409D0C: draw_col_wall (draw_wall_col.c:60)
+==109623==    by 0x40AC5A: call_draw_col_wall (colision.c:146)
+==109623==    by 0x40AC5A: check_colisions (colision.c:168)
+==109623==    by 0x409692: render_minimap (minimap.c:119)
+==109623==    by 0x408375: draw_frame (draw_frame.c:30)
+==109623==    by 0x406CDE: cub_loop (loop.c:40)
+==109623==    by 0x40B23C: mlx_loop (in /home/gaeudes/Code/cub3d/squar2D/cub3d)
+==109623==    by 0x40A08F: main (main.c:24)
+==109623==  If you believe this happened as a 

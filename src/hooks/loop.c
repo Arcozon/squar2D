@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 14:43:07 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 16:09:53 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,8 @@ void	debug_key_pressed(t_game *game)
 
 int	cub_loop(t_game *game)
 {
-	t_render *render = &game->render;
-
 	debug_key_pressed(game);
 	move_player(game);
-	render_minimap(game, render);
-	draw_frame(game, &game->render);
-	
-	// mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
-	// check_colisions(game);
+	draw_frame(game, &game->render);	
 	return (0);
 }

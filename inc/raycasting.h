@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 15:20:50 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 15:25:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct	s_col
 	int		for_check[2];
 
 	enum e_hit	hit;
-	enum e_hit	side;
+	enum e_side	side;
 	float		percent;
 	float		distance;
 }	t_col;

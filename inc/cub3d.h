@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 12:53:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 16:54:23 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,10 @@
 # include "render.h"
 # include "raycasting.h"
 
-# define VANGLE_DELTA		0.005f
+# define VANGLE_DELTA		0.03f
 # define PLAYER_BASE_SPEED	0.01f
-# define BASE_FOV			3 * M_PI / 5
+# define BASE_FOV			4 * M_PI
+// # define BASE_FOV			3 * M_PI / 5
 
 # define HALF_P_SIZE		0.2f
 
