@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/05 17:05:55 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 15:22:14 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,38 +116,54 @@ void	check_one_colision(t_col *col, char **map)
 		get_next_step(col);
 		if (fabsf(col->distance_next_step[X]) <= fabsf(col->distance_next_step[Y]))
 		{
-			// col->f_coo[X] = col->i_coo[X] + col->add_thing[X];
 			col->f_coo[X] += col->next_step[X];
 			col->f_coo[Y] -= col->distance_next_step[X] * col->sin_t;
 		}
 		else
 		{
 			col->f_coo[X] += col->distance_next_step[Y] * col->cos_t;
-			// col->f_coo[Y] = col->i_coo[Y] + col->add_thing[Y];
 			col->f_coo[Y] += col->next_step[Y];
 		}
-		// DEBUG("Here: [%f|%f]", col->f_coo[X], col->f_coo[Y])
 		col->hit = __check_col(col, map);
 	}
-	// DEBUG("finalHit: [%f|%f]", col->f_coo[X], col->f_coo[Y])
 	if (col->hit == hor_hit)
 	{
+		col->side = east_side;
 		col->percent = col->f_coo[X] - (int)col->f_coo[X];
 		if (col->dir[X] < 0)
+		{
+			col->side = west_side;
 			col->percent = 1 - col->percent;
-		// DEBUG("HOR HIT %.1f%%", col->percent * 100)
-	}
-	else if (col->hit == ver_hit)
-	{
-		col->percent = col->f_coo[Y] - (int)col->f_coo[Y];
-		if (col->dir[Y] > 0)
-			col->percent = 1 - col->percent;
-		// DEBUG("VER HIT %.1f%%", col->percent * 100)
+		}
 	}
 	else
 	{
-		// DEBUG("CORNER HIT")
+		col->side = south_side;
+		col->percent = col->f_coo[Y] - (int)col->f_coo[Y];
+		if (col->dir[Y] > 0)
+		{
+			col->side = north_side;
+			col->percent = 1 - col->percent;
+		}
 	}
+}
+
+__attribute__((always_inline))
+static inline void	call_draw_col_wall(const t_col col, const int x, const t_game game, t_render render)
+{
+	const float dx = (col.f_coo[X] - game.p_coo[X]);
+	const float dy = (col.f_coo[Y] - game.p_coo[Y]);
+	t_dcwall info;
+
+	info.wall_img = render.n_txtr; // fix
+	info.img_percent = col.percent;
+	info.distance = sqrtf(dx * dx + dy * dy);
+	// if (col.is_cos_null)
+	// 	info.distance = fabsf(col.f_coo[Y] - game.p_coo[Y]);
+	// else
+	// 	info.distance = fabsf((col.f_coo[X]  - game.p_coo[X]) / col.cos_t);
+	// DEBUG("Distance: %f | Percent %f", info.distance, info.img_percent)
+	draw_col_wall(info, render.img, x, render.n_txtr);
 }
 
 void	check_colisions(t_game *game)
@@ -160,7 +176,7 @@ void	check_colisions(t_game *game)
 	// for(int a = 0; a < 10000; a++)
 	{
 		col.teta_step = game->fov / n_ray;
-		col.teta = game->p_angle - game->fov / 2;
+		col.teta = game->p_angle + game->fov / 2;
 
 		i = 0;
 		while (i < n_ray)
@@ -169,7 +185,8 @@ void	check_colisions(t_game *game)
 			init_one_colision(&col, game);
 			check_one_colision(&col, game->map);
 			render_mmap_one_ray(game, col);
-			col.teta += col.teta_step;
+			call_draw_col_wall(col, i, *game, game->render);
+			col.teta -= col.teta_step;
 			++i;
 		}
 	}

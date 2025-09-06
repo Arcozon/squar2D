@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:28:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:25:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 14:55:39 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,9 @@ void	antialiasing_top(const t_clr pre_aa[],
 		while (y < W_HEIGHT && pre_aa[y * W_WIDTH + x].rgb == c_clr.rgb)
 			++y;
 		i = -RANGE_ANTIALIASING;
-		while (i <= RANGE_ANTIALIASING)
+		if (y + i < 0)
+			i = -y;
+		while (i <= RANGE_ANTIALIASING && i + y < W_HEIGHT)
 		{
 			post_aa[(y + i) * W_WIDTH + x] = get_avr((int [2]){x, y + i},
 					&pre_aa[(y + i) * W_WIDTH + x],

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:05:53 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/05 16:51:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 12:38:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,3 @@ void	render_mmap_one_ray(t_game *game, t_col col)
 	}
 	render_line(end_ray, map_pcoo, game->render.img_mmap);
 }
-
-// void	render_minimap_view()

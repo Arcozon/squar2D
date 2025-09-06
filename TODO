@@ -1,7 +1,16 @@
-Agree on a data structure for the map
+Agree on a data structure for the map (sad char *[])
 
 -- INIT
-	- add doors in 1 by 1 hole, check for close doors
+	- PARSING:
+		- mmap colors
+		- door textures
+		- door char in map
+		- base fov ?
+		- base speed ?
+		- minimap size ?
+		- view angle ?
+	- add doors in 1 by 1 hole (check for close doors)
+
 
 -- HOOKS
 
@@ -23,6 +32,7 @@ Agree on a data structure for the map
 	- mouse sensibility
 	- antialiasing ?
 	- movements key bind?
+	-  mmap size
 
 -- RENDER
 	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)

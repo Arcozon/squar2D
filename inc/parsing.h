@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/28 11:43:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/06 14:16:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # define W_WIDTH	1200
 # define W_HEIGHT	800
 
-# define MMAP_WIDHT		W_WIDTH
-# define MMAP_HEIGHT	W_HEIGHT
+// # define MMAP_WIDHT		W_WIDTH
+// # define MMAP_HEIGHT	W_HEIGHT
 
-// # define MMAP_WIDHT	300
-// # define MMAP_HEIGHT	200
+# define MMAP_WIDHT		300
+# define MMAP_HEIGHT	200
 
 # define NB_TEXTURE		4
 

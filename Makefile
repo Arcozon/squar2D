@@ -6,6 +6,7 @@ SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
 S_SRC_RENDER =	set_floor_ceiling.c  draw_frame.c  draw_projected_wall.c  antialiasing.c
 S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  minimap.c  minimap_view.c
+S_SRC_RENDER+=	draw_wall_col.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))	
 
