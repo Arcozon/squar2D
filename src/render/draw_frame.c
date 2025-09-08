@@ -6,23 +6,11 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 17:01:02 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 12:51:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	test_draw_shape(t_render *render)
-{
-	draw_p_wall(render->s_txtr, render, 0, 100, 120, 500, 0.f, 1.f);
-	draw_p_wall(render->n_txtr, render, 100, 250, 500, 200, 0.5f, 1.f);
-	draw_p_wall(render->s_txtr, render, 250, 400, 200, 340, 0.f, 0.5f);
-	draw_p_wall(render->w_txtr, render, 400, 550, 140, 80, 0.f, 1.f);
-	draw_p_wall(render->w_txtr, render, 550, 700, 80, 20, 0.f, 1.f);
-	draw_p_wall(render->e_txtr, render, 700, 850, 20, 80, 0.f, 1.f);
-	draw_p_wall(render->s_txtr, render, 850, 1200, 80, 600, 0.f, 1.f);
-	draw_p_wall(render->n_txtr, render, 500, 700, 180, 200, 0.2f, 0.8f);
-}
 
 void	draw_frame(t_game *game, t_render *render)
 {
@@ -30,5 +18,6 @@ void	draw_frame(t_game *game, t_render *render)
 	render_minimap(game, render);
 	antialiasing(render);
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_paa.p_img, 0, 0);
+	cub_putimgtoimg(render->img_mmap, render->img_paa, (int []){0, 0});
 	mlx_put_image_to_window(render->pmlx, render->pwin, render->img_mmap.p_img, MMAP_XSTART, MMAP_YSTART);
 }

@@ -11,20 +11,18 @@ Agree on a data structure for the map (sad char *[])
 		- view angle ?
 	- add doors in 1 by 1 hole (check for close doors)
 
-
 -- HOOKS
 
 -- GAME
 	- Fixed tick rate ?
 
 -- PLAYER
-	- calc speed
+	- variable speed ?
 
 -- MINIMAP
-	- rotate around player ? (have player always looking in the same dir)
+	- rotate around player ? (have player always looking in the same dir) 
 	- squre player ?
 	- plane view ?
-	- dont mlx put img to win twice
 	- add dirrection arrow
 
 -- COLISION
@@ -40,7 +38,7 @@ Agree on a data structure for the map (sad char *[])
 	-  mmap size
 
 -- RENDER
-	- print textures: add a struct for the data of the wall projection (height, len, percent of wall shown)
+	- make a better draw col_call (use avr color when its squished or extended)
 
 
 ==109623== Invalid read of size 4

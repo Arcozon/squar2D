@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 15:42:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 12:52:20 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ enum {R, G, B
 void	draw_col_wall(t_dcwall info, t_img screen_img, const int screen_x, t_img wall_img);
 
 void	set_floor_ceiling(t_render *render);
-void	draw_p_wall(t_img txtr, t_render *render, int x_start, int x_end, int y_start, int y_end, float p_start, float p_end);
 
 void	render_mmap_environement(char *map[], const float dim[2], const float p_coo[2], t_img mmap);
 void	render_mmap_one_ray(t_game *game, t_col col);
@@ -58,6 +57,10 @@ void	antialiasing_bot(const t_clr pre_aa[], t_clr post_aa[], const t_clr f_clr);
 void	antialiasing(t_render *render);
 void	draw_frame(t_game *game, t_render *render);
 
+void	cub_putimgtoimg(const t_img src, t_img dst, const int coo[2]);
+
 void	check_colisions(t_game *game);
+
+
 
 #endif
