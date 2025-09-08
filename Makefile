@@ -1,6 +1,6 @@
 NAME = cub3d
 
-S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c
+S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
@@ -37,14 +37,14 @@ D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
-FLAGS = -Wall -Wextra -Werror -MMD -g
+FLAGS = -Wall -Wextra -Winline -Werror -MMD -g
 IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
 
 RM =  rm -rf
 
-RANDOM_CLR = echo -n '[3;38;5;'$(shell shuf -i 0-255 -n 1)m
-RESET_CLR = echo -n '[0m'
+RANDOM_CLR = echo -en '\033[3;38;5;'$(shell shuf -i 0-255 -n 1)m
+RESET_CLR = echo -en '\033[0m'
 
 all:	cp_mlx
 	@$(MAKE) $(NAME)

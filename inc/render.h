@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 15:03:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 18:10:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # define MMAP_YSTART		0
 # define MMAP_SQUARE_SIZE	20
 # define MMAP_P_RADIUS		(MMAP_SQUARE_SIZE * 2) / 5
-# define MMAP_CLR_VIEW		0xffff3a
-# define MMAP_CLR_WALL		0x8f8f8f
-# define MMAP_CLR_MTY		0x20af30
+# define MMAP_CLR_VIEW		0xf5e551
+# define MMAP_CLR_WALL		0x191710
+# define MMAP_CLR_MTY		0x8f8f8f
 # define MMAP_CLR_PLAYR		0xff3a51
 
 struct s_draw_col_wall

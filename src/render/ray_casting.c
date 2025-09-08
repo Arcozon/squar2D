@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 15:03:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 18:30:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static inline void	init_one_raycast(t_ray *ray, t_game *game)
 	ray->for_check[Y] = 0;
 	if (ray->sin_t >= 0)
 	{
-		ray->for_check[Y] = -1;
 		ray->add_thing[Y] = 0;
+		ray->for_check[Y] = -1;
 		ray->dir[Y] = -1;
 	}
 	ray->hit = no_hit;
