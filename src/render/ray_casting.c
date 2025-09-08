@@ -1,69 +1,69 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ray_tracing.c                                      :+:      :+:    :+:   */
+/*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 14:39:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:03:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline))
-static inline void	init_one_colision(t_col *col, t_game *game)
+static inline void	init_one_raycast(t_ray *ray, t_game *game)
 {
-	col->f_coo[X] = game->p_coo[X];
-	col->f_coo[Y] = game->p_coo[Y];
-	col->sin_t = sin(col->teta);
-	col->is_sin_null = (col->sin_t >= -ZERO_RANGE && col->sin_t <= ZERO_RANGE);
-	col->cos_t = cos(col->teta);
-	col->is_cos_null = (col->cos_t >= -ZERO_RANGE && col->cos_t <= ZERO_RANGE);
-	col->dir[X] = -1;
-	col->add_thing[X] = 0;
-	col->for_check[X] = -1;
-	if (col->cos_t >= 0)
+	ray->f_coo[X] = game->p_coo[X];
+	ray->f_coo[Y] = game->p_coo[Y];
+	ray->sin_t = sin(ray->teta);
+	ray->is_sin_null = (ray->sin_t >= -ZERO_RANGE && ray->sin_t <= ZERO_RANGE);
+	ray->cos_t = cos(ray->teta);
+	ray->is_cos_null = (ray->cos_t >= -ZERO_RANGE && ray->cos_t <= ZERO_RANGE);
+	ray->dir[X] = -1;
+	ray->add_thing[X] = 0;
+	ray->for_check[X] = -1;
+	if (ray->cos_t >= 0)
 	{
-		col->add_thing[X] = 1;
-		col->for_check[X] = 0;
-		col->dir[X] = 1;
+		ray->add_thing[X] = 1;
+		ray->for_check[X] = 0;
+		ray->dir[X] = 1;
 	}
-	col->dir[Y] = 1;
-	col->add_thing[Y] = 1;
-	col->for_check[Y] = 0;
-	if (col->sin_t >= 0)
+	ray->dir[Y] = 1;
+	ray->add_thing[Y] = 1;
+	ray->for_check[Y] = 0;
+	if (ray->sin_t >= 0)
 	{
-		col->for_check[Y] = -1;
-		col->add_thing[Y] = 0;
-		col->dir[Y] = -1;
+		ray->for_check[Y] = -1;
+		ray->add_thing[Y] = 0;
+		ray->dir[Y] = -1;
 	}
-	col->hit = no_hit;
+	ray->hit = no_hit;
 }
 
-enum e_hit	__check_col(const t_col *col, char **map)
+enum e_hit	__check_ray(const t_ray *ray, char **map)
 {
-	if (fabsf(col->dist_n_step[X]) < fabsf(col->dist_n_step[Y]))
+	if (fabsf(ray->dist_n_step[X]) < fabsf(ray->dist_n_step[Y]))
 	{
-		if (map[(int)col->f_coo[Y]][(int)col->f_coo[X] + col->for_check[X]]
+		if (map[(int)ray->f_coo[Y]][(int)ray->f_coo[X] + ray->for_check[X]]
 			== WALL_CHAR)
 			return (ver_hit);
 	}
-	else if (fabsf(col->dist_n_step[X]) > fabsf(col->dist_n_step[Y]))
+	else if (fabsf(ray->dist_n_step[X]) > fabsf(ray->dist_n_step[Y]))
 	{
-		if (map[(int)col->f_coo[Y] + col->for_check[Y]][(int)col->f_coo[X]]
+		if (map[(int)ray->f_coo[Y] + ray->for_check[Y]][(int)ray->f_coo[X]]
 			== WALL_CHAR)
 			return (hor_hit);
 	}
 	else
 	{
-		if (map[col->i_coo[Y]][col->i_coo[X] + col->dir[X]] == WALL_CHAR)
+		if (map[ray->i_coo[Y]][ray->i_coo[X] + ray->dir[X]] == WALL_CHAR)
 			return (hor_hit);
-		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X]]
+		else if (map[ray->i_coo[Y] + ray->dir[Y]][ray->i_coo[X]]
 			== WALL_CHAR)
 			return (ver_hit);
-		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X] + col->dir[X]]
+		else if (map[ray->i_coo[Y] + ray->dir[Y]][ray->i_coo[X] + ray->dir[X]]
 			== WALL_CHAR)
 			return (corner_hit);
 	}
@@ -71,102 +71,102 @@ enum e_hit	__check_col(const t_col *col, char **map)
 }
 
 __attribute__((always_inline))
-static inline void	get_n_step(t_col *col)
+static inline void	get_n_step(t_ray *ray)
 {
-	col->i_coo[X] = (int)col->f_coo[X];
-	col->i_coo[Y] = (int)col->f_coo[Y];
-	col->n_step[X] = (col->i_coo[X] + col->add_thing[X]) - col->f_coo[X];
-	col->n_step[Y] = (col->i_coo[Y] + col->add_thing[Y]) - col->f_coo[Y];
-	if (col->n_step[Y] == 0.f)
-		col->n_step[Y] = -1;
-	if (col->n_step[X] == 0.f)
-		col->n_step[X] = -1;
-	if (!col->is_cos_null)
-		col->dist_n_step[X] = col->n_step[X] / col->cos_t;
+	ray->i_coo[X] = (int)ray->f_coo[X];
+	ray->i_coo[Y] = (int)ray->f_coo[Y];
+	ray->n_step[X] = (ray->i_coo[X] + ray->add_thing[X]) - ray->f_coo[X];
+	ray->n_step[Y] = (ray->i_coo[Y] + ray->add_thing[Y]) - ray->f_coo[Y];
+	if (ray->n_step[Y] == 0.f)
+		ray->n_step[Y] = -1;
+	if (ray->n_step[X] == 0.f)
+		ray->n_step[X] = -1;
+	if (!ray->is_cos_null)
+		ray->dist_n_step[X] = ray->n_step[X] / ray->cos_t;
 	else
-		col->dist_n_step[X] = INFINITY;
-	if (!col->is_sin_null)
-		col->dist_n_step[Y] = col->n_step[Y] / -col->sin_t;
+		ray->dist_n_step[X] = INFINITY;
+	if (!ray->is_sin_null)
+		ray->dist_n_step[Y] = ray->n_step[Y] / -ray->sin_t;
 	else
-		col->dist_n_step[Y] = INFINITY;
+		ray->dist_n_step[Y] = INFINITY;
 }
 
 __attribute__((always_inline))
-static inline void	check_one_colision(t_col *col, char **map)
+static inline void	check_one_ray(t_ray *ray, char **map)
 {
-	while (col->hit == no_hit)
+	while (ray->hit == no_hit)
 	{
-		get_n_step(col);
-		if (fabsf(col->dist_n_step[X]) <= fabsf(col->dist_n_step[Y]))
+		get_n_step(ray);
+		if (fabsf(ray->dist_n_step[X]) <= fabsf(ray->dist_n_step[Y]))
 		{
-			col->f_coo[X] += col->n_step[X];
-			col->f_coo[Y] -= col->dist_n_step[X] * col->sin_t;
+			ray->f_coo[X] += ray->n_step[X];
+			ray->f_coo[Y] -= ray->dist_n_step[X] * ray->sin_t;
 		}
 		else
 		{
-			col->f_coo[X] += col->dist_n_step[Y] * col->cos_t;
-			col->f_coo[Y] += col->n_step[Y];
+			ray->f_coo[X] += ray->dist_n_step[Y] * ray->cos_t;
+			ray->f_coo[Y] += ray->n_step[Y];
 		}
-		col->hit = __check_col(col, map);
+		ray->hit = __check_ray(ray, map);
 	}
-	if (col->hit == hor_hit)
+	if (ray->hit == hor_hit)
 	{
-		col->side = north_side;
-		col->percent = col->f_coo[X] - (int)col->f_coo[X];
-		if (col->dir[Y] > 0)
+		ray->side = north_side;
+		ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
+		if (ray->dir[Y] > 0)
 		{
-			col->side = south_side;
-			col->percent = 1 - col->percent;
+			ray->side = south_side;
+			ray->percent = 1 - ray->percent;
 		}
 	}
 	else
 	{
-		col->side = east_side;
-		col->percent = col->f_coo[Y] - (int)col->f_coo[Y];
-		if (col->dir[X] < 0)
+		ray->side = east_side;
+		ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
+		if (ray->dir[X] < 0)
 		{
-			col->side = west_side;
-			col->percent = 1 - col->percent;
+			ray->side = west_side;
+			ray->percent = 1 - ray->percent;
 		}
 	}
 }
 
 __attribute__((always_inline))
-static inline void	call_draw_col_wall(const t_col col,
+static inline void	call_draw_ray_wall(const t_ray ray,
 	const int x, const t_game game, t_render render)
 {
-	const float	dx = (col.f_coo[X] - game.p_coo[X]);
-	const float	dy = (col.f_coo[Y] - game.p_coo[Y]);
+	const float	dx = (ray.f_coo[X] - game.p_coo[X]);
+	const float	dy = (ray.f_coo[Y] - game.p_coo[Y]);
 	t_dcwall	info;
 
-	if (col.side == north_side)
+	if (ray.side == north_side)
 		info.wall_img = render.n_txtr;
-	else if (col.side == east_side)
+	else if (ray.side == east_side)
 		info.wall_img = render.e_txtr;
-	else if (col.side == south_side)
+	else if (ray.side == south_side)
 		info.wall_img = render.s_txtr;
-	else if (col.side == west_side)
+	else if (ray.side == west_side)
 		info.wall_img = render.w_txtr;
-	info.img_percent = col.percent;
+	info.img_percent = ray.percent;
 	info.distance = sqrtf(dx * dx + dy * dy);
 	draw_col_wall(info, render.img, x, info.wall_img);
 }
 
 void	ray_casting(t_game *game)
 {
-	t_col	col;
+	t_ray	ray;
 	int		i;
 
-	col.teta_step = game->fov / W_WIDTH;
-	col.teta = game->p_angle + game->fov / 2;
+	ray.teta_step = game->fov / W_WIDTH;
+	ray.teta = game->p_angle + game->fov / 2;
 	i = 0;
 	while (i < W_WIDTH)
 	{
-		init_one_colision(&col, game);
-		check_one_colision(&col, game->map);
-		render_mmap_one_ray(game, col);
-		call_draw_col_wall(col, i, *game, game->render);
-		col.teta -= col.teta_step;
+		init_one_raycast(&ray, game);
+		check_one_ray(&ray, game->map);
+		render_mmap_one_ray(game, ray);
+		call_draw_ray_wall(ray, i, *game, game->render);
+		ray.teta -= ray.teta_step;
 		++i;
 	}
 }

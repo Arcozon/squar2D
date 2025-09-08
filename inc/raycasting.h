@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 14:39:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:02:12 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define ZERO_RANGE	0.000005f
 
-struct s_col
+struct s_ray
 {
 	float		f_coo[2];
 	int			i_coo[2];

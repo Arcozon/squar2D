@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:09:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:02:25 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_game			t_game;
 typedef struct s_cub			t_cub;
 
 typedef struct s_draw_col_wall	t_dcwall;
-typedef struct s_col			t_col;
+typedef struct s_ray			t_ray;
 
 enum	e_hit
 {

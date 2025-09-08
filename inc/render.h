@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:06:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 15:03:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ enum {R, G, B
 
 void	render_mmap_environement(char *map[], const float dim[2],
 			const float p_coo[2], t_img mmap);
-void	render_mmap_one_ray(t_game *game, t_col col);
+void	render_mmap_one_ray(t_game *game, t_ray ray);
 void	render_minimap(t_game *game, t_render *render);
 
 void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[],
