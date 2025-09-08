@@ -6,21 +6,21 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 15:36:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:17:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_one_colision(t_col *col, t_game *game)
+__attribute__((always_inline))
+static inline void	init_one_colision(t_col *col, t_game *game)
 {
 	col->f_coo[X] = game->p_coo[X];
 	col->f_coo[Y] = game->p_coo[Y];
 	col->sin_t = sin(col->teta);
-	col->is_sin_null = col->sin_t >= -ZERO_RANGE && col->sin_t <= ZERO_RANGE;
+	col->is_sin_null = (col->sin_t >= -ZERO_RANGE && col->sin_t <= ZERO_RANGE);
 	col->cos_t = cos(col->teta);
-	col->is_cos_null = col->cos_t >= -ZERO_RANGE && col->cos_t <= ZERO_RANGE;
-
+	col->is_cos_null = (col->cos_t >= -ZERO_RANGE && col->cos_t <= ZERO_RANGE);
 	col->dir[X] = -1;
 	col->add_thing[X] = 0;
 	col->for_check[X] = -1;
@@ -28,7 +28,7 @@ void	init_one_colision(t_col *col, t_game *game)
 	{
 		col->add_thing[X] = 1;
 		col->for_check[X] = 0;
-		col->dir[X] = 1;	
+		col->dir[X] = 1;
 	}
 	col->dir[Y] = 1;
 	col->add_thing[Y] = 1;
@@ -44,63 +44,68 @@ void	init_one_colision(t_col *col, t_game *game)
 
 enum e_hit	__check_col(const t_col *col, char **map)
 {
-	if (fabsf(col->distance_next_step[X]) < fabsf(col->distance_next_step[Y]))
+	if (fabsf(col->dist_n_step[X]) < fabsf(col->dist_n_step[Y]))
 	{
-		if (map[(int)col->f_coo[Y]][(int)col->f_coo[X] + col->for_check[X]] == WALL_CHAR)
+		if (map[(int)col->f_coo[Y]][(int)col->f_coo[X] + col->for_check[X]]
+			== WALL_CHAR)
 			return (ver_hit);
 	}
-	else if (fabsf(col->distance_next_step[X]) > fabsf(col->distance_next_step[Y]))
+	else if (fabsf(col->dist_n_step[X]) > fabsf(col->dist_n_step[Y]))
 	{
-		if (map[(int)col->f_coo[Y] + col->for_check[Y]][(int)col->f_coo[X]] == WALL_CHAR)
+		if (map[(int)col->f_coo[Y] + col->for_check[Y]][(int)col->f_coo[X]]
+			== WALL_CHAR)
 			return (hor_hit);
 	}
 	else
 	{
 		if (map[col->i_coo[Y]][col->i_coo[X] + col->dir[X]] == WALL_CHAR)
 			return (hor_hit);
-		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X]] == WALL_CHAR)
+		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X]]
+			== WALL_CHAR)
 			return (ver_hit);
-		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X] + col->dir[X]] == WALL_CHAR)
+		else if (map[col->i_coo[Y] + col->dir[Y]][col->i_coo[X] + col->dir[X]]
+			== WALL_CHAR)
 			return (corner_hit);
 	}
 	return (no_hit);
 }
 
 __attribute__((always_inline))
-static inline void	get_next_step(t_col *col)
+static inline void	get_n_step(t_col *col)
 {
 	col->i_coo[X] = (int)col->f_coo[X];
 	col->i_coo[Y] = (int)col->f_coo[Y];
-	col->next_step[X] = (col->i_coo[X] + col->add_thing[X]) - col->f_coo[X];
-	col->next_step[Y] = (col->i_coo[Y] + col->add_thing[Y]) - col->f_coo[Y];
-	if (col->next_step[Y] == 0.f)
-		col->next_step[Y] = -1;
-	if (col->next_step[X] == 0.f)
-		col->next_step[X] = -1;
+	col->n_step[X] = (col->i_coo[X] + col->add_thing[X]) - col->f_coo[X];
+	col->n_step[Y] = (col->i_coo[Y] + col->add_thing[Y]) - col->f_coo[Y];
+	if (col->n_step[Y] == 0.f)
+		col->n_step[Y] = -1;
+	if (col->n_step[X] == 0.f)
+		col->n_step[X] = -1;
 	if (!col->is_cos_null)
-		col->distance_next_step[X] = col->next_step[X] / col->cos_t;
+		col->dist_n_step[X] = col->n_step[X] / col->cos_t;
 	else
-		col->distance_next_step[X] = INFINITY;
+		col->dist_n_step[X] = INFINITY;
 	if (!col->is_sin_null)
-		col->distance_next_step[Y] = col->next_step[Y] / - col->sin_t;
+		col->dist_n_step[Y] = col->n_step[Y] / -col->sin_t;
 	else
-		col->distance_next_step[Y] = INFINITY;
+		col->dist_n_step[Y] = INFINITY;
 }
 
-void	check_one_colision(t_col *col, char **map)
+__attribute__((always_inline))
+static inline void	check_one_colision(t_col *col, char **map)
 {
 	while (col->hit == no_hit)
 	{
-		get_next_step(col);
-		if (fabsf(col->distance_next_step[X]) <= fabsf(col->distance_next_step[Y]))
+		get_n_step(col);
+		if (fabsf(col->dist_n_step[X]) <= fabsf(col->dist_n_step[Y]))
 		{
-			col->f_coo[X] += col->next_step[X];
-			col->f_coo[Y] -= col->distance_next_step[X] * col->sin_t;
+			col->f_coo[X] += col->n_step[X];
+			col->f_coo[Y] -= col->dist_n_step[X] * col->sin_t;
 		}
 		else
 		{
-			col->f_coo[X] += col->distance_next_step[Y] * col->cos_t;
-			col->f_coo[Y] += col->next_step[Y];
+			col->f_coo[X] += col->dist_n_step[Y] * col->cos_t;
+			col->f_coo[Y] += col->n_step[Y];
 		}
 		col->hit = __check_col(col, map);
 	}
@@ -127,11 +132,12 @@ void	check_one_colision(t_col *col, char **map)
 }
 
 __attribute__((always_inline))
-static inline void	call_draw_col_wall(const t_col col, const int x, const t_game game, t_render render)
+static inline void	call_draw_col_wall(const t_col col,
+	const int x, const t_game game, t_render render)
 {
-	const float dx = (col.f_coo[X] - game.p_coo[X]);
-	const float dy = (col.f_coo[Y] - game.p_coo[Y]);
-	t_dcwall info;
+	const float	dx = (col.f_coo[X] - game.p_coo[X]);
+	const float	dy = (col.f_coo[Y] - game.p_coo[Y]);
+	t_dcwall	info;
 
 	if (col.side == north_side)
 		info.wall_img = render.n_txtr;
@@ -148,28 +154,19 @@ static inline void	call_draw_col_wall(const t_col col, const int x, const t_game
 
 void	check_colisions(t_game *game)
 {
-	static const int	n_ray = W_WIDTH;
-	t_col		col;
-	int			i;
-	
-	// TIMER_START
-	// for(int a = 0; a < 10000; a++)
-	{
-		col.teta_step = game->fov / n_ray;
-		col.teta = game->p_angle + game->fov / 2;
+	t_col	col;
+	int		i;
 
-		i = 0;
-		while (i < n_ray)
-		{
-			// DEBUG("teta: %f", col.teta);
-			init_one_colision(&col, game);
-			check_one_colision(&col, game->map);
-			render_mmap_one_ray(game, col);
-			call_draw_col_wall(col, i, *game, game->render);
-			col.teta -= col.teta_step;
-			++i;
-		}
+	col.teta_step = game->fov / W_WIDTH;
+	col.teta = game->p_angle + game->fov / 2;
+	i = 0;
+	while (i < W_WIDTH)
+	{
+		init_one_colision(&col, game);
+		check_one_colision(&col, game->map);
+		render_mmap_one_ray(game, col);
+		call_draw_col_wall(col, i, *game, game->render);
+		col.teta -= col.teta_step;
+		++i;
 	}
-	// TIMER_END
-	// WAIT
 }

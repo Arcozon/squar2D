@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 12:19:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:27:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static inline void	mmap_fill_square(t_img img, int coo_x,
 	int coo_y, uint32_t clr)
 {
 	int	size[2];
-	int	iy;
 
 	if (coo_x >= img.width || coo_y >= img.height
 		|| coo_x <= -MMAP_SQUARE_SIZE || coo_y <= -MMAP_SQUARE_SIZE)
@@ -53,17 +52,17 @@ static inline void	mmap_fill_square(t_img img, int coo_x,
 		size[X] = img.width - coo_x;
 	if (size[Y] + coo_y > img.height)
 		size[Y] = img.height - coo_y;
-	iy = -1;
-	while (++iy < size[Y])
-		ft_fclrset((uint32_t *)&img.p_data[(coo_y + iy) * img.width + coo_x],
-			clr, size[X]);
+	while (size[Y]--)
+		ft_fclrset((uint32_t *)&img.p_data[(coo_y + size[Y])
+			* img.width + coo_x], clr, size[X]);
 }
 
 void	render_mmap_environement(char *map[], const float dim[2],
 	const float p_coo[2], t_img mm)
 {
-	const int	start_sqr_coo[2] = {MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE
-		* p_coo[X], MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
+	const int	start_sqr_coo[2] = {
+		MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE * p_coo[X],
+		MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
 	int			sqr_coo[2];
 	int			ix;
 	int			iy;
@@ -90,8 +89,8 @@ void	render_mmap_environement(char *map[], const float dim[2],
 static void	mmap_player(t_img img_map)
 {
 	static const int	center[] = {MMAP_WIDHT / 2, MMAP_HEIGHT / 2};
-	int			ix;
-	int			iy;
+	int					ix;
+	int					iy;
 
 	iy = -MMAP_P_RADIUS;
 	while (iy <= MMAP_P_RADIUS)
@@ -114,8 +113,6 @@ void	render_minimap(t_game *game, t_render *render)
 {
 	render_mmap_environement(game->map, game->dim,
 		game->p_coo, render->img_mmap);
-	
 	check_colisions(game);
-	
 	mmap_player(render->img_mmap);
 }

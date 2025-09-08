@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:08:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:13:43 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ struct s_col
 {
 	float		f_coo[2];
 	int			i_coo[2];
-	float		next_step[2];
-	float		distance_next_step[2];
+	float		n_step[2];
+	float		dist_n_step[2];
 
 	float		teta_step;
 	float		teta;
@@ -29,10 +29,8 @@ struct s_col
 	float		cos_t;
 	int			is_cos_null;
 
-	float		d_nextint[2];
 	int			dir[2];
 	int			add_thing[2];
-
 	int			for_check[2];
 
 	enum e_hit	hit;

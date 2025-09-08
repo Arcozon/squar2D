@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:21:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 12:43:12 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:19:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ static inline int	ft_bound(const int a, const int min, const int max)
 __attribute__((flatten))
 void	cub_putimgtoimg(const t_img src, t_img dst, const int coo[2])
 {
-	const int	start[2] = {ft_bound(coo[X], 0, dst.width),
+	const int	start[2] = {
+		ft_bound(coo[X], 0, dst.width),
 		ft_bound(coo[Y], 0, dst.height)};
-	const int	end[2] = {start[X] + ft_bound(src.width, 0, dst.width - start[X]),
+	const int	end[2] = {
+		start[X] + ft_bound(src.width, 0, dst.width - start[X]),
 		start[Y] + ft_bound(src.height, 0, dst.height - start[Y])};
-	int	ix;
-	int	iy;
+	int			ix;
+	int			iy;
 
 	iy = start[Y];
 	while (iy < end[Y])

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:40:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:37:44 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	*ft_bzero(void *ptr, uint64_t size)
 }
 
 __attribute__((nonnull(1), hot))
-void	*ft_clrset(t_clr * img_data, const t_clr color, const uint64_t size)
+void	*ft_clrset(t_clr *img_data, const t_clr color, const uint64_t size)
 {
 	uint64_t	i;
 

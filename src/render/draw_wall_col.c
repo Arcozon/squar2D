@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/06 12:39:45 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:02:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:34:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,18 @@
 #define V_FOV BASE_FOV
 
 __attribute__((always_inline))
-static inline void	_fill_dcwall(t_dcwall *info, const float dist_0, const int img_height)
+static inline void	_fill_dcwall(t_dcwall *info,
+	const float dist_0, const int img_height)
 {
 	info->x_img = (int)(info->img_percent * info->wall_img.width);
 	info->screen_y_range = (int)(W_HEIGHT / (2 * info->distance / dist_0));
 	if (info->screen_y_range >= W_HEIGHT)
 	{
-		info->img_y_range = (int)(img_height * (W_HEIGHT / (float)info->screen_y_range));
+		info->img_y_range = (int)(img_height
+				* (W_HEIGHT / (float)info->screen_y_range));
 		info->img_y_start = (img_height - info->img_y_range) / 2;
 		info->screen_y_start = 0;
 		info->screen_y_range = W_HEIGHT;
-		// DEBUG("wall start range: %d | %d", info->img_y_start, info->img_y_range)
-		// WAIT
 	}
 	else
 	{
@@ -37,7 +37,8 @@ static inline void	_fill_dcwall(t_dcwall *info, const float dist_0, const int im
 }
 
 __attribute__((always_inline))
-static inline void	_draw_col_wall(const t_dcwall info, uint32_t screenX[], const uint32_t wallX[], const int wallWidth)
+static inline void	_draw_col_wall(const t_dcwall info,
+	uint32_t screenX[], const uint32_t wallX[], const int wallWidth)
 {
 	const float	step_wall = info.img_y_range / (float)info.screen_y_range;
 	float		i_wall;
@@ -47,14 +48,6 @@ static inline void	_draw_col_wall(const t_dcwall info, uint32_t screenX[], const
 	i = 0;
 	while (i < info.screen_y_range)
 	{
-		if ((int)i_wall < 0 || (int)i_wall >= 64)
-		{
-			DEBUG("wall start range: %d | %d", info.img_y_start, info.img_y_range)
-			// DEBUG("wall start range: %d | %d", info.img_y_start, info.img_y_range)
-			DEBUG("Iwall [%f] [%d]", i_wall, (int)i_wall)
-			DEBUG("i [%d], step[%f]", i, step_wall)
-			WAIT
-		}
 		screenX[i * W_WIDTH] = wallX[((int)i_wall) * wallWidth];
 		i_wall += step_wall;
 		++i;
@@ -62,11 +55,14 @@ static inline void	_draw_col_wall(const t_dcwall info, uint32_t screenX[], const
 }
 
 __attribute__((flatten))
-void	draw_col_wall(t_dcwall info, t_img screen_img, const int screen_x, t_img wall_img)
+void	draw_col_wall(t_dcwall info, t_img screen_img, const int screen_x,
+	t_img wall_img)
 {
 	const float	dist_0 = fabs(tanf(M_PI_4 - (V_FOV)));
 
 	_fill_dcwall(&info, dist_0, wall_img.height);
-	_draw_col_wall(info, (uint32_t *)&screen_img.p_data[screen_x + screen_img.width * info.screen_y_start],
-		(uint32_t *)&wall_img.p_data[info.x_img + wall_img.width * info.img_y_start], wall_img.width);
+	_draw_col_wall(info, (uint32_t *)&screen_img.p_data[screen_x
+		+ screen_img.width * info.screen_y_start],
+		(uint32_t *)&wall_img.p_data[info.x_img + wall_img.width
+		* info.img_y_start], wall_img.width);
 }
