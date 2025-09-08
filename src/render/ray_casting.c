@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colision.c                                         :+:      :+:    :+:   */
+/*   ray_tracing.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:17:01 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 14:39:39 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,7 @@ static inline void	call_draw_col_wall(const t_col col,
 	draw_col_wall(info, render.img, x, info.wall_img);
 }
 
-void	check_colisions(t_game *game)
+void	ray_casting(t_game *game)
 {
 	t_col	col;
 	int		i;

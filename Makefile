@@ -4,11 +4,15 @@ S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
-S_SRC_RENDER =	set_floor_ceiling.c  draw_frame.c  antialiasing.c  cub_put_img_to_img.c
-S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  minimap.c  minimap_view.c
-S_SRC_RENDER+=	draw_wall_col.c
+S_SRC_MMAP =	minimap.c  mmap_env.c  mmap_view.c 
+D_SRC_MMAP =	minimap/
+SRC_MMAP   =	$(addprefix $(D_SRC_MMAP), $(S_SRC_MMAP))
+
+S_SRC_RENDER =	$(SRC_MMAP)  set_floor_ceiling.c  draw_frame.c
+S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  antialiasing.c
+S_SRC_RENDER+=	draw_wall_col.c  ray_casting.c  cub_put_img_to_img.c
 D_SRC_RENDER =	render/
-SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))	
+SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))
 
 S_SRC_INIT =	init.c  pars_data.c  pars_data_color.c  pars_map.c  pars_player.c
 S_SRC_INIT+=	parsing.c  parsing_utils.c  read.c  flood_fill.c  fill_game.c
@@ -19,7 +23,7 @@ S_SRC_UTILS =	utils.c  errors.c  free.c  s_vector.c
 D_SRC_UTILS =	utils/
 SRC_UTILS   =	$(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c  colision.c
+S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c
 D_SRC =	src/
 
 D_BUILD = .build/

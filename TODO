@@ -12,6 +12,7 @@ Agree on a data structure for the map (sad char *[])
 	- add doors in 1 by 1 hole (check for close doors)
 
 -- HOOKS
+	-- mouse to turn
 
 -- GAME
 	- Fixed tick rate ?
@@ -34,7 +35,7 @@ Agree on a data structure for the map (sad char *[])
 	- mouse sensibility
 	- antialiasing ?
 	- movements key bind?
-	-  mmap size
+	- mmap size
 
 -- RENDER
 	- make a better draw col_call (use avr color when its squished or extended)

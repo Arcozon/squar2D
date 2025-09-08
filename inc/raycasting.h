@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:13:43 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 14:39:37 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ struct s_col
 	float		distance;
 };
 
-void	check_colisions(t_game *game);
+void	ray_casting(t_game *game);
 
 #endif
