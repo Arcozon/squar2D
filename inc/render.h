@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 12:52:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:06:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,24 @@ struct s_draw_col_wall
 enum {R, G, B
 };
 
-void	draw_col_wall(t_dcwall info, t_img screen_img, const int screen_x, t_img wall_img);
-
-void	set_floor_ceiling(t_render *render);
-
-void	render_mmap_environement(char *map[], const float dim[2], const float p_coo[2], t_img mmap);
+void	render_mmap_environement(char *map[], const float dim[2],
+			const float p_coo[2], t_img mmap);
 void	render_mmap_one_ray(t_game *game, t_col col);
 void	render_minimap(t_game *game, t_render *render);
 
-void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[], const t_clr c_clr);
-void	antialiasing_bot(const t_clr pre_aa[], t_clr post_aa[], const t_clr f_clr);
+void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[],
+			const t_clr c_clr);
+void	antialiasing_bot(const t_clr pre_aa[], t_clr post_aa[],
+			const t_clr f_clr);
 void	antialiasing(t_render *render);
-void	draw_frame(t_game *game, t_render *render);
+
+void	set_floor_ceiling(t_render *render);
 
 void	cub_putimgtoimg(const t_img src, t_img dst, const int coo[2]);
 
-void	check_colisions(t_game *game);
+void	draw_frame(t_game *game, t_render *render);
 
-
+void	draw_col_wall(t_dcwall info, t_img screen_img,
+			const int screen_x, t_img wall_img);
 
 #endif

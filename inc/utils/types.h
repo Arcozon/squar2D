@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 15:20:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:09:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,16 @@
 
 # define BUFF_SIZE	2048
 
-typedef struct s_xpm_img	t_xpm_img;
-typedef struct s_xpm_img	t_img;
+typedef struct s_mlx			t_mlx;
+typedef struct s_xpm_img		t_xpm_img;
+typedef struct s_xpm_img		t_img;
 
-typedef union u_clr			t_clr;
-union __attribute__((packed, may_alias)) u_clr{
+typedef union u_clr				t_clr;
+
+union __attribute__((packed, may_alias)) u_clr
+{
 	uint32_t				rgb;
+
 	struct __attribute__((packed)) {
 		uint8_t	b;
 		uint8_t	g;
@@ -32,18 +36,16 @@ union __attribute__((packed, may_alias)) u_clr{
 	}	s_mask;
 };
 
-typedef struct s_mlx		t_mlx;
+typedef struct s_vector			t_vector;
+typedef struct s_read			t_read;
 
-typedef struct s_vector		t_vector;
-typedef struct s_read		t_read;
-
-typedef struct s_pars		t_pars;
-typedef struct s_cub		t_cub;
-typedef struct s_game		t_game;
-typedef struct s_render		t_render;
+typedef struct s_pars			t_pars;
+typedef struct s_render			t_render;
+typedef struct s_game			t_game;
+typedef struct s_cub			t_cub;
 
 typedef struct s_draw_col_wall	t_dcwall;
-typedef struct s_col		t_col;
+typedef struct s_col			t_col;
 
 enum	e_hit
 {

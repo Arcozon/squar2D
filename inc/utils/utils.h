@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 19:15:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/08 13:10:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);
 void		*ft_memcpy(void *dst, const void *src, uint64_t size);
 void		*ft_memset(void *ptr, uint64_t size, const uint64_t set);
-void		*ft_clrset(t_clr img_data[], const t_clr color, const uint64_t size);
+void		*ft_clrset(t_clr img_data[], const t_clr color,
+				const uint64_t size);
 bool		ft_memcpm(void *s1, void *s2, uint64_t n);
 
 # define R_DONE			0b1
