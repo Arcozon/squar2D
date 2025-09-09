@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 15:16:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 15:49:20 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@
 # define VANGLE_DELTA		0.03f
 # define PLAYER_BASE_SPEED	0.07f
 // # define PLAYER_BASE_SPEED	0.01f
-// # define BASE_FOV			2 * M_PI
 // # define BASE_FOV			4 * M_PI
-# define BASE_FOV			3 * M_PI / 5
+# define BASE_FOV			2 * M_PI
+// # define BASE_FOV			3 * M_PI / 5
 
 # define HALF_P_SIZE		0.2f
 
@@ -75,6 +75,8 @@ struct s_game
 
 	float		fov;
 
+	int			mouse_coo[2];
+	int			notify_focus;
 	uint64_t	f_keys;
 
 	t_render	render;

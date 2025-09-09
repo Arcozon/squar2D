@@ -10,6 +10,7 @@ Agree on a data structure for the map (sad char *[])
 		- minimap size ?
 		- view angle ?
 		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
+
 -- DOORS:
 	-- hash map for doors (swag)
 	-- animation  !!! (from bot to top ?) (from middle to sides ?) (left <-> right ?) 
@@ -33,10 +34,7 @@ Agree on a data structure for the map (sad char *[])
 	- squre player ?
 	- plane view ?
 	- add dirrection arrow
-
--- COLISION
-	- calc colision during movements -> Need to check corners not sides, also mby do it with ray tracing and not boring add ?
-	- DAMN ITS FUCKED, FIX IT
+	-
 
 -- SETTINGS:
 	- fov
