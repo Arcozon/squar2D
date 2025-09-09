@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:49:15 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 15:34:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 17:58:12 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 # define HOOK_M_D		0b1000
 # define HOOK_M_LARR	0b10000
 # define HOOK_M_RARR	0b100000
+# define HOOK_M_UARR	0b1000000
+# define HOOK_M_DARR	0b10000000
 
 int		key_press_hook(int key, t_game *game);
 int		key_release_hook(int key, t_game *game);

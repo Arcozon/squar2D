@@ -10,7 +10,6 @@ Agree on a data structure for the map (sad char *[])
 		- minimap size ?
 		- view angle ?
 		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
-
 -- DOORS:
 	-- hash map for doors (swag)
 	-- animation  !!! (from bot to top ?) (from middle to sides ?) (left <-> right ?) 
@@ -34,7 +33,6 @@ Agree on a data structure for the map (sad char *[])
 	- squre player ?
 	- plane view ?
 	- add dirrection arrow
-	-
 
 -- SETTINGS:
 	- fov
@@ -44,4 +42,5 @@ Agree on a data structure for the map (sad char *[])
 	- mmap size
 
 -- RENDER
+	- fix fisheye
 	- make a better draw col_call (use avr color when its squished or extended)

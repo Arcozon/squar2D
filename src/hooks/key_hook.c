@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 16:30:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:01:13 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	handle_press(const int key, uint64_t *f_key)
 		*f_key |= HOOK_M_RARR;
 	else if (key == XK_Left)
 		*f_key |= HOOK_M_LARR;
+	else if (key == XK_Up)
+		*f_key |= HOOK_M_UARR;
+	else if (key == XK_Down)
+		*f_key |= HOOK_M_DARR;
 }
 
 void	handle_release(const int key, uint64_t *f_key)
@@ -49,6 +53,10 @@ void	handle_release(const int key, uint64_t *f_key)
 		*f_key &= ~HOOK_M_RARR;
 	else if (key == XK_Left)
 		*f_key &= ~HOOK_M_LARR;
+	else if (key == XK_Up)
+		*f_key &= ~HOOK_M_UARR;
+	else if (key == XK_Down)
+		*f_key &= ~HOOK_M_DARR;
 }
 
 int	key_press_hook(int key, t_game *game)
