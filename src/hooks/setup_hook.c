@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:48:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:03:51 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:28:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,54 @@
 
 int	enter_win(t_game *game)
 {
-	cub_mouse_hide(game->render.pmlx, game->render.pwin, 1);
-	game->notify_focus = mlx_mouse_get_pos(game->render.pmlx, game->render.pwin,
-			&game->mouse_coo[X], &game->mouse_coo[Y]);
-	DEBUG("ON [%d] %d|%d", game->notify_focus,
-		game->mouse_coo[X], game->mouse_coo[Y]);
+	if (game->focus)
+	{
+		DEBUG("IN")
+		cub_mouse_hide(game->render.pmlx, game->render.pwin, 1);
+		game->notify = mlx_mouse_get_pos(game->render.pmlx, game->render.pwin,
+				&game->mouse_coo[X], &game->mouse_coo[Y]);
+	}
 	return (0);
 }
 
 int	leave_win(t_game *game)
 {
-	cub_mouse_hide(game->render.pmlx, game->render.pwin, 0);
-	game->notify_focus = 0;
+	if (game->focus)
+	{
+		DEBUG("OUT")
+		cub_mouse_hide(game->render.pmlx, game->render.pwin, 0);
+		game->notify = 0;
+	}
 	return (0);
 }
 
 int	test_mouse(int x, int y, t_game *game)
 {
-	DEBUG("%d | %d", x, y);
-	if (game->notify_focus)
+	// DEBUG("%d | %d", x, y);
+	if (game->notify && game->focus)
 	{
 		game->p_angle += VANGLE_DELTA * (game->mouse_coo[X] - x);
 		game->mouse_coo[X] = x;
 		game->mouse_coo[Y] = x;
 	}
+	return (0);
+	(void)y;
+}
+
+int	test_focus_in(t_game *game)
+{
+	DEBUG("FOCUS IN");
+	game->focus = 1;
+	cub_mouse_hide(game->render.pmlx, game->render.pwin, 1);
+	return (0);
+	(void)game;
+}
+
+int	test_focus_out(t_game *game)
+{
+	DEBUG("FOCUS OUT");
+	game->focus = 0;
+	cub_mouse_hide(game->render.pmlx, game->render.pwin, 0);
 	return (0);
 	(void)game;
 }
@@ -58,5 +82,9 @@ void	setup_hooks(t_mlx *mlx, t_cub *cub)
 		leave_win, &cub->game);
 	mlx_hook(mlx->win_ptr, MotionNotify, PointerMotionMask,
 		test_mouse, &cub->game);
+	mlx_hook(mlx->win_ptr, FocusIn, FocusChangeMask,
+		test_focus_in, &cub->game);
+	mlx_hook(mlx->win_ptr, FocusOut, FocusChangeMask,
+		test_focus_out, &cub->game);
 	mlx_loop_hook(mlx->mlx_ptr, cub_loop, &cub->game);
 }

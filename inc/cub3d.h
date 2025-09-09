@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 16:26:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:23:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,8 @@ struct s_game
 	float		fov;
 
 	int			mouse_coo[2];
-	int			notify_focus;
+	int			notify;
+	int			focus;
 	uint64_t	f_keys;
 
 	t_render	render;
