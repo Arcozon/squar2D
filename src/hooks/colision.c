@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 15:20:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:32:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static inline void	__check_one_col(char *map[], const float coo[2], float p_delt
 
 	if (crossed[X] && crossed[Y] && 1)
 	{
-		; // check ?
+		(void)map; // check ?
 	}
 	if (crossed[X] && map[(int)coo[Y]][(int)n_coo[X]] == WALL_CHAR)
 	{

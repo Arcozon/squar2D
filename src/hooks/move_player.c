@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 14:50:48 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:35:49 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static inline void	handle_view_angle(t_game *game)
 		game->p_angle -= VANGLE_DELTA;
 }
 
-
 static inline void	handle_2_dir(float p_delta[2], const float p_speed)
 {
 	// float	norm_factor = (fabs(p_delta[X]) + fabs(p_delta[Y])) / p_speed;	// check for pitagor instead of add
-	float	norm_factor = (fabs(p_delta[X]) + fabs(p_delta[Y])) / p_speed;
+	const float	dist2 = p_delta[X] * p_delta[X] + p_delta[Y] * p_delta[Y]; 
+	float	norm_factor = sqrtf(dist2) / p_speed;
 
 	p_delta[X] /= norm_factor;
 	p_delta[Y] /= norm_factor;

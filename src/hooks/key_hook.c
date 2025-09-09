@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:49:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:30:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int	key_release_hook(int key, t_game *game)
 {
 	if (key == XK_Escape)
 		mlx_loop_end(game->render.pmlx);
-	handle_release(key, &game->f_keys);	
+	handle_release(key, &game->f_keys);
 	return (0);
 }

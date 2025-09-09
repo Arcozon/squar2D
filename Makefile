@@ -1,6 +1,6 @@
 NAME = cub3d
 
-S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c
+S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c  mouse_hide_fix.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
@@ -39,7 +39,7 @@ D_INCS = inc/ inc/utils/ $(D_MLX)
 CC =  cc
 FLAGS = -Wall -Wextra -Winline -Werror -MMD -g
 IFLAGS = $(addprefix -I, $(D_INCS))
-LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lm
+LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lXfixes -lm
 
 RM =  rm -rf
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 15:49:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 16:26:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 // # define BASE_FOV			3 * M_PI / 5
 
 # define HALF_P_SIZE		0.2f
+
+void	cub_mouse_hide(void *xvar, void *win, int hide);
 
 // For 2 dimension arrays representing a grid, they ll be called as tab[y][x]
 // 	y being the line number / height
