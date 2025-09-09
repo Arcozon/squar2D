@@ -35,6 +35,7 @@ Agree on a data structure for the map (sad char *[])
 	- add dirrection arrow
 
 -- SETTINGS:
+	--	PUT SCREEN WHEN LOSE FOCUS
 	- fov
 	- mouse sensibility
 	- antialiasing ?
