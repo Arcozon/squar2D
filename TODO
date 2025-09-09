@@ -9,9 +9,17 @@ Agree on a data structure for the map (sad char *[])
 		- base speed ?
 		- minimap size ?
 		- view angle ?
-	- add doors in 1 by 1 hole (check for close doors)
+		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
+-- DOORS:
+	-- hash map for doors (swag)
+	-- animation  !!! (from bot to top ?) (from middle to sides ?) (left <-> right ?) 
+	-- update floodfill
+	-- update raycasting (do a 2nd check for doors ?) (use same fct, but give a ptr to fct in arg?)
+	-- update coll for a closed door
+	-- update minimap (colors for cvlosed anbd open doors ?)
 
 -- HOOKS
+	-- open / close doors
 	-- mouse to turn
 
 -- GAME
