@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 16:33:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/09 18:09:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	debug_key_pressed(t_game *game)
 {
 	static uint64_t		last_press;
-	static const char	key_c[] = "WASDLR";
+	static const char	key_c[] = "WASDlrud";
 
 	if (last_press != game->f_keys)
 	{
