@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 18:30:29 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 13:13:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline))
-static inline void	init_one_raycast(t_ray *ray, t_game *game)
+static inline void	__init_one_raycast(t_ray *ray, t_game *game)
 {
 	ray->f_coo[X] = game->p_coo[X];
 	ray->f_coo[Y] = game->p_coo[Y];
@@ -71,7 +71,7 @@ enum e_hit	__check_ray(const t_ray *ray, char **map)
 }
 
 __attribute__((always_inline))
-static inline void	get_n_step(t_ray *ray)
+static inline void	__get_n_step(t_ray *ray)
 {
 	ray->i_coo[X] = (int)ray->f_coo[X];
 	ray->i_coo[Y] = (int)ray->f_coo[Y];
@@ -92,11 +92,11 @@ static inline void	get_n_step(t_ray *ray)
 }
 
 __attribute__((always_inline))
-static inline void	check_one_ray(t_ray *ray, char **map)
+static inline void	__check_one_ray(t_ray *ray, char **map)
 {
 	while (ray->hit == no_hit)
 	{
-		get_n_step(ray);
+		__get_n_step(ray);
 		if (fabsf(ray->dist_n_step[X]) <= fabsf(ray->dist_n_step[Y]))
 		{
 			ray->f_coo[X] += ray->n_step[X];
@@ -132,7 +132,7 @@ static inline void	check_one_ray(t_ray *ray, char **map)
 }
 
 __attribute__((always_inline))
-static inline void	call_draw_ray_wall(const t_ray ray,
+static inline void	__call_draw_ray_wall(const t_ray ray,
 	const int x, const t_game game, t_render render)
 {
 	const float	dx = (ray.f_coo[X] - game.p_coo[X]);
@@ -162,10 +162,10 @@ void	ray_casting(t_game *game)
 	i = 0;
 	while (i < W_WIDTH)
 	{
-		init_one_raycast(&ray, game);
-		check_one_ray(&ray, game->map);
+		__init_one_raycast(&ray, game);
+		__check_one_ray(&ray, game->map);
 		render_mmap_one_ray(game, ray);
-		call_draw_ray_wall(ray, i, *game, game->render);
+		__call_draw_ray_wall(ray, i, *game, game->render);
 		ray.teta -= ray.teta_step;
 		++i;
 	}

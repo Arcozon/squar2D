@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:12:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 13:11:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static inline void	handle_view_angle(t_game *game)
 
 static inline void	handle_2_dir(float p_delta[2], const float p_speed)
 {
-	const float	dist2 = p_delta[X] * p_delta[X] + p_delta[Y] * p_delta[Y]; 
-	float	norm_factor = sqrtf(dist2) / p_speed;
+	const float	dist2 = p_delta[X] * p_delta[X] + p_delta[Y] * p_delta[Y];
+	float		norm_factor = sqrtf(dist2) / p_speed;
 
 	p_delta[X] /= norm_factor;
 	p_delta[Y] /= norm_factor;
