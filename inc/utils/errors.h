@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/08 20:17:27 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:59:37 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,13 @@ enum
 	E_READ,
 	E_MLX,
 	E_WIN,
-	E_IMG
+	E_IMG,
+	ERR_SYS_MAX
 };
 
 enum
 {
-	ERR_ARGS = 1,
+	ERR_ARGS = ERR_SYS_MAX,
 	NOT_DOT_CUB,
 	CANT_OPN_MAP,
 	WRONG_KEY,
@@ -41,7 +42,8 @@ enum
 	MISSING_PLAYER,
 	TOO_MANY_PLAYER,
 	UNCLOSED_MAP,
-	UNKNOWN_CHAR
+	UNKNOWN_CHAR,
+	ERR_PARS_MAX
 };
 
 uint32_t	perror_cub(t_cub cub);

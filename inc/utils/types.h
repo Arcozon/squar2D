@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 11:41:00 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:56:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,6 @@ enum	e_side
 };
 
 void	free_cub(t_cub *cub);
+void	free_strstr(char **strstr, const uint32_t size);
 
 #endif

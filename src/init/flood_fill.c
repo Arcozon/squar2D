@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:09:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 18:42:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:58:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,25 +29,6 @@ uint32_t	recursive_shi(char **map,
 		return (UNCLOSED_MAP);
 	return (0);
 }
-
-// void	set_back_to_space(char **map, uint64_t dim[2])
-// {
-// 	uint64_t	i;
-// 	uint64_t	j;
-
-// 	i = 0;
-// 	while (i < dim[Y])
-// 	{
-// 		j = 0;
-// 		while (j < dim[X])
-// 		{
-// 			if (map[i][j] == VISITED_CHAR)
-// 				map[i][j] = MTY_CHAR;
-// 			++j;
-// 		}
-// 		++i;
-// 	}
-// }
 
 void	get_map_range(char *map[], const uint64_t dim[2], int64_t range[2][2])
 {
@@ -108,14 +89,14 @@ uint64_t	make_new_map(t_pars *pars, char *old_map[], int64_t	range[2][2])
 
 	new_map = ft_calloc(sizeof(*new_map) * ndim[Y]);
 	if (!new_map)
-		return (pars->syscall_error = E_MLC);
+		return (pars->error = E_MLC);
 	iy = 0;
 	while (iy < ndim[Y])
 	{
 		new_map[iy] = ft_dupmapline(old_map[range[Y][MINR_MAP] - 1 + iy],
 				range[X][MINR_MAP] - 1, ndim[X]);
-		if (!new_map[iy])
-			return (pars->syscall_error = E_MLC);
+		if (!new_map[iy])			
+			return (free_strstr(new_map, iy),  pars->error = E_MLC);
 		++iy;
 	}
 	pars->resized_map = new_map;
@@ -129,9 +110,9 @@ uint64_t	make_new_map(t_pars *pars, char *old_map[], int64_t	range[2][2])
 uint32_t	flood_fill(t_pars *pars, char *map[], uint64_t dim[2])
 {
 	if (recursive_shi(map, dim, pars->player[X], pars->player[Y]))
-		return ((pars->error = UNCLOSED_MAP) || pars->syscall_error);
+		return (pars->error = UNCLOSED_MAP);
 	get_map_range(map, dim, pars->range_map);
 	if (make_new_map(pars, map, pars->range_map))
-		return (pars->error || pars->syscall_error);
-	return (pars->error || pars->syscall_error);
+		return (pars->error);
+	return (pars->error);
 }

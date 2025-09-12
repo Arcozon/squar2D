@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:28:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:30:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:36:44 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	cub_mouse_hide(t_xvar *xvar, t_win_list *win, int hide)
 
 	event_return = 0;
 	err_return = 0;
+	if (!xvar || !win)
+		return ;
 	if (!XFixesQueryExtension(xvar->display, &event_return, &err_return))
 		return ;
 	if (hide && !is_showed)

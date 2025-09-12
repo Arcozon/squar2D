@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/06 16:24:30 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:39:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "s_vector.h"
 
 # define DOT_CUB	".cub"
+# define DOT_CUBNS	".cubns"
 
 # define W_WIDTH	1200
 # define W_HEIGHT	800
@@ -80,7 +81,7 @@ struct s_pars
 
 	t_mlx		pmlx;
 
-	uint32_t	syscall_error;
+	uint8_t		bonus:1;
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
 };

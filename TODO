@@ -47,3 +47,5 @@ Agree on a data structure for the map (sad char *[])
 	- make a better draw col_call (use avr color when its squished or extended)
 
 - Sort files in hooks, create a game folder
+
+-- Sprite :(

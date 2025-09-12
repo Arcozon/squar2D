@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:18:05 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 17:02:12 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 	}
 	ft_strlcpy(pars->err_context, av[1], sizeof(pars->err_context));
 	if (!ft_strendcmp(av[1], DOT_CUB))
-		return (pars->error = NOT_DOT_CUB);
+	{
+		if (!ft_strendcmp(av[1], DOT_CUBNS))
+			return (pars->error = NOT_DOT_CUB);
+		pars->bonus = 1;
+	}
 	pars->rd.fd = open(av[1], O_RDONLY);
 	if (pars->rd.fd < 0)
 		return (pars->error = CANT_OPN_MAP);
@@ -63,7 +67,7 @@ uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[], t_cub *cub)
 	mlx->win_img_paa = mlx_new_image(mlx->mlx_ptr, W_WIDTH, W_HEIGHT);
 	mlx->img_mmap = mlx_new_image(mlx->mlx_ptr, MMAP_WIDHT, MMAP_HEIGHT);
 	if (!mlx->win_img || !mlx->win_img_paa || !mlx->img_mmap)
-		return (E_IMG);
+		return (mlx->error = E_IMG);
 	setup_hooks(mlx, cub);
 	return (NO_ERR);
 }
@@ -92,10 +96,7 @@ uint32_t	init_cub(t_cub *cub, int ac, char *av[])
 	if (cub_init_mlx(&cub->pars.pmlx, cub->pname, av[1], cub))
 		return (cub->pars.pmlx.error);
 	if (parsing(&cub->pars))
-	{
-		cub->error = cub->pars.syscall_error;
-		return (cub->pars.error || cub->error);
-	}
+		return (cub->pars.error);
 	fill_game(&cub->pars, &cub->game);
 	return (cub->error);
 }

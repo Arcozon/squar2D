@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 11:45:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:29:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,9 @@ struct s_game
 
 struct s_cub
 {
+	uint8_t		bonus:1;
 	t_pars		pars;
-
+	
 	t_game		game;
 
 	char		*pname;

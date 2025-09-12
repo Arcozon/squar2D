@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/23 17:38:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 16:59:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,17 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 	i = -1;
 	while (++i < v_map->size)
 		if (realloc_vector_minsize(&v_map->u_ptr.vect_ptr[i], max_size))
-			return (pars->syscall_error = E_MLC);
+			return (pars->error = E_MLC);
 	pars->dim[X] = max_size;
 	pars->dim[Y] = v_map->size;
 	pars->map = malloc(sizeof(char *) * pars->dim[Y]);
 	if (!pars->map)
-		return (pars->syscall_error = E_MLC);
+		return (pars->error = E_MLC);
 	i = -1;
 	while (++i < pars->dim[Y])
 		pars->map[i] = v_map->u_ptr.vect_ptr[i].u_ptr.char_ptr;
 	change_null_into_space(pars->map, pars->dim[Y], pars->dim[X]);
-	return (pars->error || pars->syscall_error);
+	return (pars->error || pars->error);
 }
 
 uint32_t	read_map(t_pars *pars)
@@ -80,24 +80,24 @@ uint32_t	read_map(t_pars *pars)
 	t_vector	v_line;
 
 	if (new_vector(&pars->vec_map, sizeof(t_vector)))
-		return (pars->syscall_error = E_MLC);
+		return (pars->error = E_MLC);
 	while ((pars->rd.flags & R_DONE) == 0
-		&& !pars->syscall_error && !pars->error)
+		&& !pars->error && !pars->error)
 	{
 		v_line.u_ptr.vect_ptr = NULL;
 		if (map_forbiden_char(pars->rd.line, pars))
 			return (pars->error = UNKNOWN_CHAR);
 		if (str_to_vector(&v_line, pars->rd.line))
-			return (pars->syscall_error = E_MLC);
+			return (pars->error = E_MLC);
 		if (add_elems_vector(&pars->vec_map, &v_line, 1))
-			return (pars->syscall_error = E_MLC);
+			return (pars->error = E_MLC);
 		gnl(&pars->rd);
 		if (pars->rd.error)
-			pars->syscall_error = pars->rd.error;
+			pars->error = pars->rd.error;
 	}
 	if (normalise_map(pars, &pars->vec_map))
-		return (pars->error || pars->syscall_error);
-	return (pars->error || pars->syscall_error);
+		return (pars->error || pars->error);
+	return (pars->error || pars->error);
 }
 
 uint32_t	pars_map(t_pars *pars)
@@ -105,10 +105,10 @@ uint32_t	pars_map(t_pars *pars)
 	if (pars->rd.flags & R_DONE)
 		return (pars->error = MISSING_MAP);
 	if (read_map(pars))
-		return (pars->error || pars->syscall_error);
+		return (pars->error || pars->error);
 	if (count_players(pars, pars->map, pars->dim))
-		return (pars->error || pars->syscall_error);
+		return (pars->error || pars->error);
 	if (flood_fill(pars, pars->map, pars->dim))
-		return (pars->error || pars->syscall_error);
-	return (pars->error || pars->syscall_error);
+		return (pars->error || pars->error);
+	return (pars->error || pars->error);
 }
