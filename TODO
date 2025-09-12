@@ -20,7 +20,7 @@ Agree on a data structure for the map (sad char *[])
 
 -- HOOKS
 	-- open / close doors
-	-- mouse to turn
+	-- open settings
 
 -- GAME
 	- Fixed tick rate ?
