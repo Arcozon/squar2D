@@ -49,3 +49,6 @@ Agree on a data structure for the map (sad char *[])
 - Sort files in hooks, create a game folder
 
 -- Sprite :(
+
+-- BONUS
+	FIX PARSING FOR BNS-> add elemets in struct pars, fix init

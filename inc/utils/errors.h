@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 16:59:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 17:08:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ enum
 	TOO_MANY_PLAYER,
 	UNCLOSED_MAP,
 	UNKNOWN_CHAR,
+	MISSUNG_DOOR_TEXTURE,
 	ERR_PARS_MAX
 };
 
