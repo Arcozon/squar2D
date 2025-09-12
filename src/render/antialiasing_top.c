@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:28:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 17:27:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 11:41:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static inline t_clr	get_avr(const int coo[2],
 	sum[G] /= coef;
 	sum[B] /= coef;
 	return ((t_clr){.s_mask.r = sum[R], .s_mask.g = sum[G],
-		.s_mask.b = sum[B], .s_mask.unused = 0});
+		.s_mask.b = sum[B], .s_mask.opac = 0});
 }
 
 __attribute__((flatten))

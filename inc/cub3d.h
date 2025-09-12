@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:23:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 11:45:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@
 # define PLAYER_BASE_SPEED	0.07f
 // # define PLAYER_BASE_SPEED	0.01f
 // # define BASE_FOV			4 * M_PI
-# define BASE_FOV			2 * M_PI
-// # define BASE_FOV			3 * M_PI / 5
+// # define BASE_FOV			2 * M_PI
+# define BASE_FOV			3 * M_PI / 5
 
 # define HALF_P_SIZE		0.2f
 

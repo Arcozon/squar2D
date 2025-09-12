@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 15:02:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/12 11:41:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ union __attribute__((packed, may_alias)) u_clr
 		uint8_t	b;
 		uint8_t	g;
 		uint8_t	r;
-		uint8_t	unused;
+		uint8_t	opac;
 	}	s_mask;
 };
 
