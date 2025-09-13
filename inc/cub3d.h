@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 17:13:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 11:57:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ struct s_render
 	t_clr	mmap_empty;
 	t_clr	mmap_wall;
 	t_clr	mmap_view;
-	t_clr	mmap_door_open;
-	t_clr	mmap_door_closed;
+	// t_clr	mmap_door_open;
+	// t_clr	mmap_door_closed;
 };
 
 struct s_game
@@ -81,7 +81,7 @@ struct s_game
 
 	char		**map;
 	float		dim[2];
-	// doors 
+	t_doors		doors;
 
 	float		fov;
 
@@ -90,6 +90,7 @@ struct s_game
 	int			focus;
 	uint64_t	f_keys;
 
+	uint8_t		bonus:1;
 	t_render	render;
 };
 

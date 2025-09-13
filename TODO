@@ -35,7 +35,7 @@ Agree on a data structure for the map (sad char *[])
 	- add dirrection arrow
 
 -- SETTINGS:
-	--	PUT SCREEN WHEN LOSE FOCUS
+	--	PUT PAUSESCREEN WHEN LOSE FOCUS
 	- fov
 	- mouse sensibility
 	- antialiasing ?
@@ -52,3 +52,6 @@ Agree on a data structure for the map (sad char *[])
 
 -- BONUS
 	FIX PARSING FOR BNS-> add elemets in struct pars, fix init
+
+	-- FPS counter
+	-- Bousole ? (Barre avec N E S W en haut)

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 16:39:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 12:11:53 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ struct s_mlx
 	void		*win_img;
 	void		*win_img_paa;
 	void		*img_mmap;
+	void		*img_settings;
 
 	uint32_t	error;
 	char		err_context[BUFF_SIZE];
@@ -66,18 +67,32 @@ struct s_pars
 	t_xpm_img	so_texture;
 	t_xpm_img	we_texture;
 
+	t_xpm_img	door_texture;
+	uint8_t		any_doors:1;
+
 	t_clr		color_ceiling;
 	t_clr		color_floor;
-	uint8_t		ceiling_defined;
-	uint8_t		floor_defined;
+	uint8_t		ceiling_defined:1;
+	uint8_t		floor_defined:1;
 
+	t_clr		mmap_player;
+	t_clr		mmap_wall;
+	t_clr		mmap_empty;
+	t_clr		mmap_view;
+	
 	uint64_t	player[2];
 	float		view_angle;
+	float		delta_angle;
+	float		fov;
+
 	t_vector	vec_map;
 	char		**map;
 	uint64_t	dim[2];
 	int64_t		range_map[2][2];
 	char		**resized_map;
+
+	t_doors		doors;
+
 
 	t_mlx		pmlx;
 
@@ -89,10 +104,10 @@ struct s_pars
 void		skip_spaces(char *line[]);
 void		skip_key_space(char **line);
 int			ft_str_space_cmp(const char *str, const char *pat);
-int			is_color(char *line);
-int			is_texture(char *line);
-int			ft_isdigit(char c);
-int			is_map(char *line);
+int			is_color(const char *line);
+int			is_texture(const char *line);
+int			ft_isdigit(const char c);
+int			is_map(const char *line);
 
 uint32_t	pars_color(t_pars *pars, char *line);
 uint32_t	pars_texture(t_pars *pars, char *line);

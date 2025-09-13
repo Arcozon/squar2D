@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 14:41:55 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 12:18:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	mmap_player(t_img img_map)
 void	render_minimap(t_game *game, t_render *render)
 {
 	render_mmap_environement(game->map, game->dim,
-		game->p_coo, render->img_mmap);
+		game->p_coo, render);
 	ray_casting(game);
 	mmap_player(render->img_mmap);
 }

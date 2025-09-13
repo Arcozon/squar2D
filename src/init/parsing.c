@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 16:51:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 11:58:07 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,14 @@
 uint32_t	parsing(t_pars *pars)
 {
 	pars->rd.flags = R_CUT_E_SPC;
-	if (pars_data(pars))
-		return (pars->error);
-	if (pars_map(pars))
-		return (pars->error);
+	if (!pars->bonus)
+	{
+		if (pars_data(pars) || pars_map(pars))
+			return (pars->error);
+	}
+	else
+	{
+		(void)pars;
+	}
 	return (pars->error);
 }

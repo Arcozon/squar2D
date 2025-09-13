@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:14:00 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/04 14:29:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 12:12:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 void	skip_spaces(char *line[])
 {
-	if (*line)
-		while (*line[0] == ' ')
-			++*line;
+	if (!*line)
+		return ;
+	while (*line[0] == ' ')
+		++*line;
 }
 
-void	skip_key_space(char **line)
+void	skip_key_space(char *line[])
 {
 	if (!*line)
 		return ;
-	while (**line && **line != ' ')
+	while (*line[0] && *line[0] != ' ')
 		++*line;
-	while (**line == ' ')
+	while (*line[0] == ' ')
 		++*line;
 }
 
@@ -39,23 +40,23 @@ int	ft_str_space_cmp(const char *str, const char *pat)
 	return (!pat[i] && str[i] == ' ');
 }
 
-int	is_color(char *line)
+int	is_color(const char *line)
 {
 	return (ft_str_space_cmp(line, "C") || ft_str_space_cmp(line, "F"));
 }
 
-int	is_texture(char *line)
+int	is_texture(const char *line)
 {
 	return (ft_str_space_cmp(line, "NO") || ft_str_space_cmp(line, "SO")
 		|| ft_str_space_cmp(line, "EA") || ft_str_space_cmp(line, "WE"));
 }
 
-int	ft_isdigit(char c)
+int	ft_isdigit(const char c)
 {
 	return (c >= '0' && c <= '9');
 }
 
-int	is_map(char *line)
+int	is_map(const char *line)
 {
 	uint32_t	i;
 	uint32_t	count;

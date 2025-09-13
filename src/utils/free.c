@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/26 14:18:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 11:52:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	free_strstr(char **strstr, const uint32_t size)
 
 void	free_mlx(t_mlx *mlx)
 {
+	if (mlx->img_settings)
+		mlx_destroy_image(mlx->mlx_ptr, mlx->img_settings);
 	if (mlx->img_mmap)
 		mlx_destroy_image(mlx->mlx_ptr, mlx->img_mmap);
 	if (mlx->win_img)

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:05:53 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 15:03:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 12:33:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ static inline int	ft_abs(const int a)
 	return (a);
 }
 
-void	render_line(float start[2], const int end[2], t_img mmap)
+void	__render_line(float start[2], const int end[2], t_img mmap,
+	const uint32_t clr_view)
 {
 	const int	nstep = ft_abs(start[X] - end[X])
 		+ ft_abs(start[Y] - end[Y]) + 1;
@@ -33,7 +34,7 @@ void	render_line(float start[2], const int end[2], t_img mmap)
 	while (i < nstep)
 	{
 		mmap.p_data[(int)start[Y] * MMAP_WIDHT + (int)start[X]].rgb
-			= MMAP_CLR_VIEW;
+			= clr_view;
 		start[X] += step[X];
 		start[Y] += step[Y];
 		++i;
@@ -72,6 +73,7 @@ __attribute__((flatten))
 void	render_mmap_one_ray(t_game *game, const t_ray ray)
 {
 	static const int	map_pcoo[2] = {MMAP_WIDHT / 2, MMAP_HEIGHT / 2};
+	const uint32_t		clr_view = game->render.mmap_view.rgb;
 	float				end_ray[2];
 
 	end_ray[X] = map_pcoo[X]
@@ -79,5 +81,5 @@ void	render_mmap_one_ray(t_game *game, const t_ray ray)
 	end_ray[Y] = map_pcoo[Y]
 		+ (ray.f_coo[Y] - game->p_coo[Y]) * MMAP_SQUARE_SIZE;
 	__bound_ray_to_screen(end_ray, ray, map_pcoo, game->p_coo);
-	render_line(end_ray, map_pcoo, game->render.img_mmap);
+	__render_line(end_ray, map_pcoo, game->render.img_mmap, clr_view);
 }
