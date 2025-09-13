@@ -2,14 +2,11 @@ Agree on a data structure for the map (sad char *[])
 
 -- INIT
 	- PARSING:
-		- mmap colors
-		- door textures
-		- door char in map
+		- pars float, check doors
 		- base fov ?
-		- base speed ?
-		- minimap size ?
 		- view angle ?
 		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
+
 -- DOORS:
 	-- hash map for doors (swag)
 	-- animation  !!! (from bot to top ?) (from middle to sides ?) (left <-> right ?) 
