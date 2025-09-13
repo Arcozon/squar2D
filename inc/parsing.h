@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 15:27:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:44:22 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@
 # define KEY_MM_D_OPEN	"MM_DO"
 # define KEY_MM_D_CLOSE	"MM_DC"
 
-# define KEY_TXTR_DOOR	"DR"
+# define KEY_DOOR		"DR"
 
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
