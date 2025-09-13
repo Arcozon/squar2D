@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:18:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 17:04:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define MMAP_CLR_WALL		0x191710
 # define MMAP_CLR_MTY		0x8f8f8f
 # define MMAP_CLR_PLAYR		0xff3a51
+# define MMAP_CLR_D_OPEN	0x3a51ff
+# define MMAP_CLR_D_CLOSED	0x3a519f
 
 struct s_draw_col_wall
 {

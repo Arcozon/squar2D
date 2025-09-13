@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_data_color.c                                  :+:      :+:    :+:   */
+/*   pars_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:17:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/21 16:05:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 17:32:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	get_col(char **line, t_clr *color)
+__attribute__((always_inline))
+static inline uint32_t	get_col(char **line, t_clr *color)
 {
 	uint32_t	nb;
 	uint32_t	i;
@@ -33,7 +34,8 @@ uint32_t	get_col(char **line, t_clr *color)
 	return (NO_ERR);
 }
 
-uint32_t	read_color(char *line, t_pars *pars, t_clr *col)
+__attribute__((always_inline, flatten))
+static inline uint32_t	read_color(char *line, t_pars *pars, t_clr *col)
 {
 	skip_key_space(&line);
 	ft_strlcpy(pars->err_context, line, sizeof(pars->err_context));
@@ -45,6 +47,7 @@ uint32_t	read_color(char *line, t_pars *pars, t_clr *col)
 	++line;
 	if (get_col(&line, col) || *line != '\0')
 		return (pars->error = WRONG_FORMAT_COLOR);
+	pars->err_context[0] = '\0';
 	return (NO_ERR);
 }
 
@@ -71,4 +74,25 @@ uint32_t	pars_color(t_pars *pars, char *line)
 		return (read_color(line, pars, &pars->color_floor));
 	}
 	return (NO_ERR);
+}
+
+uint32_t	pars_color_bns(t_pars *pars, char *line)
+{
+	const char	*keys[] = {KEY_MM_PLAYER, KEY_MM_VIEW, KEY_MM_WALL,
+		KEY_MM_EMPTY, KEY_MM_D_OPEN, KEY_MM_D_CLOSE, 0};
+	t_clr		**p_clr;
+	uint32_t	i;
+
+	if (is_color(line))
+		return (pars_color(pars, line));
+	p_clr = (t_clr *[]){&pars->mmap_player, &pars->mmap_view,
+		&pars->mmap_wall, &pars->mmap_empty, &pars->mmap_d_open, &pars->mmap_d_closed};
+	i = 0;
+	while (keys[i])
+	{
+		if (ft_str_space_cmp(line, keys[i]))
+			return (read_color(line, pars, p_clr[i]));
+		++i;
+	}
+	return (pars->error);
 }

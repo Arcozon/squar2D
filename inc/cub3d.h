@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 15:27:00 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 16:59:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ struct s_render
 	t_img	img;
 	t_img	img_paa;
 	t_img	img_mmap;
-
+	t_img	img_settings;
 	t_img	n_txtr;
 	t_img	e_txtr;
 	t_img	s_txtr;

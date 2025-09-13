@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 11:52:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 17:43:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	free_pars(t_pars *pars)
 		mlx_destroy_image(pars->pmlx.mlx_ptr, pars->no_texture.p_img);
 	if (pars->so_texture.p_img)
 		mlx_destroy_image(pars->pmlx.mlx_ptr, pars->so_texture.p_img);
+	if (pars->door_texture.p_img)
+		mlx_destroy_image(pars->pmlx.mlx_ptr, pars->door_texture.p_img);
 	free(pars->rd.line);
 	pars->rd.line = 0;
 	if (pars->rd.fd >= 0)
