@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:11:53 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:27:14 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,22 @@
 # define MMAP_HEIGHT	200
 
 # define NB_TEXTURE		4
+
+# define KEY_CEILING	"C"
+# define KEY_FLOOR		"F"
+# define KEY_NORTH		"NO"
+# define KEY_EAST		"EA"
+# define KEY_SOUTH		"SO"
+# define KEY_WEST		"WE"
+
+# define KEY_MM_PLAYER	"MM_PLR"
+# define KEY_MM_VIEW	"MM_VIEW"
+# define KEY_MM_WALL	"MM_1"
+# define KEY_MM_EMPTY	"MM_0"
+# define KEY_MM_D_OPEN	"MM_DO"
+# define KEY_MM_D_CLOSE	"MM_DC"
+
+# define KEY_TXTR_DOOR	"DR"
 
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
@@ -71,15 +87,17 @@ struct s_pars
 	uint8_t		any_doors:1;
 
 	t_clr		color_ceiling;
-	t_clr		color_floor;
 	uint8_t		ceiling_defined:1;
+	t_clr		color_floor;
 	uint8_t		floor_defined:1;
 
 	t_clr		mmap_player;
 	t_clr		mmap_wall;
 	t_clr		mmap_empty;
 	t_clr		mmap_view;
-	
+	t_clr		mmap_d_open;
+	t_clr		mmap_d_closed;
+
 	uint64_t	player[2];
 	float		view_angle;
 	float		delta_angle;

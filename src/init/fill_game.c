@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:30:09 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:27:49 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	fill_render(t_pars *pars, t_render *render)
 {
 	render->f_clr = pars->color_floor;
 	render->c_clr = pars->color_ceiling;
+	render->mmap_d_closed = pars->mmap_d_closed;
+	render->mmap_d_open = pars->mmap_d_open;
 	render->mmap_player = pars->mmap_player;
 	render->mmap_empty = pars->mmap_empty;
 	render->mmap_wall = pars->mmap_wall;

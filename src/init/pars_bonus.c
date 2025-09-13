@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:04:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:19:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	is_color_bns(char *line)
 {
-	return (is_color(line))
+	return (is_color(line) || ft_str_space_cmp())
 }
 
 

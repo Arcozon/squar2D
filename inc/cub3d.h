@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 11:57:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:27:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ struct s_render
 	t_clr	mmap_empty;
 	t_clr	mmap_wall;
 	t_clr	mmap_view;
-	// t_clr	mmap_door_open;
-	// t_clr	mmap_door_closed;
+	t_clr	mmap_d_open;
+	t_clr	mmap_d_closed;
 };
 
 struct s_game

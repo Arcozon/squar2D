@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:40:58 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:30:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:15:59 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static inline void	__mmap_fill_square(t_img img, int coo_x,
 	if (size[Y] + coo_y > img.height)
 		size[Y] = img.height - coo_y;
 	while (size[Y]--)
-		ft_fclrset((uint32_t *)&img.p_data[(coo_y + size[Y])
+		__ft_fclrset((uint32_t *)&img.p_data[(coo_y + size[Y])
 			* img.width + coo_x], clr, size[X]);
 }
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:14:00 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:12:57 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:40:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,19 @@ int	ft_str_space_cmp(const char *str, const char *pat)
 	return (!pat[i] && str[i] == ' ');
 }
 
+__attribute__((pure))
 int	is_color(const char *line)
 {
-	return (ft_str_space_cmp(line, "C") || ft_str_space_cmp(line, "F"));
+	return (ft_str_space_cmp(line, KEY_CEILING) || ft_str_space_cmp(line, KEY_FLOOR));
 }
 
+__attribute__((pure))
 int	is_texture(const char *line)
 {
-	return (ft_str_space_cmp(line, "NO") || ft_str_space_cmp(line, "SO")
-		|| ft_str_space_cmp(line, "EA") || ft_str_space_cmp(line, "WE"));
+	return (ft_str_space_cmp(line, KEY_NORTH)
+		|| ft_str_space_cmp(line, KEY_EAST)
+		|| ft_str_space_cmp(line, KEY_SOUTH)
+		|| ft_str_space_cmp(line, KEY_WEST));
 }
 
 int	ft_isdigit(const char c)

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:18:41 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 16:53:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/13 15:39:30 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 uint32_t	pars_texture(t_pars *pars, char *line)
 {
-	const char	*key[NB_TEXTURE] = {"NO", "EA", "SO", "WE"};
+	const char	*key[] = {KEY_NORTH, KEY_EAST, KEY_SOUTH, KEY_WEST, 0};
 	t_xpm_img	**textures;
 	uint64_t	i;
 
 	textures = (t_xpm_img *[]){&pars->no_texture, &pars->ea_texture,
 		&pars->so_texture, &pars->we_texture};
 	i = 0;
-	while (i < NB_TEXTURE)
+	while (key[i])
 	{
 		if (ft_str_space_cmp(line, key[i]))
 		{

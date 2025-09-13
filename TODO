@@ -33,6 +33,7 @@ Agree on a data structure for the map (sad char *[])
 	- squre player ?
 	- plane view ?
 	- add dirrection arrow
+	- add doors
 
 -- SETTINGS:
 	--	PUT PAUSESCREEN WHEN LOSE FOCUS
