@@ -3,11 +3,9 @@ WE .textures/west.xpm
 
 
 C 255,255,0
-MM_PLR 255,255,255
-MM_VIEW 255,255,254
 
 SO .textures/south.xpm
-DR .textures/south.xpm
+DR .textures/door.xpm
 
 EA .textures/east.xpm
 F 80,100,30      

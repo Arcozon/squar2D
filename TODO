@@ -26,7 +26,6 @@ Agree on a data structure for the map (sad char *[])
 	- variable speed ?
 
 -- MINIMAP
-	- rotate around player ? (have player always looking in the same dir) 
 	- squre player ?
 	- plane view ?
 	- add dirrection arrow
@@ -37,8 +36,7 @@ Agree on a data structure for the map (sad char *[])
 	- fov
 	- mouse sensibility
 	- antialiasing ?
-	- movements key bind?
-	- mmap size
+	- mmap size ?
 
 -- RENDER
 	- fix fisheye
@@ -53,4 +51,3 @@ Agree on a data structure for the map (sad char *[])
 
 	-- FPS counter
 	-- Bousole ? (Barre avec N E S W en haut)
--- FIX COL
