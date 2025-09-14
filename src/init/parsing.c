@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:33:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/14 16:51:59 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ uint32_t	parsing(t_pars *pars)
 	{
 		if (pars_data_bonus(pars) || pars_map_bonus(pars))
 			return (pars->error);
-		return(pars->error = E_MLC);
 	}
 	return (pars->error);
 }

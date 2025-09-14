@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:31:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/14 16:41:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,6 +134,7 @@ uint32_t	pars_texture(t_pars *pars, char *line);
 
 uint32_t	flood_fill(t_pars *pars, char **map, uint64_t dim[2]);
 uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2]);
+uint32_t	read_map(t_pars *pars, const char allowed_char[]);
 uint32_t	pars_map(t_pars *pars);
 uint32_t	pars_data(t_pars *pars);
 
