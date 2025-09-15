@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:22:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/15 10:55:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_xpm_img		t_img;
 
 typedef union u_clr				t_clr;
 
-union __attribute__((packed, may_alias)) u_clr
+union __attribute__((may_alias, packed)) u_clr
 {
 	uint32_t				rgb;
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:37:44 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/15 10:57:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ uint64_t	ft_strlen(const char str[])
 __attribute__ ((pure, nonnull, hot))
 uint64_t	heap_strlen(const char str[])
 {
-	const char		*start = str;
+	const char	*start = str;
 
 	while (*str)
 		++str;

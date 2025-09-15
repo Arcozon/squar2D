@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 12:18:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/15 10:51:29 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	mmap_player(t_img img_map)
+static void	mmap_player(t_img img_map, const uint32_t clr)
 {
 	static const int	center[] = {MMAP_WIDHT / 2, MMAP_HEIGHT / 2};
 	int					ix;
@@ -27,7 +27,7 @@ static void	mmap_player(t_img img_map)
 			if (ix * ix + iy * iy <= MMAP_P_RADIUS * MMAP_P_RADIUS)
 			{
 				img_map.p_data[center[X] + ix
-					+ (center[Y] + iy) * img_map.width].rgb = MMAP_CLR_PLAYR;
+					+ (center[Y] + iy) * img_map.width].rgb = clr;
 			}
 			++ix;
 		}	
@@ -40,5 +40,5 @@ void	render_minimap(t_game *game, t_render *render)
 	render_mmap_environement(game->map, game->dim,
 		game->p_coo, render);
 	ray_casting(game);
-	mmap_player(render->img_mmap);
+	mmap_player(render->img_mmap, render->mmap_player.rgb);
 }
