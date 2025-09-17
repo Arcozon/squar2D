@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:28:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:34:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_err	check_doors(t_pars *pars)
 		while (one_door)
 		{
 			if (__check_one_door(pars->resized_map, one_door->x, one_door->y, pars))
-				return (pars->error = INVALID_DOOR);
+				return (pars->error);
 			one_door = one_door->next;
 		}
 		++i;
