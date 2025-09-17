@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:34:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:41:41 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ t_err	__check_one_door(char *map[], const int x, const int y, t_pars *pars)
 		DEBUG("[%c|%c] | [%c|%c]", map[y][x - 1], map[y][x + 1], map[y - 1][x], map[y + 1][x])
 		pars->error = INVALID_DOOR;
 	}
-	for (uint64_t i = 0; i < pars->dim[Y]; ++i)
-		printf("%.*s\n", (int)pars->dim[X], pars->map[i]);
 	ft_strlcpy(pars->err_context, "(", sizeof(pars->err_context));
-	ft_lutoacpy(x, &pars->err_context[1], sizeof(pars->err_context) - 1);
+	ft_lutoacpy(x, pars->err_context + ft_strlen(pars->err_context),
+		sizeof(pars->err_context) - ft_strlen(pars->err_context));
 	ft_strlcat(pars->err_context, ", ", sizeof(pars->err_context));
 	ft_lutoacpy(y, pars->err_context + ft_strlen(pars->err_context),
 		sizeof(pars->err_context) - ft_strlen(pars->err_context));
@@ -51,7 +50,10 @@ t_err	check_doors(t_pars *pars)
 	{
 		one_door = pars->doors[i];
 		if (one_door && !pars->door_texture.p_img)
-			return (pars->error = MISSING_DOOR_TEXTURE);
+		{
+			ft_strlcpy(pars->err_context, "Door", sizeof(pars->err_context));
+			return (pars->error = MISSING_TEXTURE);
+		}
 		while (one_door)
 		{
 			if (__check_one_door(pars->resized_map, one_door->x, one_door->y, pars))

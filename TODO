@@ -20,8 +20,6 @@ Agree on a data structure for the map (sad char *[])
 
 -- DOORS
 	- open / close doors
-	- if any doors, is txtr defined
-	- if doors isnt open in 2 (only 2) mirror dir : err
 	- raycsting check
 	- colision check
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:14:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:37:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_err	add_door(t_doors doors, const int x, const int y)
 	while (*the_door)
 		the_door = &((*the_door)->next);
 	*the_door = new_door(x, y);
-	DEBUG("NEWDOOR : %d %d %p", x, y, find_door(doors, x, y))
 	if (!the_door)
 		return (E_MLC);
 	return (NO_ERR);
