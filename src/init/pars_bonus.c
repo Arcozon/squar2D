@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:13:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 16:58:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ uint32_t	pars_map_bonus(t_pars *pars)
 		return (pars->error || pars->error);
 	if (flood_fill(pars, pars->map, pars->dim))
 		return (pars->error || pars->error);
+	if (check_doors(pars))
+		return (pars->error || pars->error);
 	return (pars->error || pars->error);
 }
 
@@ -84,12 +86,6 @@ uint32_t	pars_data_bonus(t_pars *pars)
 			return (pars->error = WRONG_KEY);
 		}
 	}
-	// DEBUG(KEY_MM_PLAYER": %x %x %x", pars->mmap_player.s_mask.r, pars->mmap_player.s_mask.g, pars->mmap_player.s_mask.b)
-	// DEBUG(KEY_MM_WALL": %x %x %x", pars->mmap_wall.s_mask.r, pars->mmap_wall.s_mask.g, pars->mmap_wall.s_mask.b)
-	// DEBUG(KEY_MM_EMPTY": %x %x %x", pars->mmap_empty.s_mask.r, pars->mmap_empty.s_mask.g, pars->mmap_empty.s_mask.b)
-	// DEBUG(KEY_MM_VIEW": %x %x %x", pars->mmap_view.s_mask.r, pars->mmap_view.s_mask.g, pars->mmap_view.s_mask.b)
-	// DEBUG(KEY_MM_D_OPEN": %x %x %x", pars->mmap_d_open.s_mask.r, pars->mmap_d_open.s_mask.g, pars->mmap_d_open.s_mask.b)
-	// DEBUG(KEY_MM_D_CLOSE": %x %x %x", pars->mmap_d_closed.s_mask.r, pars->mmap_d_closed.s_mask.g, pars->mmap_d_closed.s_mask.b)
 	if (pars->rd.error)
 		pars->error = pars->rd.error;
 	return (is_data_full(pars));

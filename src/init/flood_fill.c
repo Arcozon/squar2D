@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:09:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 15:49:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:29:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,18 @@ void	get_map_range(char *map[], const uint64_t dim[2], int64_t range[2][2])
 	iy = 0;
 	while (iy < dim[Y])
 	{
-		if (!ft_s_strchr(map[iy], VISITED_CHARS))
+		if (!ft_sn_strchr(map[iy], dim[X], VISITED_CHARS))
 		{
 			if (!range[Y][MAXR_MAP])
 				++range[Y][MINR_MAP];
 		}
 		else
 		{
-			if (ft_s_strchr(map[iy], VISITED_CHARS) - map[iy] < range[X][MINR_MAP])
-				range[X][MINR_MAP] = ft_s_strchr(map[iy], VISITED_CHARS) - map[iy];
-			if (ft_s_strrchr(map[iy], VISITED_CHARS) - map[iy]
+			if (ft_sn_strchr(map[iy], dim[X], VISITED_CHARS) - map[iy] < range[X][MINR_MAP])
+				range[X][MINR_MAP] = ft_sn_strchr(map[iy], dim[X], VISITED_CHARS) - map[iy];
+			if (ft_sn_strrchr(map[iy], dim[X], VISITED_CHARS) - map[iy]
 				> range[X][MAXR_MAP] - 1)
-				range[X][MAXR_MAP] = ft_s_strrchr(map[iy], VISITED_CHARS)
+				range[X][MAXR_MAP] = ft_sn_strrchr(map[iy], dim[X], VISITED_CHARS)
 					- map[iy] + 1;
 			++range[Y][MAXR_MAP];
 		}	
@@ -82,8 +82,6 @@ char	*ft_dupmapline(const char *old_line, const uint64_t info[2],
 			new_line[i] = WALL_CHAR;
 		else if (ft_strchr(VISITED_CHARS, new_line[i]))
 		{
-			if (new_line[i] == VISITED_DOOR)
-				DEBUG("DOOR")
 			if (new_line[i] == VISITED_DOOR && add_door(doors, i, n_newline) == E_MLX)
 				return (free(new_line), NULL);
 			new_line[i] = MTY_CHAR;

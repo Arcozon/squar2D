@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 12:11:49 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:19:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,22 @@ uint64_t	ft_strlen(const char str[])__attribute__ ((pure, nonnull));
 uint64_t	heap_strlen(const char str[])__attribute__ ((pure, nonnull, hot));
 bool		ft_strendcmp(const char str[],
 				const char end[])__attribute__ ((pure, nonnull));
+
 void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size);
 void		ft_strnlcpy(char *dst, const char *src,
 				uint64_t dst_size, uint64_t src_size);
 void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size);
-uint64_t	index_strchr(const char str[], const char find);
+void		ft_strlcat(char *dst, const char *src, uint64_t dst_size);
 
+uint64_t	index_strchr(const char str[], const char find);
 char		*ft_strchr(const char str[], const char to_find)
 			__attribute__((nonnull, pure, flatten));
-char		*ft_s_strchr(const char str[], const char tofind[])
-			__attribute__((nonnull, pure, flatten));
+char		*ft_sn_strchr(const char str[], const uint64_t lenstr,
+			const char tofind[])__attribute__((nonnull, pure, flatten));
 char		*ft_strrchr(const char str[], const char to_find)
 			__attribute__((nonnull, pure, flatten));
-char		*ft_s_strrchr(const char str[], const char tofind[])
-			__attribute__((nonnull, pure, flatten));
+char		*ft_sn_strrchr(const char str[], const uint64_t lenstr,
+			const char tofind[])__attribute__((nonnull, pure, flatten));
 
 void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 12:10:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:18:22 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,13 @@ void	*ft_memcpy(void *dst, const void *src, uint64_t size)
 	return (dst - size);
 }
 
+void	ft_strlcat(char *dst, const char *src, uint64_t dst_size)
+{
+	const uint64_t	dst_end = ft_strlen(dst);
+
+	ft_strlcpy(dst + dst_end, src, dst_size - dst_end);
+}
+
 void	ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 {
 	uint64_t	f_size;
@@ -216,12 +223,12 @@ char	*ft_strchr(const char str[], const char to_find)
 }
 
 __attribute__((nonnull, pure, flatten))
-char	*ft_s_strchr(const char str[], const char tofind[])
+char	*ft_sn_strchr(const char str[], const uint64_t lenstr, const char tofind[])
 {
 	uint32_t	i;
 
 	i = 0;
-	while (str[i])
+	while (i < lenstr)
 	{
 		if (ft_strchr(tofind, str[i]))
 			return ((char *)&(str[i]));
@@ -245,11 +252,11 @@ char	*ft_strrchr(const char str[], const char to_find)
 }
 
 __attribute__((nonnull, pure, flatten))
-char *ft_s_strrchr(const char str[], const char tofind[])
+char *ft_sn_strrchr(const char str[], const uint64_t lenstr, const char tofind[])
 {
 	uint32_t	i;
 
-	i = heap_strlen(str);
+	i = lenstr;
 	while (i-- > 0)
 	{
 		if (ft_strchr(tofind, str[i]))

@@ -16,8 +16,14 @@ Agree on a data structure for the map (sad char *[])
 	-- update minimap (colors for cvlosed anbd open doors ?)
 
 -- HOOKS
-	-- open / close doors
 	-- open settings
+
+-- DOORS
+	- open / close doors
+	- if any doors, is txtr defined
+	- if doors isnt open in 2 (only 2) mirror dir : err
+	- raycsting check
+	- colision check
 
 -- GAME
 	- Fixed tick rate ?

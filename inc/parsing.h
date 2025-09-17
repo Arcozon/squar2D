@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:08:24 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 16:57:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ struct s_pars
 	t_xpm_img	we_texture;
 
 	t_xpm_img	door_texture;
-	uint8_t		any_doors:1;
 
 	t_clr		color_ceiling;
 	uint8_t		ceiling_defined:1;
@@ -128,6 +127,7 @@ int			is_texture(const char *line);
 int			ft_isdigit(const char c);
 int			is_map(const char *line);
 t_err		is_data_full(t_pars *pars);
+t_err		check_doors(t_pars *pars);
 
 t_err		pars_color(t_pars *pars, char *line);
 t_err		pars_texture(t_pars *pars, char *line);
