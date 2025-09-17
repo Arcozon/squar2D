@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:43:28 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 16:11:30 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	free_pars(t_pars *pars)
 		close (pars->rd.fd);
 		pars->rd.fd = -1;
 	}
+	free_doors(pars->doors);
 	free_strstr(pars->resized_map, pars->dim[Y]);
 	free(pars->map);
 	free_2d_vector(&pars->vec_map);

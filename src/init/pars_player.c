@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/25 16:35:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 11:41:26 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	set_angle_player(float *angle, char **map, const uint64_t player[2])
 		*angle = M_PI;
 }
 
-uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2])
+t_err	count_players(t_pars *pars, char **map, uint64_t dim[2])
 {
 	uint64_t	count;
 	uint64_t	i;

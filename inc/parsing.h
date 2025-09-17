@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 16:41:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 16:08:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"
 # define MAP_CHARS_BNS	"D"
+# define CHAR_DOOR		'D'
 # define WALL_CHAR		'1'
 # define MTY_CHAR		' '
 
@@ -60,7 +61,7 @@ struct s_mlx
 	void		*img_mmap;
 	void		*img_settings;
 
-	uint32_t	error;
+	t_err		error;
 	char		err_context[BUFF_SIZE];
 };
 
@@ -112,11 +113,10 @@ struct s_pars
 
 	t_doors		doors;
 
-
 	t_mlx		pmlx;
 
 	uint8_t		bonus:1;
-	uint32_t	error;
+	t_err		error;
 	char		err_context[BUFF_SIZE];
 };
 
@@ -127,24 +127,24 @@ int			is_color(const char *line);
 int			is_texture(const char *line);
 int			ft_isdigit(const char c);
 int			is_map(const char *line);
-uint32_t	is_data_full(t_pars *pars);
+t_err		is_data_full(t_pars *pars);
 
-uint32_t	pars_color(t_pars *pars, char *line);
-uint32_t	pars_texture(t_pars *pars, char *line);
+t_err		pars_color(t_pars *pars, char *line);
+t_err		pars_texture(t_pars *pars, char *line);
 
-uint32_t	flood_fill(t_pars *pars, char **map, uint64_t dim[2]);
-uint32_t	count_players(t_pars *pars, char **map, uint64_t dim[2]);
-uint32_t	read_map(t_pars *pars, const char allowed_char[]);
-uint32_t	pars_map(t_pars *pars);
-uint32_t	pars_data(t_pars *pars);
+t_err		flood_fill(t_pars *pars, char **map, uint64_t dim[2]);
+t_err		count_players(t_pars *pars, char **map, uint64_t dim[2]);
+t_err		read_map(t_pars *pars, const char allowed_char[]);
+t_err		pars_map(t_pars *pars);
+t_err		pars_data(t_pars *pars);
 
 void		fill_game(t_pars *pars, t_game *game);
-uint32_t	parsing(t_pars *pars);
-uint32_t	init_cub(t_cub *cub, int ac, char *av[]);
+t_err		parsing(t_pars *pars);
+t_err		init_cub(t_cub *cub, int ac, char *av[]);
 
-uint32_t	pars_color_bns(t_pars *pars, char *line);
-uint32_t	pars_texture_bonus(t_pars *pars, char *line);
-uint32_t	pars_data_bonus(t_pars *pars);
-uint32_t	pars_map_bonus(t_pars *pars);
+t_err		pars_color_bns(t_pars *pars, char *line);
+t_err		pars_texture_bonus(t_pars *pars, char *line);
+t_err		pars_data_bonus(t_pars *pars);
+t_err		pars_map_bonus(t_pars *pars);
 
 #endif

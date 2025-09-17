@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 14:37:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 16:52:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 11:41:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline))
-static inline uint32_t	check_forbiden_char(const char line[], t_pars *pars,
+static inline t_err	check_forbiden_char(const char line[], t_pars *pars,
 	const char allowed_char[])
 {
 	uint32_t	i;
@@ -51,7 +51,7 @@ void	change_null_into_space(char **map, const uint64_t yl, const uint64_t xl)
 	}
 }
 
-uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
+t_err	normalise_map(t_pars *pars, t_vector *v_map)
 {
 	uint64_t	i;
 	uint64_t	max_size;
@@ -77,7 +77,7 @@ uint32_t	normalise_map(t_pars *pars, t_vector *v_map)
 	return (pars->error || pars->error);
 }
 
-uint32_t	read_map(t_pars *pars, const char allowed_char[])
+t_err	read_map(t_pars *pars, const char allowed_char[])
 {
 	t_vector	v_line;
 
@@ -102,7 +102,7 @@ uint32_t	read_map(t_pars *pars, const char allowed_char[])
 	return (pars->error || pars->error);
 }
 
-uint32_t	pars_map(t_pars *pars)
+t_err	pars_map(t_pars *pars)
 {
 	if (pars->rd.flags & R_DONE)
 		return (pars->error = MISSING_MAP);

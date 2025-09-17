@@ -8,6 +8,10 @@ S_SRC_MMAP =	minimap.c  mmap_env.c  mmap_view.c
 D_SRC_MMAP =	minimap/
 SRC_MMAP   =	$(addprefix $(D_SRC_MMAP), $(S_SRC_MMAP))
 
+S_SRC_DOORS =	doors_utils.c
+D_SRC_DOORS =	doors/
+SRC_DOORS   =	$(addprefix $(D_SRC_DOORS), $(S_SRC_DOORS))
+
 S_SRC_RENDER =	$(SRC_MMAP)  set_floor_ceiling.c  draw_frame.c
 S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  antialiasing.c
 S_SRC_RENDER+=	draw_wall_col.c  ray_casting.c  cub_put_img_to_img.c
@@ -23,7 +27,7 @@ S_SRC_UTILS =	utils.c  errors.c  free.c  s_vector.c
 D_SRC_UTILS =	utils/
 SRC_UTILS   =	$(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 
-S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  main.c
+S_SRC =	$(SRC_UTILS)  $(SRC_INIT)  $(SRC_HOOKS)  $(SRC_RENDER)  $(SRC_DOORS)  main.c
 D_SRC =	src/
 
 D_BUILD = .build/

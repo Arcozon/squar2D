@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 16:51:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 11:41:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-uint32_t	is_data_full(t_pars *pars)
+t_err	is_data_full(t_pars *pars)
 {
 	if (pars->error)
 		return (pars->error);
@@ -36,7 +36,7 @@ uint32_t	is_data_full(t_pars *pars)
 	return (pars->error = MISSING_TEXTURE);
 }
 
-uint32_t	pars_data(t_pars *pars)
+t_err	pars_data(t_pars *pars)
 {
 	char	*line;
 
@@ -64,7 +64,7 @@ uint32_t	pars_data(t_pars *pars)
 	return (is_data_full(pars));
 }
 
-uint32_t	parsing(t_pars *pars)
+t_err	parsing(t_pars *pars)
 {
 	pars->rd.flags = R_CUT_E_SPC;
 	if (!pars->bonus)

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 14:55:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 16:00:08 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "hooks.h"
 # include "render.h"
 # include "raycasting.h"
+# include "doors.h"
 
 # define VANGLE_DELTA		0.03f
 # define PLAYER_BASE_SPEED	0.02f
@@ -102,7 +103,7 @@ struct s_cub
 	t_game		game;
 
 	char		*pname;
-	uint32_t	error;
+	t_err		error;
 	char		err_context[BUFF_SIZE];
 };
 
