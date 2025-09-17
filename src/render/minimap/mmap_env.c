@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:40:58 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 15:15:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 19:15:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,19 +61,18 @@ __attribute__((flatten))
 void	render_mmap_environement(char *map[], const float dim[2],
 	const float p_coo[2], t_render *rdr)
 {
-	const int	start_sqr_coo[2] = {
-		MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE * p_coo[X],
-		MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
+	const int	start_sqr_coo[2] = {MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE
+		* p_coo[X], MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
 	int			sqr_coo[2];
 	int			i[2];
 
-	__ft_fclrset((uint32_t *)rdr->img_mmap.p_data, rdr->mmap_wall.rgb,
-		rdr->img_mmap.height * rdr->img_mmap.width);
-	i[Y] = 0;
+	i[Y] = (__ft_fclrset((uint32_t *)rdr->img_mmap.p_data, rdr->mmap_wall.rgb,
+				rdr->img_mmap.height * rdr->img_mmap.width), 0);
 	while (++i[Y] < dim[Y])
 	{
 		sqr_coo[Y] = start_sqr_coo[Y] + i[Y] * MMAP_SQUARE_SIZE;
-		if (sqr_coo[Y] <= -MMAP_SQUARE_SIZE || sqr_coo[Y] >= rdr->img_mmap.height)
+		if (sqr_coo[Y] <= -MMAP_SQUARE_SIZE
+			|| sqr_coo[Y] >= rdr->img_mmap.height)
 			continue ;
 		i[X] = 0;
 		while (++i[X] < dim[X])

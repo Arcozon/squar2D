@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:41:41 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 19:13:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ t_err	__check_one_door(char *map[], const int x, const int y, t_pars *pars)
 			return (pars->error = NO_ERR);
 		pars->error = DOOR_NEXT_TO_DOOR;
 	}
-	else 
-	{
-		DEBUG("[%c|%c] | [%c|%c]", map[y][x - 1], map[y][x + 1], map[y - 1][x], map[y + 1][x])
+	else
 		pars->error = INVALID_DOOR;
-	}
 	ft_strlcpy(pars->err_context, "(", sizeof(pars->err_context));
 	ft_lutoacpy(x, pars->err_context + ft_strlen(pars->err_context),
 		sizeof(pars->err_context) - ft_strlen(pars->err_context));
@@ -44,7 +41,7 @@ t_err	check_doors(t_pars *pars)
 {
 	t_one_door	one_door;	
 	uint32_t	i;
-	
+
 	i = 0;
 	while (i < N_HASH_DOORS)
 	{
@@ -56,7 +53,8 @@ t_err	check_doors(t_pars *pars)
 		}
 		while (one_door)
 		{
-			if (__check_one_door(pars->resized_map, one_door->x, one_door->y, pars))
+			if (__check_one_door(pars->resized_map,
+					one_door->x, one_door->y, pars))
 				return (pars->error);
 			one_door = one_door->next;
 		}

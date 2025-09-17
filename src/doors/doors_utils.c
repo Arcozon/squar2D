@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:37:50 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 19:06:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 uint32_t	hash_door(const int a, const int b)
 {
-	int	xor; 
-	
+	int	xor;
+
 	xor = PRIME_HASH_DOOR;
 	xor ^= (a + b) * PRIME_HASH_DOOR;
 	return (xor & (N_HASH_DOORS - 1));
@@ -51,7 +51,7 @@ t_one_door	find_door(t_doors doors, const int x, const int y)
 	const uint32_t	hash = hash_door(x, y);
 	t_one_door		onedoor;
 
-	onedoor = doors[hash]; 
+	onedoor = doors[hash];
 	while (onedoor)
 	{
 		if (onedoor->x == x && onedoor->y == y)

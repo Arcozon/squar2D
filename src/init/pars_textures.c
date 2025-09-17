@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 17:25:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:29:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 19:13:17 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline))
-uint32_t	__pars_texture(t_pars *pars, char *line, const char *keys[], 
+uint32_t	__pars_texture(t_pars *pars, char *line, const char *keys[],
 	t_xpm_img	*ptxtrs[])
 {
 	uint64_t	i;
@@ -51,7 +51,8 @@ uint32_t	pars_texture(t_pars *pars, char *line)
 
 uint32_t	pars_texture_bonus(t_pars *pars, char *line)
 {
-	const char	*keys[] = {KEY_NORTH, KEY_EAST, KEY_SOUTH, KEY_WEST, KEY_DOOR, 0};
+	const char	*keys[] = {KEY_NORTH, KEY_EAST, KEY_SOUTH,
+		KEY_WEST, KEY_DOOR, 0};
 	t_xpm_img	**ptxtrs;
 
 	ptxtrs = (t_xpm_img *[]){&pars->no_texture, &pars->ea_texture,
