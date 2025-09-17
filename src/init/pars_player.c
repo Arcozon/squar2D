@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 11:41:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/17 17:46:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_angle_player(float *angle, char **map, const uint64_t player[2])
 
 	if (pc == 'N')
 		*angle = M_PI_2;
-	else if (pc == 'W')
+	else if (pc == 'E')
 		*angle = 0.f;
 	else if (pc == 'S')
 		*angle = -M_PI_2;
