@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:50:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 16:40:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ union __attribute__((may_alias, packed)) u_clr
 typedef struct s_vector			t_vector;
 typedef struct s_read			t_read;
 
-typedef struct s_door*			t_doors[N_HASH_DOORS];
 typedef struct s_door*			t_one_door;
+typedef t_one_door				t_doors[N_HASH_DOORS];
 
 typedef struct s_pars			t_pars;
 typedef struct s_render			t_render;

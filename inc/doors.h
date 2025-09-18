@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 15:31:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 16:56:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 
 # define PRIME_HASH_DOOR	829
 
-# define VALUE_OPEN		0.0f
-# define VALUE_CLOSED	1.0f
-# define DOOR_SPEED		0.01f
+# define RADIUS_DOOR_OPEN	1.5f
+
+# define VALUE_DOOR_OPEN	0.0f
+# define VALUE_DOOR_CLOSED	1.0f
+# define DOOR_SPEED			0.01f
 
 struct	s_door
 {
@@ -44,5 +46,10 @@ t_one_door	find_door(const t_doors doors, const int x, const int y);
 void		free_doors(t_doors doors);
 
 void		handle_doors(t_doors doors);
+void		call_all_doors(t_doors doors, t_game *game,
+				void (*fct_door)(t_one_door, t_game *));
+
+void	open_close_door(t_game *game);
+
 
 #endif
