@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:16:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 17:36:51 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ t_err	__check_one_door(char *map[], const int x, const int y, t_pars *pars)
 	ft_strlcat(pars->err_context, ")", sizeof(pars->err_context));
 	return (pars->error);
 }
+
+
 
 t_err	check_doors(t_pars *pars)
 {

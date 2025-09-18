@@ -7,18 +7,15 @@ Agree on a data structure for the map (sad char *[])
 		- view angle ?
 		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
 
--- DOORS:
-	-- hash map for doors (swag)
-	-- animation  !!! (from bot to top ?) (from middle to sides ?) (left <-> right ?) 
-	-- update floodfill
-	-- update raycasting (do a 2nd check for doors ?) (use same fct, but give a ptr to fct in arg?)
-	-- update coll for a closed door
-	-- update minimap (colors for cvlosed anbd open doors ?)
+
 
 -- HOOKS
 	-- open settings
 
 -- DOORS
+	-- update coll for a closed door
+	-- update minimap (colors for cvlosed anbd open doors ?)
+	- add a door side
 	- store the oriantation in s_door (ver / hor)
 	- raycsting check		-- make the a rectangle (gl bro)
 	- colision check		-- make door stop

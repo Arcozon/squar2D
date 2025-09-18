@@ -8,7 +8,7 @@ S_SRC_MMAP =	minimap.c  mmap_env.c  mmap_view.c
 D_SRC_MMAP =	minimap/
 SRC_MMAP   =	$(addprefix $(D_SRC_MMAP), $(S_SRC_MMAP))
 
-S_SRC_DOORS =	doors_utils.c  handle_door.c
+S_SRC_DOORS =	doors_utils.c  handle_door.c  open_close_door.c
 D_SRC_DOORS =	doors/
 SRC_DOORS   =	$(addprefix $(D_SRC_DOORS), $(S_SRC_DOORS))
 

@@ -6,11 +6,19 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:14:28 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 17:37:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	__get_door_orientation(t_one_door one_door, t_game *game)
+{
+	if (game->map[one_door->y][one_door->x + 1] == WALL_CHAR)
+		one_door->e_or = D_OR_HOR;
+	else
+		one_door->e_or = D_OR_VER;
+}
 
 t_img	get_data_img(t_img *img, bool fill, int height)
 {
@@ -70,6 +78,7 @@ void	fill_game(t_pars *pars, t_game *game)
 	game->p_speed = PLAYER_BASE_SPEED;
 	ft_memcpy(&game->doors, &pars->doors, sizeof(pars->doors));
 	game->any_doors = pars->any_doors;
+	call_all_doors(game->doors, game, __get_door_orientation);
 	game->fov = pars->fov;
 	game->f_keys = 0;
 	game->bonus = pars->bonus;

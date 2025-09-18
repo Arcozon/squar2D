@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:46:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 17:31:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ t_one_door	new_door(const int x, const int y)
 		return (NULL);
 	new->x = x;
 	new->y = y;
-	new->closed_percent = 0.5f;
-	// new->closed_percent = 1.f;
+	new->closed_percent = 1.f;
+	new->e_status = D_IDLE;
+	new->e_or = D_OR_VER;
 	return (new);
 }
 

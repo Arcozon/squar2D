@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 16:56:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 17:31:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 # define PRIME_HASH_DOOR	829
 
-# define RADIUS_DOOR_OPEN	1.5f
+# define RADIUS_DOOR_OPEN	1.9f
 
 # define VALUE_DOOR_OPEN	0.0f
 # define VALUE_DOOR_CLOSED	1.0f
@@ -35,6 +35,11 @@ struct	s_door
 		D_OPENING,
 		D_CLOSING
 	}	e_status;
+
+	enum	{
+		D_OR_HOR,
+		D_OR_VER
+	}	e_or;
 
 	struct s_door	*next;
 };
