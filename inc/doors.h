@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:48:54 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 15:31:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@
 
 # define PRIME_HASH_DOOR	829
 
+# define VALUE_OPEN		0.0f
+# define VALUE_CLOSED	1.0f
+# define DOOR_SPEED		0.01f
+
 struct	s_door
 {
 	int				x;
@@ -26,7 +30,7 @@ struct	s_door
 	uint8_t			open:1;
 	enum	{
 		D_IDLE,
-		D_OPPENING,
+		D_OPENING,
 		D_CLOSING
 	}	e_status;
 
@@ -38,5 +42,7 @@ uint32_t	hash_door(const int a, const int b);
 
 t_one_door	find_door(const t_doors doors, const int x, const int y);
 void		free_doors(t_doors doors);
+
+void		handle_doors(t_doors doors);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:23:05 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 12:48:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,20 +25,21 @@ static inline enum e_hit	__check_one_coo(t_ray *ray, const int to_check[2]
 	the_one = find_door(ray->doors, to_check[X], to_check[Y]);
 	if (!the_one)
 		return (no_hit);
+	ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
 	if (orientation == hor_hit)
-	{
-		ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
 		if (ray->dir[Y] > 0)
-			ray->percent = 1 - ray->percent;
-	}
-	else
+			ray->percent = ray->percent;
+	if (orientation == ver_hit)
 	{
 		ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
 		if (ray->dir[X] < 0)
-			ray->percent = 1 - ray->percent;
+			ray->percent = ray->percent;
 	}
-	if (the_one->closed_percent >= ray->percent)
+	if (the_one->closed_percent > ray->percent)
+	{
+		ray->percent =  1 - the_one->closed_percent + ray->percent;
 		return (ray->hit = orientation + (door_hor_hit - hor_hit));
+	}
 	return (no_hit);
 }
 

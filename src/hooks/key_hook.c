@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 15:40:04 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:01:13 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 15:34:20 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,6 @@ int	key_press_hook(int key, t_game *game)
 		mlx_loop_end(game->render.pmlx);
 	else if (key == XK_h)
 		print_map(game);
-	else if (key == XK_space)
-		draw_frame(game, &game->render);
 	else
 		handle_press(key, &game->f_keys);
 	return (0);
