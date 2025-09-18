@@ -6,39 +6,17 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:03:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 12:23:05 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-// if (ray->hit == hor_hit)
-// {
-// 	ray->side = north_side;
-// 	ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
-// 	if (ray->dir[Y] > 0)
-// 	{
-// 		ray->side = south_side;
-// 		ray->percent = 1 - ray->percent;
-// 	}
-// }
-// else
-// {
-// 	ray->side = east_side;
-// 	ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
-// 	if (ray->dir[X] < 0)
-// 	{
-// 		ray->side = west_side;
-// 		ray->percent = 1 - ray->percent;
-// 	}
-// }
 
 __attribute__((always_inline))
 static inline enum e_hit	__check_one_coo(t_ray *ray, const int to_check[2]
 	, char **map, const enum e_hit orientation)
 {
 	t_one_door	the_one;
-	float		percent;
 
 	if (map[to_check[Y]][to_check[X]] == WALL_CHAR)
 		return (ray->hit = orientation);
@@ -49,17 +27,17 @@ static inline enum e_hit	__check_one_coo(t_ray *ray, const int to_check[2]
 		return (no_hit);
 	if (orientation == hor_hit)
 	{
-		percent = ray->f_coo[X] - (int)ray->f_coo[X];
-		if (ray->dir[Y] < 0)
+		ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
+		if (ray->dir[Y] > 0)
 			ray->percent = 1 - ray->percent;
 	}
 	else
 	{
-		percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
+		ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
 		if (ray->dir[X] < 0)
 			ray->percent = 1 - ray->percent;
 	}
-	if (the_one->closed_percent >= percent)
+	if (the_one->closed_percent >= ray->percent)
 		return (ray->hit = orientation + (door_hor_hit - hor_hit));
 	return (no_hit);
 }
@@ -132,25 +110,5 @@ void	__check_one_ray(t_ray *ray, char **map)
 			ray->f_coo[Y] += ray->n_step[Y];
 		}
 		ray->hit = __check_ray(ray, map);
-	}
-	if (ray->hit == hor_hit)
-	{
-		ray->side = north_side;
-		ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
-		if (ray->dir[Y] > 0)
-		{
-			ray->side = south_side;
-			ray->percent = 1 - ray->percent;
-		}
-	}
-	else
-	{
-		ray->side = east_side;
-		ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
-		if (ray->dir[X] < 0)
-		{
-			ray->side = west_side;
-			ray->percent = 1 - ray->percent;
-		}
 	}
 }

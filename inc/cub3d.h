@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:14:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 12:12:48 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,12 @@ struct s_render
 	t_img	img_paa;
 	t_img	img_mmap;
 	t_img	img_settings;
+
 	t_img	n_txtr;
 	t_img	e_txtr;
 	t_img	s_txtr;
 	t_img	w_txtr;
+	t_img	door_txtr;
 
 	t_clr	f_clr;
 	t_clr	c_clr;

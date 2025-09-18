@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:17:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 12:14:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ t_img	get_data_img(t_img *img, bool fill, int height)
 	int	endian;
 	int	linelen;
 
+	if (!img)
+		return ((t_img){0});
 	img->p_data = (t_clr *)mlx_get_data_addr(img->p_img, &bpp,
 			&linelen, &endian);
 	if (fill)
@@ -54,6 +56,7 @@ void	fill_render(t_pars *pars, t_render *render)
 	render->e_txtr = get_data_img(&pars->ea_texture, 0, 0);
 	render->s_txtr = get_data_img(&pars->so_texture, 0, 0);
 	render->w_txtr = get_data_img(&pars->we_texture, 0, 0);
+	render->door_txtr = get_data_img(&pars->door_texture, 0, 0);
 }
 
 void	fill_game(t_pars *pars, t_game *game)
