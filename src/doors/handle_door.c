@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 16:56:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 17:03:48 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,6 @@ void	__handle_one_door(t_one_door onedoor, t_game *game)
 			onedoor->closed_percent = VALUE_DOOR_OPEN;
 		}
 	}
-	// else
-	// {
-	// 	if (onedoor->closed_percent == VALUE_DOOR_OPEN)
-	// 		onedoor->e_status = D_CLOSING;
-	// 	else
-	// 		onedoor->e_status = ((void)game, D_OPENING);
-	// }
 	(void)game;
 }
 

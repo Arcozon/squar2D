@@ -19,9 +19,9 @@ Agree on a data structure for the map (sad char *[])
 	-- open settings
 
 -- DOORS
-	- open / close doors
-	- raycsting check
-	- colision check
+	- store the oriantation in s_door (ver / hor)
+	- raycsting check		-- make the a rectangle (gl bro)
+	- colision check		-- make door stop
 
 -- GAME
 	- Fixed tick rate ?
@@ -33,7 +33,7 @@ Agree on a data structure for the map (sad char *[])
 	- squre player ?
 	- plane view ?
 	- add dirrection arrow
-	- add doors
+	- add doors !!
 
 -- SETTINGS:
 	--	PUT PAUSESCREEN WHEN LOSE FOCUS
@@ -51,7 +51,5 @@ Agree on a data structure for the map (sad char *[])
 -- Sprite :(
 
 -- BONUS
-	FIX PARSING FOR BNS-> add elemets in struct pars, fix init
-
 	-- FPS counter
 	-- Bousole ? (Barre avec N E S W en haut)
