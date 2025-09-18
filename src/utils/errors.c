@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 16:23:35 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:44:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:03:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ static const char	*g_errors_begin[ERR_PARS_MAX] = {"None\n",
 	"Unknown char in map: `", "The door in ", "The door in "};
 
 static const char	*g_errors_end[ERR_PARS_MAX] = {0, 0, 0, 0, 0, 0,
-	" <FILE"DOT_CUB">\n", "' must end with "DOT_CUB"\n", "'\n", "'\n", "\n",
-	"'\n", "'\n", "\n", "'\n", "'\n", 0, 0, " players in the map\n", "'\n", 0,
-	" does not have 2 empty box on opposite sides\n", " is next to another door\n"};
+	" <FILE>"DOT_CUB"[ns]\n", "' must end with "DOT_CUB" or "DOT_CUBNS"\n", "'\n", "'\n", "\n",
+	"'\n", "'\n", "\n", "'\n", "'\n", 0, 0, " players in the map\n", 0, "'\n",
+	" does not have 2 empty box on opposite sides\n",
+	" is next to another door\n"};
 
 uint32_t	perror_cub(t_cub cub)
 {
