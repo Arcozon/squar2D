@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 19:13:55 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:16:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ t_err	check_doors(t_pars *pars)
 	while (i < N_HASH_DOORS)
 	{
 		one_door = pars->doors[i];
-		if (one_door && !pars->door_texture.p_img)
+		if (one_door)
 		{
-			ft_strlcpy(pars->err_context, "Door", sizeof(pars->err_context));
-			return (pars->error = MISSING_TEXTURE);
+			pars->any_doors = 1;
+			if (!pars->door_texture.p_img)
+				return (ft_strlcpy(pars->err_context, "Door", sizeof(pars->err_context)),
+					pars->error = MISSING_TEXTURE);
 		}
 		while (one_door)
 		{

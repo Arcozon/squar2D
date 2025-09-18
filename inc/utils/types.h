@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 13:05:54 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:50:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ enum	e_hit
 	no_hit = 0,
 	hor_hit,
 	ver_hit,
-	corner_hit
+	door_hor_hit,
+	door_ver_hit
 };
 
 enum	e_side
@@ -66,7 +67,8 @@ enum	e_side
 	north_side,
 	east_side,
 	south_side,
-	west_side
+	west_side,
+	door_side
 };
 
 void	free_cub(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 16:42:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:17:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	fill_game(t_pars *pars, t_game *game)
 	game->p_angle = pars->view_angle + pars->delta_angle;
 	game->p_speed = PLAYER_BASE_SPEED;
 	ft_memcpy(&game->doors, &pars->doors, sizeof(pars->doors));
+	game->any_doors = pars->any_doors;
 	game->fov = pars->fov;
 	game->f_keys = 0;
 	game->bonus = pars->bonus;

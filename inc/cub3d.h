@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:12:09 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:14:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,9 @@ struct s_game
 
 	char		**map;
 	float		dim[2];
+
 	t_doors		doors;
+	uint8_t		any_doors:1;
 
 	float		fov;
 

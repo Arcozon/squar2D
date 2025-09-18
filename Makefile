@@ -12,9 +12,13 @@ S_SRC_DOORS =	doors_utils.c
 D_SRC_DOORS =	doors/
 SRC_DOORS   =	$(addprefix $(D_SRC_DOORS), $(S_SRC_DOORS))
 
-S_SRC_RENDER =	$(SRC_MMAP)  set_floor_ceiling.c  draw_frame.c
+S_SRC_RAY_CASTING =	doors_ray_casting.c  ray_casting.c  ray_casting_2.c
+D_SRC_RAY_CASTING =	ray_casting/
+SRC_RAY_CASTING   =	$(addprefix $(D_SRC_RAY_CASTING), $(S_SRC_RAY_CASTING))
+
+S_SRC_RENDER =	$(SRC_MMAP)  $(SRC_RAY_CASTING)  draw_frame.c
 S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  antialiasing.c
-S_SRC_RENDER+=	draw_wall_col.c  ray_casting.c  cub_put_img_to_img.c
+S_SRC_RENDER+=	draw_wall_col.c  set_floor_ceiling.c  cub_put_img_to_img.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))
 
@@ -77,7 +81,7 @@ clean:
 	@$(MK_MLX) clean || true
 	$(RM) $(D_BUILD)
 
-# La mlx est telechargee et untar automatiquement, le fclean rm -rf la mlx ducoup (Si pour ton pc c est dur enleve le $(D_MLX de la ligne en dessous))
+# La mlx est telechargee et un-tar automatiquement, le fclean rm -rf la mlx ducoup (Si pour ton pc c est dur enleve le $(D_MLX de la ligne en dessous))
 fclean: clean
 	$(RM) $(NAME) $(D_MLX)
 

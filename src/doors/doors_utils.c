@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 19:06:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 12:05:08 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ t_one_door	new_door(const int x, const int y)
 		return (NULL);
 	new->x = x;
 	new->y = y;
+	new->closed_percent = 1.f;
 	return (new);
 }
 
@@ -46,7 +47,7 @@ t_err	add_door(t_doors doors, const int x, const int y)
 	return (NO_ERR);
 }
 
-t_one_door	find_door(t_doors doors, const int x, const int y)
+t_one_door	find_door(const t_doors doors, const int x, const int y)
 {
 	const uint32_t	hash = hash_door(x, y);
 	t_one_door		onedoor;

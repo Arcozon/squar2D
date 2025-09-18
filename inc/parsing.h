@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:57:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:15:59 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ struct s_pars
 	char		**resized_map;
 
 	t_doors		doors;
+	uint8_t		any_doors;
 
 	t_mlx		pmlx;
 

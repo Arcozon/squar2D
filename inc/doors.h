@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:09:01 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:48:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ struct	s_door
 	int				x;
 	int				y;
 
-	uint8_t			anim_percent;
+	float			closed_percent;
 	uint8_t			open:1;
 	enum	{
 		D_IDLE,
@@ -36,7 +36,7 @@ struct	s_door
 t_err		add_door(t_doors doors, const int x, const int y);
 uint32_t	hash_door(const int a, const int b);
 
-t_one_door	find_door(t_doors doors, const int x, const int y);
+t_one_door	find_door(const t_doors doors, const int x, const int y);
 void		free_doors(t_doors doors);
 
 #endif

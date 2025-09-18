@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 17:32:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:22:23 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ struct s_ray
 	enum e_side	side;
 	float		percent;
 	float		distance;
+
+	t_doors		doors;
+	uint8_t		any_doors;
 };
 
 typedef struct s_col	t_col;
@@ -62,6 +65,7 @@ struct s_col
 	float	adjusted_pdelta[2];
 };
 
+void	__check_one_ray(t_ray *ray, char **map)__attribute__((flatten));
 void	ray_casting(t_game *game);
 
 #endif

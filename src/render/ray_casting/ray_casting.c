@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:56:33 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 13:13:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/18 11:24:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,95 +42,6 @@ static inline void	__init_one_raycast(t_ray *ray, t_game *game)
 	ray->hit = no_hit;
 }
 
-enum e_hit	__check_ray(const t_ray *ray, char **map)
-{
-	if (fabsf(ray->dist_n_step[X]) < fabsf(ray->dist_n_step[Y]))
-	{
-		if (map[(int)ray->f_coo[Y]][(int)ray->f_coo[X] + ray->for_check[X]]
-			== WALL_CHAR)
-			return (ver_hit);
-	}
-	else if (fabsf(ray->dist_n_step[X]) > fabsf(ray->dist_n_step[Y]))
-	{
-		if (map[(int)ray->f_coo[Y] + ray->for_check[Y]][(int)ray->f_coo[X]]
-			== WALL_CHAR)
-			return (hor_hit);
-	}
-	else
-	{
-		if (map[ray->i_coo[Y]][ray->i_coo[X] + ray->dir[X]] == WALL_CHAR)
-			return (hor_hit);
-		else if (map[ray->i_coo[Y] + ray->dir[Y]][ray->i_coo[X]]
-			== WALL_CHAR)
-			return (ver_hit);
-		else if (map[ray->i_coo[Y] + ray->dir[Y]][ray->i_coo[X] + ray->dir[X]]
-			== WALL_CHAR)
-			return (corner_hit);
-	}
-	return (no_hit);
-}
-
-__attribute__((always_inline))
-static inline void	__get_n_step(t_ray *ray)
-{
-	ray->i_coo[X] = (int)ray->f_coo[X];
-	ray->i_coo[Y] = (int)ray->f_coo[Y];
-	ray->n_step[X] = (ray->i_coo[X] + ray->add_thing[X]) - ray->f_coo[X];
-	ray->n_step[Y] = (ray->i_coo[Y] + ray->add_thing[Y]) - ray->f_coo[Y];
-	if (ray->n_step[Y] == 0.f)
-		ray->n_step[Y] = -1;
-	if (ray->n_step[X] == 0.f)
-		ray->n_step[X] = -1;
-	if (!ray->is_cos_null)
-		ray->dist_n_step[X] = ray->n_step[X] / ray->cos_t;
-	else
-		ray->dist_n_step[X] = INFINITY;
-	if (!ray->is_sin_null)
-		ray->dist_n_step[Y] = ray->n_step[Y] / -ray->sin_t;
-	else
-		ray->dist_n_step[Y] = INFINITY;
-}
-
-__attribute__((always_inline))
-static inline void	__check_one_ray(t_ray *ray, char **map)
-{
-	while (ray->hit == no_hit)
-	{
-		__get_n_step(ray);
-		if (fabsf(ray->dist_n_step[X]) <= fabsf(ray->dist_n_step[Y]))
-		{
-			ray->f_coo[X] += ray->n_step[X];
-			ray->f_coo[Y] -= ray->dist_n_step[X] * ray->sin_t;
-		}
-		else
-		{
-			ray->f_coo[X] += ray->dist_n_step[Y] * ray->cos_t;
-			ray->f_coo[Y] += ray->n_step[Y];
-		}
-		ray->hit = __check_ray(ray, map);
-	}
-	if (ray->hit == hor_hit)
-	{
-		ray->side = north_side;
-		ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
-		if (ray->dir[Y] > 0)
-		{
-			ray->side = south_side;
-			ray->percent = 1 - ray->percent;
-		}
-	}
-	else
-	{
-		ray->side = east_side;
-		ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
-		if (ray->dir[X] < 0)
-		{
-			ray->side = west_side;
-			ray->percent = 1 - ray->percent;
-		}
-	}
-}
-
 __attribute__((always_inline))
 static inline void	__call_draw_ray_wall(const t_ray ray,
 	const int x, const t_game game, t_render render)
@@ -152,11 +63,14 @@ static inline void	__call_draw_ray_wall(const t_ray ray,
 	draw_col_wall(info, render.img, x, info.wall_img);
 }
 
+__attribute__((flatten))
 void	ray_casting(t_game *game)
 {
 	t_ray	ray;
 	int		i;
 
+	ft_memcpy(&ray.doors, game->doors, sizeof(game->doors));
+	ray.any_doors = game->any_doors;
 	ray.teta_step = game->fov / W_WIDTH;
 	ray.teta = game->p_angle + game->fov / 2;
 	i = 0;
