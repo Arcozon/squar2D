@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 12:53:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 15:05:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 16:18:41 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static inline void	__mmap_fill_rect(t_img img, int coo[2],
 	}
 	else if (coo[Y] + dim[Y] >= img.height)
 		dim[Y] = img.height - coo[Y];
-	
 	while (dim[Y]--)
 		__ft_fclrset((uint32_t *)&img.p_data[(coo[Y] + dim[Y])
 			* img.width + coo[X]], clr, dim[X]);
@@ -55,14 +54,19 @@ __attribute__((always_inline, flatten))
 static inline bool	__get_door_coo(t_c_door door, const float p_coo[2],
 	int rect_coo[2], int rect_dim[2])
 {
+	const int	start_sqr_coo[2] = {MMAP_WIDHT / 2 - MMAP_SQUARE_SIZE
+		* p_coo[X], MMAP_HEIGHT / 2 - MMAP_SQUARE_SIZE * p_coo[Y]};
+
 	rect_dim[X] = MMAP_SQUARE_SIZE;
 	rect_dim[Y] = MMAP_SQUARE_SIZE;
 	if (door->e_or == D_OR_HOR)
 		rect_dim[X] = MMAP_SQUARE_SIZE * door->closed_percent;
 	else
 		rect_dim[Y] = MMAP_SQUARE_SIZE * door->closed_percent;
-	rect_coo[X] = (MMAP_WIDHT / 2) + (door->x - p_coo[X]) * MMAP_SQUARE_SIZE;
-	rect_coo[Y] = (MMAP_HEIGHT / 2) + (door->y - p_coo[Y]) * MMAP_SQUARE_SIZE;
+	// rect_coo[X] = (MMAP_WIDHT / 2) + (door->x - p_coo[X]) * MMAP_SQUARE_SIZE;
+	// rect_coo[Y] = (MMAP_HEIGHT / 2) + (door->y - p_coo[Y]) * MMAP_SQUARE_SIZE;
+	rect_coo[X] = start_sqr_coo[X] + door->x * MMAP_SQUARE_SIZE;
+	rect_coo[Y] = start_sqr_coo[Y] + door->y * MMAP_SQUARE_SIZE;
 	return ((rect_coo[X] + rect_dim[X] >= 0 && rect_coo[X] < MMAP_WIDHT)
 		&& (rect_coo[Y] + rect_dim[Y] >= 0 && rect_coo[Y] < MMAP_HEIGHT));
 }
@@ -84,10 +88,7 @@ void	mmap_doors(const t_doors doors, t_img mmap,
 		{
 			if (__get_door_coo(one_door, p_coo, rect_coo, rect_dim))
 				__mmap_fill_rect(mmap, rect_coo, rect_dim, d_clr.rgb);
-			// DEBUG("Coo %d | %d", rect_coo[X], rect_coo[Y]);
-			// DEBUG("Dim %d | %d", rect_dim[X], rect_dim[Y]);
 			one_door = one_door->next;
 		}
 	}
-	// WAIT
 }
