@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 15:29:00 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:50:03 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,6 @@ int	cub_loop(t_game *game)
 		handle_doors(game->doors);
 	move_player(game);
 	check_colisions(game->p_coo, game->p_delta, game->map);
-	draw_frame(game, &game->render);	
+	draw_frame(game, &game->render);
 	return (0);
 }

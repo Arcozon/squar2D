@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/15 15:09:09 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/08/27 17:15:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:29:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@
 	extern int		g_debug_start_line;
 # endif
 
-__attribute__((unused, always_inline, const, pure))
+__attribute__((always_inline, flatten))
 static inline double	debug_clock(void) {
     struct timespec ts;
     clock_gettime(CLOCK_MONOTONIC, &ts);
@@ -80,7 +80,7 @@ static inline double	debug_clock(void) {
 	{\
 		if (g_debug_time)\
 		{\
-			TIMER_END\
+			fprintf(stderr, DEBUG_END_TIMER_FORMAT, DEBUG_END_TIMER_ARGS);\
 		}\
 		g_debug_time = debug_clock();\
 		strncpy(g_debug_start_file, BASENAME(__FILE__), (sizeof(g_debug_start_file) - 1));\
@@ -102,7 +102,7 @@ static inline double	debug_clock(void) {
 
 # define TIMER_STEP\
 	{\
-		if (g_debug_time == 0)\
+		if (g_debug_time == 0.0)\
 		{\
 			fprintf(stderr, B_RED "Timer never started (%s[%d]\n", BASENAME(__FILE__), __LINE__);\
 		}\
@@ -114,7 +114,7 @@ static inline double	debug_clock(void) {
 # define TIMER_END\
 	{\
 		TIMER_STEP\
-		g_debug_time = 0;\
+		g_debug_time = 0.0;\
 	};
 
 # else

@@ -45,7 +45,7 @@ D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
-FLAGS = -Wall -Wextra -Winline -Werror -MMD -g
+FLAGS = -Wall -Wextra -Winline -Werror -MMD -O1 -g
 IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lXfixes -lm
 

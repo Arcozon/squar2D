@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:22:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:05:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,11 @@ struct s_col
 	float	dist_n_step_2[2];
 	float	tt_nstep[2];
 	float	ratio2[2];
-	
+
 	int		dir[2];
 	int		to_add[2];
 	int		for_check[2];
-	
+
 	uint8_t	hit[2];
 	uint8_t	done:1;
 

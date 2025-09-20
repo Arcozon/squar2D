@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:14:00 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 15:40:09 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:13:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ int	ft_str_space_cmp(const char *str, const char *pat)
 __attribute__((pure))
 int	is_color(const char *line)
 {
-	return (ft_str_space_cmp(line, KEY_CEILING) || ft_str_space_cmp(line, KEY_FLOOR));
+	return (ft_str_space_cmp(line, KEY_CEILING)
+		|| ft_str_space_cmp(line, KEY_FLOOR));
 }
 
 __attribute__((pure))
@@ -55,6 +56,7 @@ int	is_texture(const char *line)
 		|| ft_str_space_cmp(line, KEY_WEST));
 }
 
+__attribute__((pure))
 int	ft_isdigit(const char c)
 {
 	return (c >= '0' && c <= '9');

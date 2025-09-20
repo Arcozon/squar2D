@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:12:48 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:04:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 // # define PLAYER_BASE_SPEED	0.01f
 // # define BASE_FOV			4 * M_PI
 // # define BASE_FOV			2 * M_PI
-# define BASE_FOV			3 * M_PI / 5
+# define BASE_FOV			1.885f
 
 # define HALF_P_SIZE		0.2f
 
@@ -103,7 +103,7 @@ struct s_cub
 {
 	uint8_t		bonus:1;
 	t_pars		pars;
-	
+
 	t_game		game;
 
 	char		*pname;
@@ -113,7 +113,6 @@ struct s_cub
 
 void	move_player(t_game *game);
 void	check_colisions(const float p_coo[2], float dir[2], char **map);
-
 
 void	print_map(t_game *game); //remove its debug
 

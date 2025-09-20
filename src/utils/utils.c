@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:29:01 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:18:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:12:39 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,8 @@ char	*ft_strchr(const char str[], const char to_find)
 }
 
 __attribute__((nonnull, pure, flatten))
-char	*ft_sn_strchr(const char str[], const uint64_t lenstr, const char tofind[])
+char	*ft_sn_strchr(const char str[], const uint64_t lenstr,
+	const char tofind[])
 {
 	uint32_t	i;
 
@@ -252,7 +253,8 @@ char	*ft_strrchr(const char str[], const char to_find)
 }
 
 __attribute__((nonnull, pure, flatten))
-char *ft_sn_strrchr(const char str[], const uint64_t lenstr, const char tofind[])
+char	*ft_sn_strrchr(const char str[], const uint64_t lenstr,
+	const char tofind[])
 {
 	uint32_t	i;
 
@@ -282,7 +284,7 @@ void	ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
 
 	pow = 10;
 	i = 0;
-	while (nb / pow) // who tf is gonna overflow that
+	while (nb / pow)
 		pow *= 10;
 	while (pow / 10 && i < size - 1)
 	{

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 12:48:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:07:54 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static inline enum e_hit	__check_one_coo(t_ray *ray, const int to_check[2]
 	}
 	if (the_one->closed_percent > ray->percent)
 	{
-		ray->percent =  1 - the_one->closed_percent + ray->percent;
+		ray->percent = 1 - the_one->closed_percent + ray->percent;
 		return (ray->hit = orientation + (door_hor_hit - hor_hit));
 	}
 	return (no_hit);
@@ -49,25 +49,24 @@ static inline enum e_hit	__check_ray(t_ray *ray, char **map)
 	if (fabsf(ray->dist_n_step[X]) < fabsf(ray->dist_n_step[Y]))
 	{
 		return (__check_one_coo(ray,
-			(int []){(int)ray->f_coo[X] + ray->for_check[X], (int)ray->f_coo[Y]},
-			map, ver_hit));
+				(int []){(int)ray->f_coo[X] + ray->for_check[X],
+				(int)ray->f_coo[Y]}, map, ver_hit));
 	}
 	else if (fabsf(ray->dist_n_step[X]) > fabsf(ray->dist_n_step[Y]))
 	{
-		return (__check_one_coo(ray,
-			(int []){(int)ray->f_coo[X], (int)ray->f_coo[Y] + ray->for_check[Y]},
-			map, hor_hit));
+		return (__check_one_coo(ray, (int []){(int)ray->f_coo[X],
+				(int)ray->f_coo[Y] + ray->for_check[Y]}, map, hor_hit));
 	}
 	else
 	{
 		if (__check_one_coo(ray, (int []){(int)ray->f_coo[X] + ray->dir[X],
-			(int)ray->f_coo[Y]}, map, hor_hit))
+				(int)ray->f_coo[Y]}, map, hor_hit))
 			return (ray->hit);
 		if (__check_one_coo(ray, (int []){(int)ray->f_coo[X],
-			(int)ray->f_coo[Y] + ray->dir[Y]}, map, ver_hit))
+				(int)ray->f_coo[Y] + ray->dir[Y]}, map, ver_hit))
 			return (ray->hit);
 		if (__check_one_coo(ray, (int []){(int)ray->f_coo[X] + ray->dir[X],
-			(int)ray->f_coo[Y] + ray->dir[Y]}, map, ver_hit))
+				(int)ray->f_coo[Y] + ray->dir[Y]}, map, ver_hit))
 			return (ray->hit);
 	}
 	return (no_hit);

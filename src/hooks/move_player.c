@@ -6,12 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 13:11:29 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:17:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+__attribute__((always_inline))
 static inline void	handle_view_angle(t_game *game)
 {
 	if (game->f_keys & HOOK_M_LARR && !(game->f_keys & HOOK_M_RARR))
@@ -20,10 +21,11 @@ static inline void	handle_view_angle(t_game *game)
 		game->p_angle -= VANGLE_DELTA;
 }
 
+__attribute__((always_inline))
 static inline void	handle_2_dir(float p_delta[2], const float p_speed)
 {
 	const float	dist2 = p_delta[X] * p_delta[X] + p_delta[Y] * p_delta[Y];
-	float		norm_factor = sqrtf(dist2) / p_speed;
+	const float		norm_factor = sqrtf(dist2) / p_speed;
 
 	p_delta[X] /= norm_factor;
 	p_delta[Y] /= norm_factor;

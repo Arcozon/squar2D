@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 17:36:17 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:08:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	__handle_one_door(t_one_door onedoor, t_game *game)
 		if (onedoor->closed_percent >= VALUE_DOOR_CLOSED)
 		{
 			onedoor->e_status = D_IDLE;
-			onedoor->closed_percent =VALUE_DOOR_CLOSED;
+			onedoor->closed_percent = VALUE_DOOR_CLOSED;
 		}
 	}
 	else if (onedoor->e_status == D_OPENING)
@@ -40,7 +40,6 @@ void	handle_doors(t_doors doors)
 {
 	call_all_doors(doors, 0, __handle_one_door);
 }
-
 
 __attribute__((flatten))
 void	call_all_doors(t_doors doors, t_game *game,

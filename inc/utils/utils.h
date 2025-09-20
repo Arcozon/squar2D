@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:19:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:06:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ uint64_t	index_strchr(const char str[], const char find);
 char		*ft_strchr(const char str[], const char to_find)
 			__attribute__((nonnull, pure, flatten));
 char		*ft_sn_strchr(const char str[], const uint64_t lenstr,
-			const char tofind[])__attribute__((nonnull, pure, flatten));
+				const char tofind[])__attribute__((nonnull, pure, flatten));
 char		*ft_strrchr(const char str[], const char to_find)
 			__attribute__((nonnull, pure, flatten));
 char		*ft_sn_strrchr(const char str[], const uint64_t lenstr,
-			const char tofind[])__attribute__((nonnull, pure, flatten));
+				const char tofind[])__attribute__((nonnull, pure, flatten));
 
 void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);

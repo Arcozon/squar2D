@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:17:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:32:34 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:14:20 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,8 @@ uint32_t	pars_color_bns(t_pars *pars, char *line)
 	if (is_color(line))
 		return (pars_color(pars, line));
 	p_clr = (t_clr *[]){&pars->mmap_player, &pars->mmap_view,
-		&pars->mmap_wall, &pars->mmap_empty, &pars->mmap_d_open, &pars->mmap_d_closed};
+		&pars->mmap_wall, &pars->mmap_empty,
+		&pars->mmap_d_open, &pars->mmap_d_closed};
 	i = 0;
 	while (keys[i])
 	{

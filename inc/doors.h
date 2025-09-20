@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 17:31:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:06:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,10 @@ struct	s_door
 		D_OPENING,
 		D_CLOSING
 	}	e_status;
-
 	enum	{
 		D_OR_HOR,
 		D_OR_VER
 	}	e_or;
-
 	struct s_door	*next;
 };
 
@@ -54,7 +52,6 @@ void		handle_doors(t_doors doors);
 void		call_all_doors(t_doors doors, t_game *game,
 				void (*fct_door)(t_one_door, t_game *));
 
-void	open_close_door(t_game *game);
-
+void		open_close_door(t_game *game);
 
 #endif

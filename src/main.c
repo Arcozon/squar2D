@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:18:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:25:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	main(int ac, char *av[])
 {
 	__attribute__((cleanup(free_cub))) t_cub cub;
 	TIMER_START;
-	DEBUG("%p | %p", cub.pars.doors, &cub.pars.doors);
 	if (!init_cub(&cub, ac, av))
 		mlx_loop(cub.pars.pmlx.mlx_ptr);
 	TIMER_END;

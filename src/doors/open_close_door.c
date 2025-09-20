@@ -6,24 +6,25 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 17:10:10 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 17:11:17 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 12:11:39 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline, const))
-static inline float	distance2_door(const float p_coo[2],
+static inline float	distance2_door(const float p_coo_x, const float p_coo_y,
 	const float door_x, const float door_y)
 {
-	const float d_x = p_coo[X] - door_x;
-	const float d_y = p_coo[Y] - door_y;
+	const float	d_x = p_coo_x - door_x;
+	const float	d_y = p_coo_y - door_y;
 
 	return (d_x * d_x + d_y * d_y);
 }
 
 __attribute__((always_inline))
-static inline t_one_door	find_closest_door(t_doors doors, const float p_coo[2])
+static inline t_one_door	find_closest_door(t_doors doors,
+	const float p_coo[2])
 {
 	t_one_door	the_closest;
 	t_one_door	onedoor;
@@ -39,7 +40,7 @@ static inline t_one_door	find_closest_door(t_doors doors, const float p_coo[2])
 		onedoor = doors[i++];
 		while (onedoor)
 		{
-			distance2_this = distance2_door(p_coo,
+			distance2_this = distance2_door(p_coo[X], p_coo[Y],
 					onedoor->x + 0.5f, onedoor->y + 0.5f);
 			if (distance2_this < distance2_closest)
 			{
@@ -56,7 +57,7 @@ __attribute__((flatten))
 void	open_close_door(t_game *game)
 {
 	t_one_door	the_one;
-	
+
 	the_one = find_closest_door(game->doors, game->p_coo);
 	if (!the_one)
 		return ;
