@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:05:41 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:48:02 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define MMAP_XSTART		0
 # define MMAP_YSTART		0
 # define MMAP_SQUARE_SIZE	20
-# define MMAP_P_RADIUS		8
+# define MMAP_P_RADIUS		7
 # define MMAP_CLR_VIEW		0xf5e551
 # define MMAP_CLR_WALL		0x191710
 # define MMAP_CLR_MTY		0x8f8f8f
@@ -49,6 +49,8 @@ enum {R, G, B
 void	render_mmap_environement(char *map[], const float dim[2],
 			const float p_coo[2], t_render *render);
 void	render_mmap_one_ray(t_game *game, t_ray ray);
+void	mmap_doors(const t_doors doors, t_img mmap,  const float p_coo[2],
+			const t_clr d_clr);
 void	render_minimap(t_game *game, t_render *render);
 
 void	antialiasing_top(const t_clr pre_aa[], t_clr post_aa[],

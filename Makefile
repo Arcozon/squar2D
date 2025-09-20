@@ -4,7 +4,7 @@ S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c  mouse
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
-S_SRC_MMAP =	minimap.c  mmap_env.c  mmap_view.c 
+S_SRC_MMAP =	minimap.c  mmap_env.c  mmap_view.c  minimap_doors.c
 D_SRC_MMAP =	minimap/
 SRC_MMAP   =	$(addprefix $(D_SRC_MMAP), $(S_SRC_MMAP))
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/15 10:51:29 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 13:33:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,7 @@ void	render_minimap(t_game *game, t_render *render)
 		game->p_coo, render);
 	ray_casting(game);
 	mmap_player(render->img_mmap, render->mmap_player.rgb);
+	if (game->any_doors)
+		mmap_doors(game->doors, render->img_mmap, game->p_coo, render->mmap_d_open); 
+		
 }

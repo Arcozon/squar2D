@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:03:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 13:06:13 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct s_vector			t_vector;
 typedef struct s_read			t_read;
 
 typedef struct s_door			*t_one_door;
+typedef const struct s_door		*t_c_door;
 typedef t_one_door				t_doors[8];
 
 typedef struct s_pars			t_pars;

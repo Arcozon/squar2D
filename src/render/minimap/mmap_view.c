@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:05:53 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/15 11:02:54 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 15:10:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-__attribute__((always_inline))
+__attribute__((always_inline, const))
 static inline int	ft_abs(const int a)
 {
 	if (a < 0)
@@ -20,7 +20,8 @@ static inline int	ft_abs(const int a)
 	return (a);
 }
 
-void	__render_line(float start[2], const int end[2], t_img mmap,
+__attribute__((always_inline, flatten))
+static inline void	__render_line(float start[2], const int end[2], t_img mmap,
 	const uint32_t clr_view)
 {
 	const int	nstep = ft_abs(start[X] - end[X])

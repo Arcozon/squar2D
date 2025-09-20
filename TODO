@@ -2,10 +2,12 @@ Agree on a data structure for the map (sad char *[])
 
 -- INIT
 	- PARSING:
-		- pars float, check doors
+		-- MMAP x and y pos ?
+
+		- remove CLR_DOOR_OPEN/CLOSE  and jsut put clr door
+		-- PARS FLOAT
 		- base fov ?
 		- view angle ?
-		- check if doors are opened in 2 dir at least (not forced to be on opposite side ?)?
 
 
 

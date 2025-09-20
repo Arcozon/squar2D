@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:40:58 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 19:15:34 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 13:18:21 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline void	*__ft_fclrset(uint32_t *restrict img_data,
 
 __attribute__((always_inline))
 static inline void	__mmap_fill_square(t_img img, int coo_x,
-	int coo_y, uint32_t clr)
+	int coo_y, const uint32_t clr)
 {
 	int	size[2];
 

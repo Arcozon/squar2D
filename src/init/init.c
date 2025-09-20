@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/13 17:04:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/20 13:41:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,8 @@ void	init_pars(t_pars *pars)
 	pars->mmap_wall.rgb = MMAP_CLR_WALL;
 	pars->mmap_view.rgb = MMAP_CLR_VIEW;
 	pars->mmap_empty.rgb = MMAP_CLR_MTY;
-	pars->mmap_d_open.rgb = MMAP_CLR_D_CLOSED;
-	pars->mmap_d_closed.rgb = MMAP_CLR_D_OPEN;
+	pars->mmap_d_open.rgb = MMAP_CLR_D_OPEN;
+	pars->mmap_d_closed.rgb = MMAP_CLR_D_CLOSED;
 }
 
 uint32_t	init_cub(t_cub *cub, int ac, char *av[])
