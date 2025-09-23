@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:50:50 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:57:41 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@
 # define KEY_SOUTH		"SO"
 # define KEY_WEST		"WE"
 
+# define KEY_DOOR		"DR"
+
 # define KEY_MM_PLAYER	"MM_PLR"
 # define KEY_MM_VIEW	"MM_VIEW"
 # define KEY_MM_WALL	"MM_1"
@@ -45,7 +47,6 @@
 # define KEY_SPD_PLR	"SPEED_PLR"
 # define KEY_SPD_TETA	"SPEED_TETA"
 # define KEY_SPD_MOUSE	"SENSITIVITY"
-# define KEY_DOOR		"DR"
 
 # define PLAYER_CHARS	"NSWE"
 # define MAP_CHARS		"01 NSWE"

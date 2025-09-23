@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:51:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:58:33 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,12 @@ __attribute__((pure))
 int	is_setting_bns(const char *line)
 {
 	return (ft_str_space_cmp(line, KEY_FOV)
-		|| ft_str_space_cmp(line, KEY_PLR_TETA));
+		|| ft_str_space_cmp(line, KEY_PLR_TETA)
+		|| ft_str_space_cmp(line, KEY_SPD_PLR)
+		|| ft_str_space_cmp(line, KEY_SPD_TETA)
+		|| ft_str_space_cmp(line, KEY_SPD_MOUSE));
 }
+
 __attribute__((pure))
 int	is_map_bns(const char *line)
 {

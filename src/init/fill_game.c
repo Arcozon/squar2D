@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:49:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:00:09 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_img	get_data_img(t_img *img, bool fill, int height)
 	int	endian;
 	int	linelen;
 
-	if (!img)
+	if (!img || !img->p_img)
 		return ((t_img){0});
 	img->p_data = (t_clr *)mlx_get_data_addr(img->p_img, &bpp,
 			&linelen, &endian);
