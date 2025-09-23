@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 12:53:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 16:18:41 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:32:30 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,6 @@ static inline bool	__get_door_coo(t_c_door door, const float p_coo[2],
 		rect_dim[X] = MMAP_SQUARE_SIZE * door->closed_percent;
 	else
 		rect_dim[Y] = MMAP_SQUARE_SIZE * door->closed_percent;
-	// rect_coo[X] = (MMAP_WIDHT / 2) + (door->x - p_coo[X]) * MMAP_SQUARE_SIZE;
-	// rect_coo[Y] = (MMAP_HEIGHT / 2) + (door->y - p_coo[Y]) * MMAP_SQUARE_SIZE;
 	rect_coo[X] = start_sqr_coo[X] + door->x * MMAP_SQUARE_SIZE;
 	rect_coo[Y] = start_sqr_coo[Y] + door->y * MMAP_SQUARE_SIZE;
 	return ((rect_coo[X] + rect_dim[X] >= 0 && rect_coo[X] < MMAP_WIDHT)
@@ -72,7 +70,7 @@ static inline bool	__get_door_coo(t_c_door door, const float p_coo[2],
 }
 
 __attribute__((flatten))
-void	mmap_doors(const t_doors doors, t_img mmap, 
+void	mmap_doors(const t_doors doors, t_img mmap,
 	const float p_coo[2], const t_clr d_clr)
 {
 	int			rect_coo[2];
@@ -81,7 +79,7 @@ void	mmap_doors(const t_doors doors, t_img mmap,
 	uint32_t	i;
 
 	i = 0;
-	for (int i = 0; i < N_HASH_DOORS; ++i)
+	while (i < N_HASH_DOORS)
 	{
 		one_door = doors[i];
 		while (one_door)
@@ -90,5 +88,6 @@ void	mmap_doors(const t_doors doors, t_img mmap,
 				__mmap_fill_rect(mmap, rect_coo, rect_dim, d_clr.rgb);
 			one_door = one_door->next;
 		}
+		++i;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:05:53 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:29:42 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:34:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,11 @@ static inline void	__bound_ray_to_screen(float end_ray[2], const t_ray ray,
 			end_ray[X] = 0;
 		else
 			end_ray[X] = MMAP_WIDHT - 1;
-		end_ray[Y] = (ray.f_coo[Y] * MMAP_SQUARE_SIZE - p_coo[Y] * MMAP_SQUARE_SIZE);
+		end_ray[Y] = (ray.f_coo[Y] * MMAP_SQUARE_SIZE
+				- p_coo[Y] * MMAP_SQUARE_SIZE);
 		end_ray[Y] *= (end_ray[X] - map_pcoo[X])
-			/ (ray.f_coo[X] * MMAP_SQUARE_SIZE - p_coo[X] * MMAP_SQUARE_SIZE);
+			/ (ray.f_coo[X] * MMAP_SQUARE_SIZE
+				- p_coo[X] * MMAP_SQUARE_SIZE);
 		end_ray[Y] += map_pcoo[Y];
 	}
 	if (end_ray[Y] < 0 || end_ray[Y] >= MMAP_HEIGHT)
@@ -66,9 +68,10 @@ static inline void	__bound_ray_to_screen(float end_ray[2], const t_ray ray,
 			end_ray[Y] = 0;
 		else
 			end_ray[Y] = MMAP_HEIGHT - 1;
-		end_ray[X] = (ray.f_coo[X] * MMAP_SQUARE_SIZE - p_coo[X] * MMAP_SQUARE_SIZE);
+		end_ray[X] = (ray.f_coo[X] - p_coo[X]) * MMAP_SQUARE_SIZE;
 		end_ray[X] *= (end_ray[Y] - map_pcoo[Y])
-			/ (ray.f_coo[Y] * MMAP_SQUARE_SIZE - p_coo[Y]  * MMAP_SQUARE_SIZE);
+			/ (ray.f_coo[Y] * MMAP_SQUARE_SIZE
+				- p_coo[Y] * MMAP_SQUARE_SIZE);
 		end_ray[X] += map_pcoo[X];
 	}
 }
@@ -76,16 +79,16 @@ static inline void	__bound_ray_to_screen(float end_ray[2], const t_ray ray,
 __attribute__((flatten))
 void	render_mmap_one_ray(t_game *game, const t_ray ray)
 {
-	const int	map_pcoo[2] = {MMAP_WIDHT / 2,
-			MMAP_HEIGHT / 2 };
-	const uint32_t		clr_view_wall[2] = {game->render.mmap_view.rgb, 
-			game->render.mmap_wall.rgb};
+	static const int	map_pcoo[2] = {MMAP_WIDHT / 2,
+		MMAP_HEIGHT / 2};
+	const uint32_t		clr_view_wall[2] = {game->render.mmap_view.rgb,
+		game->render.mmap_wall.rgb};
 	float				end_ray[2];
 
 	end_ray[X] = map_pcoo[X]
-		+ ray.f_coo[X] * MMAP_SQUARE_SIZE  - game->p_coo[X] * MMAP_SQUARE_SIZE;
+		+ ray.f_coo[X] * MMAP_SQUARE_SIZE - game->p_coo[X] * MMAP_SQUARE_SIZE;
 	end_ray[Y] = map_pcoo[Y]
-		+ ray.f_coo[Y] * MMAP_SQUARE_SIZE  - game->p_coo[Y] * MMAP_SQUARE_SIZE;
+		+ ray.f_coo[Y] * MMAP_SQUARE_SIZE - game->p_coo[Y] * MMAP_SQUARE_SIZE;
 	__bound_ray_to_screen(end_ray, ray, map_pcoo, game->p_coo);
 	__render_line(end_ray, map_pcoo, game->render.img_mmap, clr_view_wall);
 }
