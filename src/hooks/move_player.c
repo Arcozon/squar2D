@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:55:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 17:30:17 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	move_player(t_game *game)
 		game->fov -= VANGLE_DELTA;
 	handle_view_angle(game);
 	get_new_delta(game, game->p_delta);
-	check_colisions(game->p_coo, game->p_delta, game->map);
+	check_colisions(game->p_coo, game->p_delta, game->map, game);
 	game->p_coo[X] += game->p_delta[X];
 	game->p_coo[Y] += game->p_delta[Y];
 	ft_bzero(game->p_delta, sizeof(game->p_delta));

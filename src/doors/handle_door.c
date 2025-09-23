@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 17:05:08 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 17:35:56 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static inline int	_i_check_one_corner(t_c_door door,
 	{
 		return ((p_coo_x >= (float)door->x)
 			&& (p_coo_x <= door->x + door->closed_percent)
-			&& (p_coo_y >= (float)door->y)
-			&& (p_coo_y <= (float)door->y + 1.f));
+			&& (p_coo_y > (float)door->y)
+			&& (p_coo_y < (float)door->y + 1.f));
 	}
 	else
 	{
-		return ((p_coo_x >= (float)door->x)
-			&& (p_coo_x <= (float)door->x + 1.f)
+		return ((p_coo_x > (float)door->x)
+			&& (p_coo_x < (float)door->x + 1.f)
 			&& (p_coo_y >= (float)door->y)
 			&& (p_coo_y <= door->y + door->closed_percent));
 	}
