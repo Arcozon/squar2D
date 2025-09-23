@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/26 11:33:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:31:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 16:38:13 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,14 @@ static void	mmap_player(t_img img_map, const uint32_t clr)
 	int					ix;
 	int					iy;
 
-	iy = -MMAP_P_RADIUS;
-	while (iy <= MMAP_P_RADIUS)
+	iy = -MMAP_SQUARE_SIZE * HALF_P_SIZE;
+	while (iy <= MMAP_SQUARE_SIZE * HALF_P_SIZE)
 	{
-		ix = -MMAP_P_RADIUS;
-		while (ix <= MMAP_P_RADIUS)
+		ix = -MMAP_SQUARE_SIZE * HALF_P_SIZE;
+		while (ix <= MMAP_SQUARE_SIZE * HALF_P_SIZE)
 		{
-			if (ix * ix + iy * iy <= MMAP_P_RADIUS * MMAP_P_RADIUS)
-			{
-				img_map.p_data[center[X] + ix
-					+ (center[Y] + iy) * img_map.width].rgb = clr;
-			}
+			img_map.p_data[center[X] + ix
+				+ (center[Y] + iy) * img_map.width].rgb = clr;
 			++ix;
 		}	
 		++iy;
