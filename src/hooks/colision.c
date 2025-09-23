@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 18:00:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 18:07:07 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,17 @@ static inline void	__one_col_door(t_c_door door, const float coo[2],
 	if (fabsf(dist_door[Y]) > fabsf(coo[Y] - door->y - d_size[Y]))
 		dist_door[Y] = (door->y + d_size[Y]) - coo[Y];
 	if (fabsf(dist_door[Y]) > fabsf(dist_door[X]))
+	{
+		if (p_delta[X] >= 0)
+			dist_door[X] -= ZERO_RANGE;
 		p_delta[X] = dist_door[X];
+	}
 	else
+	{
+		if (p_delta[Y] >= 0)
+			dist_door[Y] -= ZERO_RANGE;
 		p_delta[Y] = dist_door[Y];
+	}
 }
 
 __attribute__((always_inline, const))
@@ -135,7 +143,6 @@ static inline void	__check_one_col(char *map[],
 	}
 	if (game->any_doors)
 		__one_col_door(__is_in_door(game->doors, n_coo), coo, p_delta);
-
 }
 
 __attribute__((flatten))
