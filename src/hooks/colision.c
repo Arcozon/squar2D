@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 17:43:43 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 18:00:15 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,33 @@ static inline t_c_door	__is_in_door(const t_doors doors, const float n_coo[2])
 	return (0);
 }
 
+// __attribute__((always_inline))
+// static inline void	__one_col_door(t_c_door door, const float coo[2],
+// 	float p_delta[2])
+// {
+// 	float	d_size[2];
+// 	float	dist_door[2];
+
+// 	if (!door)
+// 		return ;
+// 	d_size[X] = 1.f;
+// 	d_size[Y] = 1.f;
+// 	if (door->e_or == D_OR_HOR)
+// 		d_size[X] = door->closed_percent;
+// 	else
+// 		d_size[Y] = door->closed_percent;
+// 	dist_door[X] = coo[X] - door->x;
+// 	if (fabsf(dist_door[X]) > fabsf(coo[X] - door->x - d_size[X]))
+// 		dist_door[X] = coo[X] - door->x - d_size[X];
+// 	dist_door[Y] = coo[Y] - door->y;
+// 	if (fabsf(dist_door[Y]) > fabsf(coo[Y] - door->y - d_size[Y]))
+// 		dist_door[Y] = coo[Y] - door->y - d_size[Y];
+// 	if (fabsf(p_delta[X]) > fabsf(dist_door[X]))
+// 		p_delta[X] = -dist_door[X];
+// 	if (fabsf(p_delta[Y]) > fabsf(dist_door[Y]))
+// 		p_delta[Y] = -dist_door[Y];
+// }
+
 __attribute__((always_inline))
 static inline void	__one_col_door(t_c_door door, const float coo[2],
 	float p_delta[2])
@@ -56,18 +83,16 @@ static inline void	__one_col_door(t_c_door door, const float coo[2],
 		d_size[X] = door->closed_percent;
 	else
 		d_size[Y] = door->closed_percent;
-	dist_door[X] = coo[X] - door->x;
+	dist_door[X] = door->x - coo[X];
 	if (fabsf(dist_door[X]) > fabsf(coo[X] - door->x - d_size[X]))
-		dist_door[X] = coo[X] - door->x - d_size[X];
-	dist_door[Y] = coo[Y] - door->y;
+		dist_door[X] = (door->x + d_size[X]) - coo[X];
+	dist_door[Y] = door->y - coo[Y];
 	if (fabsf(dist_door[Y]) > fabsf(coo[Y] - door->y - d_size[Y]))
-		dist_door[Y] = coo[Y] - door->y - d_size[Y];
-	if (fabsf(p_delta[X]) > fabsf(dist_door[X]))
-		p_delta[X] = -dist_door[X];
-	if (fabsf(p_delta[Y]) > fabsf(dist_door[Y]))
-		p_delta[Y] = -dist_door[Y];
-
-	
+		dist_door[Y] = (door->y + d_size[Y]) - coo[Y];
+	if (fabsf(dist_door[Y]) > fabsf(dist_door[X]))
+		p_delta[X] = dist_door[X];
+	else
+		p_delta[Y] = dist_door[Y];
 }
 
 __attribute__((always_inline, const))
@@ -91,24 +116,26 @@ static inline void	__check_one_col(char *map[],
 		map[(int)coo[Y]][(int)n_coo[X]] == WALL_CHAR,
 		map[(int)n_coo[Y]][(int)coo[X]] == WALL_CHAR
 	};
+	const t_c_door	hit_door[2] = {__is_in_door(game->doors, (float []){n_coo[X], coo[Y]}),
+			__is_in_door(game->doors, (float []){coo[X], n_coo[Y]})};
 
 	if (crossed[X] && crossed[Y]
 		&& map[(int)n_coo[Y]][(int)n_coo[X]] == WALL_CHAR
-		&& !is_in_wall[Y] && !is_in_wall[X])
+		&& !(is_in_wall[Y] || hit_door[Y]) && !(is_in_wall[X] || hit_door[X]))
 	{
 		p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
 	}
 	else
 	{
-		if (crossed[X] && is_in_wall[X])
+		if (crossed[X] && is_in_wall[X] && !hit_door[X])
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
-		if (crossed[Y] && is_in_wall[Y])
+		if (crossed[Y] && is_in_wall[Y] && !hit_door[Y])
 			p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
 	}
 	if (game->any_doors)
 		__one_col_door(__is_in_door(game->doors, n_coo), coo, p_delta);
-	
+
 }
 
 __attribute__((flatten))
