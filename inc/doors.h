@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:06:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 16:58:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ uint32_t	hash_door(const int a, const int b);
 t_one_door	find_door(const t_doors doors, const int x, const int y);
 void		free_doors(t_doors doors);
 
-void		handle_doors(t_doors doors);
+void		handle_doors(t_doors doors, t_game *game);
 void		call_all_doors(t_doors doors, t_game *game,
 				void (*fct_door)(t_one_door, t_game *));
 

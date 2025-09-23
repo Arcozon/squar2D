@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:50:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:51:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 16:58:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	cub_loop(t_game *game)
 {
 	debug_key_pressed(game);
 	if (game->any_doors)
-		handle_doors(game->doors);
+		handle_doors(game->doors, game);
 	move_player(game);
 	check_colisions(game->p_coo, game->p_delta, game->map);
 	draw_frame(game, &game->render);
