@@ -8,7 +8,9 @@ DR .textures/door.xpm
 
 EA .textures/east.xpm
 F 1,1,1
-MM_PLR 135,000,240       
+MM_PLR 135,000,240      
+
+FOV -1.0
 
 11111111111111111111111111
 11000001000100000110000001

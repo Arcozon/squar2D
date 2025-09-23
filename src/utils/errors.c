@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/28 16:23:35 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:13:16 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:39:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ static const char	*g_errors_begin[ERR_PARS_MAX] = {"None\n",
 	"Color is redefined: `", "Wrong format color: `", "Missing texture: ",
 	"Texture is redefined: ", "Can't open texture: `", "Missing map\n",
 	"No players\n", "Too many players: ", "Map is not closed\n",
-	"Unknown char in map: `", "The door in ", "The door in "};
+	"Unknown char in map: `", "The door in ", "The door in ",
+	"Wrong format float: `"};
 
 static const char	*g_errors_end[ERR_PARS_MAX] = {0, 0, 0, 0, 0, 0,
 	" <FILE>"DOT_CUB"[ns]\n", "' must end with "DOT_CUB" or "DOT_CUBNS"\n",
 	"'\n", "'\n", "\n", "'\n", "'\n", "\n", "'\n", "'\n", 0, 0,
 	" players in the map\n", 0, "'\n",
 	" does not have 2 empty box on opposite sides\n",
-	" is next to another door\n"};
+	" is next to another door\n", "'\n"};
 
 uint32_t	perror_cub(t_cub cub)
 {

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:58:33 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:35:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,11 +83,11 @@ uint32_t	pars_data_bonus(t_pars *pars)
 		if (!line || !line[0])
 			continue ;
 		if (is_color_bns(line))
-			pars_color_bns(pars, line);
+			pars_color_bonus(pars, line);
 		else if (is_texture_bns(line))
 			pars_texture_bonus(pars, line);
-		// else if (is_setting_bns(line))
-		// 	pars_setting_bns(pars, line);
+		else if (is_setting_bns(line))
+			pars_settings_bonus(pars, line);
 		else if (is_map_bns(line))
 			break ;
 		else

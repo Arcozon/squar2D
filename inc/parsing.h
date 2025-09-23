@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:57:41 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:33:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,8 @@ void		fill_game(t_pars *pars, t_game *game);
 t_err		parsing(t_pars *pars);
 t_err		init_cub(t_cub *cub, int ac, char *av[]);
 
-t_err		pars_color_bns(t_pars *pars, char *line);
+t_err		pars_settings_bonus(t_pars *pars, char line[]);
+t_err		pars_color_bonus(t_pars *pars, char *line);
 t_err		pars_texture_bonus(t_pars *pars, char *line);
 t_err		pars_data_bonus(t_pars *pars);
 t_err		pars_map_bonus(t_pars *pars);

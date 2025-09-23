@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:17:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 12:49:34 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:35:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ uint32_t	pars_color(t_pars *pars, char *line)
 	return (NO_ERR);
 }
 
-uint32_t	pars_color_bns(t_pars *pars, char *line)
+uint32_t	pars_color_bonus(t_pars *pars, char *line)
 {
 	const char	*keys[] = {KEY_MM_PLAYER, KEY_MM_VIEW, KEY_MM_WALL,
 		KEY_MM_EMPTY, KEY_MM_D_OPEN, 0};

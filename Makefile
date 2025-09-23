@@ -22,7 +22,7 @@ S_SRC_RENDER+=	draw_wall_col.c  set_floor_ceiling.c  cub_put_img_to_img.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))
 
-S_SRC_INIT =	fill_game.c  init.c  pars_color.c  parsing.c  pars_map.c  pars_textures.c
+S_SRC_INIT =	fill_game.c  init.c  pars_color.c  parsing.c  pars_map.c  pars_textures.c  pars_settings.c
 S_SRC_INIT+=	flood_fill.c  pars_bonus.c  parsing_utils.c  pars_player.c  read.c  pars_doors.c
 D_SRC_INIT =	init/
 SRC_INIT   =	$(addprefix $(D_SRC_INIT), $(S_SRC_INIT))

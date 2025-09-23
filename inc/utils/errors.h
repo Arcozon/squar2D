@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:22:26 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:41:48 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:19:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ enum
 	UNKNOWN_CHAR,
 	INVALID_DOOR,
 	DOOR_NEXT_TO_DOOR,
+	WRONG_FORMAT_FLOAT,
 	ERR_PARS_MAX
 };
 

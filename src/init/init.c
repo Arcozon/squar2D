@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 13:05:36 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 13:07:05 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,29 +32,6 @@ uint32_t	check_easy_errors(t_pars *pars, int ac, char *av[])
 	pars->err_context[0] = '\0';
 	return (NO_ERR);
 }
-
-// void	set_title(char title[BUFF_SIZE], char pname[], char map_name[])
-// {
-// 	uint64_t	start;
-
-// 	ft_strlcpy(title, pname, BUFF_SIZE);
-// 	start = ft_strlen(title);
-// 	if (start < BUFF_SIZE - 1)
-// 	{
-// 		ft_strlcpy(title + start, ": ", BUFF_SIZE - start);
-// 		if (title[0] >= 'a' && title[0] <= 'z')
-// 			title[0] -= 'a' - 'A';
-// 		start = ft_strlen(title);
-// 		if (start < BUFF_SIZE - 1)
-// 		{
-// 			ft_strlcat(title, map_name, BUFF_SIZE - start);
-// 			if (ft_strendcmp(title, DOT_CUB))
-// 				title[ft_strlen(title) - ft_strlen(DOT_CUB)] = '\0';
-// 			else if (ft_strendcmp(title, DOT_CUBNS))
-// 				title[ft_strlen(title) - ft_strlen(DOT_CUBNS)] = '\0';
-// 		}
-// 	}
-// }
 
 void	set_title(char title[BUFF_SIZE], const char pname[], const char map_name[])
 {
