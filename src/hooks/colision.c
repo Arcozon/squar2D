@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/14 15:14:00 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:35:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ static inline void	__check_one_col(char *map[],
 		&& map[(int)n_coo[Y]][(int)n_coo[X]] == WALL_CHAR
 		&& !is_in_wall[Y] && !is_in_wall[X])
 	{
-		DEBUG("BOTH")
 		p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
 	}

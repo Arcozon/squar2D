@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 16:28:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/12 16:36:44 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:35:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	cub_mouse_hide(t_xvar *xvar, t_win_list *win, int hide)
 	if (hide && !is_showed)
 	{
 		XFixesHideCursor(xvar->display, win->window);
-		is_showed = 1;	
+		is_showed = 1;
 	}
 	else if (is_showed)
 	{

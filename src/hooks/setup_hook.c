@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:48:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 18:28:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:36:23 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	enter_win(t_game *game)
 {
 	if (game->focus)
 	{
-		DEBUG("IN")
+		DEBUG("IN");
 		cub_mouse_hide(game->render.pmlx, game->render.pwin, 1);
 		game->notify = mlx_mouse_get_pos(game->render.pmlx, game->render.pwin,
 				&game->mouse_coo[X], &game->mouse_coo[Y]);
@@ -28,7 +28,7 @@ int	leave_win(t_game *game)
 {
 	if (game->focus)
 	{
-		DEBUG("OUT")
+		DEBUG("OUT");
 		cub_mouse_hide(game->render.pmlx, game->render.pwin, 0);
 		game->notify = 0;
 	}
@@ -37,7 +37,6 @@ int	leave_win(t_game *game)
 
 int	test_mouse(int x, int y, t_game *game)
 {
-	// DEBUG("%d | %d", x, y);
 	if (game->notify && game->focus)
 	{
 		game->p_angle += VANGLE_DELTA * (game->mouse_coo[X] - x);

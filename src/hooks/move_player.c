@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:17:38 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:35:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ __attribute__((always_inline))
 static inline void	handle_2_dir(float p_delta[2], const float p_speed)
 {
 	const float	dist2 = p_delta[X] * p_delta[X] + p_delta[Y] * p_delta[Y];
-	const float		norm_factor = sqrtf(dist2) / p_speed;
+	const float	norm_factor = sqrtf(dist2) / p_speed;
 
 	p_delta[X] /= norm_factor;
 	p_delta[Y] /= norm_factor;
@@ -58,8 +58,6 @@ static inline void	get_new_delta(const t_game *game, float p_delta[2])
 		&& ((game->f_keys & HOOK_M_A) != 0) ^ ((game->f_keys & HOOK_M_D) != 0))
 		handle_2_dir(p_delta, game->p_speed);
 }
-
-
 
 __attribute__((flatten))
 void	move_player(t_game *game)
