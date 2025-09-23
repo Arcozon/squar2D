@@ -6,19 +6,19 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 16:06:20 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:35:35 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:55:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
+# define VANGLE_DELTA 0.05f
 __attribute__((always_inline))
 static inline void	handle_view_angle(t_game *game)
 {
 	if (game->f_keys & HOOK_M_LARR && !(game->f_keys & HOOK_M_RARR))
-		game->p_angle += VANGLE_DELTA;
+		game->p_angle += game->angle_speed;
 	else if (game->f_keys & HOOK_M_RARR && !(game->f_keys & HOOK_M_LARR))
-		game->p_angle -= VANGLE_DELTA;
+		game->p_angle -= game->angle_speed;
 }
 
 __attribute__((always_inline))

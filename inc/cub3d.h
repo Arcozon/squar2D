@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:04:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:49:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,10 @@
 # include "raycasting.h"
 # include "doors.h"
 
-# define VANGLE_DELTA		0.03f
-# define PLAYER_BASE_SPEED	0.02f
-// # define PLAYER_BASE_SPEED	0.01f
-// # define BASE_FOV			4 * M_PI
-// # define BASE_FOV			2 * M_PI
+# define BASE_VANGLE_DELTA	0.03f
+# define BASE_PLAYER_SPEED	0.02f
 # define BASE_FOV			1.885f
+# define BASE_SENSITIVITY	1.f
 
 # define HALF_P_SIZE		0.2f
 
@@ -72,7 +70,6 @@ struct s_render
 	t_clr	mmap_wall;
 	t_clr	mmap_view;
 	t_clr	mmap_d_open;
-	t_clr	mmap_d_closed;
 };
 
 struct s_game
@@ -80,7 +77,6 @@ struct s_game
 	float		p_coo[2];
 	float		p_delta[2];
 	float		p_angle;
-	float		p_speed;
 
 	char		**map;
 	float		dim[2];
@@ -89,6 +85,10 @@ struct s_game
 	uint8_t		any_doors:1;
 
 	float		fov;
+	float		p_speed;
+
+	float		angle_speed;
+	float		sensitivity;
 
 	int			mouse_coo[2];
 	int			notify;

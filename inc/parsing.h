@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 11:15:59 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:50:50 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,12 @@
 # define KEY_MM_WALL	"MM_1"
 # define KEY_MM_EMPTY	"MM_0"
 # define KEY_MM_D_OPEN	"MM_DO"
-# define KEY_MM_D_CLOSE	"MM_DC"
 
+# define KEY_FOV		"FOV"
+# define KEY_PLR_TETA	"PLR_TETA"
+# define KEY_SPD_PLR	"SPEED_PLR"
+# define KEY_SPD_TETA	"SPEED_TETA"
+# define KEY_SPD_MOUSE	"SENSITIVITY"
 # define KEY_DOOR		"DR"
 
 # define PLAYER_CHARS	"NSWE"
@@ -97,12 +101,15 @@ struct s_pars
 	t_clr		mmap_empty;
 	t_clr		mmap_view;
 	t_clr		mmap_d_open;
-	t_clr		mmap_d_closed;
 
 	uint64_t	player[2];
 	float		view_angle;
 	float		delta_angle;
 	float		fov;
+
+	float		p_speed;
+	float		angle_speed;
+	float		sensitivity;
 
 	t_vector	vec_map;
 	char		**map;

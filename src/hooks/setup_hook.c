@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:48:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:36:23 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 11:57:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int	test_mouse(int x, int y, t_game *game)
 {
 	if (game->notify && game->focus)
 	{
-		game->p_angle += VANGLE_DELTA * (game->mouse_coo[X] - x);
+		game->p_angle += game->sensitivity
+			* game->angle_speed * (game->mouse_coo[X] - x);
 		game->mouse_coo[X] = x;
 		game->mouse_coo[Y] = x;
 	}

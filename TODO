@@ -16,10 +16,8 @@ Agree on a data structure for the map (sad char *[])
 
 -- DOORS
 	-- update coll for a closed door
-	-- update minimap (colors for cvlosed anbd open doors ?)
 	- add a door side
 	- store the oriantation in s_door (ver / hor)
-	- raycsting check		-- make the a rectangle (gl bro)
 	- colision check		-- make door stop
 
 -- GAME
@@ -29,28 +27,24 @@ Agree on a data structure for the map (sad char *[])
 	- variable speed ?
 
 -- MINIMAP
-	- squre player ?
-	- plane view ?
 	- add dirrection arrow
-	- add doors !!
 
 -- SETTINGS:
 	--	PUT PAUSESCREEN WHEN LOSE FOCUS
 	- fov
 	- mouse sensibility
-	- antialiasing ?
 	- mmap size ?
 
 -- RENDER
 	- fix fisheye ?
-	- make a better draw col_call (use avr color when its squished or extended)
+	- make a better draw col_call (use avr color when its squished or extended) ?
 
 - Sort files in hooks, create a game folder
 
 -- Sprite :(
 
 -- BONUS
-	-- FPS counter
+	-- FPS counter ?
 	-- Bousole ? (Barre avec N E S W en haut)
 
 

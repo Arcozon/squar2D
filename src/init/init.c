@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:01:11 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 13:41:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:48:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,15 @@ void	init_pars(t_pars *pars)
 {
 	pars->rd.fd = -1;
 	pars->fov = BASE_FOV;
+	pars->p_speed = BASE_PLAYER_SPEED;
+	pars->angle_speed = BASE_VANGLE_DELTA;
+	pars->sensitivity = BASE_SENSITIVITY;
 	pars->delta_angle = 0.f;
 	pars->mmap_player.rgb = MMAP_CLR_PLAYR;
 	pars->mmap_wall.rgb = MMAP_CLR_WALL;
 	pars->mmap_view.rgb = MMAP_CLR_VIEW;
 	pars->mmap_empty.rgb = MMAP_CLR_MTY;
 	pars->mmap_d_open.rgb = MMAP_CLR_D_OPEN;
-	pars->mmap_d_closed.rgb = MMAP_CLR_D_CLOSED;
 }
 
 uint32_t	init_cub(t_cub *cub, int ac, char *av[])

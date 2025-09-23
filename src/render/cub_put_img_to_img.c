@@ -6,13 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 12:21:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/08 13:19:57 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:40:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-__attribute__((always_inline, const, pure))
+__attribute__((always_inline, const))
 static inline int	ft_bound(const int a, const int min, const int max)
 {
 	if (a < min)

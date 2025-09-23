@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/18 17:37:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:49:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ void	fill_render(t_pars *pars, t_render *render)
 {
 	render->f_clr = pars->color_floor;
 	render->c_clr = pars->color_ceiling;
-	render->mmap_d_closed = pars->mmap_d_closed;
 	render->mmap_d_open = pars->mmap_d_open;
 	render->mmap_player = pars->mmap_player;
 	render->mmap_empty = pars->mmap_empty;
@@ -75,7 +74,9 @@ void	fill_game(t_pars *pars, t_game *game)
 	game->p_coo[X] = pars->player[X] + .5f;
 	game->p_coo[Y] = pars->player[Y] + .5f;
 	game->p_angle = pars->view_angle + pars->delta_angle;
-	game->p_speed = PLAYER_BASE_SPEED;
+	game->p_speed = pars->p_speed;
+	game->angle_speed = pars->angle_speed;
+	game->sensitivity = pars->sensitivity;
 	ft_memcpy(&game->doors, &pars->doors, sizeof(pars->doors));
 	game->any_doors = pars->any_doors;
 	call_all_doors(game->doors, game, __get_door_orientation);

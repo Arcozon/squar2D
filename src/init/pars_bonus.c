@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:58:15 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/23 12:51:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ int	is_color_bns(const char *line)
 		|| ft_str_space_cmp(line, KEY_MM_VIEW)
 		|| ft_str_space_cmp(line, KEY_MM_WALL)
 		|| ft_str_space_cmp(line, KEY_MM_EMPTY)
-		|| ft_str_space_cmp(line, KEY_MM_D_OPEN)
-		|| ft_str_space_cmp(line, KEY_MM_D_CLOSE));
+		|| ft_str_space_cmp(line, KEY_MM_D_OPEN));
 }
 
 __attribute__((pure))
@@ -31,6 +30,12 @@ int	is_texture_bns(const char *line)
 		|| ft_str_space_cmp(line, KEY_DOOR));
 }
 
+__attribute__((pure))
+int	is_setting_bns(const char *line)
+{
+	return (ft_str_space_cmp(line, KEY_FOV)
+		|| ft_str_space_cmp(line, KEY_PLR_TETA));
+}
 __attribute__((pure))
 int	is_map_bns(const char *line)
 {
@@ -77,14 +82,14 @@ uint32_t	pars_data_bonus(t_pars *pars)
 			pars_color_bns(pars, line);
 		else if (is_texture_bns(line))
 			pars_texture_bonus(pars, line);
+		// else if (is_setting_bns(line))
+		// 	pars_setting_bns(pars, line);
 		else if (is_map_bns(line))
 			break ;
 		else
-		{
-			ft_strnlcpy(pars->err_context, line,
-				sizeof(pars->err_context), index_strchr(line, ' '));
-			return (pars->error = WRONG_KEY);
-		}
+			return (ft_strnlcpy(pars->err_context, line,
+				sizeof(pars->err_context), index_strchr(line, ' ')),
+				pars->error = WRONG_KEY);
 	}
 	if (pars->rd.error)
 		pars->error = pars->rd.error;
