@@ -1,16 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   colision.c                                         :+:      :+:    :+:   */
+/*   colision_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/25 18:17:24 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/09/25 18:18:16 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/09/25 18:24:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+__attribute__((always_inline, const))
+static inline t_c_door	__is_in_door(const t_doors doors, const float coo_x,
+	const float coo_y)
+{
+	const t_c_door	door = find_door(doors, (int)coo_x, (int)coo_y);
+
+	if (!door)
+		return (door);
+	if (door->e_or == D_OR_HOR && (coo_x>= (float)door->x)
+		&& (coo_x < door->x + door->closed_percent)
+		&& (coo_y >= (float)door->y)
+		&& (coo_y < (float)door->y + VALUE_DOOR_CLOSED))
+		return (door);
+	else if (door->e_or == D_OR_VER && (coo_x >= (float)door->x)
+			&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
+			&& (coo_y >= (float)door->y)
+			&& (coo_y < door->y + door->closed_percent))
+		return (door);
+	return (NULL);
+}
 
 __attribute__((always_inline, const))
 static inline float	__get_new_delta(const float old_coo,
@@ -33,10 +54,12 @@ static inline void	__check_one_col(char *map[],
 		map[(int)coo[Y]][(int)n_coo[X]] == WALL_CHAR,
 		map[(int)n_coo[Y]][(int)coo[X]] == WALL_CHAR
 	};
+	const t_c_door	in_door[2] = {__is_in_door(game->doors, n_coo[X], coo[Y]),
+		__is_in_door(game->doors, coo[X], n_coo[Y])};
 
 	DEBUG("pre P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	if (crossed[X] && crossed[Y] && map[(int)n_coo[Y]][(int)n_coo[X]]
-		== WALL_CHAR && !is_in_wall[Y] && !is_in_wall[X])
+		== WALL_CHAR && !is_in_wall[Y] && !is_in_wall[X] && !in_door[X] && !in_door[Y])
 	{
 		if (fabsf(coo[X] - (int)n_coo[X]) > fabsf(coo[Y] - (int)n_coo[Y]))
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
