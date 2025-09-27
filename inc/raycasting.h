@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:05:50 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 18:50:52 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define RAYCASTING_H
 
 # define ZERO_RANGE	0.000005f
+
+# define SQRT_2_O_2 0.7071067f
 
 struct s_ray
 {
