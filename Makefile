@@ -1,6 +1,6 @@
 NAME = cub3d
 
-S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision_bonus.c  mouse_hide_fix.c  colision_door.c
+S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c  mouse_hide_fix.c  colision_door.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
