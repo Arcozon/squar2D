@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 18:15:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 18:44:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door,
 			ray->f_coo[Y] += (ray->f_coo[X] - (int)(ray->f_coo[X]) - door->closed_percent) / -(ray->dir[Y] * ray->cos_t);
 			ray->f_coo[X] = (int)ray->f_coo[X] + door->closed_percent;
 			ray->percent = ray->f_coo[Y] - (int)ray->f_coo[Y];
-			return (ray->hit = door_hor_hit); 
+			return (ray->hit = door_hor_hit);
 		}
 	}
 	return (no_hit);
