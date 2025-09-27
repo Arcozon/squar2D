@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 20:10:25 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 20:14:16 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door)
 		if (ray->f_coo[Y] - ray->dir[X] * s_c < door->closed_percent + door->y)
 		{
 			ray->f_coo[X] += (ray->f_coo[Y] - (int)(ray->f_coo[Y])
-					- door->closed_percent)
-				* ray->cos_t / ray->sin_t;
+					- door->closed_percent) * c_s;
 			ray->f_coo[Y] = (int)ray->f_coo[Y] + door->closed_percent;
 			ray->percent = ray->f_coo[X] - (int)ray->f_coo[X];
 			return (ray->hit = door_hor_hit);
@@ -33,8 +32,7 @@ static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door)
 	else if (ray->f_coo[X] - ray->dir[Y] * c_s < door->closed_percent + door->x)
 	{
 		ray->f_coo[Y] += (ray->f_coo[X] - (int)(ray->f_coo[X])
-				- door->closed_percent)
-			* ray->sin_t / ray->cos_t;
+				- door->closed_percent) * s_c;
 		ray->f_coo[X] = (int)ray->f_coo[X] + door->closed_percent;
 		ray->percent = 1 - (ray->f_coo[Y] - (int)ray->f_coo[Y]);
 		return (ray->hit = door_hor_hit);
@@ -126,6 +124,9 @@ static inline void	__get_n_step(t_ray *ray)
 __attribute__((flatten))
 void	__check_one_ray(t_ray *ray, char **map)
 {
+	__get_n_step(ray);
+	if (find_door(ray->doors, ray->i_coo[X], ray->i_coo[Y]))
+		__chech_door_edge(ray, find_door(ray->doors, ray->i_coo[X], ray->i_coo[Y]));
 	while (ray->hit == no_hit)
 	{
 		__get_n_step(ray);
