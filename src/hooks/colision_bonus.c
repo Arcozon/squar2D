@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:18:16 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 13:33:27 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 13:49:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,15 @@ static inline t_c_door	__is_in_door(const t_doors doors, const float coo_x,
 
 	if (!door)
 		return (door);
-	if (door->e_or == D_OR_HOR && (coo_x>= (float)door->x)
+	if (door->e_or == D_OR_HOR && (coo_x >= (float)door->x)
 		&& (coo_x < door->x + door->closed_percent)
 		&& (coo_y >= (float)door->y)
 		&& (coo_y < (float)door->y + VALUE_DOOR_CLOSED))
 		return (door);
 	else if (door->e_or == D_OR_VER && (coo_x >= (float)door->x)
-			&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
-			&& (coo_y >= (float)door->y)
-			&& (coo_y < door->y + door->closed_percent))
+		&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
+		&& (coo_y >= (float)door->y)
+		&& (coo_y < door->y + door->closed_percent))
 		return (door);
 	return (NULL);
 }
@@ -47,25 +47,21 @@ __attribute__((always_inline, flatten))
 static inline void	__check_one_col(char *map[],
 	const float coo[2], float p_delta[2], const t_game *game)
 {
-	const float	n_coo[2] = {coo[X] + p_delta[X], coo[Y] + p_delta[Y]};
-	const int	crossed[2] = {(int)coo[X] != (int)n_coo[X],
+	const float		n_coo[2] = {coo[X] + p_delta[X], coo[Y] + p_delta[Y]};
+	const int		crossed[2] = {(int)coo[X] != (int)n_coo[X],
 		(int)coo[Y] != (int)n_coo[Y]};
-	const int	is_in_wall[2] = {
-		map[(int)coo[Y]][(int)n_coo[X]] == WALL_CHAR,
-		map[(int)n_coo[Y]][(int)coo[X]] == WALL_CHAR
-	};
-	const t_c_door	in_door[2] = {__is_in_door(game->doors, n_coo[X], coo[Y]),
-		__is_in_door(game->doors, coo[X], n_coo[Y])};
+	const int		is_in_wall[2] = {map[(int)coo[Y]][(int)n_coo[X]]
+		== WALL_CHAR, map[(int)n_coo[Y]][(int)coo[X]] == WALL_CHAR};
 
-	// DEBUG("pre P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	if (crossed[X] && crossed[Y] && map[(int)n_coo[Y]][(int)n_coo[X]]
-		== WALL_CHAR && !is_in_wall[Y] && !is_in_wall[X] && !in_door[X] && !in_door[Y])
+		== WALL_CHAR && !is_in_wall[Y] && !is_in_wall[X]
+		&& !__is_in_door(game->doors, n_coo[X], coo[Y])
+		&& !__is_in_door(game->doors, coo[X], n_coo[Y]))
 	{
 		if (fabsf(coo[X] - (int)n_coo[X]) > fabsf(coo[Y] - (int)n_coo[Y]))
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		else
 			p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
-		// DEBUG("posdt dia P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	}
 	else
 	{
@@ -73,14 +69,14 @@ static inline void	__check_one_col(char *map[],
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		if (crossed[Y] && is_in_wall[Y])
 			p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
-		// DEBUG("posdt norm P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	}
 	if (game->any_doors)
 		colision_doors(game->doors, coo, p_delta, is_in_wall);
 }
 
 __attribute__((flatten))
-void	check_colisions(const float p_coo[2], float p_delta[2], char *map[], const t_game *game)
+void	check_colisions(const float p_coo[2], float p_delta[2],
+	char *map[], const t_game *game)
 {
 	const float	coo_nw[2] = {p_coo[X] - HALF_P_SIZE, p_coo[Y] - HALF_P_SIZE};
 	const float	coo_ne[2] = {p_coo[X] + HALF_P_SIZE, p_coo[Y] - HALF_P_SIZE};

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 13:44:07 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 13:51:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static inline t_c_door	__is_in_door(const t_doors doors, const float coo_x,
 				&& (coo_y < (float)door->y + VALUE_DOOR_CLOSED))
 				return (door);
 			else if (door->e_or == D_OR_VER && (coo_x >= (float)door->x)
-					&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
-					&& (coo_y >= (float)door->y)
-					&& (coo_y < (float)door->y + door->closed_percent))
+				&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
+				&& (coo_y >= (float)door->y)
+				&& (coo_y < (float)door->y + door->closed_percent))
 				return (door);
 			door = door->next;
 		}
@@ -43,10 +43,11 @@ static inline t_c_door	__is_in_door(const t_doors doors, const float coo_x,
 }
 
 __attribute__((always_inline, flatten))
-static inline void	__get_dist_door(t_c_door door, const float coo[2], float distance[2])
+static inline void	__get_dist_door(t_c_door door, const float coo[2],
+	float distance[2])
 {
 	float	d_size[2];
-	
+
 	d_size[X] = VALUE_DOOR_CLOSED;
 	d_size[Y] = VALUE_DOOR_CLOSED;
 	if (door->e_or == D_OR_HOR)
@@ -62,64 +63,46 @@ static inline void	__get_dist_door(t_c_door door, const float coo[2], float dist
 }
 
 __attribute__((always_inline, flatten))
-static inline void	__door_diag(t_c_door door, const float coo[2], float p_delta[2])
+static inline void	__door_diag(t_c_door door, const float coo[2],
+	float p_delta[2])
 {
-	float dist[2];
+	float	dist[2];
 
-	DEBUG("here %f %f", p_delta[X], p_delta[Y]);
-	DEBUG("here %f %f", coo[X], coo[Y]);
 	__get_dist_door(door, coo, dist);
-	DEBUG("dist %f %f", dist[X], dist[Y]);
-	// if (dist[X] > p_delta[X])
-	// 	dist[X] = p_delta[X];
-	// if (dist[Y] > p_delta[Y])
-	// 	dist[Y] = p_delta[Y];
 	if (fabsf(dist[X] - p_delta[X]) < fabsf(dist[Y] - p_delta[Y]))
 	{
-		DEBUG("FIXED X")
-		DEBUG("distX %f", dist[X]);
 		if (p_delta[X] < 0.f)
 			dist[X] += ZERO_RANGE;
 		else
 			dist[X] -= ZERO_RANGE;
-		DEBUG("distX %f", dist[X]);
 		p_delta[X] = dist[X];
 	}
 	else
 	{
-		DEBUG("FIXED Y")
-		DEBUG("distY %f", dist[Y]);
 		if (p_delta[Y] < 0.f)
 			dist[Y] += ZERO_RANGE;
 		else
 			dist[Y] -= ZERO_RANGE;
-		DEBUG("distY %f", dist[Y]);
 		p_delta[Y] = dist[Y];
 	}
-	DEBUG(" NOW here %f %f", p_delta[X], p_delta[Y]);
-	DEBUG(" NOW here %f %f", p_delta[X] + coo[X], coo[Y] + p_delta[Y]);
-	WAIT;
 }
 
 __attribute__((always_inline, flatten))
-static inline void	__door_side(t_c_door door, const float coo[2], float p_delta[2], const int axis)
+static inline void	__door_side(t_c_door door, const float coo[2],
+	float p_delta[2], const int axis)
 {
-	float dist[2];
+	float	dist[2];
 
 	__get_dist_door(door, coo, dist);
-	DEBUG("dist %f %f", dist[X], dist[Y]);
 	if (axis == X)
 	{
-		// if (fabsf(dist[X]) <= fabsf(dist[Y]))
-		// {
-			p_delta[X] = dist[X];
-			if (p_delta[X] > 0.f)
-				p_delta[X] -= ZERO_RANGE;
-			else
-				p_delta[X] += ZERO_RANGE;
-		// }
+		p_delta[X] = dist[X];
+		if (p_delta[X] > 0.f)
+			p_delta[X] -= ZERO_RANGE;
+		else
+			p_delta[X] += ZERO_RANGE;
 	}
-	else// if (fabsf(dist[X]) >= fabsf(dist[Y]))
+	else
 	{
 		p_delta[Y] = dist[Y];
 		if (p_delta[Y] > 0.f)
@@ -127,94 +110,24 @@ static inline void	__door_side(t_c_door door, const float coo[2], float p_delta[
 		else
 			p_delta[Y] += ZERO_RANGE;
 	}
-	(void)axis;
 }
-
-// __attribute__((always_inline, flatten))
-// static inline void	__door_side(t_c_door door, const float coo[2], float p_delta[2], const int axis)
-// {
-// 	float dist[2];
-
-// 	__get_dist_door(door, coo, dist);
-// 	if (axis == X)
-// 	{
-// 		if (p_delta[X] >= 0.f)
-// 			dist[X] -= ZERO_RANGE;
-// 		else
-// 			dist[X] += ZERO_RANGE;
-// 		p_delta[X] = dist[X];
-// 	}
-// 	else if (axis == Y)
-// 	{
-// 		if (p_delta[Y] >= 0.f)
-// 			dist[Y] -= ZERO_RANGE;
-// 		else
-// 			dist[Y] += ZERO_RANGE;
-// 		p_delta[Y] = dist[Y];
-// 	}
-// 	(void)axis;
-// }
 
 __attribute__((flatten))
 void	colision_doors(const t_doors doors, const float coo[2],
 	float p_delta[2], const int is_wall[2])
 {
-	const float	n_coo[2] = {coo[X] + p_delta[X], coo[Y] + p_delta[Y]};
+	const float		n_coo[2] = {coo[X] + p_delta[X], coo[Y] + p_delta[Y]};
 	const t_c_door	door_diag = __is_in_door(doors, n_coo[X], n_coo[Y]);
 	const t_c_door	door_nx = __is_in_door(doors, n_coo[X], coo[Y]);
 	const t_c_door	door_ny = __is_in_door(doors, coo[X], n_coo[Y]);
 
-	// DEBUG("--- %d %d %d %d %d", door_diag > 0 , !door_nx , !door_ny , !is_wall[X] , !is_wall[Y])
 	if (door_diag && !door_nx && !door_ny && !is_wall[X] && !is_wall[Y])
-	{
-		DEBUG("P_DELTA DIAG %f %f", p_delta[X], p_delta[Y]);
 		__door_diag(door_diag, coo, p_delta);
-		DEBUG("P_DELTA %f %f", p_delta[X], p_delta[Y]);// WAIT;
-		if (__is_in_door(doors, coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-			|| __is_in_door(doors, coo[X], coo[Y] + p_delta[Y])
-			|| __is_in_door(doors, coo[X] + p_delta[X], coo[Y]))
-		{
-			DEBUG("FCK")
-			DEBUG("FCK %f %f", coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-			DEBUG("FCK %f %f", p_delta[X], p_delta[Y])
-			WAIT;
-		}
-	}
 	else
 	{
 		if (door_nx && !is_wall[X])
-		{
-			DEBUG("\n\n\n")
-			DEBUG("in X")
-			DEBUG("COO %f | %f", coo[X], coo[Y])
-			DEBUG("FPRECOO %f | %f", n_coo[X], n_coo[Y])
-			DEBUG("P_DELTA %f %f", p_delta[X], p_delta[Y]);
 			__door_side(door_nx, (float []){coo[X], coo[Y]}, p_delta, X);
-			DEBUG("P_DELTA %f %f", p_delta[X], p_delta[Y]);// WAIT;
-			DEBUG("FCOO %f %f", coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-
-		}
 		if (door_ny && !is_wall[Y])
-		{
-			DEBUG("in y")
-			DEBUG("cOO %f | %f", coo[X], coo[Y])
-			DEBUG("FPRECOO %f | %f", n_coo[X], n_coo[Y])
-			DEBUG("P_DELTA %f %f", p_delta[X], p_delta[Y]);
 			__door_side(door_ny, (float []){coo[X], coo[Y]}, p_delta, Y);
-			DEBUG("P_DELTA %f %f", p_delta[X], p_delta[Y]); //WAIT;
-			DEBUG("FCOO %f %f", coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-		}
 	}
-		if (__is_in_door(doors, coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-			|| __is_in_door(doors, coo[X], coo[Y] + p_delta[Y])
-			|| __is_in_door(doors, coo[X] + p_delta[X], coo[Y]))
-		{
-			DEBUG("FCK")
-			DEBUG("FCK %f %f", coo[X] + p_delta[X], coo[Y] + p_delta[Y])
-			DEBUG("FCK %f %f", p_delta[X], p_delta[Y])
-			exit(1);
-		}
-	// if ((door_diag || door_nx || door_ny) && p_delta[Y] == 0.f)
-		// WAIT
 }
-
