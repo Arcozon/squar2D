@@ -6,19 +6,21 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 19:38:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 20:10:25 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline))
-static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door,
-	const enum e_hit orientation)
+static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door)
 {
-	if (orientation == ver_hit && door->e_or == D_OR_VER)
+	const float	s_c = ray->sin_t / ray->cos_t;
+	const float	c_s = ray->cos_t / ray->sin_t;
+
+	if (door->e_or == D_OR_VER)
 	{
-		if (ray->f_coo[Y] - ray->sin_t < door->closed_percent + door->y)
+		if (ray->f_coo[Y] - ray->dir[X] * s_c < door->closed_percent + door->y)
 		{
 			ray->f_coo[X] += (ray->f_coo[Y] - (int)(ray->f_coo[Y])
 					- door->closed_percent)
@@ -28,17 +30,14 @@ static inline enum e_hit	__chech_door_edge(t_ray *ray, t_c_door door,
 			return (ray->hit = door_hor_hit);
 		}
 	}
-	else if (orientation == hor_hit && door->e_or == D_OR_HOR)
+	else if (ray->f_coo[X] - ray->dir[Y] * c_s < door->closed_percent + door->x)
 	{
-		if (ray->f_coo[X] + ray->cos_t < door->closed_percent + door->x)
-		{
-			ray->f_coo[Y] += (ray->f_coo[X] - (int)(ray->f_coo[X])
-					- door->closed_percent)
-				* ray->sin_t / ray->cos_t;
-			ray->f_coo[X] = (int)ray->f_coo[X] + door->closed_percent;
-			ray->percent = 1 - (ray->f_coo[Y] - (int)ray->f_coo[Y]);
-			return (ray->hit = door_hor_hit);
-		}
+		ray->f_coo[Y] += (ray->f_coo[X] - (int)(ray->f_coo[X])
+				- door->closed_percent)
+			* ray->sin_t / ray->cos_t;
+		ray->f_coo[X] = (int)ray->f_coo[X] + door->closed_percent;
+		ray->percent = 1 - (ray->f_coo[Y] - (int)ray->f_coo[Y]);
+		return (ray->hit = door_hor_hit);
 	}
 	return (no_hit);
 }
@@ -71,7 +70,7 @@ static inline enum e_hit	__check_one_coo(t_ray *ray, const int to_check[2],
 		ray->percent = 1 - the_one->closed_percent + ray->percent;
 		return (ray->hit = orientation + (door_hor_hit - hor_hit));
 	}
-	return (__chech_door_edge(ray, the_one, orientation));
+	return (__chech_door_edge(ray, the_one));
 }
 
 __attribute__((always_inline))
