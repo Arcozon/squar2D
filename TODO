@@ -1,23 +1,13 @@
-Agree on a data structure for the map (sad char *[])
-
 -- INIT
 	- PARSING:
 		-- MMAP x and y pos ?
-
 		-- err when twice the same clr ?
-
-		-- PARS FLOAT
-		- base fov ?
-		- view angle ?
 
 -- HOOKS
 	-- open settings
 
 -- DOORS
-	-- update coll for a closed door
 	- add a door side
-	- store the oriantation in s_door (ver / hor)
-	- colision check		-- make door stop
 
 -- GAME
 	- Fixed tick rate ?
