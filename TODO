@@ -4,12 +4,11 @@ Agree on a data structure for the map (sad char *[])
 	- PARSING:
 		-- MMAP x and y pos ?
 
-		- remove CLR_DOOR_OPEN/CLOSE  and jsut put clr door
+		-- err when twice the same clr ?
+
 		-- PARS FLOAT
 		- base fov ?
 		- view angle ?
-
-
 
 -- HOOKS
 	-- open settings
@@ -26,8 +25,6 @@ Agree on a data structure for the map (sad char *[])
 -- PLAYER
 	- variable speed ?
 
--- MINIMAP
-	- add dirrection arrow
 
 -- SETTINGS:
 	--	PUT PAUSESCREEN WHEN LOSE FOCUS

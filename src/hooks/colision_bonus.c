@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:18:16 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/25 18:24:19 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/27 13:33:27 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static inline void	__check_one_col(char *map[],
 	const t_c_door	in_door[2] = {__is_in_door(game->doors, n_coo[X], coo[Y]),
 		__is_in_door(game->doors, coo[X], n_coo[Y])};
 
-	DEBUG("pre P_DELTA %f %f", p_delta[X], p_delta[Y]);
+	// DEBUG("pre P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	if (crossed[X] && crossed[Y] && map[(int)n_coo[Y]][(int)n_coo[X]]
 		== WALL_CHAR && !is_in_wall[Y] && !is_in_wall[X] && !in_door[X] && !in_door[Y])
 	{
@@ -65,7 +65,7 @@ static inline void	__check_one_col(char *map[],
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		else
 			p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
-		DEBUG("posdt dia P_DELTA %f %f", p_delta[X], p_delta[Y]);
+		// DEBUG("posdt dia P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	}
 	else
 	{
@@ -73,7 +73,7 @@ static inline void	__check_one_col(char *map[],
 			p_delta[X] = __get_new_delta(coo[X], n_coo[X], p_delta[X] < 0);
 		if (crossed[Y] && is_in_wall[Y])
 			p_delta[Y] = __get_new_delta(coo[Y], n_coo[Y], p_delta[Y] < 0);
-		DEBUG("posdt norm P_DELTA %f %f", p_delta[X], p_delta[Y]);
+		// DEBUG("posdt norm P_DELTA %f %f", p_delta[X], p_delta[Y]);
 	}
 	if (game->any_doors)
 		colision_doors(game->doors, coo, p_delta, is_in_wall);
