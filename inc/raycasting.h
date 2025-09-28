@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/05 15:07:30 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 18:50:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/28 04:49:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,9 @@ struct s_col
 	float	adjusted_pdelta[2];
 };
 
-void	__check_one_ray(t_ray *ray, char **map)__attribute__((flatten));
-void	ray_casting(t_game *game);
+void		__check_one_ray(t_ray *ray, char **map)__attribute__((flatten));
+void		ray_casting(t_game *game);
+enum e_hit	only_chech_door_edge(t_ray *ray, t_c_door door);
+
 
 #endif

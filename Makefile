@@ -12,7 +12,7 @@ S_SRC_DOORS =	doors_utils.c  handle_door.c  open_close_door.c
 D_SRC_DOORS =	doors/
 SRC_DOORS   =	$(addprefix $(D_SRC_DOORS), $(S_SRC_DOORS))
 
-S_SRC_RAY_CASTING =	ray_casting.c  ray_casting_2.c
+S_SRC_RAY_CASTING =	ray_casting.c  ray_casting_2.c  door_front.c
 D_SRC_RAY_CASTING =	ray_casting/
 SRC_RAY_CASTING   =	$(addprefix $(D_SRC_RAY_CASTING), $(S_SRC_RAY_CASTING))
 

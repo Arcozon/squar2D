@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 19:52:03 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/28 04:52:35 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ struct	s_door
 t_err		add_door(t_doors doors, const int x, const int y);
 uint32_t	hash_door(const int a, const int b);
 
-t_one_door	find_door(const t_doors doors, const int x, const int y);
+t_one_door	find_door(const t_doors doors, const int x,
+	const int y)__attribute__((const));
 void		free_doors(t_doors doors);
 
 void		handle_doors(t_doors doors, t_game *game);

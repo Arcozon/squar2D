@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 16:01:35 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/28 04:52:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_err	add_door(t_doors doors, const int x, const int y)
 	return (NO_ERR);
 }
 
+__attribute__((const))
 t_one_door	find_door(const t_doors doors, const int x, const int y)
 {
 	const uint32_t	hash = hash_door(x, y);
