@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 13:33:58 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:32:10 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ t_err		pars_data(t_pars *pars);
 
 void		fill_game(t_pars *pars, t_game *game);
 t_err		parsing(t_pars *pars);
+uint32_t	cub_init_mlx(t_mlx *mlx, char pname[], char map_name[], t_cub *cub);
 t_err		init_cub(t_cub *cub, int ac, char *av[]);
 
 t_err		pars_settings_bonus(t_pars *pars, char line[]);

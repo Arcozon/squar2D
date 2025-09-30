@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/25 18:06:06 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:29:40 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include "raycasting.h"
 # include "doors.h"
 
+# define FOV_DELTA			0.05f
 # define BASE_VANGLE_DELTA	0.03f
 # define BASE_PLAYER_SPEED	0.02f
 # define BASE_FOV			1.885f

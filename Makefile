@@ -1,6 +1,7 @@
 NAME = cub3d
 
-S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  move_player.c  colision.c  mouse_hide_fix.c  colision_door.c
+S_SRC_HOOKS =	key_hook.c  loop.c  setup_hook.c  hook_focus.c
+S_SRC_HOOKS+=	move_player.c  colision.c  mouse_hide_fix.c  colision_door.c
 D_SRC_HOOKS =	hooks/
 SRC_HOOKS   =	$(addprefix $(D_SRC_HOOKS), $(S_SRC_HOOKS))
 
@@ -22,12 +23,15 @@ S_SRC_RENDER+=	draw_wall_col.c  set_floor_ceiling.c  cub_put_img_to_img.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))
 
-S_SRC_INIT =	fill_game.c  init.c  pars_color.c  parsing.c  pars_map.c  pars_textures.c  pars_settings.c
-S_SRC_INIT+=	flood_fill.c  pars_bonus.c  parsing_utils.c  pars_player.c  read.c  pars_doors.c
+S_SRC_INIT =	fill_game.c  init.c  parsing.c  init_mlx.c
+S_SRC_INIT+=	pars_color.c  pars_textures.c  pars_map.c  pars_player.c
+S_SRC_INIT+=	flood_fill.c  parsing_utils.c   read.c
+S_SRC_INIT+=	pars_settings.c  pars_bonus.c  pars_doors.c
 D_SRC_INIT =	init/
 SRC_INIT   =	$(addprefix $(D_SRC_INIT), $(S_SRC_INIT))
 
-S_SRC_UTILS =	utils.c  errors.c  free.c  s_vector.c
+S_SRC_UTILS =	utils.c  utils_mem.c  utils_strchr.c  utils_strcpy.c
+S_SRC_UTILS+=	errors.c  free_1.c  free_2.c  s_vector.c  s_verctor_2.c
 D_SRC_UTILS =	utils/
 SRC_UTILS   =	$(addprefix $(D_SRC_UTILS), $(S_SRC_UTILS))
 

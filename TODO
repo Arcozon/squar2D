@@ -20,16 +20,11 @@
 	--	PUT PAUSESCREEN WHEN LOSE FOCUS
 	- fov
 	- mouse sensibility
-	- mmap size ?
+	- mmap x y 
 
 -- RENDER
-	-- front door fix
 	- fix fisheye ?
 	- make a better draw col_call (use avr color when its squished or extended) ?
-
-- Sort files in hooks, create a game folder
-
--- Sprite :(
 
 -- BONUS
 	-- FPS counter ?

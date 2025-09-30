@@ -6,48 +6,11 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 12:25:43 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 16:11:30 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:59:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	free_vector(t_vector *vector)
-{
-	free(vector->u_ptr.void_ptr);
-	vector->u_ptr.void_ptr = 0;
-}
-
-void	free_2d_vector(t_vector *vector)
-{
-	uint64_t	i;
-
-	if (!vector->u_ptr.void_ptr)
-		return ;
-	i = 0;
-	while (i < vector->size)
-	{
-		free_vector(&vector->u_ptr.vect_ptr[i]);
-		++i;
-	}
-	free_vector(vector);
-}
-
-void	free_strstr(char **strstr, const uint32_t size)
-{
-	uint32_t	i;
-
-	i = 0;
-	if (strstr)
-	{
-		while (i < size)
-		{
-			free(strstr[i]);
-			++i;
-		}
-		free(strstr);
-	}
-}
 
 void	free_mlx(t_mlx *mlx)
 {
@@ -92,6 +55,27 @@ void	free_pars(t_pars *pars)
 	free(pars->map);
 	free_2d_vector(&pars->vec_map);
 	free_mlx(&pars->pmlx);
+}
+
+void	free_doors(t_doors doors)
+{
+	t_one_door	next;
+	t_one_door	onedoor;
+	uint32_t	i;
+
+	i = 0;
+	while (i < N_HASH_DOORS)
+	{
+		onedoor = doors[i];
+		doors[i] = 0;
+		while (onedoor)
+		{
+			next = onedoor->next;
+			free(onedoor);
+			onedoor = next;
+		}
+		++i;
+	}
 }
 
 void	free_cub(t_cub *cub)

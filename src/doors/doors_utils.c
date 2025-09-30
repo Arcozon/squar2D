@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:04:37 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:59:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ t_one_door	new_door(const int x, const int y)
 		return (NULL);
 	new->x = x;
 	new->y = y;
-	// new->closed_percent = VALUE_DOOR_CLOSED;
-	new->closed_percent = 0.2f;
+	new->closed_percent = VALUE_DOOR_CLOSED;
 	new->e_status = D_IDLE;
 	new->e_or = D_OR_VER;
 	return (new);
@@ -64,25 +63,4 @@ t_one_door	find_door(const t_doors doors, const int x, const int y)
 		onedoor = onedoor->next;
 	}
 	return (onedoor);
-}
-
-void	free_doors(t_doors doors)
-{
-	t_one_door	next;
-	t_one_door	onedoor;
-	uint32_t	i;
-
-	i = 0;
-	while (i < N_HASH_DOORS)
-	{
-		onedoor = doors[i];
-		doors[i] = 0;
-		while (onedoor)
-		{
-			next = onedoor->next;
-			free(onedoor);
-			onedoor = next;
-		}
-		++i;
-	}
 }

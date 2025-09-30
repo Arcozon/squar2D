@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 15:56:57 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/28 04:52:35 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:58:28 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define RADIUS_DOOR_OPEN	1.9f
 
-# define VALUE_DOOR_OPEN	0.2f
+# define VALUE_DOOR_OPEN	0.08f
 # define VALUE_DOOR_CLOSED	1.0f
 # define DOOR_SPEED			0.01f
 

@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:06:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:20:45 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,20 @@
 uint64_t	ft_strlen(const char str[])__attribute__ ((pure, nonnull));
 uint64_t	heap_strlen(const char str[])__attribute__ ((pure, nonnull, hot));
 bool		ft_strendcmp(const char str[],
-				const char end[])__attribute__ ((pure, nonnull));
+				const char end[])__attribute__ ((pure, nonnull, flatten));
 
-void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size);
+void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
+			__attribute__((flatten, nonnull));
 void		ft_strnlcpy(char *dst, const char *src,
-				uint64_t dst_size, uint64_t src_size);
-void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size);
-void		ft_strlcat(char *dst, const char *src, uint64_t dst_size);
+				uint64_t dst_size, uint64_t src_size)
+			__attribute__((flatten, nonnull));
+void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
+			__attribute__((flatten, nonnull));
+void		ft_strlcat(char *dst, const char *src, uint64_t dst_size)
+			__attribute__((flatten, nonnull));
 
-uint64_t	index_strchr(const char str[], const char find);
+uint64_t	index_strchr(const char str[], const char find)
+			__attribute__((nonnull, pure));
 char		*ft_strchr(const char str[], const char to_find)
 			__attribute__((nonnull, pure, flatten));
 char		*ft_sn_strchr(const char str[], const uint64_t lenstr,
@@ -45,9 +50,10 @@ void		*ft_calloc(const uint64_t	size);
 void		*ft_bzero(void *vptr, uint64_t size);
 void		*ft_memcpy(void *dst, const void *src, uint64_t size);
 void		*ft_memset(void *ptr, uint64_t size, const uint64_t set);
-void		*ft_clrset(t_clr img_data[], const t_clr color,
-				const uint64_t size);
-bool		ft_memcpm(void *s1, void *s2, uint64_t n);
+
+void	free_2d_vector(t_vector *vector);
+void	free_strstr(char **strstr, const uint32_t size);
+void	free_vector(t_vector *vector);
 
 # define R_DONE			0b1
 # define R_LDONE		0b10

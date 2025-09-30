@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:49:15 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/09 17:58:12 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:36:04 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,11 @@ int		key_release_hook(int key, t_game *game);
 int		cub_loop(t_game *game);
 
 void	setup_hooks(t_mlx *mlx, t_cub *cub);
+
+int		hook_enter_win(t_game *game);
+int		hook_leave_win(t_game *game);
+int		hook_mouse_focus(int x, int y, t_game *game);
+int		hook_focus_in(t_game *game);
+int		hook_focus_out(t_game *game);
 
 #endif

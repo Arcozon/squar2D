@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 17:10:10 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:11:39 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:55:36 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((always_inline, const))
-static inline float	distance2_door(const float p_coo_x, const float p_coo_y,
+static inline float	__distance2_door(const float p_coo_x, const float p_coo_y,
 	const float door_x, const float door_y)
 {
 	const float	d_x = p_coo_x - door_x;
@@ -40,7 +40,7 @@ static inline t_one_door	find_closest_door(t_doors doors,
 		onedoor = doors[i++];
 		while (onedoor)
 		{
-			distance2_this = distance2_door(p_coo[X], p_coo[Y],
+			distance2_this = __distance2_door(p_coo[X], p_coo[Y],
 					onedoor->x + 0.5f, onedoor->y + 0.5f);
 			if (distance2_this < distance2_closest)
 			{

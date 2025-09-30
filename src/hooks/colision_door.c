@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:45:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:58:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,19 @@ static inline t_c_door	__is_in_door(const t_doors doors, const float coo_x,
 	uint32_t	i;
 
 	i = 0;
-	while (i < N_HASH_DOORS)
-	{
-		door = doors[i];
-		while (door)
-		{
-			if (door->e_or == D_OR_HOR && (coo_x > (float)door->x)
-				&& (coo_x < (float)door->x + door->closed_percent)
-				&& (coo_y >= (float)door->y)
-				&& (coo_y < (float)door->y + VALUE_DOOR_CLOSED))
-				return (door);
-			else if (door->e_or == D_OR_VER && (coo_x >= (float)door->x)
-				&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
-				&& (coo_y >= (float)door->y)
-				&& (coo_y < (float)door->y + door->closed_percent))
-				return (door);
-			door = door->next;
-		}
-		++i;
-	}
+	door = find_door(doors, (int)coo_x, (int)coo_y);
+	if (!door)
+		return (door);
+	if (door->e_or == D_OR_HOR && (coo_x > (float)door->x)
+		&& (coo_x < (float)door->x + door->closed_percent)
+		&& (coo_y >= (float)door->y)
+		&& (coo_y < (float)door->y + VALUE_DOOR_CLOSED))
+		return (door);
+	else if (door->e_or == D_OR_VER && (coo_x >= (float)door->x)
+		&& (coo_x < (float)door->x + VALUE_DOOR_CLOSED)
+		&& (coo_y >= (float)door->y)
+		&& (coo_y < (float)door->y + door->closed_percent))
+		return (door);
 	return (NULL);
 }
 
@@ -110,7 +104,6 @@ static inline void	__door_side(t_c_door door, const float coo[2],
 		else
 			p_delta[Y] += ZERO_RANGE;
 	}
-	// DEBUG("player in door")
 }
 
 __attribute__((flatten))
