@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/28 04:48:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:28:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:30:34 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ enum e_hit	only_chech_door_edge(t_ray *ray, t_c_door door)
 
 	if (door->e_or == D_OR_VER)
 	{
-		if (ray->f_coo[Y] - ray->dir[Y] * s_c * (ray->f_coo[X] - (int)ray->f_coo[X] - ray->add_thing[X]) < door->closed_percent + door->y)
+		if (ray->f_coo[Y] - ray->dir[Y] * s_c * (ray->f_coo[X] -
+			(int)ray->f_coo[X] - ray->add_thing[X]) < door->closed_percent + door->y)
 		{
 			ray->f_coo[X] += (ray->f_coo[Y] - (int)(ray->f_coo[Y])
 					- door->closed_percent) * c_s;
@@ -29,7 +30,8 @@ enum e_hit	only_chech_door_edge(t_ray *ray, t_c_door door)
 			return (ray->hit = door_hor_hit);
 		}
 	}
-	else if (ray->f_coo[X] - ray->dir[Y] * c_s < door->closed_percent + door->x)
+	else if (ray->f_coo[X] - ray->dir[X] * c_s * (ray->f_coo[Y] -
+			(int)ray->f_coo[Y] - ray->add_thing[Y]) < door->closed_percent + door->x)
 	{
 		ray->f_coo[Y] += (ray->f_coo[X] - (int)(ray->f_coo[X])
 				- door->closed_percent) * s_c;
