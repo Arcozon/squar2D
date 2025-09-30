@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 16:48:07 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:39:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:42:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ void	setup_hooks(t_mlx *mlx, t_cub *cub)
 		key_release_hook, &cub->game);
 	mlx_hook(mlx->win_ptr, DestroyNotify, None,
 		mlx_loop_end, mlx->mlx_ptr);
-	// mlx_hook(mlx->win_ptr, MotionNotify, PointerMotionMask,
-	// 	test_mouse, &cub->game);
 	mlx_hook(mlx->win_ptr, EnterNotify, EnterWindowMask,
 		hook_enter_win, &cub->game);
 	mlx_hook(mlx->win_ptr, LeaveNotify, LeaveWindowMask,

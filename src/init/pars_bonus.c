@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:48:22 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:53:21 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:42:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,21 +55,6 @@ int	is_map_bns(const char *line)
 		++i;
 	}
 	return (count > i * 3 / 4);
-}
-
-uint32_t	pars_map_bonus(t_pars *pars)
-{
-	if (pars->rd.flags & R_DONE)
-		return (pars->error = MISSING_MAP);
-	if (read_map(pars, MAP_CHARS""MAP_CHARS_BNS))
-		return (pars->error || pars->error);
-	if (count_players(pars, pars->map, pars->dim))
-		return (pars->error || pars->error);
-	if (flood_fill(pars, pars->map, pars->dim))
-		return (pars->error || pars->error);
-	if (check_doors(pars))
-		return (pars->error || pars->error);
-	return (pars->error || pars->error);
 }
 
 uint32_t	pars_data_bonus(t_pars *pars)

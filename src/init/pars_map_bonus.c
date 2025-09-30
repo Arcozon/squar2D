@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars_doors.c                                       :+:      :+:    :+:   */
+/*   pars_map_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 12:15:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:43:26 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_err	__check_one_door(char *map[], const int x, const int y, t_pars *pars)
+__attribute__((always_inline))
+static inline t_err	__check_one_door(char *map[], const int x,
+	const int y, t_pars *pars)
 {
 	if (map[y][x - 1] == map[y][x + 1]
 		&& map[y - 1][x] == map[y + 1][x]
@@ -64,4 +66,19 @@ t_err	check_doors(t_pars *pars)
 		++i;
 	}
 	return (NO_ERR);
+}
+
+uint32_t	pars_map_bonus(t_pars *pars)
+{
+	if (pars->rd.flags & R_DONE)
+		return (pars->error = MISSING_MAP);
+	if (read_map(pars, MAP_CHARS""MAP_CHARS_BNS))
+		return (pars->error || pars->error);
+	if (count_players(pars, pars->map, pars->dim))
+		return (pars->error || pars->error);
+	if (flood_fill(pars, pars->map, pars->dim))
+		return (pars->error || pars->error);
+	if (check_doors(pars))
+		return (pars->error || pars->error);
+	return (pars->error || pars->error);
 }

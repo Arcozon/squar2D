@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:02:29 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:42:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ static inline int	_i_check_one_corner(t_c_door door,
 }
 
 __attribute__((always_inline, const))
-static inline int	_i_is_player_in_door(t_c_door one_door, const float p_coo[2])
+static inline int	_i_is_player_in_door(t_c_door one_door,
+	const float p_coo[2])
 {
 	return (
 		_i_check_one_corner(one_door, p_coo[X] + HALF_P_SIZE,

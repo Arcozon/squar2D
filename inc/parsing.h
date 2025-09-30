@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:32:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 13:47:47 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@
 # define CHAR_DOOR		'D'
 # define WALL_CHAR		'1'
 # define MTY_CHAR		' '
+
+# define VISITED_EMPTY	'f'
+# define VISITED_DOOR	'd'
+# define VISITED_CHARS	"fd"
 
 struct s_mlx
 {
@@ -141,6 +145,8 @@ t_err		check_doors(t_pars *pars);
 t_err		pars_color(t_pars *pars, char *line);
 t_err		pars_texture(t_pars *pars, char *line);
 
+uint64_t	make_new_map(t_pars *pars, char *old_map[],
+	int64_t	range[2][2], t_doors doors);
 t_err		flood_fill(t_pars *pars, char **map, uint64_t dim[2]);
 t_err		count_players(t_pars *pars, char **map, uint64_t dim[2]);
 t_err		read_map(t_pars *pars, const char allowed_char[]);
