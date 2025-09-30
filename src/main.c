@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:52:47 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 14:58:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(int ac, char *av[])
 	if (!init_cub(&cub, ac, av))
 		mlx_loop(cub.pars.pmlx.mlx_ptr);
 	TIMER_END;
-	cub_mouse_hide(cub.pars.pmlx.mlx_ptr, cub.pars.pmlx.win_ptr, 0);
+	if (cub.bonus)
+		cub_mouse_hide(cub.pars.pmlx.mlx_ptr, cub.pars.pmlx.win_ptr, 0);
 	return (perror_cub(cub));
 }

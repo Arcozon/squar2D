@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:42:31 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 15:07:11 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,17 @@ static inline int	_i_check_one_corner(t_c_door door,
 
 __attribute__((always_inline, const))
 static inline int	_i_is_player_in_door(t_c_door one_door,
-	const float p_coo[2])
+	const float coo_x, const float coo_y)
 {
 	return (
-		_i_check_one_corner(one_door, p_coo[X] + HALF_P_SIZE,
-			p_coo[Y] + HALF_P_SIZE)
-		|| _i_check_one_corner(one_door, p_coo[X] + HALF_P_SIZE,
-			p_coo[Y] - HALF_P_SIZE)
-		|| _i_check_one_corner(one_door, p_coo[X] - HALF_P_SIZE,
-			p_coo[Y] + HALF_P_SIZE)
-		|| _i_check_one_corner(one_door, p_coo[X] - HALF_P_SIZE,
-			p_coo[Y] - HALF_P_SIZE)
+		_i_check_one_corner(one_door, coo_x + HALF_P_SIZE,
+			coo_y + HALF_P_SIZE)
+		|| _i_check_one_corner(one_door, coo_x + HALF_P_SIZE,
+			coo_y - HALF_P_SIZE)
+		|| _i_check_one_corner(one_door, coo_x - HALF_P_SIZE,
+			coo_y + HALF_P_SIZE)
+		|| _i_check_one_corner(one_door, coo_x - HALF_P_SIZE,
+			coo_y - HALF_P_SIZE)
 	);
 }
 
@@ -54,7 +54,7 @@ void	__handle_one_door(t_one_door onedoor, t_game *game)
 	if (onedoor->e_status == D_CLOSING)
 	{
 		onedoor->closed_percent += DOOR_SPEED;
-		if (_i_is_player_in_door(onedoor, game->p_coo))
+		if (_i_is_player_in_door(onedoor, game->p_coo[X], game->p_coo[Y]))
 			onedoor->closed_percent -= DOOR_SPEED;
 		if (onedoor->closed_percent >= VALUE_DOOR_CLOSED)
 		{
