@@ -6,8 +6,7 @@
 -- HOOKS
 	-- open settings
 
--- DOORS
-	- add a door side
+--		PARS FPS_COLOR
 
 -- GAME
 	- Fixed tick rate ?
@@ -27,7 +26,6 @@
 	- make a better draw col_call (use avr color when its squished or extended) ?
 
 -- BONUS
-	-- FPS counter ?
 	-- Bousole ? (Barre avec N E S W en haut)
 
 -- PERFS:
