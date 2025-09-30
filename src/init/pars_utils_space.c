@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pars_utils_space.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 16:25:42 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:52:47 by gaeudes          ###   ########.fr       */
+/*   Created: 2025/09/30 14:47:11 by gaeudes           #+#    #+#             */
+/*   Updated: 2025/09/30 14:47:18 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define DEBUG_INIT
 #include "cub3d.h"
 
-int	main(int ac, char *av[])
+void	skip_spaces(char *line[])
 {
-	__attribute__((cleanup(free_cub))) t_cub cub;
-	TIMER_START;
-	if (!init_cub(&cub, ac, av))
-		mlx_loop(cub.pars.pmlx.mlx_ptr);
-	TIMER_END;
-	cub_mouse_hide(cub.pars.pmlx.mlx_ptr, cub.pars.pmlx.win_ptr, 0);
-	return (perror_cub(cub));
+	if (!*line)
+		return ;
+	while (*line[0] == ' ')
+		++*line;
+}
+
+void	skip_key_space(char *line[])
+{
+	if (!*line)
+		return ;
+	while (*line[0] && *line[0] != ' ')
+		++*line;
+	while (*line[0] == ' ')
+		++*line;
+}
+
+int	ft_str_space_cmp(const char *str, const char *pat)
+{
+	uint32_t	i;
+
+	i = 0;
+	while (pat[i] && str[i] == pat[i])
+		++i;
+	return (!pat[i] && str[i] == ' ');
 }

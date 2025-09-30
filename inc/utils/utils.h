@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:20:45 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 14:51:42 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ void		*ft_bzero(void *vptr, uint64_t size);
 void		*ft_memcpy(void *dst, const void *src, uint64_t size);
 void		*ft_memset(void *ptr, uint64_t size, const uint64_t set);
 
-void	free_2d_vector(t_vector *vector);
-void	free_strstr(char **strstr, const uint32_t size);
-void	free_vector(t_vector *vector);
+void		free_2d_vector(t_vector *vector);
+void		free_strstr(char **strstr, const uint32_t size);
+void		free_vector(t_vector *vector);
 
 # define R_DONE			0b1
 # define R_LDONE		0b10

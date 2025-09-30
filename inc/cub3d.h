@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:29:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 14:49:22 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,10 +113,9 @@ struct s_cub
 };
 
 void	move_player(t_game *game);
-void	check_colisions(const float p_coo[2], float p_delta[2], char *map[], const t_game *game);
-// void	colision_doors(const t_doors doors, const float coo[2], float p_delta[2]);
+void	check_colisions(const float p_coo[2], float p_delta[2],
+			char *map[], const t_game *game);
 void	colision_doors(const t_doors doors, const float coo[2],
-	float p_delta[2], const int is_wall[2]);
-void	print_map(t_game *game); //remove its debug
+			float p_delta[2], const int is_wall[2]);
 
 #endif

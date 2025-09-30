@@ -6,14 +6,14 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:09:13 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:47:13 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 14:49:58 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 __attribute__((hot))
-uint32_t	recursive_shi(char **map,
+t_err	recursive_shi(char **map,
 	const uint64_t dim[2], const uint64_t x, const uint64_t y)
 {
 	if (x < 0 || x >= dim[X] || y < 0 || y >= dim[Y])
