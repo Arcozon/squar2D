@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:23:05 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:55:20 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:36:46 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		ft_strlcpy(char *dst, const char *src, uint64_t dst_size)
 void		ft_strnlcpy(char *dst, const char *src,
 				uint64_t dst_size, uint64_t src_size)
 			__attribute__((flatten, nonnull));
-void		ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
+void		ft_lutoacpy(char dst[], const uint64_t nb, const uint64_t size)
 			__attribute__((flatten, nonnull));
 void		ft_strlcat(char *dst, const char *src, uint64_t dst_size)
 			__attribute__((flatten, nonnull));

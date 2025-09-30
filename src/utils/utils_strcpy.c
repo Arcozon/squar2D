@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/30 13:12:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:20:52 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:36:31 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	ft_strnlcpy(char *dst, const char *src,
 }
 
 __attribute__((flatten, nonnull))
-void	ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
+void	ft_lutoacpy(char dst[], const uint64_t nb, const uint64_t size)
 {
 	uint64_t	i;
 	uint64_t	pow;
@@ -62,8 +62,8 @@ void	ft_lutoacpy(const uint64_t nb, char str[], const uint64_t size)
 	while (pow / 10 && i < size - 1)
 	{
 		pow /= 10;
-		str[i] = nb / pow % 10 + '0';
+		dst[i] = nb / pow % 10 + '0';
 		++i;
 	}
-	str[i] = '\0';
+	dst[i] = '\0';
 }

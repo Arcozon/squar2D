@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/21 16:01:28 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/20 13:06:13 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:04:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ typedef struct s_cub			t_cub;
 
 typedef struct s_draw_col_wall	t_dcwall;
 typedef struct s_ray			t_ray;
+
+typedef uint64_t				t_microsec;
+typedef struct timespec			t_timespec;
 
 enum	e_hit
 {

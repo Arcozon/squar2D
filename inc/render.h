@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:47 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:51:04 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:39:06 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void	draw_frame(t_game *game, t_render *render);
 
 void	draw_col_wall(t_dcwall info, t_img screen_img,
 			const int screen_x, t_img wall_img);
+
+void	handle_fps(t_game *game);
 
 #endif

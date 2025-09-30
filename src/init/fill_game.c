@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 14:25:25 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:51:19 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:14:57 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,6 @@ void	fill_game(t_pars *pars, t_game *game)
 	game->f_keys = 0;
 	game->bonus = pars->bonus;
 	fill_render(pars, &game->render);
+	if (game->bonus)
+		clock_gettime(CLOCK_MONOTONIC, &game->last_time);
 }

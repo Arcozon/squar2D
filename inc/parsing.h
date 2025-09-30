@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/04 14:21:56 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:49:43 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 17:48:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@
 # define KEY_WEST		"WE"
 
 # define KEY_DOOR		"DR"
+
+# define KEY_FPS		"FPS"
 
 # define KEY_MM_PLAYER	"MM_PLR"
 # define KEY_MM_VIEW	"MM_VIEW"
@@ -106,6 +108,8 @@ struct s_pars
 	t_clr		mmap_empty;
 	t_clr		mmap_view;
 	t_clr		mmap_d_open;
+
+	t_clr		fps_counter;
 
 	uint64_t	player[2];
 	float		view_angle;

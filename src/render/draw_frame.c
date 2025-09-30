@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/19 14:34:08 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 11:30:14 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:38:55 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,6 @@ void	draw_frame(t_game *game, t_render *render)
 		(int []){MMAP_XSTART, MMAP_YSTART});
 	mlx_put_image_to_window(render->pmlx, render->pwin,
 		render->img_paa.p_img, 0, 0);
+	if (game->bonus)
+		handle_fps(game);
 }

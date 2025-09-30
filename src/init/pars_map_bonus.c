@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 16:23:06 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 13:43:26 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:37:24 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ static inline t_err	__check_one_door(char *map[], const int x,
 	else
 		pars->error = INVALID_DOOR;
 	ft_strlcpy(pars->err_context, "(", sizeof(pars->err_context));
-	ft_lutoacpy(x, pars->err_context + ft_strlen(pars->err_context),
+	ft_lutoacpy(pars->err_context + ft_strlen(pars->err_context), x,
 		sizeof(pars->err_context) - ft_strlen(pars->err_context));
 	ft_strlcat(pars->err_context, ", ", sizeof(pars->err_context));
-	ft_lutoacpy(y, pars->err_context + ft_strlen(pars->err_context),
+	ft_lutoacpy(pars->err_context + ft_strlen(pars->err_context), y,
 		sizeof(pars->err_context) - ft_strlen(pars->err_context));
 	ft_strlcat(pars->err_context, ")", sizeof(pars->err_context));
 	return (pars->error);

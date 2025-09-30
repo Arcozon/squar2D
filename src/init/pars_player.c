@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/17 16:50:23 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 17:46:10 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:37:00 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_err	count_players(t_pars *pars, char **map, uint64_t dim[2])
 		return (pars->error = MISSING_PLAYER);
 	else if (count > 1)
 	{
-		ft_lutoacpy(count, pars->err_context, sizeof(pars->err_context));
+		ft_lutoacpy(pars->err_context, count, sizeof(pars->err_context));
 		return (pars->error = TOO_MANY_PLAYER);
 	}
 	find_player(map, dim, pars->player);

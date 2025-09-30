@@ -19,7 +19,7 @@ SRC_RAY_CASTING   =	$(addprefix $(D_SRC_RAY_CASTING), $(S_SRC_RAY_CASTING))
 
 S_SRC_RENDER =	$(SRC_MMAP)  $(SRC_RAY_CASTING)  draw_frame.c
 S_SRC_RENDER+=	antialiasing_top.c  antialiasing_bot.c  antialiasing.c
-S_SRC_RENDER+=	draw_wall_col.c  set_floor_ceiling.c  cub_put_img_to_img.c
+S_SRC_RENDER+=	draw_wall_col.c  set_floor_ceiling.c  cub_put_img_to_img.c  fps_counter.c
 D_SRC_RENDER =	render/
 SRC_RENDER   =	$(addprefix $(D_SRC_RENDER), $(S_SRC_RENDER))
 
@@ -50,7 +50,7 @@ D_MLX = minilibx-linux
 D_INCS = inc/ inc/utils/ $(D_MLX)  
 
 CC =  cc
-FLAGS = -Wall -Wextra -Winline -Werror -MMD -O1 -g
+FLAGS = -Wall -Wextra -Winline -Werror -MMD -O1
 IFLAGS = $(addprefix -I, $(D_INCS))
 LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lXfixes -lm
 

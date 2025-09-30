@@ -6,12 +6,13 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/17 11:21:24 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 12:59:11 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 16:12:01 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+__attribute__((const))
 uint32_t	hash_door(const int a, const int b)
 {
 	int	xor;

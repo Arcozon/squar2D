@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 16:18:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/30 14:49:22 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 18:25:19 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@
 # include <fcntl.h>
 # include <math.h>
 
+# include <time.h>
+
 # include "mlx.h"
 
 # include "types.h"
@@ -32,10 +34,10 @@
 # include "raycasting.h"
 # include "doors.h"
 
-# define FOV_DELTA			0.05f
-# define BASE_VANGLE_DELTA	0.03f
-# define BASE_PLAYER_SPEED	0.02f
-# define BASE_FOV			1.885f
+# define FOV_DELTA			0.014f
+# define BASE_VANGLE_DELTA	0.013f
+# define BASE_PLAYER_SPEED	0.01f
+# define BASE_FOV			1.9f
 # define BASE_SENSITIVITY	1.f
 
 # define HALF_P_SIZE		0.2f
@@ -71,6 +73,8 @@ struct s_render
 	t_clr	mmap_wall;
 	t_clr	mmap_view;
 	t_clr	mmap_d_open;
+
+	t_clr		fps_counter;
 };
 
 struct s_game
@@ -95,6 +99,11 @@ struct s_game
 	int			notify;
 	int			focus;
 	uint64_t	f_keys;
+
+	uint64_t	frame_count;
+	char		buffer_fps[BUFF_SIZE];
+	uint64_t	len_buffer_fps;
+	t_timespec	last_time;
 
 	uint8_t		bonus:1;
 	t_render	render;
