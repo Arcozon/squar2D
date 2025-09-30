@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 15:06:17 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/23 17:35:56 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:41:38 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,10 @@ void	__handle_one_door(t_one_door onedoor, t_game *game)
 	{
 		onedoor->closed_percent += DOOR_SPEED;
 		if (_i_is_player_in_door(onedoor, game->p_coo))
+		{
+			DEBUG("IN DOOR")
 			onedoor->closed_percent -= DOOR_SPEED;
+		}
 		if (onedoor->closed_percent >= VALUE_DOOR_CLOSED)
 		{
 			onedoor->e_status = D_IDLE;

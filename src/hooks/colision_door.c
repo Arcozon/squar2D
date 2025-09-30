@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 14:50:55 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/27 13:51:40 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:45:32 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ static inline void	__door_side(t_c_door door, const float coo[2],
 		else
 			p_delta[Y] += ZERO_RANGE;
 	}
+	// DEBUG("player in door")
 }
 
 __attribute__((flatten))
@@ -126,8 +127,8 @@ void	colision_doors(const t_doors doors, const float coo[2],
 	else
 	{
 		if (door_nx && !is_wall[X])
-			__door_side(door_nx, (float []){coo[X], coo[Y]}, p_delta, X);
+			__door_side(door_nx, coo, p_delta, X);
 		if (door_ny && !is_wall[Y])
-			__door_side(door_ny, (float []){coo[X], coo[Y]}, p_delta, Y);
+			__door_side(door_ny, coo, p_delta, Y);
 	}
 }

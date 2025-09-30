@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 11:10:21 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/28 04:58:32 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/09/30 12:35:07 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ void	__check_one_ray(t_ray *ray, char **map)
 {
 	__get_n_step(ray);
 	if (find_door(ray->doors, ray->i_coo[X], ray->i_coo[Y]))
-		only_chech_door_edge(ray, find_door(ray->doors, ray->i_coo[X], ray->i_coo[Y]));
+		only_chech_door_edge(ray,
+			find_door(ray->doors, ray->i_coo[X], ray->i_coo[Y]));
 	while (ray->hit == no_hit)
 	{
 		__get_n_step(ray);
