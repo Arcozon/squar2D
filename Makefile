@@ -56,8 +56,8 @@ LFLAGS = -L$(D_MLX) -lmlx -lXext -lX11 -lXfixes -lm
 
 RM =  rm -rf
 
-RANDOM_CLR = echo -en '\033[3;38;5;'$(shell shuf -i 0-255 -n 1)m
-RESET_CLR = echo -en '\033[0m'
+RANDOM_CLR = echo -en '\e[3;38;5;'$(shell shuf -i 0-255 -n 1)m
+RESET_CLR = echo -en '\e[0m'
 
 all:	cp_mlx
 	@$(MAKE) $(NAME)

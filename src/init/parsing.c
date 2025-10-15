@@ -6,7 +6,7 @@
 /*   By: gaeudes <gaeudes@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 17:59:44 by gaeudes           #+#    #+#             */
-/*   Updated: 2025/09/17 11:41:46 by gaeudes          ###   ########.fr       */
+/*   Updated: 2025/10/15 19:24:36 by gaeudes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,9 @@ t_err	parsing(t_pars *pars)
 		if (pars_data_bonus(pars) || pars_map_bonus(pars))
 			return (pars->error);
 	}
+	if (pars->p_speed <= 0.f || pars->p_speed >= 1.f)
+		return (pars->error = WRONG_VALUE_SPEED);
+	if (pars->angle_speed <= 0.f || pars->angle_speed >= 1.f)
+		return (pars->error = WRONG_VALUE_SPEED);
 	return (pars->error);
 }

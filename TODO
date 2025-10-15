@@ -2,6 +2,7 @@
 	- PARSING:
 		-- MMAP x and y pos ?
 		-- err when twice the same clr ?
+		-- CHECK PLAYER SPEED
 
 -- HOOKS
 	-- open settings
